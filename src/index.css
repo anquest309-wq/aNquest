@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+
+/* For all scrollable areas */
+
+  
+  /* Custom momentum for smooth feel */
+  body {
+    scroll-snap-type: y mandatory;
+    scroll-snap-stop: always;
+    scroll-snap-points-y: repeat(100vh);
+    scroll-snap-type: none;
+    scroll-behavior: smooth;
+  }
+  
+  html, body {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    background-color: #fff;
+  }
+  
