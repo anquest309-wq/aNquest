@@ -34,58 +34,58 @@ const Pricing = () => {
       {/* Background Animations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Floating Circles */}
-        <div className="absolute top-20 left-10 w-32 h-32 bg-orange-200/20 rounded-full animate-float-slow"></div>
+        <div className="absolute top-20 left-10 w-32 h-32 bg-green-200/20 rounded-full animate-float-slow"></div>
         <div className="absolute top-40 right-20 w-24 h-24 bg-blue-200/20 opacity-20 animate-float-delayed transform rotate-45"></div>
         <div className="absolute bottom-20 left-1/4 w-28 h-28 bg-green-200/20 rounded-full animate-float"></div>
         <div className="absolute bottom-40 right-1/3 w-20 h-20 bg-purple-200/20 opacity-20 animate-float-slow transform rotate-12"></div>
         
         {/* Additional Floating Shapes */}
-        <div className="absolute top-32 left-1/3 w-16 h-16 bg-gradient-to-r from-orange-300/15 to-red-300/15 animate-float-delayed-slow transform rotate-45"></div>
+        <div className="absolute top-32 left-1/3 w-16 h-16 bg-gradient-to-r from-green-300/15 to-red-300/15 animate-float-delayed-slow transform rotate-45"></div>
         <div className="absolute top-60 right-1/4 w-20 h-20 bg-gradient-to-r from-blue-300/10 to-cyan-300/10 animate-float-slow rounded-full"></div>
         <div className="absolute bottom-32 left-1/6 w-14 h-14 bg-gradient-to-r from-green-300/20 to-emerald-300/20 animate-float transform rotate-12"></div>
         <div className="absolute bottom-60 right-1/6 w-18 h-18 bg-gradient-to-r from-purple-300/12 to-pink-300/12 animate-float-delayed rounded-full"></div>
         
         {/* Triangle Shapes */}
-        <div className="absolute top-16 left-1/5 w-0 h-0 border-l-8 border-r-8 border-b-14 border-transparent border-b-orange-300/20 animate-float-slow"></div>
+        <div className="absolute top-16 left-1/5 w-0 h-0 border-l-8 border-r-8 border-b-14 border-transparent border-b-green-300/20 animate-float-slow"></div>
         <div className="absolute top-48 right-1/5 w-0 h-0 border-l-10 border-r-10 border-b-18 border-transparent border-b-blue-300/15 animate-float-delayed"></div>
         <div className="absolute bottom-16 left-1/4 w-0 h-0 border-l-6 border-r-6 border-b-12 border-transparent border-b-green-300/25 animate-float"></div>
         <div className="absolute bottom-48 right-1/3 w-0 h-0 border-l-12 border-r-12 border-b-20 border-transparent border-b-purple-300/18 animate-float-slow"></div>
         
         {/* Square Shapes */}
-        <div className="absolute top-24 left-1/8 w-12 h-12 bg-gradient-to-r from-orange-300/20 to-red-300/20 animate-float-delayed transform rotate-45"></div>
+        <div className="absolute top-24 left-1/8 w-12 h-12 bg-gradient-to-r from-green-300/20 to-red-300/20 animate-float-delayed transform rotate-45"></div>
         <div className="absolute top-52 right-1/8 w-16 h-16 bg-gradient-to-r from-blue-300/8 to-cyan-300/12 animate-float-slow transform rotate-12"></div>
         <div className="absolute bottom-24 left-1/7 w-14 h-14 bg-gradient-to-r from-green-300/15 to-emerald-300/15 animate-float transform rotate-45"></div>
         <div className="absolute bottom-52 right-1/7 w-10 h-10 bg-gradient-to-r from-purple-300/25 to-pink-300/10 animate-float-delayed-slow transform rotate-12"></div>
         
         {/* Hexagon Shapes */}
-        <div className="absolute top-28 left-1/12 w-16 h-16 bg-gradient-to-r from-orange-300/18 to-red-300/18 animate-float-slow" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute top-28 left-1/12 w-16 h-16 bg-gradient-to-r from-green-300/18 to-red-300/18 animate-float-slow" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
         <div className="absolute top-56 right-1/12 w-14 h-14 bg-gradient-to-r from-blue-300/10 to-cyan-300/15 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
         <div className="absolute bottom-28 left-1/10 w-12 h-12 bg-gradient-to-r from-green-300/20 to-emerald-300/20 animate-float" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
         <div className="absolute bottom-56 right-1/10 w-18 h-18 bg-gradient-to-r from-purple-300/15 to-pink-300/8 animate-float-slow" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
         
         {/* Star Shapes */}
-        <div className="absolute top-36 left-1/9 w-10 h-10 bg-gradient-to-r from-orange-300/20 to-red-300/20 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
+        <div className="absolute top-36 left-1/9 w-10 h-10 bg-gradient-to-r from-green-300/20 to-red-300/20 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
         <div className="absolute top-64 right-1/9 w-8 h-8 bg-gradient-to-r from-blue-300/12 to-cyan-300/18 animate-float-slow" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
         <div className="absolute bottom-36 left-1/11 w-12 h-12 bg-gradient-to-r from-green-300/18 to-emerald-300/18 animate-float" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
         <div className="absolute bottom-64 right-1/11 w-6 h-6 bg-gradient-to-r from-purple-300/25 to-pink-300/10 animate-float-delayed-slow" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
         
         {/* Diamond Shapes */}
-        <div className="absolute top-44 left-1/13 w-14 h-14 bg-gradient-to-r from-orange-300/15 to-red-300/15 animate-float-slow transform rotate-45"></div>
+        <div className="absolute top-44 left-1/13 w-14 h-14 bg-gradient-to-r from-green-300/15 to-red-300/15 animate-float-slow transform rotate-45"></div>
         <div className="absolute top-72 right-1/13 w-12 h-12 bg-gradient-to-r from-blue-300/8 to-cyan-300/12 animate-float-delayed transform rotate-45"></div>
         <div className="absolute bottom-44 left-1/14 w-16 h-16 bg-gradient-to-r from-green-300/12 to-emerald-300/12 animate-float transform rotate-45"></div>
         <div className="absolute bottom-72 right-1/14 w-8 h-8 bg-gradient-to-r from-purple-300/20 to-pink-300/8 animate-float-slow transform rotate-45"></div>
         
         {/* Gradient Orbs */}
-        <div className="absolute top-40 left-1/6 w-40 h-40 bg-gradient-to-r from-orange-300/8 to-red-300/8 rounded-full blur-xl animate-pulse-slow"></div>
+        <div className="absolute top-40 left-1/6 w-40 h-40 bg-gradient-to-r from-green-300/8 to-red-300/8 rounded-full blur-xl animate-pulse-slow"></div>
         <div className="absolute bottom-40 right-1/6 w-36 h-36 bg-gradient-to-r from-blue-300/5 to-cyan-300/8 rounded-full blur-xl animate-pulse-delayed"></div>
         <div className="absolute top-1/2 left-1/2 w-32 h-32 bg-gradient-to-r from-green-300/6 to-emerald-300/6 rounded-full blur-xl animate-pulse-slow"></div>
         
         {/* Animated Lines */}
-        <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-orange-300/20 to-transparent animate-line-move"></div>
+        <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-green-300/20 to-transparent animate-line-move"></div>
         <div className="absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-300/15 to-transparent animate-line-move-delayed"></div>
         
         {/* Floating Particles */}
-        <div className="absolute top-1/3 left-1/4 w-2 h-2 bg-orange-300/30 rounded-full animate-particle-float"></div>
+        <div className="absolute top-1/3 left-1/4 w-2 h-2 bg-green-300/30 rounded-full animate-particle-float"></div>
         <div className="absolute top-2/3 right-1/4 w-3 h-3 bg-blue-300/20 rounded-full animate-particle-float-delayed"></div>
         <div className="absolute bottom-1/3 left-1/3 w-1 h-1 bg-green-300/40 rounded-full animate-particle-float-slow"></div>
         <div className="absolute bottom-2/3 right-1/3 w-2 h-2 bg-purple-300/25 rounded-full animate-particle-float"></div>
@@ -96,7 +96,7 @@ const Pricing = () => {
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-12">
           <div className="lg:w-1/2">
             <h2 className="text-5xl font-extrabold text-gray-900 leading-tight">
-              Development Service <span className="text-orange-500">Packages</span>
+              Development Service <span className="text-green-400">Packages</span>
             </h2>
             <p className="text-gray-600 mt-4 text-lg">
               Choose the perfect development package for your project. From basic web development to full-stack solutions with mobile apps and SEO services.
@@ -113,11 +113,11 @@ const Pricing = () => {
               Monthly
             </span>
             <div
-              className="w-16 h-8 flex items-center bg-white border border-orange-400 rounded-full cursor-pointer transition-all duration-300"
+              className="w-16 h-8 flex items-center bg-white border border-green-400 rounded-full cursor-pointer transition-all duration-300"
               onClick={() => setIsYearly(!isYearly)}
             >
               <div
-                className={`w-6 h-6 bg-orange-500 rounded-full shadow-md transform transition-transform duration-300 ${
+                className={`w-6 h-6 bg-green-500 rounded-full shadow-md transform transition-transform duration-300 ${
                   isYearly ? "translate-x-8" : "translate-x-1"
                 }`}
               />
@@ -130,7 +130,7 @@ const Pricing = () => {
               >
                 Yearly
               </span>
-              <div className="bg-orange-500 text-white text-xs font-semibold px-2 py-1 rounded-full">
+              <div className="bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded-full">
                 Recommended
               </div>
             </div>
@@ -144,15 +144,15 @@ const Pricing = () => {
               key={index}
               className={`group relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border overflow-hidden ${
                 index === 0 
-                  ? "border-gray-200 hover:border-orange-300" 
-                  : "border-orange-200 hover:border-orange-400"
+                  ? "border-gray-200 hover:border-green-300" 
+                  : "border-green-200 hover:border-green-400"
               }`}
             >
               {/* Professional Header */}
               <div className={`px-8 py-6 ${
                 index === 0 
                   ? "bg-gray-50" 
-                  : "bg-gradient-to-r from-orange-50 to-orange-100"
+                  : "bg-gradient-to-r from-green-50 to-green-100"
               }`}>
                 <div className="text-center">
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">
@@ -204,7 +204,7 @@ const Pricing = () => {
                   className={`w-full py-3 px-6 rounded-lg font-semibold text-white transition-all duration-300 hover:shadow-lg ${
                     index === 0
                       ? "bg-gray-800 hover:bg-gray-900"
-                      : "bg-orange-500 hover:bg-orange-600"
+                      : "bg-green-500 hover:bg-green-600"
                   }`}
                 >
                   <div className="flex items-center justify-center space-x-2">
@@ -217,7 +217,7 @@ const Pricing = () => {
               {/* Popular Badge for Advanced Plan */}
               {index === 1 && (
                 <div className="absolute top-4 right-4">
-                  <div className="bg-orange-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                  <div className="bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
                     Most Popular
                   </div>
                 </div>
