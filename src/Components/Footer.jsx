@@ -75,7 +75,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
           {/* Logo */}
           <div className="text-2xl font-bold text-green-800">
-            ANQUEST MEDIA
+            ANQUEST 
           </div>
 
           {/* Copyright */}

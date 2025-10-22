@@ -29,8 +29,43 @@ const testimonials = [
 
 const Testimonial = () => {
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6 text-center">
+    <section className="py-20 bg-gray-50 relative overflow-hidden">
+      {/* Background Animations */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Floating Circles */}
+        <div className="absolute top-10 left-10 w-20 h-20 bg-gradient-to-r from-green-400/20 to-blue-400/20 rounded-full animate-float"></div>
+        <div className="absolute top-32 right-20 w-16 h-16 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full animate-float-delayed"></div>
+        <div className="absolute bottom-20 left-1/4 w-24 h-24 bg-gradient-to-r from-purple-400/20 to-green-400/20 rounded-full animate-float-slow"></div>
+        <div className="absolute bottom-32 right-1/3 w-18 h-18 bg-gradient-to-r from-green-400/20 to-blue-400/20 rounded-full animate-float-delayed-slow"></div>
+        
+        {/* Floating Triangles */}
+        <div className="absolute top-1/4 left-1/3 w-0 h-0 border-l-8 border-r-8 border-b-12 border-l-transparent border-r-transparent border-b-green-400/20 animate-triangle-float"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-0 h-0 border-l-10 border-r-10 border-b-16 border-l-transparent border-r-transparent border-b-blue-400/20 animate-triangle-float-delayed"></div>
+        
+        {/* Floating Squares */}
+        <div className="absolute top-1/2 left-16 w-12 h-12 bg-gradient-to-r from-green-400/15 to-blue-400/15 rotate-45 animate-square-float"></div>
+        <div className="absolute bottom-1/3 right-16 w-14 h-14 bg-gradient-to-r from-blue-400/15 to-purple-400/15 rotate-45 animate-square-float-delayed"></div>
+        
+        {/* Floating Diamonds */}
+        <div className="absolute top-20 right-1/2 w-16 h-16 bg-gradient-to-r from-purple-400/20 to-green-400/20 transform rotate-45 animate-diamond-float"></div>
+        <div className="absolute bottom-20 left-1/2 w-20 h-20 bg-gradient-to-r from-green-400/20 to-blue-400/20 transform rotate-45 animate-diamond-float-delayed"></div>
+        
+        {/* Gradient Orbs */}
+        <div className="absolute top-1/3 right-10 w-32 h-32 bg-gradient-to-r from-green-400/10 to-blue-400/10 rounded-full blur-xl animate-orb-float"></div>
+        <div className="absolute bottom-1/3 left-10 w-28 h-28 bg-gradient-to-r from-blue-400/10 to-purple-400/10 rounded-full blur-xl animate-orb-float-delayed"></div>
+        
+        {/* Floating Lines */}
+        <div className="absolute top-1/2 left-0 w-40 h-1 bg-gradient-to-r from-transparent via-green-400/30 to-transparent animate-line-move"></div>
+        <div className="absolute bottom-1/3 right-0 w-32 h-1 bg-gradient-to-r from-transparent via-blue-400/30 to-transparent animate-line-move-delayed"></div>
+        
+        {/* Particle Effects */}
+        <div className="absolute top-16 left-1/2 w-2 h-2 bg-green-400/40 rounded-full animate-particle-float"></div>
+        <div className="absolute top-24 right-1/3 w-3 h-3 bg-blue-400/40 rounded-full animate-particle-float-delayed"></div>
+        <div className="absolute bottom-16 left-1/3 w-2 h-2 bg-purple-400/40 rounded-full animate-particle-float-slow"></div>
+        <div className="absolute bottom-24 right-1/2 w-3 h-3 bg-green-400/40 rounded-full animate-particle-float-delayed-slow"></div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
         <h2 className="text-5xl font-extrabold text-gray-900 mb-12">
           Client <span className="text-green-400">Testimonials</span>
         </h2>
@@ -100,6 +135,267 @@ const Testimonial = () => {
           ))}
         </div>
       </div>
+      
+      {/* CSS Animations */}
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-20px) rotate(180deg);
+          }
+        }
+        
+        @keyframes float-delayed {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-15px) rotate(-180deg);
+          }
+        }
+        
+        @keyframes float-slow {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-25px) rotate(90deg);
+          }
+        }
+        
+        @keyframes float-delayed-slow {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-18px) rotate(-90deg);
+          }
+        }
+        
+        @keyframes triangle-float {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-12px) rotate(120deg);
+          }
+        }
+        
+        @keyframes triangle-float-delayed {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-15px) rotate(-120deg);
+          }
+        }
+        
+        @keyframes square-float {
+          0%, 100% {
+            transform: translateY(0px) rotate(45deg);
+          }
+          50% {
+            transform: translateY(-20px) rotate(225deg);
+          }
+        }
+        
+        @keyframes square-float-delayed {
+          0%, 100% {
+            transform: translateY(0px) rotate(45deg);
+          }
+          50% {
+            transform: translateY(-18px) rotate(225deg);
+          }
+        }
+        
+        @keyframes diamond-float {
+          0%, 100% {
+            transform: translateY(0px) rotate(45deg);
+          }
+          50% {
+            transform: translateY(-22px) rotate(225deg);
+          }
+        }
+        
+        @keyframes diamond-float-delayed {
+          0%, 100% {
+            transform: translateY(0px) rotate(45deg);
+          }
+          50% {
+            transform: translateY(-16px) rotate(225deg);
+          }
+        }
+        
+        @keyframes orb-float {
+          0%, 100% {
+            transform: translateY(0px) scale(1);
+          }
+          50% {
+            transform: translateY(-30px) scale(1.1);
+          }
+        }
+        
+        @keyframes orb-float-delayed {
+          0%, 100% {
+            transform: translateY(0px) scale(1);
+          }
+          50% {
+            transform: translateY(-25px) scale(1.05);
+          }
+        }
+        
+        @keyframes line-move {
+          0% {
+            transform: translateX(-100%);
+          }
+          100% {
+            transform: translateX(100vw);
+          }
+        }
+        
+        @keyframes line-move-delayed {
+          0% {
+            transform: translateX(100%);
+          }
+          100% {
+            transform: translateX(-100vw);
+          }
+        }
+        
+        @keyframes particle-float {
+          0%, 100% {
+            transform: translateY(0px) translateX(0px);
+          }
+          25% {
+            transform: translateY(-10px) translateX(5px);
+          }
+          50% {
+            transform: translateY(-20px) translateX(0px);
+          }
+          75% {
+            transform: translateY(-10px) translateX(-5px);
+          }
+        }
+        
+        @keyframes particle-float-delayed {
+          0%, 100% {
+            transform: translateY(0px) translateX(0px);
+          }
+          25% {
+            transform: translateY(-8px) translateX(-3px);
+          }
+          50% {
+            transform: translateY(-16px) translateX(0px);
+          }
+          75% {
+            transform: translateY(-8px) translateX(3px);
+          }
+        }
+        
+        @keyframes particle-float-slow {
+          0%, 100% {
+            transform: translateY(0px) translateX(0px);
+          }
+          25% {
+            transform: translateY(-6px) translateX(4px);
+          }
+          50% {
+            transform: translateY(-12px) translateX(0px);
+          }
+          75% {
+            transform: translateY(-6px) translateX(-4px);
+          }
+        }
+        
+        @keyframes particle-float-delayed-slow {
+          0%, 100% {
+            transform: translateY(0px) translateX(0px);
+          }
+          25% {
+            transform: translateY(-7px) translateX(-2px);
+          }
+          50% {
+            transform: translateY(-14px) translateX(0px);
+          }
+          75% {
+            transform: translateY(-7px) translateX(2px);
+          }
+        }
+        
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+        
+        .animate-float-delayed {
+          animation: float-delayed 7s ease-in-out infinite;
+        }
+        
+        .animate-float-slow {
+          animation: float-slow 8s ease-in-out infinite;
+        }
+        
+        .animate-float-delayed-slow {
+          animation: float-delayed-slow 9s ease-in-out infinite;
+        }
+        
+        .animate-triangle-float {
+          animation: triangle-float 5s ease-in-out infinite;
+        }
+        
+        .animate-triangle-float-delayed {
+          animation: triangle-float-delayed 6s ease-in-out infinite;
+        }
+        
+        .animate-square-float {
+          animation: square-float 7s ease-in-out infinite;
+        }
+        
+        .animate-square-float-delayed {
+          animation: square-float-delayed 8s ease-in-out infinite;
+        }
+        
+        .animate-diamond-float {
+          animation: diamond-float 6s ease-in-out infinite;
+        }
+        
+        .animate-diamond-float-delayed {
+          animation: diamond-float-delayed 7s ease-in-out infinite;
+        }
+        
+        .animate-orb-float {
+          animation: orb-float 10s ease-in-out infinite;
+        }
+        
+        .animate-orb-float-delayed {
+          animation: orb-float-delayed 12s ease-in-out infinite;
+        }
+        
+        .animate-line-move {
+          animation: line-move 15s linear infinite;
+        }
+        
+        .animate-line-move-delayed {
+          animation: line-move-delayed 18s linear infinite;
+        }
+        
+        .animate-particle-float {
+          animation: particle-float 4s ease-in-out infinite;
+        }
+        
+        .animate-particle-float-delayed {
+          animation: particle-float-delayed 5s ease-in-out infinite;
+        }
+        
+        .animate-particle-float-slow {
+          animation: particle-float-slow 6s ease-in-out infinite;
+        }
+        
+        .animate-particle-float-delayed-slow {
+          animation: particle-float-delayed-slow 7s ease-in-out infinite;
+        }
+      `}</style>
     </section>
   );
 };

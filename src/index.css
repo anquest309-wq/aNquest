@@ -1,21 +1,77 @@
 @import "tailwindcss";
 
+/* Enhanced Scroll Snap Animation */
+html {
+  scroll-behavior: smooth !important;
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 80px; /* Account for fixed navbar */
+  scroll-snap-stop: always;
+}
 
-/* For all scrollable areas */
+body {
+  scroll-behavior: smooth !important;
+  overflow-x: hidden;
+  background-color: #fff;
+  -webkit-overflow-scrolling: touch; /* iOS smooth scrolling */
+  scroll-snap-type: y mandatory;
+  scroll-snap-stop: always;
+}
 
-  
-  /* Custom momentum for smooth feel */
-  body {
-    scroll-snap-type: y mandatory;
-    scroll-snap-stop: always;
-    scroll-snap-points-y: repeat(100vh);
-    scroll-snap-type: none;
-    scroll-behavior: smooth;
-  }
-  
-  html, body {
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-    background-color: #fff;
-  }
+/* Smooth scrolling for all elements */
+* {
+  scroll-behavior: smooth !important;
+}
+
+/* Enhanced scroll performance with snap */
+.smooth-scroll {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: y mandatory;
+  scroll-snap-stop: always;
+}
+
+/* Smooth transitions with easing */
+* {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scroll snap sections */
+.scroll-snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  min-height: 100vh;
+}
+
+/* Enhanced scroll snap with momentum */
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  scroll-snap-stop: always;
+  scroll-padding-top: 80px;
+}
+
+/* Apply scroll snap to all sections */
+.scroll-snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  min-height: 100vh;
+}
+
+/* Custom scrollbar styling for better UX */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #10b981;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #059669;
+}
   
