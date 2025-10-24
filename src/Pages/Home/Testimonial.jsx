@@ -4,7 +4,7 @@ const testimonials = [
   {
     company: "E-Commerce Solutions Inc",
     feedback:
-      "Anquest Media delivered an exceptional e-commerce platform using React and Node.js. The development team was professional, responsive, and delivered ahead of schedule. Our online sales increased by 300%!",
+      "aNquest delivered an exceptional e-commerce platform with modern web technologies. The development team was professional, responsive, and delivered ahead of schedule. Our online sales increased by 300%!",
     name: "Sarah Johnson",
     position: "CEO - E-Commerce Solutions",
     img: "https://randomuser.me/api/portraits/women/45.jpg",
@@ -12,7 +12,7 @@ const testimonials = [
   {
     company: "FinTech Innovations",
     feedback:
-      "The mobile banking app developed by Anquest Media exceeded our expectations. Their expertise in React Native and Python backend integration was outstanding. Highly recommended for fintech projects!",
+      "The mobile banking app developed by aNquest exceeded our expectations. Their expertise in mobile development and backend integration was outstanding. Highly recommended for fintech projects!",
     name: "Michael Chen",
     position: "CTO - FinTech Innovations",
     img: "https://randomuser.me/api/portraits/men/65.jpg",
@@ -20,7 +20,7 @@ const testimonials = [
   {
     company: "StartupHub Technologies",
     feedback:
-      "From web development to SEO optimization, Anquest Media provided comprehensive digital solutions. Our website now ranks #1 on Google and our user engagement has tripled. Amazing work!",
+      "From web development to SEO optimization, aNquest provided comprehensive digital solutions. Our website now ranks #1 on Google and our user engagement has tripled. Amazing work!",
     name: "Emily Rodriguez",
     position: "Founder - StartupHub",
     img: "https://randomuser.me/api/portraits/women/44.jpg",

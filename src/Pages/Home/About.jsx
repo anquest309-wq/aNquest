@@ -137,7 +137,7 @@ export default function About() {
           <div className="text-center mb-20">
             <div className="inline-block">
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 relative">
-                About <span className="text-green-400">Anquest</span>
+                About <span className="text-green-400">Featured Product aNquest</span>
                 <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-green-400 to-blue-500 rounded-full"></div>
               </h2>
             </div>
@@ -151,14 +151,14 @@ export default function About() {
             <div className="animate-slide-in-left">
               <div className="space-y-6">
                 <div className="inline-block">
-                  <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">About Anquest Media</span>
+                  <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">About Featured Product aNquest</span>
                 </div>
                 <h3 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">
-                  Leading Web & App Development 
+                  Leading Digital Solutions 
                   <span className="text-green-400"> Company</span>
                 </h3>
                 <p className="text-gray-600 leading-relaxed text-lg">
-                  Anquest Media is a premier development company specializing in web applications, mobile apps, and SEO services. We master all programming languages including React, Node.js, Python, Java, PHP, and more to deliver cutting-edge solutions.
+                  aNquest is a premier development company specializing in web applications, mobile apps, and SEO services. We master modern development frameworks and technologies to deliver cutting-edge solutions.
                 </p>
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
@@ -200,11 +200,11 @@ export default function About() {
                   <span className="text-blue-400 font-semibold text-sm uppercase tracking-wider">Our Expertise</span>
                 </div>
                 <h3 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">
-                  Full-Stack Development & 
-                  <span className="text-blue-400"> SEO Services</span>
+                  Enterprise Solutions & 
+                  <span className="text-blue-400"> Digital Marketing</span>
                 </h3>
                 <p className="text-gray-600 leading-relaxed text-lg">
-                  From frontend React applications to backend Node.js APIs, mobile app development, and comprehensive SEO strategies - we provide end-to-end digital solutions using the latest technologies and best practices.
+                  From frontend web applications to backend APIs, mobile app development, and comprehensive SEO strategies - we provide end-to-end digital solutions using the latest technologies and best practices.
                 </p>
                 
                 {/* Stats Grid */}
@@ -239,7 +239,68 @@ export default function About() {
           </div>
 
           {/* Section 3 - Content Left, Image Right */}
-         
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-24">
+            <div className="animate-slide-in-left">
+              <div className="space-y-8">
+                <div className="inline-block">
+                  <span className="text-purple-400 font-semibold text-sm uppercase tracking-wider">Our Innovation</span>
+                </div>
+                <h3 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">
+                  Digital Innovation & 
+                  <span className="text-purple-400"> Business Solutions</span>
+                </h3>
+                <p className="text-gray-600 leading-relaxed text-lg">
+                  We leverage cutting-edge technologies and innovative approaches to create digital solutions that transform businesses. Our team combines creativity with technical expertise to deliver exceptional results that drive growth and success.
+                </p>
+                
+                {/* Feature List */}
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                      <svg className="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <span className="text-gray-600 font-medium">Custom Digital Solutions</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                      <svg className="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <span className="text-gray-600 font-medium">Scalable Architecture</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                      <svg className="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <span className="text-gray-600 font-medium">Performance Optimization</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                      <svg className="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <span className="text-gray-600 font-medium">24/7 Technical Support</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="animate-slide-in-right">
+              <div className="relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                  alt="Digital Innovation"
+                  className="w-full h-96 lg:h-[500px] object-cover rounded-2xl shadow-2xl animate-image-float"
+                />
+              </div>
+            </div>
+          </div>
 
           {/* CTA Section */}
           <div className="text-center bg-gradient-to-r from-blue-400  to-green-600 rounded-3xl p-8 lg:p-12 relative overflow-hidden animate-fade-in">

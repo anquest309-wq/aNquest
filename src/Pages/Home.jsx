@@ -2,8 +2,7 @@ import React, { useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 
-import slide1 from "../assets/slider-banner-1.jpg"
-import slide2 from "../assets/slider-banner-2.jpg"
+
 
 // Import Swiper styles
 import 'swiper/css'
@@ -15,6 +14,7 @@ import Services from './Home/Services'
 import Pricing from './Home/Pricing'
 import Testimonial from './Home/Testimonial'
 import Footer from '../Components/Footer'
+import GifCarousel from '../Components/GifCarousel'
 
 
 
@@ -139,114 +139,108 @@ export default function Home() {
     };
   }, []);
 
-  const slides = [
-    {
-      id: 1,
-      image: slide1,
-      title: "Expert Web & App Development Solutions",
-      description: "Anquest Media specializes in creating cutting-edge web applications and mobile apps using modern technologies like React, Node.js, Python, and more. We deliver scalable, high-performance solutions that drive your business forward."
-    },
-    {
-      id: 2,
-      image: slide2,
-      title: "Full-Stack Development & SEO Excellence",
-      description: "From frontend to backend development, we master all programming languages including JavaScript, Python, Java, PHP, and more. Plus, our SEO experts ensure your digital presence ranks at the top."
-    }
-  ]
+  // const slides = [
+  //   {
+  //     id: 1,
+  //     image: slide1,
+  //     title: "Expert Web & App Development Solutions",
+  //     description: "Anquest Media specializes in creating cutting-edge web applications and mobile apps using modern technologies like React, Node.js, Python, and more. We deliver scalable, high-performance solutions that drive your business forward."
+  //   },
+  //   {
+  //     id: 2,
+  //     image: slide2,
+  //     title: "Full-Stack Development & SEO Excellence",
+  //     description: "From frontend to backend development, we master all programming languages including JavaScript, Python, Java, PHP, and more. Plus, our SEO experts ensure your digital presence ranks at the top."
+  //   }
+  // ]
 
   return (
-    <div className="relative min-h-screen overflow-hidden smooth-scroll momentum-scroll">
-      {/* Hero Section with Swiper */}
-      <section className="relative h-screen w-full scroll-snap-section">
-        <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
-          spaceBetween={0}
-          slidesPerView={1}
-          navigation={{
-            nextEl: '.swiper-button-next-custom',
-            prevEl: '.swiper-button-prev-custom',
-          }}
-          pagination={{
-            clickable: true,
-            el: '.swiper-pagination-custom',
-            bulletClass: 'swiper-pagination-bullet-custom',
-            bulletActiveClass: 'swiper-pagination-bullet-active-custom',
-          }}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
-          loop={true}
-          className="h-full w-full"
-        >
-          {slides.map((slide) => (
-            <SwiperSlide key={slide.id}>
-              <div className="relative h-full w-full">
-                {/* Background Image */}
-                <div 
-                  className="h-full w-full bg-cover bg-center bg-no-repeat"
-                  style={{
-                    backgroundImage: `url(${slide.image})`
-                  }}
-                />
-                <div className="absolute inset-0 bg-black/40 bg-opacity-50"></div>
+    <div className="relative min-h-screen overflow-hidden smooth-scroll momentum-scroll theme-transition">
 
-                {/* Main Content */}
-                <div className="absolute inset-0 z-10 flex items-center">
-                  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="max-w-4xl  pl-10 md:pl-20">
-                      {/* Headline */}
-                      <h1 className="text-3xl  sm:text-4xl md:text-5xl  font-bold text-white  mb-6">
-                        {/* {slide.title.split(' ').map((word, index) => (
-                          <span key={index}>
-                            {word}
-                            {index < slide.title.split(' ').length - 1 && <br />}
-                          </span>
-                        ))} */}
-
-                        {slide.title}
-                      </h1>
-                      
-                      {/* Description */}
-                      <p className="text-base sm:text-lg md:text-xl text-white leading-relaxed mb-8 max-w-2xl">
-                        {slide.description}
-                      </p>
-                      
-                      {/* Call to Action Buttons */}
-                      <div className="flex flex-col sm:flex-row justify-start  sm:gap-6">
-                        {/* Our Services Button */}
-                        <button className="group bg-green-500 hover:bg-green-500 text-white font-bold py-3 px-6 sm:py-4 sm:px-8 rounded-lg transition-all duration-300 text-sm sm:text-base transform hover:scale-105 hover:shadow-lg hover:shadow-teal-500/25 active:scale-95">
-                          <span className="relative z-10">Our Services</span>
-                          <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-green-500 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        </button>
-                        
-                        {/* Play Video Button */}
-                       
-                      </div>
-                    </div>
+        {/* Hero Section with Animation */}
+        <section className="relative h-screen w-full scroll-snap-section theme-hero overflow-hidden">
+          {/* Animated Background Shapes */}
+          <div className="absolute inset-0 overflow-hidden">
+            {/* Floating Circles */}
+            <div className="absolute top-20 left-10 w-20 h-20 rounded-full opacity-20 animate-float-slow" style={{ backgroundColor: 'var(--accent-primary)' }}></div>
+            <div className="absolute top-40 right-20 w-16 h-16 rounded-full opacity-15 animate-float-medium" style={{ backgroundColor: 'var(--accent-secondary)' }}></div>
+            <div className="absolute bottom-40 left-20 w-24 h-24 rounded-full opacity-10 animate-float-fast" style={{ backgroundColor: 'var(--accent-primary)' }}></div>
+            <div className="absolute bottom-20 right-10 w-12 h-12 rounded-full opacity-25 animate-float-slow" style={{ backgroundColor: 'var(--accent-secondary)' }}></div>
+            
+            {/* Floating Squares */}
+            <div className="absolute top-60 left-1/4 w-8 h-8 opacity-20 animate-rotate-slow" style={{ backgroundColor: 'var(--accent-primary)', transform: 'rotate(45deg)' }}></div>
+            <div className="absolute top-80 right-1/3 w-6 h-6 opacity-15 animate-rotate-medium" style={{ backgroundColor: 'var(--accent-secondary)', transform: 'rotate(45deg)' }}></div>
+            <div className="absolute bottom-60 left-1/3 w-10 h-10 opacity-10 animate-rotate-fast" style={{ backgroundColor: 'var(--accent-primary)', transform: 'rotate(45deg)' }}></div>
+            
+            {/* Floating Triangles */}
+            <div className="absolute top-32 right-1/4 w-0 h-0 opacity-20 animate-bounce-slow" style={{ 
+              borderLeft: '15px solid transparent',
+              borderRight: '15px solid transparent',
+              borderBottom: '26px solid var(--accent-primary)'
+            }}></div>
+            <div className="absolute bottom-32 left-1/4 w-0 h-0 opacity-15 animate-bounce-medium" style={{ 
+              borderLeft: '12px solid transparent',
+              borderRight: '12px solid transparent',
+              borderBottom: '20px solid var(--accent-secondary)'
+            }}></div>
+            
+            {/* Organic Blob Shapes */}
+            <div className="absolute top-1/4 left-1/2 w-32 h-32 opacity-5 animate-blob-slow" style={{ 
+              background: 'var(--gradient-accent)',
+              borderRadius: '60% 40% 70% 30% / 40% 60% 30% 70%'
+            }}></div>
+            <div className="absolute bottom-1/4 right-1/2 w-40 h-40 opacity-8 animate-blob-medium" style={{ 
+              background: 'var(--gradient-accent)',
+              borderRadius: '30% 70% 50% 50% / 60% 40% 60% 40%'
+            }}></div>
+            
+            {/* Gradient Orbs */}
+            <div className="absolute top-1/2 left-1/4 w-16 h-16 rounded-full opacity-20 animate-pulse-slow" style={{ 
+              background: 'radial-gradient(circle, var(--accent-primary), transparent)'
+            }}></div>
+            <div className="absolute bottom-1/3 right-1/4 w-20 h-20 rounded-full opacity-15 animate-pulse-medium" style={{ 
+              background: 'radial-gradient(circle, var(--accent-secondary), transparent)'
+            }}></div>
+          </div>
+          
+          <div className="container mx-auto px-4 sm:px-6 lg:px-18 h-full relative z-10">
+            <div className="flex items-center h-full gap-8 lg:gap-12">
+              {/* Left Side - Text Content */}
+              <div className="w-full lg:w-1/2 flex items-center justify-center lg:justify-start">
+                <div className="max-w-2xl">
+                  {/* Headline */}
+                  <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold theme-text-primary mb-6 leading-tight">
+                    Expert Digital Solutions & Innovation
+                  </h1>
+                  
+                  {/* Description */}
+                  <p className="text-lg sm:text-xl theme-text-secondary leading-relaxed mb-8">
+                    aNquest specializes in creating cutting-edge digital solutions across web development, mobile applications, digital marketing, and business automation. We deliver scalable, high-performance solutions that drive your business forward.
+                  </p>
+                  
+                  {/* Call to Action Buttons */}
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    {/* Our Services Button */}
+                    <button className="group theme-button-primary font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg transform hover:scale-105 hover:shadow-lg active:scale-95">
+                      <span className="relative z-10">Our Services</span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-green-500 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </button>
+                    
+                    {/* Contact Us Button */}
+                    <button className="group theme-button-secondary font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg transform hover:scale-105 active:scale-95">
+                      Contact Us
+                    </button>
                   </div>
                 </div>
               </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-
-        {/* Custom Navigation Arrows */}
-        <button className="swiper-button-prev-custom absolute left-4 top-1/2 -translate-y-1/2 z-20 text-white hover:text-gray-300 transition-colors">
-          <svg className="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-        
-        <button className="swiper-button-next-custom absolute right-4 top-1/2 -translate-y-1/2 z-20 text-white hover:text-gray-300 transition-colors">
-          <svg className="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-
-        {/* Custom Pagination */}
-        <div className="swiper-pagination-custom absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2"></div>
-      </section>
+              
+              {/* Right Side - GIF Carousel */}
+              <div className="w-full lg:w-1/2 flex items-center justify-center">
+                <GifCarousel />
+              </div>
+            </div>
+          </div>
+        </section>
 
 
 
@@ -254,27 +248,24 @@ export default function Home() {
 
 
 {/* About Section */}
-<section className="scroll-snap-section">
+<section className="scroll-snap-section theme-section">
   <About/>
 </section>
 
 {/* Services Section */}
-<section className="scroll-snap-section">
+<section className="scroll-snap-section theme-section-alt">
   <Services/>
 </section>
 
 {/* Projects Section */}
-<section className="scroll-snap-section">
+<section className="scroll-snap-section theme-section">
   <Projects/>
 </section>
 
-{/* Pricing Section */}
-<section className="scroll-snap-section">
-  <Pricing/>
-</section>
+
 
 {/* Testimonial Section */}
-<section className="scroll-snap-section">
+<section className="scroll-snap-section theme-section-alt">
   <Testimonial/>
 </section>
 
@@ -431,6 +422,6 @@ export default function Home() {
           animation: scrollSnap 0.3s ease-out;
         }
       `}</style>
-    </div>
+      </div>
   )
 }

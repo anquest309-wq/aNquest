@@ -43,7 +43,7 @@ export default function Navbar() {
 
   const dropdownClass = (name) => {
     const isActive = activeDropdown === name;
-    return `absolute top-full left-0 mt-5 w-64 bg-white rounded-lg shadow-lg transform transition-all duration-300 z-50 ${
+    return `absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg transform transition-all duration-300 z-50 ${
       isActive
         ? "opacity-100 scale-100 pointer-events-auto block"
         : "opacity-0 scale-95 pointer-events-none hidden"
@@ -86,14 +86,14 @@ export default function Navbar() {
                 </svg>
               </div>
               <span className="text-white font-bold text-xl">
-                Anquest 
+                aNquest 
               </span>
             </div>
           </div>
 
           {/* ===== Center: Navigation ===== */}
-          <div className="hidden lg:flex items-center space-x-8">
-            <Link to="/" className="text-white hover:text-green-400 transition-colors text-base">
+          <div className="hidden lg:flex items-center space-x-3">
+            <Link to="/" className="text-white hover:text-green-400 transition-colors text-base py-3 px-3">
               Home
             </Link>
             
@@ -104,7 +104,7 @@ export default function Navbar() {
               onMouseLeave={() => handleDropdownLeave()}
             >
               <button
-                className="text-white hover:text-green-400 transition-colors flex items-center space-x-1 text-base"
+                className="text-white py-7 px-3 hover:text-green-400 transition-colors flex items-center space-x-1 text-base"
                 onClick={() => handleDropdownClick("services")}
               >
                 <span>Services</span>
@@ -137,7 +137,7 @@ export default function Navbar() {
                       to="/app-development"
                       className="block px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors"
                     >
-                      App Development
+                      Mobile App Development
                     </Link>
                     <Link
                       to="/seo-services"
@@ -174,10 +174,10 @@ export default function Navbar() {
               )}
             </div>
 
-            <Link to="/technologies" className="text-white hover:text-green-400 transition-colors text-base">
+            <Link to="/technologies" className="text-white hover:text-green-400 transition-colors text-base px-1">
               Technologies
             </Link>
-            <Link to="/contacts" className="text-white hover:text-green-400 transition-colors text-base">
+            <Link to="/contacts" className="text-white hover:text-green-400 transition-colors text-base px-3">
               Contacts
             </Link>
           </div>
@@ -205,7 +205,7 @@ export default function Navbar() {
                   Web Development
                 </Link>
                 <Link to="/app-development" className="block hover:text-green-400 py-1 text-sm">
-                  App Development
+                  Mobile App Development
                 </Link>
                 <Link to="/seo-services" className="block hover:text-green-400 py-1 text-sm">
                   SEO Services

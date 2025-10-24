@@ -10,14 +10,25 @@ import Contacts from './Pages/Contacts'
 import Navbar from './Components/Navbar'
 import Footer from './Components/Footer'
 import TopArrow from './Components/TopArrow'
+import ThemeSwitcher from './Components/ThemeSwitcher'
+import { ThemeProvider } from './Context/ThemeContext'
+
+// Import theme styles
+import './styles/theme.css'
 
 function App() {
 
   return (
-    <>
+    <ThemeProvider>
       <BrowserRouter>
         <Navbar />
         <TopArrow/>
+        
+        {/* Global Theme Switcher - Responsive Fixed Position */}
+        <div className="fixed top-4 right-4 sm:top-1/2 sm:right-4 sm:transform sm:-translate-y-1/2 z-50">
+          <ThemeSwitcher />
+        </div>
+        
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/web-development' element={<WebDevelopment/>} />
@@ -28,7 +39,7 @@ function App() {
         </Routes>
         <Footer/>
       </BrowserRouter>
-    </>
+    </ThemeProvider>
   )
 }
 
