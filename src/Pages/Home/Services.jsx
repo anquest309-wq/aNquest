@@ -93,73 +93,73 @@ export default function Services() {
   }
 
   return (
-    <section className="py-16 lg:py-24 bg-gradient-to-br from-teal-900 via-teal-800 to-green-900 relative overflow-hidden">
+    <section className="py-16 lg:py-24 theme-bg-primary relative overflow-hidden">
        {/* Background Elements */}
        <div className="absolute inset-0 overflow-hidden pointer-events-none">
          {/* Floating Circles */}
-         <div className="absolute top-20 left-10 w-32 h-32 bg-yellow-400/10 rounded-full animate-float-slow"></div>
-         <div className="absolute top-40 right-20 w-24 h-24 bg-white/5 opacity-20 animate-float-delayed transform rotate-45"></div>
-         <div className="absolute bottom-20 left-1/4 w-28 h-28 bg-yellow-400/10 rounded-full animate-float"></div>
-         <div className="absolute bottom-40 right-1/3 w-20 h-20 bg-white/5 opacity-20 animate-float-slow transform rotate-12"></div>
+         <div className="absolute top-20 left-10 w-32 h-32 theme-animation-primary rounded-full animate-float-slow"></div>
+         <div className="absolute top-40 right-20 w-24 h-24 theme-animation-secondary opacity-20 animate-float-delayed transform rotate-45"></div>
+         <div className="absolute bottom-20 left-1/4 w-28 h-28 theme-animation-primary rounded-full animate-float"></div>
+         <div className="absolute bottom-40 right-1/3 w-20 h-20 theme-animation-secondary opacity-20 animate-float-slow transform rotate-12"></div>
          
          {/* Additional Floating Shapes */}
-         <div className="absolute top-32 left-1/3 w-16 h-16 bg-gradient-to-r from-yellow-400/15 to-orange-400/15 animate-float-delayed-slow transform rotate-45"></div>
-         <div className="absolute top-60 right-1/4 w-20 h-20 bg-gradient-to-r from-white/10 to-yellow-400/10 animate-float-slow rounded-full"></div>
-         <div className="absolute bottom-32 left-1/6 w-14 h-14 bg-gradient-to-r from-teal-400/20 to-green-400/20 animate-float transform rotate-12"></div>
-         <div className="absolute bottom-60 right-1/6 w-18 h-18 bg-gradient-to-r from-yellow-400/12 to-white/8 animate-float-delayed rounded-full"></div>
+         <div className="absolute top-32 left-1/3 w-16 h-16 theme-animation-tertiary animate-float-delayed-slow transform rotate-45"></div>
+         <div className="absolute top-60 right-1/4 w-20 h-20 theme-animation-primary animate-float-slow rounded-full"></div>
+         <div className="absolute bottom-32 left-1/6 w-14 h-14 theme-animation-secondary animate-float transform rotate-12"></div>
+         <div className="absolute bottom-60 right-1/6 w-18 h-18 theme-animation-tertiary animate-float-delayed rounded-full"></div>
          
          {/* Triangle Shapes */}
-         <div className="absolute top-16 left-1/5 w-0 h-0 border-l-8 border-r-8 border-b-14 border-transparent border-b-yellow-400/20 animate-float-slow"></div>
-         <div className="absolute top-48 right-1/5 w-0 h-0 border-l-10 border-r-10 border-b-18 border-transparent border-b-white/15 animate-float-delayed"></div>
-         <div className="absolute bottom-16 left-1/4 w-0 h-0 border-l-6 border-r-6 border-b-12 border-transparent border-b-teal-400/25 animate-float"></div>
-         <div className="absolute bottom-48 right-1/3 w-0 h-0 border-l-12 border-r-12 border-b-20 border-transparent border-b-yellow-400/18 animate-float-slow"></div>
+         <div className="absolute top-16 left-1/5 w-0 h-0 border-l-8 border-r-8 border-b-14 border-transparent theme-animation-border animate-float-slow"></div>
+         <div className="absolute top-48 right-1/5 w-0 h-0 border-l-10 border-r-10 border-b-18 border-transparent theme-animation-line animate-float-delayed"></div>
+         <div className="absolute bottom-16 left-1/4 w-0 h-0 border-l-6 border-r-6 border-b-12 border-transparent theme-animation-border animate-float"></div>
+         <div className="absolute bottom-48 right-1/3 w-0 h-0 border-l-12 border-r-12 border-b-20 border-transparent theme-animation-line animate-float-slow"></div>
          
          {/* Square Shapes */}
-         <div className="absolute top-24 left-1/8 w-12 h-12 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 animate-float-delayed transform rotate-45"></div>
-         <div className="absolute top-52 right-1/8 w-16 h-16 bg-gradient-to-r from-white/8 to-yellow-400/12 animate-float-slow transform rotate-12"></div>
-         <div className="absolute bottom-24 left-1/7 w-14 h-14 bg-gradient-to-r from-teal-400/15 to-green-400/15 animate-float transform rotate-45"></div>
-         <div className="absolute bottom-52 right-1/7 w-10 h-10 bg-gradient-to-r from-yellow-400/25 to-white/10 animate-float-delayed-slow transform rotate-12"></div>
+         <div className="absolute top-24 left-1/8 w-12 h-12 theme-animation-primary animate-float-delayed transform rotate-45"></div>
+         <div className="absolute top-52 right-1/8 w-16 h-16 theme-animation-secondary animate-float-slow transform rotate-12"></div>
+         <div className="absolute bottom-24 left-1/7 w-14 h-14 theme-animation-tertiary animate-float transform rotate-45"></div>
+         <div className="absolute bottom-52 right-1/7 w-10 h-10 theme-animation-primary animate-float-delayed-slow transform rotate-12"></div>
          
          {/* Hexagon Shapes */}
-         <div className="absolute top-28 left-1/12 w-16 h-16 bg-gradient-to-r from-yellow-400/18 to-orange-400/18 animate-float-slow" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
-         <div className="absolute top-56 right-1/12 w-14 h-14 bg-gradient-to-r from-white/10 to-yellow-400/15 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
-         <div className="absolute bottom-28 left-1/10 w-12 h-12 bg-gradient-to-r from-teal-400/20 to-green-400/20 animate-float" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
-         <div className="absolute bottom-56 right-1/10 w-18 h-18 bg-gradient-to-r from-yellow-400/15 to-white/8 animate-float-slow" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+         <div className="absolute top-28 left-1/12 w-16 h-16 theme-animation-secondary animate-float-slow" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+         <div className="absolute top-56 right-1/12 w-14 h-14 theme-animation-primary animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+         <div className="absolute bottom-28 left-1/10 w-12 h-12 theme-animation-tertiary animate-float" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+         <div className="absolute bottom-56 right-1/10 w-18 h-18 theme-animation-secondary animate-float-slow" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
          
          {/* Star Shapes */}
-         <div className="absolute top-36 left-1/9 w-10 h-10 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
-         <div className="absolute top-64 right-1/9 w-8 h-8 bg-gradient-to-r from-white/12 to-yellow-400/18 animate-float-slow" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
-         <div className="absolute bottom-36 left-1/11 w-12 h-12 bg-gradient-to-r from-teal-400/18 to-green-400/18 animate-float" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
-         <div className="absolute bottom-64 right-1/11 w-6 h-6 bg-gradient-to-r from-yellow-400/25 to-white/10 animate-float-delayed-slow" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
+         <div className="absolute top-36 left-1/9 w-10 h-10 theme-animation-primary animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
+         <div className="absolute top-64 right-1/9 w-8 h-8 theme-animation-secondary animate-float-slow" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
+         <div className="absolute bottom-36 left-1/11 w-12 h-12 theme-animation-tertiary animate-float" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
+         <div className="absolute bottom-64 right-1/11 w-6 h-6 theme-animation-primary animate-float-delayed-slow" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
          
          {/* Diamond Shapes */}
-         <div className="absolute top-44 left-1/13 w-14 h-14 bg-gradient-to-r from-yellow-400/15 to-orange-400/15 animate-float-slow transform rotate-45"></div>
-         <div className="absolute top-72 right-1/13 w-12 h-12 bg-gradient-to-r from-white/8 to-yellow-400/12 animate-float-delayed transform rotate-45"></div>
-         <div className="absolute bottom-44 left-1/14 w-16 h-16 bg-gradient-to-r from-teal-400/12 to-green-400/12 animate-float transform rotate-45"></div>
-         <div className="absolute bottom-72 right-1/14 w-8 h-8 bg-gradient-to-r from-yellow-400/20 to-white/8 animate-float-slow transform rotate-45"></div>
+         <div className="absolute top-44 left-1/13 w-14 h-14 theme-animation-secondary animate-float-slow transform rotate-45"></div>
+         <div className="absolute top-72 right-1/13 w-12 h-12 theme-animation-primary animate-float-delayed transform rotate-45"></div>
+         <div className="absolute bottom-44 left-1/14 w-16 h-16 theme-animation-tertiary animate-float transform rotate-45"></div>
+         <div className="absolute bottom-72 right-1/14 w-8 h-8 theme-animation-secondary animate-float-slow transform rotate-45"></div>
          
          {/* Gradient Orbs */}
-         <div className="absolute top-40 left-1/6 w-40 h-40 bg-gradient-to-r from-yellow-400/8 to-orange-400/8 rounded-full blur-xl animate-pulse-slow"></div>
-         <div className="absolute bottom-40 right-1/6 w-36 h-36 bg-gradient-to-r from-white/5 to-yellow-400/8 rounded-full blur-xl animate-pulse-delayed"></div>
-         <div className="absolute top-1/2 left-1/2 w-32 h-32 bg-gradient-to-r from-teal-400/6 to-green-400/6 rounded-full blur-xl animate-pulse-slow"></div>
+         <div className="absolute top-40 left-1/6 w-40 h-40 theme-animation-primary rounded-full blur-xl animate-pulse-slow"></div>
+         <div className="absolute bottom-40 right-1/6 w-36 h-36 theme-animation-secondary rounded-full blur-xl animate-pulse-delayed"></div>
+         <div className="absolute top-1/2 left-1/2 w-32 h-32 theme-animation-tertiary rounded-full blur-xl animate-pulse-slow"></div>
          
          {/* Grid Pattern */}
          <div className="absolute inset-0 opacity-5">
            <div className="absolute top-0 left-0 w-full h-full" style={{
-             backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0)',
+             backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(0, 212, 212, 0.3) 1px, transparent 0)',
              backgroundSize: '20px 20px'
            }}></div>
          </div>
          
          {/* Animated Lines */}
-         <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent animate-line-move"></div>
-         <div className="absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/15 to-transparent animate-line-move-delayed"></div>
+         <div className="absolute top-1/4 left-0 w-full h-px theme-animation-line animate-line-move"></div>
+         <div className="absolute top-3/4 left-0 w-full h-px theme-animation-border animate-line-move-delayed"></div>
          
          {/* Floating Particles */}
-         <div className="absolute top-1/3 left-1/4 w-2 h-2 bg-yellow-400/30 rounded-full animate-particle-float"></div>
-         <div className="absolute top-2/3 right-1/4 w-3 h-3 bg-white/20 rounded-full animate-particle-float-delayed"></div>
-         <div className="absolute bottom-1/3 left-1/3 w-1 h-1 bg-yellow-400/40 rounded-full animate-particle-float-slow"></div>
-         <div className="absolute bottom-2/3 right-1/3 w-2 h-2 bg-white/25 rounded-full animate-particle-float"></div>
+         <div className="absolute top-1/3 left-1/4 w-2 h-2 theme-animation-primary rounded-full animate-particle-float"></div>
+         <div className="absolute top-2/3 right-1/4 w-3 h-3 theme-animation-secondary rounded-full animate-particle-float-delayed"></div>
+         <div className="absolute bottom-1/3 left-1/3 w-1 h-1 theme-animation-tertiary rounded-full animate-particle-float-slow"></div>
+         <div className="absolute bottom-2/3 right-1/3 w-2 h-2 theme-animation-primary rounded-full animate-particle-float"></div>
        </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -170,12 +170,12 @@ export default function Services() {
             {/* Header */}
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-12">
               <div className="mb-6 lg:mb-0">
-                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold theme-text-primary leading-tight">
                   Expert Development & 
-                  <span className="text-yellow-400"> SEO Solutions</span>
+                  <span className="theme-accent-primary"> SEO Solutions</span>
                 </h2>
               </div>
-              <button className="bg-yellow-400 text-teal-900 font-bold py-4 px-8 rounded-xl hover:bg-yellow-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-yellow-400/25 flex items-center gap-2 self-start lg:self-center">
+              <button className="theme-bg-primary theme-text-primary font-bold py-4 px-8 rounded-xl hover:theme-accent-primary transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-[var(--accent-primary)]/25 flex items-center gap-2 self-start lg:self-center">
                 View All Services
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -188,7 +188,7 @@ export default function Services() {
               {services.map((service, index) => (
                  <div
                    key={service.id}
-                   className="group relative bg-white/5 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-white/10 hover:border-yellow-400/30 transition-all duration-500 transform hover:scale-[1.02] hover:bg-white/10"
+                   className="group relative theme-bg-tertiary backdrop-blur-sm rounded-2xl p-6 lg:p-8 theme-border-primary hover:theme-accent-primary transition-all duration-500 transform hover:scale-[1.02] hover:theme-bg-secondary"
                    onMouseEnter={() => setHoveredService(service.id)}
                    onMouseLeave={() => setHoveredService(null)}
                    style={{
@@ -198,24 +198,24 @@ export default function Services() {
                   <div className="flex flex-col lg:flex-row lg:items-center gap-6">
                     {/* Number and Title */}
                     <div className="flex items-center gap-4 lg:w-1/3">
-                      <div className="w-12 h-12 bg-yellow-400 text-teal-900 rounded-full flex items-center justify-center font-bold text-lg">
+                      <div className="w-12 h-12 theme-accent-primary theme-text-primary rounded-full flex items-center justify-center font-bold text-lg">
                         {service.number}
                       </div>
-                      <h3 className="text-xl lg:text-2xl font-bold text-white group-hover:text-yellow-400 transition-colors duration-300">
+                      <h3 className="text-xl lg:text-2xl font-bold theme-text-primary group-hover:theme-accent-primary transition-colors duration-300">
                         {service.title}
                       </h3>
                     </div>
 
                     {/* Description */}
                     <div className="lg:w-1/2">
-                      <p className="text-gray-300 leading-relaxed group-hover:text-white transition-colors duration-300">
+                      <p className="theme-text-secondary leading-relaxed group-hover:theme-text-primary transition-colors duration-300">
                         {service.description}
                       </p>
                     </div>
 
                     {/* Action Button */}
                     <div className="lg:w-1/6 flex justify-end">
-                      <button className="w-12 h-12 border-2 border-yellow-400 text-yellow-400 rounded-full flex items-center justify-center hover:bg-yellow-400 hover:text-teal-900 transition-all duration-300 transform hover:scale-110 hover:rotate-45">
+                      <button className="w-12 h-12 border-2 theme-accent-primary theme-text-primary rounded-full flex items-center justify-center hover:theme-bg-primary hover:theme-accent-primary transition-all duration-300 transform hover:scale-110 hover:rotate-45">
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>
@@ -224,7 +224,7 @@ export default function Services() {
                   </div>
 
                   {/* Hover Effect Line */}
-                  <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-yellow-400 to-yellow-300 transition-all duration-500 group-hover:w-full rounded-full"></div>
+                  <div className="absolute bottom-0 left-0 w-0 h-1 theme-gradient-accent transition-all duration-500 group-hover:w-full rounded-full"></div>
                 </div>
               ))}
             </div>
@@ -233,27 +233,28 @@ export default function Services() {
           {/* Statistics Section */}
           <div 
             ref={statsRef}
-            className="bg-gradient-to-r from-teal-700/50 to-green-700/50 backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-white/10 relative overflow-hidden"
+            className="bg-gradient-to-r from-cyan-300 via-cyan-500 to-cyan-800 backdrop-blur-sm rounded-3xl p-8 lg:p-12 theme-border-primary relative overflow-hidden"
           >
+            
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-10">
-              <div className="absolute top-10 left-10 w-20 h-20 border border-white rounded-full animate-pulse"></div>
-              <div className="absolute bottom-10 right-10 w-16 h-16 border border-white rounded-full animate-pulse"></div>
-              <div className="absolute top-1/2 left-1/4 w-12 h-12 border border-white rounded-full animate-pulse"></div>
+              <div className="absolute top-10 left-10 w-20 h-20 border theme-border-primary rounded-full animate-pulse"></div>
+              <div className="absolute bottom-10 right-10 w-16 h-16 border theme-border-primary rounded-full animate-pulse"></div>
+              <div className="absolute top-1/2 left-1/4 w-12 h-12 border theme-border-primary rounded-full animate-pulse"></div>
             </div>
 
             <div className="relative z-10">
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
                 {stats.map((stat, index) => (
                   <div key={index} className="text-center group">
-                    <div className="text-4xl lg:text-5xl font-bold text-white mb-2 animate-count-up group-hover:text-yellow-400 transition-colors duration-300">
+                    <div className="text-4xl lg:text-5xl font-bold theme-text-primary mb-2 animate-count-up group-hover:theme-accent-primary transition-colors duration-300">
                       {index === 0 && counts.clients}
                       {index === 1 && counts.satisfaction}
                       {index === 2 && counts.employees}
                       {index === 3 && counts.awards}
                       {stat.suffix}
                     </div>
-                    <div className="text-gray-300 text-sm lg:text-base font-medium group-hover:text-white transition-colors duration-300">
+                    <div className="theme-text-secondary text-sm lg:text-base font-medium group-hover:theme-text-primary transition-colors duration-300">
                       {stat.label}
                     </div>
                   </div>
@@ -265,7 +266,7 @@ export default function Services() {
       </div>
 
       {/* Custom Animations */}
-      <style >{`
+      <style>{`
         @keyframes fadeInUp {
           from {
             opacity: 0;

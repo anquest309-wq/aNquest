@@ -81,36 +81,36 @@ const Contacts = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen theme-bg-secondary">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-30">
+      <section className="theme-gradient-primary text-white py-30">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            Get In <span className="text-green-400">Touch</span>
+            Get In <span className="theme-accent-primary">Touch</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl theme-text-secondary mb-8 max-w-3xl mx-auto">
             Ready to start your next project? Let's discuss how we can help bring your vision to life
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-sm">
-            <span className="bg-green-400/20 text-green-300 px-4 py-2 rounded-full">24/7 Support</span>
-            <span className="bg-blue-400/20 text-blue-300 px-4 py-2 rounded-full">Free Consultation</span>
-            <span className="bg-purple-400/20 text-purple-300 px-4 py-2 rounded-full">Quick Response</span>
+            <span className="theme-bg-tertiary theme-text-primary px-4 py-2 rounded-full">24/7 Support</span>
+            <span className="theme-bg-tertiary theme-text-primary px-4 py-2 rounded-full">Free Consultation</span>
+            <span className="theme-bg-tertiary theme-text-primary px-4 py-2 rounded-full">Quick Response</span>
           </div>
         </div>
       </section>
 
       {/* Contact Form & Info */}
-      <section className="py-20">
+      <section className="py-20 theme-bg-primary">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             
             {/* Contact Form */}
-            <div className="bg-white rounded-2xl shadow-lg p-8">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Send us a Message</h2>
+            <div className="theme-card rounded-2xl theme-shadow-primary p-8">
+              <h2 className="text-3xl font-bold theme-text-primary mb-6">Send us a Message</h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="name" className="block text-sm font-medium theme-text-secondary mb-2">
                       Full Name *
                     </label>
                     <input
@@ -120,7 +120,7 @@ const Contacts = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 theme-border-primary border rounded-lg focus:ring-2 focus:ring-[#20e0e0] focus:border-transparent transition-colors"
                       placeholder="Your full name"
                     />
                   </div>
@@ -135,7 +135,7 @@ const Contacts = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 theme-border-primary border rounded-lg focus:ring-2 focus:ring-[#20e0e0] focus:border-transparent transition-colors"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -152,12 +152,12 @@ const Contacts = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 theme-border-primary border rounded-lg focus:ring-2 focus:ring-[#20e0e0] focus:border-transparent transition-colors"
                       placeholder="+1 (555) 123-4567"
                     />
                   </div>
                   <div>
-                    <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="service" className="block text-sm font-medium theme-text-secondary mb-2">
                       Service Needed
                     </label>
                     <select
@@ -165,7 +165,7 @@ const Contacts = () => {
                       name="service"
                       value={formData.service}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 theme-border-primary border rounded-lg focus:ring-2 focus:ring-[#20e0e0] focus:border-transparent transition-colors"
                     >
                       <option value="">Select a service</option>
                       {services.map((service, index) => (
@@ -176,7 +176,7 @@ const Contacts = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium theme-text-secondary mb-2">
                     Project Details *
                   </label>
                   <textarea
@@ -186,7 +186,7 @@ const Contacts = () => {
                     onChange={handleInputChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors resize-none"
+                    className="w-full px-4 py-3 theme-border-primary border rounded-lg focus:ring-2 focus:ring-[#20e0e0] focus:border-transparent transition-colors resize-none"
                     placeholder="Tell us about your project, goals, timeline, and any specific requirements..."
                   />
                 </div>
@@ -194,7 +194,7 @@ const Contacts = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-green-600 hover:bg-green-700 disabled:bg-green-400 text-white font-bold py-4 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center"
+                  className="w-full theme-button-primary font-bold py-4 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center"
                 >
                   {isSubmitting ? (
                     <>
@@ -214,26 +214,26 @@ const Contacts = () => {
             {/* Contact Information */}
             <div className="space-y-8">
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Contact Information</h2>
-                <p className="text-lg text-gray-600 mb-8">
+                <h2 className="text-3xl font-bold theme-text-primary mb-6">Contact Information</h2>
+                <p className="text-lg theme-text-secondary mb-8">
                   We're here to help! Reach out to us through any of the channels below, and we'll get back to you as soon as possible.
                 </p>
               </div>
 
               <div className="space-y-6">
                 {contactInfo.map((info, index) => (
-                  <div key={index} className="flex items-start space-x-4 p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200">
-                    <div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center text-green-600">
+                  <div key={index} className="flex items-start space-x-4 p-6 theme-card rounded-xl theme-shadow-primary hover:theme-shadow-secondary transition-shadow duration-200">
+                    <div className="flex-shrink-0 w-12 h-12 theme-bg-tertiary rounded-lg flex items-center justify-center theme-accent-primary">
                       {info.icon}
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">{info.title}</h3>
+                      <h3 className="text-lg font-semibold theme-text-primary mb-2">{info.title}</h3>
                       {info.details.map((detail, detailIndex) => (
-                        <p key={detailIndex} className="text-gray-600 mb-1">{detail}</p>
+                        <p key={detailIndex} className="theme-text-secondary mb-1">{detail}</p>
                       ))}
                       <a
                         href={info.action}
-                        className="inline-block mt-2 text-green-600 hover:text-green-700 font-medium transition-colors"
+                        className="inline-block mt-2 theme-accent-primary hover:theme-accent-secondary font-medium transition-colors"
                       >
                         Contact Now →
                       </a>
@@ -243,9 +243,9 @@ const Contacts = () => {
               </div>
 
               {/* Business Hours */}
-              <div className="bg-white rounded-xl shadow-md p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Business Hours</h3>
-                <div className="space-y-2 text-gray-600">
+              <div className="theme-card rounded-xl theme-shadow-primary p-6">
+                <h3 className="text-xl font-semibold theme-text-primary mb-4">Business Hours</h3>
+                <div className="space-y-2 theme-text-secondary">
                   <div className="flex justify-between">
                     <span>Monday - Friday</span>
                     <span>9:00 AM - 6:00 PM</span>

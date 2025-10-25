@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -58,7 +59,7 @@ export default function Navbar() {
           <div className="flex items-center space-x-3 sm:space-x-5">
             <button
               onClick={toggleMenu}
-              className="lg:hidden text-white hover:text-green-400 transition-colors"
+              className="lg:hidden text-white hover:text-[#20e0e0] transition-colors"
             >
               <svg
                 className="w-6 h-6"
@@ -76,7 +77,7 @@ export default function Navbar() {
             </button>
 
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-green-400 rounded-full flex items-center justify-center">
+              <div className="w-8 h-8 bg-[#20e0e0] rounded-full flex items-center justify-center">
                 <svg
                   className="w-4 h-4 text-white"
                   fill="currentColor"
@@ -93,7 +94,7 @@ export default function Navbar() {
 
           {/* ===== Center: Navigation ===== */}
           <div className="hidden lg:flex items-center space-x-3">
-            <Link to="/" className="text-white hover:text-green-400 transition-colors text-base py-3 px-3">
+            <Link to="/" className="text-white hover:text-[#20e0e0] transition-colors text-base py-3 px-3">
               Home
             </Link>
             
@@ -104,7 +105,7 @@ export default function Navbar() {
               onMouseLeave={() => handleDropdownLeave()}
             >
               <button
-                className="text-white py-7 px-3 hover:text-green-400 transition-colors flex items-center space-x-1 text-base"
+                className="text-white py-7 px-3 hover:text-[#20e0e0] transition-colors flex items-center space-x-1 text-base"
                 onClick={() => handleDropdownClick("services")}
               >
                 <span>Services</span>
@@ -129,38 +130,38 @@ export default function Navbar() {
                   <div className="py-2">
                     <Link
                       to="/web-development"
-                      className="block px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors"
+                      className="block px-4 py-2 text-gray-700 hover:bg-[#20e0e0]/10 hover:text-[#20e0e0] transition-colors"
                     >
                       Web Development
                     </Link>
                     <Link
                       to="/app-development"
-                      className="block px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors"
+                      className="block px-4 py-2 text-gray-700 hover:bg-[#20e0e0]/10 hover:text-[#20e0e0] transition-colors"
                     >
                       Mobile App Development
                     </Link>
                     <Link
                       to="/seo-services"
-                      className="block px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors"
+                      className="block px-4 py-2 text-gray-700 hover:bg-[#20e0e0]/10 hover:text-[#20e0e0] transition-colors"
                     >
                       SEO Services
                     </Link>
                     <div className="border-t border-gray-200 my-2"></div>
                     <a
                       href="#"
-                      className="block px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors"
+                      className="block px-4 py-2 text-gray-700 hover:bg-[#20e0e0]/10 hover:text-[#20e0e0] transition-colors"
                     >
                       Digital Marketing
                     </a>
                     <a
                       href="#"
-                      className="block px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors"
+                      className="block px-4 py-2 text-gray-700 hover:bg-[#20e0e0]/10 hover:text-[#20e0e0] transition-colors"
                     >
                       UI/UX Design
                     </a>
                     <a
                       href="#"
-                      className="block px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors"
+                      className="block px-4 py-2 text-gray-700 hover:bg-[#20e0e0]/10 hover:text-[#20e0e0] transition-colors"
                     >
                       E-Commerce Solutions
                     </a>
@@ -174,17 +175,22 @@ export default function Navbar() {
               )}
             </div>
 
-            <Link to="/technologies" className="text-white hover:text-green-400 transition-colors text-base px-1">
+            <Link to="/technologies" className="text-white hover:text-[#20e0e0] transition-colors text-base px-1">
               Technologies
             </Link>
-            <Link to="/contacts" className="text-white hover:text-green-400 transition-colors text-base px-3">
+            <Link to="/contacts" className="text-white hover:text-[#20e0e0] transition-colors text-base px-3">
               Contacts
             </Link>
           </div>
 
-          {/* ===== Right: CTA ===== */}
-          <div className="md:flex hidden  items-center space-x-4">
-            <button className="bg-green-400 hover:bg-green-500 text-white font-bold py-2 px-5 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-green-400/25 active:scale-95">
+          {/* ===== Right: Theme Switcher + CTA ===== */}
+          <div className="md:flex hidden items-center space-x-4">
+            {/* Theme Switcher */}
+            <div className="theme-switcher-navbar">
+              <ThemeSwitcher />
+            </div>
+            
+            <button className="bg-[#20e0e0] hover:bg-[aqua] text-white font-bold py-2 px-5 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-green-400/25 active:scale-95">
               Request A Quote
             </button>
           </div>
@@ -193,41 +199,51 @@ export default function Navbar() {
         {/* ===== Mobile Menu ===== */}
         {isMenuOpen && (
           <div className="lg:hidden bg-black/95 text-white rounded-lg mt-3 p-4 space-y-3 animate-in fade-in duration-300">
-            <Link to="/" className="block hover:text-green-400 py-2 border-b border-gray-700">
+            <Link to="/" className="block hover:text-[#20e0e0] py-2 border-b border-gray-700">
               Home
             </Link>
             
             {/* Services Section in Mobile */}
             <div className="border-b border-gray-700">
-              <div className="py-2 font-semibold text-green-400">Services</div>
+              <div className="py-2 font-semibold text-[#20e0e0]">Services</div>
               <div className="ml-4 space-y-2">
-                <Link to="/web-development" className="block hover:text-green-400 py-1 text-sm">
+                <Link to="/web-development" className="block hover:text-[#20e0e0] py-1 text-sm">
                   Web Development
                 </Link>
-                <Link to="/app-development" className="block hover:text-green-400 py-1 text-sm">
+                <Link to="/app-development" className="block hover:text-[#20e0e0] py-1 text-sm">
                   Mobile App Development
                 </Link>
-                <Link to="/seo-services" className="block hover:text-green-400 py-1 text-sm">
+                <Link to="/seo-services" className="block hover:text-[#20e0e0] py-1 text-sm">
                   SEO Services
                 </Link>
-                <a href="#" className="block hover:text-green-400 py-1 text-sm">
+                <a href="#" className="block hover:text-[#20e0e0] py-1 text-sm">
                   Digital Marketing
                 </a>
-                <a href="#" className="block hover:text-green-400 py-1 text-sm">
+                <a href="#" className="block hover:text-[#20e0e0] py-1 text-sm">
                   UI/UX Design
                 </a>
-                <a href="#" className="block hover:text-green-400 py-1 text-sm">
+                <a href="#" className="block hover:text-[#20e0e0] py-1 text-sm">
                   E-Commerce Solutions
                 </a>
               </div>
             </div>
             
-            <Link to="/technologies" className="block hover:text-green-400 py-2 border-b border-gray-700">
+            <Link to="/technologies" className="block hover:text-[#20e0e0] py-2 border-b border-gray-700">
               Technologies
             </Link>
-            <Link to="/contacts" className="block hover:text-green-400 py-2">
+            <Link to="/contacts" className="block hover:text-[#20e0e0] py-2">
               Contacts
             </Link>
+            
+            {/* Theme Switcher in Mobile */}
+            <div className="border-t border-gray-700 pt-3">
+              <div className="py-2 font-semibold text-[#20e0e0]">Theme</div>
+              <div className="ml-4">
+                <div className="theme-switcher-mobile">
+                  <ThemeSwitcher />
+                </div>
+              </div>
+            </div>
           </div>
         )}
       </div>

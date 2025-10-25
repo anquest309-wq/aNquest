@@ -34,58 +34,58 @@ const projects = [
 
 const Projects = () => {
   return (
-    <div className="py-20 bg-gradient-to-b from-white to-pink-50 relative overflow-hidden">
+    <div className="py-20 theme-bg-primary relative overflow-hidden">
       {/* Background Animations */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Floating Circles */}
-        <div className="absolute top-16 left-16 w-24 h-24 bg-gradient-to-r from-green-400/15 to-blue-400/15 rounded-full animate-float"></div>
-        <div className="absolute top-40 right-24 w-20 h-20 bg-gradient-to-r from-blue-400/15 to-purple-400/15 rounded-full animate-float-delayed"></div>
-        <div className="absolute bottom-24 left-1/3 w-28 h-28 bg-gradient-to-r from-purple-400/15 to-pink-400/15 rounded-full animate-float-slow"></div>
-        <div className="absolute bottom-40 right-1/4 w-22 h-22 bg-gradient-to-r from-pink-400/15 to-green-400/15 rounded-full animate-float-delayed-slow"></div>
+        <div className="absolute top-16 left-16 w-24 h-24 theme-animation-primary rounded-full animate-float"></div>
+        <div className="absolute top-40 right-24 w-20 h-20 theme-animation-secondary rounded-full animate-float-delayed"></div>
+        <div className="absolute bottom-24 left-1/3 w-28 h-28 theme-animation-tertiary rounded-full animate-float-slow"></div>
+        <div className="absolute bottom-40 right-1/4 w-22 h-22 theme-animation-primary rounded-full animate-float-delayed-slow"></div>
         
         {/* Floating Triangles */}
-        <div className="absolute top-1/3 left-1/4 w-0 h-0 border-l-10 border-r-10 border-b-16 border-l-transparent border-r-transparent border-b-green-400/15 animate-triangle-float"></div>
-        <div className="absolute bottom-1/3 right-1/3 w-0 h-0 border-l-12 border-r-12 border-b-20 border-l-transparent border-r-transparent border-b-blue-400/15 animate-triangle-float-delayed"></div>
+        <div className="absolute top-1/3 left-1/4 w-0 h-0 border-l-10 border-r-10 border-b-16 border-l-transparent border-r-transparent theme-animation-border animate-triangle-float"></div>
+        <div className="absolute bottom-1/3 right-1/3 w-0 h-0 border-l-12 border-r-12 border-b-20 border-l-transparent border-r-transparent theme-animation-line animate-triangle-float-delayed"></div>
         
         {/* Floating Squares */}
-        <div className="absolute top-1/2 left-20 w-16 h-16 bg-gradient-to-r from-green-400/10 to-blue-400/10 rotate-45 animate-square-float"></div>
-        <div className="absolute bottom-1/4 right-20 w-18 h-18 bg-gradient-to-r from-blue-400/10 to-purple-400/10 rotate-45 animate-square-float-delayed"></div>
+        <div className="absolute top-1/2 left-20 w-16 h-16 theme-animation-secondary rotate-45 animate-square-float"></div>
+        <div className="absolute bottom-1/4 right-20 w-18 h-18 theme-animation-tertiary rotate-45 animate-square-float-delayed"></div>
         
         {/* Floating Diamonds */}
-        <div className="absolute top-24 right-1/2 w-20 h-20 bg-gradient-to-r from-purple-400/15 to-pink-400/15 transform rotate-45 animate-diamond-float"></div>
-        <div className="absolute bottom-24 left-1/2 w-24 h-24 bg-gradient-to-r from-pink-400/15 to-green-400/15 transform rotate-45 animate-diamond-float-delayed"></div>
+        <div className="absolute top-24 right-1/2 w-20 h-20 theme-animation-primary transform rotate-45 animate-diamond-float"></div>
+        <div className="absolute bottom-24 left-1/2 w-24 h-24 theme-animation-secondary transform rotate-45 animate-diamond-float-delayed"></div>
         
         {/* Gradient Orbs */}
-        <div className="absolute top-1/4 right-16 w-36 h-36 bg-gradient-to-r from-green-400/8 to-blue-400/8 rounded-full blur-xl animate-orb-float"></div>
-        <div className="absolute bottom-1/4 left-16 w-32 h-32 bg-gradient-to-r from-blue-400/8 to-purple-400/8 rounded-full blur-xl animate-orb-float-delayed"></div>
+        <div className="absolute top-1/4 right-16 w-36 h-36 theme-animation-primary rounded-full blur-xl animate-orb-float"></div>
+        <div className="absolute bottom-1/4 left-16 w-32 h-32 theme-animation-secondary rounded-full blur-xl animate-orb-float-delayed"></div>
         
         {/* Floating Lines */}
-        <div className="absolute top-1/2 left-0 w-48 h-1 bg-gradient-to-r from-transparent via-green-400/25 to-transparent animate-line-move"></div>
-        <div className="absolute bottom-1/3 right-0 w-40 h-1 bg-gradient-to-r from-transparent via-blue-400/25 to-transparent animate-line-move-delayed"></div>
+        <div className="absolute top-1/2 left-0 w-48 h-1 theme-animation-line animate-line-move"></div>
+        <div className="absolute bottom-1/3 right-0 w-40 h-1 theme-animation-border animate-line-move-delayed"></div>
         
         {/* Particle Effects */}
-        <div className="absolute top-20 left-1/2 w-3 h-3 bg-green-400/35 rounded-full animate-particle-float"></div>
-        <div className="absolute top-32 right-1/3 w-4 h-4 bg-blue-400/35 rounded-full animate-particle-float-delayed"></div>
-        <div className="absolute bottom-20 left-1/3 w-3 h-3 bg-purple-400/35 rounded-full animate-particle-float-slow"></div>
-        <div className="absolute bottom-32 right-1/2 w-4 h-4 bg-pink-400/35 rounded-full animate-particle-float-delayed-slow"></div>
+        <div className="absolute top-20 left-1/2 w-3 h-3 theme-animation-primary rounded-full animate-particle-float"></div>
+        <div className="absolute top-32 right-1/3 w-4 h-4 theme-animation-secondary rounded-full animate-particle-float-delayed"></div>
+        <div className="absolute bottom-20 left-1/3 w-3 h-3 theme-animation-tertiary rounded-full animate-particle-float-slow"></div>
+        <div className="absolute bottom-32 right-1/2 w-4 h-4 theme-animation-primary rounded-full animate-particle-float-delayed-slow"></div>
         
         {/* Hexagon Shapes */}
-        <div className="absolute top-1/3 left-1/2 w-16 h-16 bg-gradient-to-r from-green-400/12 to-blue-400/12 transform rotate-30 animate-hexagon-float"></div>
-        <div className="absolute bottom-1/3 right-1/2 w-20 h-20 bg-gradient-to-r from-blue-400/12 to-purple-400/12 transform rotate-30 animate-hexagon-float-delayed"></div>
+        <div className="absolute top-1/3 left-1/2 w-16 h-16 theme-animation-secondary transform rotate-30 animate-hexagon-float"></div>
+        <div className="absolute bottom-1/3 right-1/2 w-20 h-20 theme-animation-tertiary transform rotate-30 animate-hexagon-float-delayed"></div>
         
         {/* Star Shapes */}
-        <div className="absolute top-1/2 right-1/4 w-0 h-0 border-l-6 border-r-6 border-b-10 border-l-transparent border-r-transparent border-b-green-400/20 animate-star-float"></div>
-        <div className="absolute bottom-1/2 left-1/4 w-0 h-0 border-l-8 border-r-8 border-b-12 border-l-transparent border-r-transparent border-b-blue-400/20 animate-star-float-delayed"></div>
+        <div className="absolute top-1/2 right-1/4 w-0 h-0 border-l-6 border-r-6 border-b-10 border-l-transparent border-r-transparent theme-animation-border animate-star-float"></div>
+        <div className="absolute bottom-1/2 left-1/4 w-0 h-0 border-l-8 border-r-8 border-b-12 border-l-transparent border-r-transparent theme-animation-line animate-star-float-delayed"></div>
       </div>
       {/* ==== Header ==== */}
       <div className="text-center mb-12 relative z-10">
-        <button className="bg-purple-600 text-white px-6 py-2 rounded-md font-semibold">
+        <button className="theme-accent-primary theme-text-primary px-6 py-2 rounded-md font-semibold">
           Recent Projects
         </button>
-        <h2 className="text-4xl font-bold mt-6">
-          We've Completed <span className="text-green-500">150+</span> Development Projects
+        <h2 className="text-4xl font-bold mt-6 theme-text-primary">
+          We've Completed <span className="theme-accent-primary">150+</span> Development Projects
         </h2>
-        <p className="text-2xl font-semibold mt-2 text-gray-800">
+        <p className="text-2xl font-semibold mt-2 theme-text-secondary">
           Explore Our Development Portfolio
         </p>
       </div>
@@ -144,7 +144,7 @@ const Projects = () => {
 
                 {/* Blue Top Overlay for Non-Active */}
                 {!isActive && (
-                  <div className="absolute top-4 left-4 bg-blue-900 text-white py-3 px-6 rounded-md">
+                  <div className="absolute top-4 left-4 theme-bg-primary theme-text-primary py-3 px-6 rounded-md">
                     <h3 className="font-bold text-lg">{project.title}</h3>
                     <p className="text-sm">{project.subtitle}</p>
                   </div>
@@ -152,7 +152,7 @@ const Projects = () => {
 
                 {/* Green Bottom Overlay for Active */}
                 {isActive && (
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-green-500 text-white py-3 px-4 rounded-xl text-center shadow-2xl transform scale-105">
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 theme-accent-primary theme-text-primary py-3 px-4 rounded-xl text-center shadow-2xl transform scale-105">
                     <h3 className="font-bold text-md mb-1">{project.title}</h3>
                     <p className="text-base font-semibold">Read More →</p>
                   </div>
@@ -168,7 +168,7 @@ const Projects = () => {
        </div>
        
        {/* CSS Animations */}
-       <style >{`
+       <style>{`
          @keyframes float {
            0%, 100% {
              transform: translateY(0px) rotate(0deg);
@@ -495,7 +495,7 @@ const styles = `
   .swiper-pagination-bullet-custom {
     width: 12px;
     height: 12px;
-    background: #9CA3AF;
+    background: var(--text-secondary);
     opacity: 1;
     border-radius: 50%;
     transition: all 0.3s ease;
@@ -503,7 +503,7 @@ const styles = `
   }
   
   .swiper-pagination-bullet-active-custom {
-    background: #10B981;
+    background: var(--accent-primary);
     transform: scale(1.2);
   }
 `;

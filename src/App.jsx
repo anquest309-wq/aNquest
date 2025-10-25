@@ -24,11 +24,6 @@ function App() {
         <Navbar />
         <TopArrow/>
         
-        {/* Global Theme Switcher - Responsive Fixed Position */}
-        <div className="fixed top-4 right-4 sm:top-1/2 sm:right-4 sm:transform sm:-translate-y-1/2 z-50">
-          <ThemeSwitcher />
-        </div>
-        
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/web-development' element={<WebDevelopment/>} />

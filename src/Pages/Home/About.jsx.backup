@@ -1,0 +1,984 @@
+import React, { useState, useEffect, useRef } from 'react'
+
+
+export default function About() {
+  const [isVisible, setIsVisible] = useState(false)
+  const [counts, setCounts] = useState({
+    projects: 0,
+    clients: 0,
+    years: 0,
+    support: 0
+  })
+  const sectionRef = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true)
+          startCounting()
+        }
+      },
+      { threshold: 0.3 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [isVisible])
+
+  const startCounting = () => {
+    const duration = 2000 // 2 seconds
+    const steps = 60
+    const stepDuration = duration / steps
+
+    const targets = {
+      projects: 150,
+      clients: 80,
+      years: 5,
+      support: 24
+    }
+
+    let step = 0
+    const timer = setInterval(() => {
+      step++
+      const progress = step / steps
+      
+      setCounts({
+        projects: Math.floor(targets.projects * progress),
+        clients: Math.floor(targets.clients * progress),
+        years: Math.floor(targets.years * progress),
+        support: Math.floor(targets.support * progress)
+      })
+
+      if (step >= steps) {
+        clearInterval(timer)
+        setCounts(targets)
+      }
+    }, stepDuration)
+  }
+  return (
+    <section className="py-16 lg:py-24 theme-bg-primary overflow-hidden relative">
+      {/* Ultra Minimal Background Animation Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Only 2 Essential Particles */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/3 left-1/3 w-2 h-2 bg-cyan-400 rounded-full opacity-40 animate-particle-1"></div>
+          <div className="absolute bottom-1/3 right-1/3 w-1 h-1 bg-green-500 rounded-full opacity-30 animate-particle-2"></div>
+        </div>
+
+        {/* Only 3 Essential Shapes */}
+        <div className="absolute top-1/4 left-1/4 w-12 h-12 bg-cyan-400 opacity-15 animate-float transform rotate-30" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute top-1/2 right-1/3 w-10 h-10 bg-green-500 opacity-20 animate-float-delayed rounded-full"></div>
+        <div className="absolute bottom-1/4 left-2/3 w-8 h-8 bg-cyan-500 opacity-15 animate-float-slow transform rotate-60"></div>
+
+      </div>
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto">
+          
+          {/* Section Header */}
+          <div className="text-center mb-20">
+            <div className="inline-block">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold theme-text-primary mb-6 relative">
+                About <span className="theme-accent-primary">aNquest</span>
+                <div className="absolute -bottom-2 left-0 w-full h-1 rounded-full" style={{background: 'linear-gradient(135deg, #00d4d4, #00cccc)'}}></div>
+              </h2>
+            </div>
+            <p className="text-lg sm:text-xl theme-text-secondary max-w-3xl mx-auto leading-relaxed animate-fade-in">
+              We are a leading IT solutions provider dedicated to transforming businesses through innovative technology and exceptional service delivery.
+            </p>
+          </div>
+
+          {/* Section 1 - Content Left, Image Right */}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-24">
+            <div className="animate-slide-in-left">
+              <div className="space-y-6">
+        <div className="absolute top-12 left-3/12 w-14 h-14 bg-cyan-500 opacity-15 animate-float-slow transform rotate-60" style={{clipPath: 'path("M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.41,0-8-3.59-8-8s3.59-8,8-8s8,3.59,8,8S16.41,20,12,20z M12,4c-4.41,0-8,3.59-8,8s3.59,8,8,8s8-3.59,8-8S16.41,4,12,4z")'}}></div>
+        {/* Teardrop */}
+        <div className="absolute top-6 left-4/12 w-18 h-18 bg-green-400 opacity-20 animate-float transform rotate-45" style={{clipPath: 'path("M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.41,0-8-3.59-8-8s3.59-8,8-8s8,3.59,8-8S16.41,20,12,20z")'}}></div>
+        {/* Infinity Symbol */}
+        <div className="absolute top-10 left-5/12 w-10 h-10 bg-cyan-500 opacity-25 animate-float-delayed" style={{clipPath: 'path("M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.41,0-8-3.59-8-8s3.59-8,8-8s8,3.59,8-8S16.41,20,12,20z")'}}></div>
+        {/* Gear */}
+        <div className="absolute top-14 left-6/12 w-16 h-16 bg-green-500 opacity-15 animate-float-slow transform rotate-30" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
+        {/* Flower */}
+        <div className="absolute top-4 left-7/12 w-20 h-20 bg-cyan-400 opacity-20 animate-float transform rotate-75" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
+        {/* Butterfly */}
+        <div className="absolute top-9 left-8/12 w-12 h-12 bg-green-400 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
+        {/* Fish */}
+        <div className="absolute top-7 left-9/12 w-14 h-14 bg-cyan-500 opacity-15 animate-float-slow transform rotate-60" style={{clipPath: 'polygon(0% 50%, 20% 0%, 80% 0%, 100% 50%, 80% 100%, 20% 100%)'}}></div>
+        {/* Bird */}
+        <div className="absolute top-11 left-10/12 w-18 h-18 bg-green-500 opacity-20 animate-float transform rotate-45" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
+        {/* Tree */}
+        <div className="absolute top-13 left-11/12 w-16 h-16 bg-cyan-400 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
+        <div className="absolute top-6 left-4/12 w-18 h-18 bg-cyan-400 opacity-20 animate-float transform rotate-45"></div>
+        <div className="absolute top-10 left-5/12 w-10 h-10 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+        <div className="absolute top-14 left-6/12 w-16 h-16 bg-cyan-500 opacity-15 animate-float-slow transform rotate-30"></div>
+        <div className="absolute top-4 left-7/12 w-20 h-20 bg-cyan-400 opacity-20 animate-float transform rotate-75"></div>
+        <div className="absolute top-9 left-8/12 w-12 h-12 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute top-7 left-9/12 w-14 h-14 bg-cyan-500 opacity-15 animate-float-slow transform rotate-45"></div>
+        <div className="absolute top-11 left-10/12 w-16 h-16 bg-cyan-400 opacity-20 animate-float transform rotate-60"></div>
+        <div className="absolute top-13 left-11/12 w-18 h-18 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+        
+        {/* Additional Full Coverage Shapes - Upper Middle Area */}
+        <div className="absolute top-1/5 left-1/12 w-14 h-14 bg-cyan-400 opacity-20 animate-float transform rotate-30"></div>
+        <div className="absolute top-1/5 left-2/12 w-16 h-16 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute top-1/5 left-3/12 w-12 h-12 bg-cyan-500 opacity-15 animate-float-slow transform rotate-60"></div>
+        <div className="absolute top-1/5 left-4/12 w-18 h-18 bg-cyan-400 opacity-20 animate-float transform rotate-45"></div>
+        <div className="absolute top-1/5 left-5/12 w-10 h-10 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+        <div className="absolute top-1/5 left-6/12 w-16 h-16 bg-cyan-500 opacity-15 animate-float-slow transform rotate-30"></div>
+        <div className="absolute top-1/5 left-7/12 w-20 h-20 bg-cyan-400 opacity-20 animate-float transform rotate-75"></div>
+        <div className="absolute top-1/5 left-8/12 w-12 h-12 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute top-1/5 left-9/12 w-14 h-14 bg-cyan-500 opacity-15 animate-float-slow transform rotate-45"></div>
+        <div className="absolute top-1/5 left-10/12 w-16 h-16 bg-cyan-400 opacity-20 animate-float transform rotate-60"></div>
+        <div className="absolute top-1/5 left-11/12 w-18 h-18 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+        
+        {/* Additional Full Coverage Shapes - Center Area */}
+        <div className="absolute top-1/2 left-1/12 w-16 h-16 bg-cyan-400 opacity-20 animate-float transform rotate-30"></div>
+        <div className="absolute top-1/2 left-2/12 w-14 h-14 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute top-1/2 left-3/12 w-18 h-18 bg-cyan-500 opacity-15 animate-float-slow transform rotate-60"></div>
+        <div className="absolute top-1/2 left-4/12 w-12 h-12 bg-cyan-400 opacity-20 animate-float transform rotate-45"></div>
+        <div className="absolute top-1/2 left-5/12 w-20 h-20 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+        <div className="absolute top-1/2 left-6/12 w-14 h-14 bg-cyan-500 opacity-15 animate-float-slow transform rotate-30"></div>
+        <div className="absolute top-1/2 left-7/12 w-16 h-16 bg-cyan-400 opacity-20 animate-float transform rotate-75"></div>
+        <div className="absolute top-1/2 left-8/12 w-18 h-18 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute top-1/2 left-9/12 w-12 h-12 bg-cyan-500 opacity-15 animate-float-slow transform rotate-45"></div>
+        <div className="absolute top-1/2 left-10/12 w-16 h-16 bg-cyan-400 opacity-20 animate-float transform rotate-60"></div>
+        <div className="absolute top-1/2 left-11/12 w-14 h-14 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+        
+        {/* Ultra Diverse Shapes - Center Area - Reduced Selection */}
+        {/* Large Hexagon */}
+        <div className="absolute top-1/2 left-8 w-24 h-24 bg-cyan-400 opacity-20 animate-float transform rotate-30" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        {/* Small Star */}
+        <div className="absolute top-1/2 left-1/3 w-8 h-8 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
+        {/* Medium Circle */}
+        <div className="absolute top-1/2 left-2/3 w-20 h-20 bg-cyan-500 rounded-full opacity-15 animate-float-slow"></div>
+        {/* Large Square */}
+        <div className="absolute top-1/2 right-8 w-28 h-28 bg-green-400 opacity-20 animate-float transform rotate-45"></div>
+        {/* Extra Large Pentagon */}
+        <div className="absolute top-1/2 left-1/4 w-32 h-32 bg-cyan-400 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+        {/* Tiny Diamond */}
+        <div className="absolute top-1/2 left-1/5 w-6 h-6 bg-green-500 opacity-30 animate-float-slow transform rotate-45" style={{clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)'}}></div>
+        {/* Huge Octagon */}
+        <div className="absolute top-1/2 right-1/4 w-36 h-36 bg-cyan-500 opacity-15 animate-float transform rotate-12" style={{clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)'}}></div>
+        {/* Micro Heart */}
+        <div className="absolute top-1/2 left-1/6 w-4 h-4 bg-green-400 opacity-35 animate-float-delayed" style={{clipPath: 'path("M12,21.35l-1.45-1.32C5.4,15.36,2,12.28,2,8.5 C2,5.42,4.42,3,7.5,3c1.74,0,3.41,0.81,4.5,2.09C13.09,3.81,14.76,3,16.5,3 C19.58,3,22,5.42,22,8.5c0,3.78-3.4,6.86-8.55,11.54L12,21.35z")'}}></div>
+        {/* Giant Triangle */}
+        <div className="absolute top-1/2 right-1/5 w-0 h-0 border-l-20 border-r-20 border-b-40 border-transparent border-green-400 opacity-20 animate-float"></div>
+        {/* Large Arrow */}
+        <div className="absolute top-1/2 right-1/6 w-16 h-16 bg-green-500 opacity-20 animate-float transform rotate-90" style={{clipPath: 'polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%)'}}></div>
+        
+        {/* Additional Full Coverage Shapes - Lower Middle Area */}
+        <div className="absolute top-3/5 left-1/12 w-18 h-18 bg-cyan-400 opacity-20 animate-float transform rotate-30"></div>
+        <div className="absolute top-3/5 left-2/12 w-12 h-12 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute top-3/5 left-3/12 w-16 h-16 bg-cyan-500 opacity-15 animate-float-slow transform rotate-60"></div>
+        <div className="absolute top-3/5 left-4/12 w-14 h-14 bg-cyan-400 opacity-20 animate-float transform rotate-45"></div>
+        <div className="absolute top-3/5 left-5/12 w-20 h-20 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+        <div className="absolute top-3/5 left-6/12 w-10 h-10 bg-cyan-500 opacity-15 animate-float-slow transform rotate-30"></div>
+        <div className="absolute top-3/5 left-7/12 w-18 h-18 bg-cyan-400 opacity-20 animate-float transform rotate-75"></div>
+        <div className="absolute top-3/5 left-8/12 w-16 h-16 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute top-3/5 left-9/12 w-12 h-12 bg-cyan-500 opacity-15 animate-float-slow transform rotate-45"></div>
+        <div className="absolute top-3/5 left-10/12 w-14 h-14 bg-cyan-400 opacity-20 animate-float transform rotate-60"></div>
+        <div className="absolute top-3/5 left-11/12 w-16 h-16 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+        
+        {/* Additional Full Coverage Shapes - Bottom Area */}
+        <div className="absolute top-4/5 left-1/12 w-14 h-14 bg-cyan-400 opacity-20 animate-float transform rotate-30"></div>
+        <div className="absolute top-4/5 left-2/12 w-18 h-18 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute top-4/5 left-3/12 w-12 h-12 bg-cyan-500 opacity-15 animate-float-slow transform rotate-60"></div>
+        <div className="absolute top-4/5 left-4/12 w-16 h-16 bg-cyan-400 opacity-20 animate-float transform rotate-45"></div>
+        <div className="absolute top-4/5 left-5/12 w-20 h-20 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+        <div className="absolute top-4/5 left-6/12 w-10 h-10 bg-cyan-500 opacity-15 animate-float-slow transform rotate-30"></div>
+        <div className="absolute top-4/5 left-7/12 w-18 h-18 bg-cyan-400 opacity-20 animate-float transform rotate-75"></div>
+        <div className="absolute top-4/5 left-8/12 w-14 h-14 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute top-4/5 left-9/12 w-16 h-16 bg-cyan-500 opacity-15 animate-float-slow transform rotate-45"></div>
+        <div className="absolute top-4/5 left-10/12 w-12 h-12 bg-cyan-400 opacity-20 animate-float transform rotate-60"></div>
+        <div className="absolute top-4/5 left-11/12 w-18 h-18 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+        
+        {/* Additional Full Coverage Shapes - Very Bottom Area */}
+        <div className="absolute top-5/6 left-1/12 w-16 h-16 bg-cyan-400 opacity-20 animate-float transform rotate-30"></div>
+        <div className="absolute top-5/6 left-2/12 w-14 h-14 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute top-5/6 left-3/12 w-18 h-18 bg-cyan-500 opacity-15 animate-float-slow transform rotate-60"></div>
+        <div className="absolute top-5/6 left-4/12 w-12 h-12 bg-cyan-400 opacity-20 animate-float transform rotate-45"></div>
+        <div className="absolute top-5/6 left-5/12 w-20 h-20 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+        <div className="absolute top-5/6 left-6/12 w-10 h-10 bg-cyan-500 opacity-15 animate-float-slow transform rotate-30"></div>
+        <div className="absolute top-5/6 left-7/12 w-16 h-16 bg-cyan-400 opacity-20 animate-float transform rotate-75"></div>
+        <div className="absolute top-5/6 left-8/12 w-18 h-18 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute top-5/6 left-9/12 w-14 h-14 bg-cyan-500 opacity-15 animate-float-slow transform rotate-45"></div>
+        <div className="absolute top-5/6 left-10/12 w-12 h-12 bg-cyan-400 opacity-20 animate-float transform rotate-60"></div>
+        <div className="absolute top-5/6 left-11/12 w-16 h-16 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+        
+        {/* Additional Scattered Shapes for Complete Coverage */}
+        <div className="absolute top-1/6 left-1/6 w-12 h-12 bg-cyan-400 opacity-20 animate-float transform rotate-30"></div>
+        <div className="absolute top-1/6 left-2/6 w-16 h-16 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute top-1/6 left-3/6 w-14 h-14 bg-cyan-500 opacity-15 animate-float-slow transform rotate-60"></div>
+        <div className="absolute top-1/6 left-4/6 w-18 h-18 bg-cyan-400 opacity-20 animate-float transform rotate-45"></div>
+        <div className="absolute top-1/6 left-5/6 w-10 h-10 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+        
+        <div className="absolute top-2/6 left-1/6 w-16 h-16 bg-cyan-500 opacity-15 animate-float-slow transform rotate-30"></div>
+        <div className="absolute top-2/6 left-2/6 w-12 h-12 bg-cyan-400 opacity-20 animate-float transform rotate-75"></div>
+        <div className="absolute top-2/6 left-3/6 w-20 h-20 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute top-2/6 left-4/6 w-14 h-14 bg-cyan-500 opacity-15 animate-float-slow transform rotate-45"></div>
+        <div className="absolute top-2/6 left-5/6 w-18 h-18 bg-cyan-400 opacity-20 animate-float transform rotate-60"></div>
+        
+        <div className="absolute top-4/6 left-1/6 w-18 h-18 bg-cyan-400 opacity-20 animate-float transform rotate-30"></div>
+        <div className="absolute top-4/6 left-2/6 w-12 h-12 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+        <div className="absolute top-4/6 left-3/6 w-16 h-16 bg-cyan-500 opacity-15 animate-float-slow transform rotate-60"></div>
+        <div className="absolute top-4/6 left-4/6 w-14 h-14 bg-cyan-400 opacity-20 animate-float transform rotate-45"></div>
+        <div className="absolute top-4/6 left-5/6 w-20 h-20 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        
+        <div className="absolute top-5/6 left-1/6 w-14 h-14 bg-cyan-500 opacity-15 animate-float-slow transform rotate-30"></div>
+        <div className="absolute top-5/6 left-2/6 w-18 h-18 bg-cyan-400 opacity-20 animate-float transform rotate-75"></div>
+        <div className="absolute top-5/6 left-3/6 w-12 h-12 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+        <div className="absolute top-5/6 left-4/6 w-16 h-16 bg-cyan-500 opacity-15 animate-float-slow transform rotate-45"></div>
+        <div className="absolute top-5/6 left-5/6 w-10 h-10 bg-cyan-400 opacity-20 animate-float transform rotate-60"></div>
+        <div className="absolute top-1/3 left-8 w-28 h-28 theme-bg-tertiary opacity-30 animate-float-delayed transform rotate-45"></div>
+        <div className="absolute top-1/3 left-1/3 w-14 h-14 theme-bg-tertiary opacity-25 animate-float-slow" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute top-1/3 left-2/3 w-0 h-0 border-l-13 border-r-13 border-b-26 border-transparent theme-border-primary opacity-20 animate-float"></div>
+        <div className="absolute top-1/3 right-8 w-20 h-20 theme-bg-tertiary opacity-30 animate-float-delayed-slow transform rotate-12"></div>
+        
+        {/* Additional Middle Row Shapes */}
+        <div className="absolute top-1/3 left-1/5 w-18 h-18 bg-cyan-400 opacity-20 animate-float transform rotate-45"></div>
+        <div className="absolute top-1/3 left-2/5 w-0 h-0 border-l-8 border-r-8 border-b-16 border-transparent border-green-400 opacity-25 animate-float-delayed"></div>
+        <div className="absolute top-1/3 right-1/5 w-16 h-16 bg-green-500 opacity-15 animate-float-slow" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+        <div className="absolute top-1/3 right-2/5 w-14 h-14 bg-cyan-500 opacity-20 animate-float transform rotate-30"></div>
+        
+        {/* Enhanced Floating Shapes - Lower Middle Row */}
+        <div className="absolute top-2/3 left-12 w-32 h-32 theme-bg-tertiary opacity-25 animate-float-slow transform rotate-45"></div>
+        <div className="absolute top-2/3 left-1/4 w-18 h-18 theme-bg-tertiary opacity-30 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute top-2/3 left-1/2 w-0 h-0 border-l-12 border-r-12 border-b-24 border-transparent theme-border-primary opacity-20 animate-float"></div>
+        <div className="absolute top-2/3 left-3/4 w-16 h-16 theme-bg-tertiary opacity-25 animate-float-slow transform rotate-12"></div>
+        <div className="absolute top-2/3 right-12 w-30 h-30 theme-bg-tertiary opacity-20 animate-float-delayed-slow transform rotate-45"></div>
+        
+        {/* Additional Lower Middle Row Shapes */}
+        <div className="absolute top-2/3 left-1/6 w-20 h-20 bg-cyan-400 opacity-25 animate-float transform rotate-60"></div>
+        <div className="absolute top-2/3 left-2/5 w-0 h-0 border-l-10 border-r-10 border-b-20 border-transparent border-green-400 opacity-20 animate-float-delayed"></div>
+        <div className="absolute top-2/3 right-1/6 w-22 h-22 bg-green-500 opacity-15 animate-float-slow" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+        <div className="absolute top-2/3 right-2/5 w-18 h-18 bg-cyan-500 opacity-20 animate-float transform rotate-45"></div>
+        
+        {/* Enhanced Floating Shapes - Bottom Row */}
+        <div className="absolute bottom-20 left-6 w-22 h-22 theme-bg-tertiary opacity-30 animate-float" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute bottom-30 left-1/3 w-20 h-20 theme-bg-tertiary opacity-25 animate-float-slow transform rotate-45"></div>
+        <div className="absolute bottom-25 left-2/3 w-0 h-0 border-l-13 border-r-13 border-b-26 border-transparent theme-border-primary opacity-20 animate-float-delayed"></div>
+        <div className="absolute bottom-35 right-6 w-18 h-18 theme-bg-tertiary opacity-30 animate-float-slow transform rotate-12"></div>
+        <div className="absolute bottom-15 right-1/4 w-24 h-24 theme-bg-tertiary opacity-25 animate-float-delayed-slow transform rotate-45"></div>
+        
+        {/* Additional Bottom Row Shapes */}
+        <div className="absolute bottom-10 left-1/5 w-16 h-16 bg-cyan-400 opacity-20 animate-float transform rotate-30"></div>
+        <div className="absolute bottom-40 left-2/5 w-0 h-0 border-l-9 border-r-9 border-b-18 border-transparent border-green-400 opacity-25 animate-float-delayed"></div>
+        <div className="absolute bottom-5 right-1/5 w-20 h-20 bg-green-500 opacity-15 animate-float-slow" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+        <div className="absolute bottom-45 right-2/5 w-14 h-14 bg-cyan-500 opacity-20 animate-float transform rotate-60"></div>
+        
+        {/* Enhanced Additional Small Floating Elements */}
+        <div className="absolute top-1/4 left-1/6 w-12 h-12 theme-bg-tertiary opacity-15 animate-float transform rotate-45"></div>
+        <div className="absolute top-1/2 left-1/8 w-0 h-0 border-l-5 border-r-5 border-b-10 border-transparent theme-border-primary opacity-20 animate-float-slow"></div>
+        <div className="absolute top-3/4 left-1/5 w-14 h-14 theme-bg-tertiary opacity-25 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute top-1/6 right-1/6 w-16 h-16 theme-bg-tertiary opacity-15 animate-float-slow transform rotate-12"></div>
+        <div className="absolute top-5/6 right-1/5 w-0 h-0 border-l-6 border-r-6 border-b-12 border-transparent theme-border-primary opacity-20 animate-float-delayed-slow"></div>
+        
+        {/* More scattered small elements */}
+        <div className="absolute top-1/8 left-1/12 w-10 h-10 bg-cyan-400 opacity-15 animate-float transform rotate-45"></div>
+        <div className="absolute top-1/7 left-1/10 w-0 h-0 border-l-4 border-r-4 border-b-8 border-transparent border-green-400 opacity-20 animate-float-slow"></div>
+        <div className="absolute top-1/9 right-1/12 w-12 h-12 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+        <div className="absolute top-1/8 right-1/10 w-8 h-8 bg-cyan-500 opacity-15 animate-float-slow transform rotate-12"></div>
+        
+        {/* Enhanced Hexagon Shapes */}
+        <div className="absolute top-1/5 left-1/12 w-16 h-16 bg-cyan-400 opacity-20 animate-float-slow" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute top-3/5 right-1/12 w-14 h-14 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute top-1/6 left-1/8 w-12 h-12 bg-cyan-500 opacity-15 animate-float" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute top-2/5 right-1/8 w-18 h-18 bg-cyan-400 opacity-20 animate-float-slow" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute bottom-1/5 left-1/6 w-14 h-14 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        
+        {/* Enhanced Star Shapes */}
+        <div className="absolute top-2/5 left-1/10 w-12 h-12 bg-cyan-400 opacity-20 animate-float" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
+        <div className="absolute bottom-1/5 right-1/10 w-10 h-10 bg-green-500 opacity-25 animate-float-slow" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
+        <div className="absolute top-1/7 left-1/7 w-8 h-8 bg-cyan-500 opacity-15 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
+        <div className="absolute top-3/7 right-1/7 w-14 h-14 bg-cyan-400 opacity-20 animate-float" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
+        <div className="absolute bottom-1/7 left-1/9 w-6 h-6 bg-green-500 opacity-25 animate-float-slow" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
+        
+        {/* Enhanced Diamond Shapes */}
+        <div className="absolute top-1/6 right-1/8 w-18 h-18 bg-cyan-500 opacity-15 animate-float-delayed transform rotate-45"></div>
+        <div className="absolute bottom-1/6 left-1/8 w-16 h-16 bg-cyan-400 opacity-20 animate-float-slow transform rotate-45"></div>
+        <div className="absolute top-1/4 left-1/9 w-14 h-14 bg-green-500 opacity-25 animate-float transform rotate-45"></div>
+        <div className="absolute bottom-1/4 right-1/9 w-12 h-12 bg-cyan-500 opacity-15 animate-float-delayed transform rotate-45"></div>
+        <div className="absolute top-1/8 right-1/6 w-20 h-20 bg-cyan-400 opacity-20 animate-float-slow transform rotate-45"></div>
+        
+        {/* Enhanced Geometric Shapes - Replaced Circular Shadows */}
+        <div className="absolute top-32 right-10 w-40 h-40 bg-cyan-400 opacity-20 animate-spin-slow" style={{clipPath: 'polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)'}}></div>
+        <div className="absolute bottom-32 left-10 w-36 h-36 bg-green-500 opacity-25 animate-bounce-slow" style={{clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)'}}></div>
+        <div className="absolute top-1/2 left-1/2 w-32 h-32 bg-cyan-500 opacity-15 animate-float-slow" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute top-1/4 right-1/3 w-28 h-28 bg-cyan-400 opacity-20 animate-spin-slow" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+        <div className="absolute top-1/6 left-1/4 w-24 h-24 bg-green-500 opacity-25 animate-bounce-slow" style={{clipPath: 'polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)'}}></div>
+        <div className="absolute bottom-1/6 right-1/4 w-30 h-30 bg-cyan-500 opacity-15 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute top-2/5 left-2/5 w-20 h-20 bg-cyan-400 opacity-20 animate-spin-slow" style={{clipPath: 'polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)'}}></div>
+        <div className="absolute bottom-2/5 right-2/5 w-26 h-26 bg-green-500 opacity-25 animate-bounce-slow" style={{clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)'}}></div>
+        
+        {/* Additional Complex Shapes */}
+        <div className="absolute top-1/8 left-1/6 w-18 h-18 bg-cyan-400 opacity-20 animate-float" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute top-3/8 right-1/8 w-16 h-16 bg-green-500 opacity-15 animate-spin-slow" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+        <div className="absolute bottom-1/8 left-1/8 w-22 h-22 bg-cyan-500 opacity-25 animate-bounce-slow" style={{clipPath: 'polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)'}}></div>
+        <div className="absolute bottom-3/8 right-1/6 w-14 h-14 bg-cyan-400 opacity-20 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)'}}></div>
+        
+        {/* Enhanced Geometric Shapes */}
+        <div className="absolute top-60 left-1/3 w-16 h-16 bg-cyan-400 opacity-20 animate-spin-slow"></div>
+        <div className="absolute bottom-40 right-1/4 w-12 h-12 bg-green-500 opacity-15 animate-bounce-slow"></div>
+        <div className="absolute top-1/3 right-1/6 w-14 h-14 bg-cyan-500 opacity-20 animate-spin-slow"></div>
+        <div className="absolute bottom-1/3 left-1/6 w-10 h-10 bg-cyan-400 opacity-15 animate-bounce-slow"></div>
+        <div className="absolute top-1/8 left-1/5 w-18 h-18 bg-green-500 opacity-20 animate-spin-slow"></div>
+        <div className="absolute bottom-1/8 right-1/5 w-8 h-8 bg-cyan-500 opacity-15 animate-bounce-slow"></div>
+        <div className="absolute top-3/8 left-3/5 w-22 h-22 bg-cyan-400 opacity-20 animate-spin-slow"></div>
+        <div className="absolute bottom-3/8 right-3/5 w-6 h-6 bg-green-500 opacity-15 animate-bounce-slow"></div>
+        
+        {/* Moving Lines */}
+        <div className="absolute top-1/4 left-0 w-full h-px bg-cyan-400 opacity-20 animate-line-move"></div>
+        <div className="absolute top-1/2 left-0 w-full h-px bg-cyan-400 opacity-15 animate-line-move-delayed"></div>
+        <div className="absolute top-3/4 left-0 w-full h-px bg-cyan-400 opacity-25 animate-line-move"></div>
+        
+        {/* Vertical Lines */}
+        <div className="absolute top-0 left-1/4 w-px h-full bg-cyan-400 opacity-10 animate-line-move-vertical"></div>
+        <div className="absolute top-0 left-1/2 w-px h-full bg-cyan-400 opacity-15 animate-line-move-vertical-delayed"></div>
+        <div className="absolute top-0 left-3/4 w-px h-full bg-cyan-400 opacity-20 animate-line-move-vertical"></div>
+        
+        {/* Enhanced Subtle Grid Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(34, 197, 94, 0.15) 1px, transparent 0)`,
+            backgroundSize: '50px 50px'
+          }}></div>
+        </div>
+        
+        {/* Additional Grid Pattern */}
+        <div className="absolute inset-0 opacity-3">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `linear-gradient(45deg, rgba(34, 197, 94, 0.1) 1px, transparent 1px), linear-gradient(-45deg, rgba(34, 197, 94, 0.1) 1px, transparent 1px)`,
+            backgroundSize: '30px 30px'
+          }}></div>
+        </div>
+      </div>
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto">
+          
+          {/* Section Header */}
+          <div className="text-center mb-20">
+            <div className="inline-block">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold theme-text-primary mb-6 relative">
+                About <span className="theme-accent-primary">aNquest</span>
+                <div className="absolute -bottom-2 left-0 w-full h-1 rounded-full" style={{background: 'linear-gradient(135deg, #00d4d4, #00cccc)'}}></div>
+              </h2>
+            </div>
+            <p className="text-lg sm:text-xl theme-text-secondary max-w-3xl mx-auto leading-relaxed animate-fade-in">
+              We are a leading IT solutions provider dedicated to transforming businesses through innovative technology and exceptional service delivery.
+            </p>
+          </div>
+
+          {/* Section 1 - Content Left, Image Right */}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-24">
+            <div className="animate-slide-in-left">
+              <div className="space-y-6">
+                <div className="inline-block">
+                  <span className="theme-accent-primary font-semibold text-sm uppercase tracking-wider">About Featured Product aNquest</span>
+                </div>
+                <h3 className="text-3xl sm:text-4xl font-bold theme-text-primary leading-tight">
+                  Leading Digital Solutions 
+                  <span className="theme-accent-primary"> Company</span>
+                </h3>
+                <p className="theme-text-secondary leading-relaxed text-lg">
+                  aNquest is a premier development company specializing in web applications, mobile apps, and SEO services. We master modern development frameworks and technologies to deliver cutting-edge solutions.
+                </p>
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 theme-bg-tertiary rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 theme-accent-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                  <span className="theme-text-secondary font-medium">Modern Development Stack</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="animate-slide-in-right">
+              <div className="relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                  alt="IT Team Working"
+                  className="w-full h-96 lg:h-[500px] object-cover rounded-2xl shadow-2xl animate-image-float"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Section 2 - Image Left, Content Right */}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-24" ref={sectionRef}>
+            <div className="order-2 lg:order-1 animate-slide-in-left">
+              <div className="relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                  alt="IT Solutions"
+                  className="w-full h-96 lg:h-[500px] object-cover rounded-2xl shadow-2xl animate-image-float-delayed"
+                />
+              </div>
+            </div>
+            
+            <div className="order-1 lg:order-2 animate-slide-in-right">
+              <div className="space-y-8">
+                <div className="inline-block">
+                  <span className="theme-accent-primary font-semibold text-sm uppercase tracking-wider">Our Expertise</span>
+                </div>
+                <h3 className="text-3xl sm:text-4xl font-bold theme-text-primary leading-tight">
+                  Enterprise Solutions & 
+                  <span className="text-aqua-400"> Digital Marketing</span>
+                </h3>
+                <p className="theme-text-secondary leading-relaxed text-lg">
+                  From frontend web applications to backend APIs, mobile app development, and comprehensive SEO strategies - we provide end-to-end digital solutions using the latest technologies and best practices.
+                </p>
+                
+                {/* Stats Grid */}
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl transform hover:scale-105 transition-transform duration-300">
+                    <div className="text-3xl font-bold theme-accent-primary mb-2 animate-count-up">
+                      {counts.projects}+
+                    </div>
+                    <div className="text-sm theme-text-secondary font-medium">Web & App Projects</div>
+                  </div>
+                  <div className="bg-gradient-to-br from-aqua-50 to-aqua-100 p-6 rounded-xl transform hover:scale-105 transition-transform duration-300">
+                    <div className="text-3xl font-bold text-aqua-400 mb-2 animate-count-up">
+                      {counts.clients}+
+                    </div>
+                    <div className="text-sm theme-text-secondary font-medium">Satisfied Clients</div>
+                  </div>
+                  <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl transform hover:scale-105 transition-transform duration-300">
+                    <div className="text-3xl font-bold text-[#00d4d4] mb-2 animate-count-up">
+                      {counts.years}+
+                    </div>
+                    <div className="text-sm theme-text-secondary font-medium">Years Experience</div>
+                  </div>
+                  <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-xl transform hover:scale-105 transition-transform duration-300">
+                    <div className="text-3xl font-bold text-orange-400 mb-2 animate-count-up">
+                      {counts.support}/7
+                    </div>
+                    <div className="text-sm theme-text-secondary font-medium">24/7 Support</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Section 3 - Content Left, Image Right */}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-24">
+            <div className="animate-slide-in-left">
+              <div className="space-y-8">
+                <div className="inline-block">
+                  <span className="theme-accent-primary font-semibold text-sm uppercase tracking-wider">Our Innovation</span>
+                </div>
+                <h3 className="text-3xl sm:text-4xl font-bold theme-text-primary leading-tight">
+                  Digital Innovation & 
+                  <span className="theme-accent-primary"> Business Solutions</span>
+                </h3>
+                <p className="theme-text-secondary leading-relaxed text-lg">
+                  We leverage cutting-edge technologies and innovative approaches to create digital solutions that transform businesses. Our team combines creativity with technical expertise to deliver exceptional results that drive growth and success.
+                </p>
+                
+                {/* Feature List */}
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 theme-bg-tertiary rounded-full flex items-center justify-center">
+                      <svg className="w-4 h-4 theme-accent-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <span className="theme-text-secondary font-medium">Custom Digital Solutions</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 theme-bg-tertiary rounded-full flex items-center justify-center">
+                      <svg className="w-4 h-4 theme-accent-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <span className="theme-text-secondary font-medium">Scalable Architecture</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 theme-bg-tertiary rounded-full flex items-center justify-center">
+                      <svg className="w-4 h-4 theme-accent-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <span className="theme-text-secondary font-medium">Performance Optimization</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 theme-bg-tertiary rounded-full flex items-center justify-center">
+                      <svg className="w-4 h-4 theme-accent-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <span className="theme-text-secondary font-medium">24/7 Technical Support</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="animate-slide-in-right">
+              <div className="relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                  alt="Digital Innovation"
+                  className="w-full h-96 lg:h-[500px] object-cover rounded-2xl shadow-2xl animate-image-float"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* CTA Section */}
+          <div className="text-center theme-gradient-accent rounded-3xl p-8 lg:p-12 relative overflow-hidden animate-fade-in">
+            {/* Multiple Aqua Background Shapes */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              {/* Top Row Aqua & Green Shapes */}
+              <div className="absolute top-5 left-5 w-16 h-16 bg-cyan-400 opacity-20 animate-float transform rotate-30" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+              <div className="absolute top-8 left-1/4 w-12 h-12 bg-green-400 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+              <div className="absolute top-12 left-1/2 w-14 h-14 bg-cyan-500 opacity-15 animate-float-slow transform rotate-60"></div>
+              <div className="absolute top-6 left-3/4 w-18 h-18 bg-green-500 opacity-20 animate-float transform rotate-45"></div>
+              <div className="absolute top-10 right-5 w-10 h-10 bg-cyan-400 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+              
+              {/* Middle Row Aqua & Green Shapes */}
+              <div className="absolute top-1/2 left-8 w-20 h-20 bg-green-400 opacity-20 animate-float transform rotate-30"></div>
+              <div className="absolute top-1/2 left-1/3 w-16 h-16 bg-cyan-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+              <div className="absolute top-1/2 left-2/3 w-12 h-12 bg-green-500 opacity-15 animate-float-slow transform rotate-60"></div>
+              <div className="absolute top-1/2 right-8 w-18 h-18 bg-cyan-400 opacity-20 animate-float transform rotate-45"></div>
+              
+              {/* Bottom Row Aqua & Green Shapes */}
+              <div className="absolute bottom-8 left-6 w-14 h-14 bg-cyan-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+              <div className="absolute bottom-12 left-1/4 w-16 h-16 bg-green-400 opacity-15 animate-float-slow transform rotate-30"></div>
+              <div className="absolute bottom-6 left-1/2 w-12 h-12 bg-cyan-400 opacity-20 animate-float transform rotate-75"></div>
+              <div className="absolute bottom-10 left-3/4 w-18 h-18 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+              <div className="absolute bottom-14 right-6 w-10 h-10 bg-cyan-500 opacity-15 animate-float-slow transform rotate-45"></div>
+              
+              {/* Scattered Aqua & Green Elements - Reduced */}
+              <div className="absolute top-1/4 left-1/6 w-8 h-8 bg-green-400 opacity-20 animate-float transform rotate-30"></div>
+              <div className="absolute top-2/3 left-1/5 w-10 h-10 bg-green-500 opacity-15 animate-float-slow transform rotate-60"></div>
+              <div className="absolute top-1/5 right-1/6 w-14 h-14 bg-cyan-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+              <div className="absolute top-2/3 right-1/5 w-16 h-16 bg-cyan-400 opacity-20 animate-float transform rotate-75"></div>
+              
+              {/* Additional Floating Aqua & Green Particles - Reduced */}
+              <div className="absolute top-1/8 left-1/12 w-4 h-4 bg-cyan-400 rounded-full opacity-30 animate-particle-1"></div>
+              <div className="absolute top-1/7 left-1/10 w-3 h-3 bg-green-500 rounded-full opacity-25 animate-particle-2"></div>
+              <div className="absolute top-1/8 right-1/12 w-4 h-4 bg-green-400 rounded-full opacity-30 animate-particle-2"></div>
+              <div className="absolute top-1/7 right-1/10 w-3 h-3 bg-cyan-500 rounded-full opacity-25 animate-particle-3"></div>
+              <div className="absolute bottom-1/8 left-1/12 w-4 h-4 bg-cyan-500 rounded-full opacity-30 animate-particle-3"></div>
+              <div className="absolute bottom-1/7 right-1/10 w-3 h-3 bg-green-400 rounded-full opacity-25 animate-particle-1"></div>
+            </div>
+            
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-10 left-10 w-20 h-20 border theme-border-primary rounded-full animate-pulse"></div>
+              <div className="absolute bottom-10 right-10 w-16 h-16 border theme-border-primary rounded-full animate-pulse"></div>
+              <div className="absolute top-1/2 left-1/4 w-12 h-12 border theme-border-primary rounded-full animate-pulse"></div>
+            </div>
+            
+            <div className="relative z-10">
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-6">
+                Ready to Transform Your Business?
+              </h3>
+              <p className="text-lg sm:text-xl theme-text-secondary mb-8 max-w-2xl mx-auto">
+                Let's discuss how our IT solutions can help your business achieve its goals and stay ahead of the competition.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button className="theme-bg-primary theme-accent-primary font-bold py-4 px-8 rounded-xl hover:theme-bg-secondary transition-all duration-300 text-sm sm:text-base transform hover:scale-105 hover:shadow-lg">
+                  Get Started Today
+                </button>
+                <button className="border-2 theme-border-primary theme-text-primary font-bold py-4 px-8 rounded-xl hover:theme-bg-primary hover:theme-accent-primary transition-all duration-300 text-sm sm:text-base transform hover:scale-105">
+                  Learn More
+                </button>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Custom Animations */}
+      <style>{`
+        @keyframes slideInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-80px) scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+          }
+        }
+        
+        @keyframes slideInRight {
+          from {
+            opacity: 0;
+            transform: translateX(80px) scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+          }
+        }
+        
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+        
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-15px) rotate(5deg);
+          }
+        }
+        
+        @keyframes floatDelayed {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(15px) rotate(-5deg);
+          }
+        }
+        
+        @keyframes imageGlow {
+          0%, 100% {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+          }
+          50% {
+            box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.4), 0 0 30px rgba(34, 197, 94, 0.3);
+          }
+        }
+        
+        @keyframes imageFloat {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          25% {
+            transform: translateY(-8px) rotate(0.5deg);
+          }
+          50% {
+            transform: translateY(-12px) rotate(0deg);
+          }
+          75% {
+            transform: translateY(-8px) rotate(-0.5deg);
+          }
+        }
+        
+        @keyframes imageFloatDelayed {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          25% {
+            transform: translateY(-10px) rotate(-0.5deg);
+          }
+          50% {
+            transform: translateY(-15px) rotate(0deg);
+          }
+          75% {
+            transform: translateY(-10px) rotate(0.5deg);
+          }
+        }
+        
+        .animate-slide-in-left {
+          animation: slideInLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .animate-slide-in-right {
+          animation: slideInRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .animate-fade-in {
+          animation: fadeIn 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .animate-float {
+          animation: float 4s ease-in-out infinite;
+        }
+        
+        .animate-float-delayed {
+          animation: floatDelayed 4s ease-in-out infinite;
+        }
+        
+        .animate-image-glow {
+          animation: imageGlow 3s ease-in-out infinite;
+        }
+        
+        .animate-image-float {
+          animation: imageFloat 6s ease-in-out infinite;
+        }
+        
+        .animate-image-float-delayed {
+          animation: imageFloatDelayed 8s ease-in-out infinite;
+        }
+        
+        /* Enhanced shadow for depth */
+        .shadow-3xl {
+          box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* Counting animation */
+        .animate-count-up {
+          animation: countUp 0.5s ease-out;
+        }
+        
+        @keyframes countUp {
+          from {
+            transform: scale(0.8);
+            opacity: 0.7;
+          }
+          to {
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+        
+        /* Background Animations */
+        @keyframes floatSlow {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-20px) rotate(180deg);
+          }
+        }
+        
+        @keyframes floatDelayedSlow {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(25px) rotate(-180deg);
+          }
+        }
+        
+        @keyframes pulseSlow {
+          0%, 100% {
+            transform: scale(1);
+            opacity: 0.2;
+          }
+          50% {
+            transform: scale(1.1);
+            opacity: 0.3;
+          }
+        }
+        
+        @keyframes pulseDelayed {
+          0%, 100% {
+            transform: scale(1);
+            opacity: 0.15;
+          }
+          50% {
+            transform: scale(1.2);
+            opacity: 0.25;
+          }
+        }
+        
+        @keyframes spinSlow {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+        
+        @keyframes bounceSlow {
+          0%, 100% {
+            transform: translateY(0px) rotate(12deg);
+          }
+          50% {
+            transform: translateY(-15px) rotate(12deg);
+          }
+        }
+        
+        .animate-float-slow {
+          animation: floatSlow 8s ease-in-out infinite;
+        }
+        
+        .animate-float-delayed-slow {
+          animation: floatDelayedSlow 10s ease-in-out infinite;
+        }
+        
+        .animate-pulse-slow {
+          animation: pulseSlow 6s ease-in-out infinite;
+        }
+        
+        .animate-pulse-delayed {
+          animation: pulseDelayed 8s ease-in-out infinite;
+        }
+        
+        .animate-spin-slow {
+          animation: spinSlow 20s linear infinite;
+        }
+        
+        .animate-bounce-slow {
+          animation: bounceSlow 4s ease-in-out infinite;
+        }
+        
+        /* Particle Animations */
+        @keyframes particle1 {
+          0%, 100% {
+            transform: translateY(0px) translateX(0px) scale(1);
+            opacity: 0.6;
+          }
+          25% {
+            transform: translateY(-20px) translateX(10px) scale(1.2);
+            opacity: 0.8;
+          }
+          50% {
+            transform: translateY(-40px) translateX(-5px) scale(0.8);
+            opacity: 0.4;
+          }
+          75% {
+            transform: translateY(-20px) translateX(-10px) scale(1.1);
+            opacity: 0.7;
+          }
+        }
+        
+        @keyframes particle2 {
+          0%, 100% {
+            transform: translateY(0px) translateX(0px) scale(1);
+            opacity: 0.4;
+          }
+          33% {
+            transform: translateY(-30px) translateX(15px) scale(1.3);
+            opacity: 0.6;
+          }
+          66% {
+            transform: translateY(-60px) translateX(-10px) scale(0.7);
+            opacity: 0.3;
+          }
+        }
+        
+        @keyframes particle3 {
+          0%, 100% {
+            transform: translateY(0px) translateX(0px) scale(1);
+            opacity: 0.5;
+          }
+          20% {
+            transform: translateY(-15px) translateX(8px) scale(1.1);
+            opacity: 0.7;
+          }
+          40% {
+            transform: translateY(-35px) translateX(-12px) scale(0.9);
+            opacity: 0.3;
+          }
+          60% {
+            transform: translateY(-50px) translateX(5px) scale(1.2);
+            opacity: 0.6;
+          }
+          80% {
+            transform: translateY(-25px) translateX(-8px) scale(0.8);
+            opacity: 0.4;
+          }
+        }
+        
+        /* Line Movement Animations */
+        @keyframes lineMove {
+          0% {
+            transform: translateX(-100%);
+            opacity: 0;
+          }
+          10% {
+            opacity: 0.2;
+          }
+          90% {
+            opacity: 0.2;
+          }
+          100% {
+            transform: translateX(100%);
+            opacity: 0;
+          }
+        }
+        
+        @keyframes lineMoveDelayed {
+          0% {
+            transform: translateX(-100%);
+            opacity: 0;
+          }
+          10% {
+            opacity: 0.15;
+          }
+          90% {
+            opacity: 0.15;
+          }
+          100% {
+            transform: translateX(100%);
+            opacity: 0;
+          }
+        }
+        
+        @keyframes lineMoveVertical {
+          0% {
+            transform: translateY(-100%);
+            opacity: 0;
+          }
+          10% {
+            opacity: 0.1;
+          }
+          90% {
+            opacity: 0.1;
+          }
+          100% {
+            transform: translateY(100%);
+            opacity: 0;
+          }
+        }
+        
+        @keyframes lineMoveVerticalDelayed {
+          0% {
+            transform: translateY(-100%);
+            opacity: 0;
+          }
+          10% {
+            opacity: 0.15;
+          }
+          90% {
+            opacity: 0.15;
+          }
+          100% {
+            transform: translateY(100%);
+            opacity: 0;
+          }
+        }
+        
+        .animate-particle-1 {
+          animation: particle1 8s ease-in-out infinite;
+        }
+        
+        .animate-particle-2 {
+          animation: particle2 10s ease-in-out infinite;
+        }
+        
+        .animate-particle-3 {
+          animation: particle3 12s ease-in-out infinite;
+        }
+        
+        .animate-line-move {
+          animation: lineMove 15s linear infinite;
+        }
+        
+        .animate-line-move-delayed {
+          animation: lineMoveDelayed 18s linear infinite;
+        }
+        
+        .animate-line-move-vertical {
+          animation: lineMoveVertical 20s linear infinite;
+        }
+        
+        .animate-line-move-vertical-delayed {
+          animation: lineMoveVerticalDelayed 22s linear infinite;
+        }
+      `}</style>
+    </section>
+  )
+}

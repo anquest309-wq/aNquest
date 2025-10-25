@@ -157,7 +157,7 @@ export default function Home() {
   return (
     <div className="relative min-h-screen overflow-hidden smooth-scroll momentum-scroll theme-transition">
 
-        {/* Hero Section with Animation */}
+      {/* Hero Section with Animation */}
         <section className="relative h-screen w-full scroll-snap-section theme-hero overflow-hidden">
           {/* Animated Background Shapes */}
           <div className="absolute inset-0 overflow-hidden">
@@ -205,42 +205,50 @@ export default function Home() {
           
           <div className="container mx-auto px-4 sm:px-6 lg:px-18 h-full relative z-10">
             <div className="flex items-center h-full gap-8 lg:gap-12">
-              {/* Left Side - Text Content */}
+            {/* Left Side - Text Content */}
               <div className="w-full lg:w-1/2 flex items-center justify-center lg:justify-start">
-                <div className="max-w-2xl">
-                  {/* Headline */}
+              <div className="max-w-2xl">
+                {/* Headline */}
                   <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold theme-text-primary mb-6 leading-tight">
                     Expert Digital Solutions & Innovation
-                  </h1>
-                  
-                  {/* Description */}
+                </h1>
+                
+                {/* Description */}
                   <p className="text-lg sm:text-xl theme-text-secondary leading-relaxed mb-8">
                     aNquest specializes in creating cutting-edge digital solutions across web development, mobile applications, digital marketing, and business automation. We deliver scalable, high-performance solutions that drive your business forward.
-                  </p>
+                </p>
+                
+                {/* Call to Action Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  {/* Our Services Button */}
+                    <button className="group font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg transform hover:scale-105 hover:shadow-lg active:scale-95" style={{
+                      backgroundColor: 'var(--theme-button-bg)',
+                      color: 'var(--theme-button-text)',
+                      border: '2px solid var(--theme-button-border)'
+                    }}>
+                    <span className="relative z-10">Our Services</span>
+                      <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{background: 'var(--theme-button-hover)'}}></div>
+                  </button>
                   
-                  {/* Call to Action Buttons */}
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    {/* Our Services Button */}
-                    <button className="group theme-button-primary font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg transform hover:scale-105 hover:shadow-lg active:scale-95">
-                      <span className="relative z-10">Our Services</span>
-                      <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-green-500 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </button>
-                    
-                    {/* Contact Us Button */}
-                    <button className="group theme-button-secondary font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg transform hover:scale-105 active:scale-95">
-                      Contact Us
-                    </button>
-                  </div>
+                  {/* Contact Us Button */}
+                    <button className="group font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg transform hover:scale-105 active:scale-95" style={{
+                      backgroundColor: 'var(--theme-button-secondary-bg)',
+                      color: 'var(--theme-button-secondary-text)',
+                      border: '2px solid var(--theme-button-secondary-border)'
+                    }}>
+                    Contact Us
+                  </button>
                 </div>
               </div>
-              
+            </div>
+            
               {/* Right Side - GIF Carousel */}
               <div className="w-full lg:w-1/2 flex items-center justify-center">
                 <GifCarousel />
-              </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
 
 
@@ -422,6 +430,6 @@ export default function Home() {
           animation: scrollSnap 0.3s ease-out;
         }
       `}</style>
-      </div>
+    </div>
   )
 }
