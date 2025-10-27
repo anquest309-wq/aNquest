@@ -57,38 +57,17 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* ===== Left: Logo + Hamburger ===== */}
           <div className="flex items-center space-x-3 sm:space-x-5">
-            <button
-              onClick={toggleMenu}
-              className="lg:hidden text-white hover:text-[#2d65bc] transition-colors"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
+           
 
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-[#2d65bc] rounded-full flex items-center justify-center">
-                <svg
-                  className="w-4 h-4 text-white"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                </svg>
+              <Link to="/">
+              <div className="w-28 h-28  rounded-full flex items-center justify-center">
+              <img src="https://ik.imagekit.io/y7b5pqyxj/anquest__2_-removebg-preview.png?updatedAt=1761570866349" alt="aNquest Logo" />
               </div>
-              <span className="text-white font-bold text-xl">
+              </Link>
+              {/* <span className="text-white font-bold text-xl">
                 aNquest 
-              </span>
+              </span> */}
             </div>
           </div>
 

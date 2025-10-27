@@ -221,17 +221,17 @@ export default function Home() {
                 {/* Call to Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4">
                   {/* Our Services Button */}
-                    <button className="group font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg transform hover:scale-105 hover:shadow-lg active:scale-95" style={{
+                    <button className=" font-bold py-4 px-8 rounded-lg hover:shadow-lg" style={{
                       backgroundColor: 'var(--theme-button-bg)',
                       color: 'var(--theme-button-text)',
                       border: '2px solid var(--theme-button-border)'
                     }}>
                     <span className="relative z-10">Our Services</span>
-                      <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{background: 'var(--theme-button-hover)'}}></div>
+                     
                   </button>
                   
                   {/* Contact Us Button */}
-                    <button className="group font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg transform hover:scale-105 active:scale-95" style={{
+                    <button className="font-bold py-4 px-8 rounded-lg" style={{
                       backgroundColor: 'var(--theme-button-secondary-bg)',
                       color: 'var(--theme-button-secondary-text)',
                       border: '2px solid var(--theme-button-secondary-border)'
