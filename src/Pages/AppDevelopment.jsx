@@ -109,8 +109,71 @@ const AppDevelopment = () => {
   return (
     <div className="min-h-screen theme-bg-secondary">
       {/* Hero Section */}
-      <section className="py-20 sm:py-32 md:py-40 theme-gradient-primary">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 sm:py-32 md:py-40 theme-gradient-primary relative overflow-hidden">
+        {/* Background Animation Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* Particle System */}
+          <div className="absolute inset-0">
+            <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400 rounded-full opacity-40 animate-particle-1"></div>
+            <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-blue-500 rounded-full opacity-30 animate-particle-2"></div>
+            <div className="absolute bottom-1/3 left-1/3 w-2 h-2 bg-blue-500 rounded-full opacity-35 animate-particle-1"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-1 h-1 bg-blue-400 rounded-full opacity-40 animate-particle-2"></div>
+          </div>
+
+          {/* BIG Circles */}
+          <div className="absolute top-20 left-10 w-32 h-32 rounded-full opacity-15 animate-float-slow" style={{ backgroundColor: '#2d65bc' }}></div>
+          <div className="absolute top-40 right-20 w-28 h-28 rounded-full opacity-10 animate-float-medium" style={{ backgroundColor: '#2d65bc' }}></div>
+          <div className="absolute bottom-40 left-20 w-36 h-36 rounded-full opacity-12 animate-float-fast" style={{ backgroundColor: '#2d65bc' }}></div>
+          <div className="absolute bottom-20 right-10 w-24 h-24 rounded-full opacity-15 animate-float-slow" style={{ backgroundColor: '#2d65bc' }}></div>
+          
+          {/* BIG Squares */}
+          <div className="absolute top-60 left-1/4 w-16 h-16 opacity-15 animate-rotate-slow" style={{ backgroundColor: '#2d65bc', transform: 'rotate(45deg)' }}></div>
+          <div className="absolute top-80 right-1/3 w-14 h-14 opacity-12 animate-rotate-medium" style={{ backgroundColor: '#2d65bc', transform: 'rotate(45deg)' }}></div>
+          <div className="absolute bottom-60 left-1/3 w-20 h-20 opacity-10 animate-rotate-fast" style={{ backgroundColor: '#2d65bc', transform: 'rotate(45deg)' }}></div>
+          
+          {/* BIG Triangles */}
+          <div className="absolute top-32 right-1/4 w-0 h-0 opacity-15 animate-bounce-slow" style={{ 
+            borderLeft: '30px solid transparent',
+            borderRight: '30px solid transparent',
+            borderBottom: '52px solid #2d65bc'
+          }}></div>
+          <div className="absolute bottom-32 left-1/4 w-0 h-0 opacity-12 animate-bounce-medium" style={{ 
+            borderLeft: '25px solid transparent',
+            borderRight: '25px solid transparent',
+            borderBottom: '40px solid #2d65bc'
+          }}></div>
+          
+          {/* BIG Organic Blobs */}
+          <div className="absolute top-1/4 left-1/2 w-48 h-48 opacity-8 animate-blob-slow" style={{ 
+            background: 'linear-gradient(135deg, #2d65bc, #2d65bc)',
+            borderRadius: '60% 40% 70% 30% / 40% 60% 30% 70%'
+          }}></div>
+          <div className="absolute bottom-1/4 right-1/2 w-56 h-56 opacity-10 animate-blob-medium" style={{ 
+            background: 'linear-gradient(135deg, #2d65bc, #2d65bc)',
+            borderRadius: '30% 70% 50% 50% / 60% 40% 60% 40%'
+          }}></div>
+          
+          {/* BIG Gradient Orbs */}
+          <div className="absolute top-1/2 left-1/4 w-40 h-40 rounded-full opacity-15 animate-pulse-slow" style={{ 
+            background: 'radial-gradient(circle, #2d65bc, transparent)'
+          }}></div>
+          <div className="absolute bottom-1/3 right-1/4 w-48 h-48 rounded-full opacity-12 animate-pulse-medium" style={{ 
+            background: 'radial-gradient(circle, #2d65bc, transparent)'
+          }}></div>
+          
+          {/* Grid Pattern */}
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute top-0 left-0 w-full h-full" style={{
+              backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(45, 101, 188, 0.3) 1px, transparent 0)',
+              backgroundSize: '20px 20px'
+            }}></div>
+          </div>
+          
+          {/* Animated Lines */}
+          <div className="absolute top-1/4 left-0 w-full h-px theme-animation-line animate-line-move"></div>
+          <div className="absolute top-3/4 left-0 w-full h-px theme-animation-border animate-line-move-delayed"></div>
+        </div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold theme-text-primary mb-6 leading-tight">
               Mobile <span className="theme-accent-primary">App Development</span>

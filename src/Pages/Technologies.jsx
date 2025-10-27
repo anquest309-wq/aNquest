@@ -61,8 +61,63 @@ const Technologies = () => {
   return (
     <div className="min-h-screen theme-bg-secondary">
       {/* Hero Section */}
-      <section className="theme-gradient-primary text-white py-20 md:py-32">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="theme-gradient-primary text-white py-20 md:py-32 relative overflow-hidden">
+        {/* Background Animation Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+          {/* Floating Circles - BIG */}
+          <div className="absolute top-20 left-10 w-48 h-48 rounded-full opacity-25 animate-float-slow" style={{ backgroundColor: '#2d65bc' }}></div>
+          <div className="absolute top-40 right-20 w-40 h-40 rounded-full opacity-20 animate-float-medium" style={{ backgroundColor: '#2d65bc' }}></div>
+          <div className="absolute bottom-40 left-20 w-52 h-52 rounded-full opacity-25 animate-float-fast" style={{ backgroundColor: '#2d65bc' }}></div>
+          <div className="absolute bottom-20 right-10 w-36 h-36 rounded-full opacity-30 animate-float-slow" style={{ backgroundColor: '#2d65bc' }}></div>
+          
+          {/* Floating Squares */}
+          <div className="absolute top-60 left-1/4 w-24 h-24 opacity-25 animate-rotate-slow" style={{ backgroundColor: '#2d65bc', transform: 'rotate(45deg)' }}></div>
+          <div className="absolute top-80 right-1/3 w-20 h-20 opacity-20 animate-rotate-medium" style={{ backgroundColor: '#2d65bc', transform: 'rotate(45deg)' }}></div>
+          <div className="absolute bottom-60 left-1/3 w-28 h-28 opacity-22 animate-rotate-fast" style={{ backgroundColor: '#2d65bc', transform: 'rotate(45deg)' }}></div>
+          
+          {/* Floating Triangles */}
+          <div className="absolute top-32 right-1/4 w-0 h-0 opacity-25 animate-bounce-slow" style={{ 
+            borderLeft: '40px solid transparent',
+            borderRight: '40px solid transparent',
+            borderBottom: '70px solid #2d65bc'
+          }}></div>
+          <div className="absolute bottom-32 left-1/4 w-0 h-0 opacity-22 animate-bounce-medium" style={{ 
+            borderLeft: '30px solid transparent',
+            borderRight: '30px solid transparent',
+            borderBottom: '55px solid #2d65bc'
+          }}></div>
+          
+          {/* Organic Blob Shapes */}
+          <div className="absolute top-1/4 left-1/2 w-64 h-64 opacity-15 animate-blob-slow" style={{ 
+            background: 'linear-gradient(135deg, #2d65bc, #2d65bc)',
+            borderRadius: '60% 40% 70% 30% / 40% 60% 30% 70%'
+          }}></div>
+          <div className="absolute bottom-1/4 right-1/2 w-72 h-72 opacity-18 animate-blob-medium" style={{ 
+            background: 'linear-gradient(135deg, #2d65bc, #2d65bc)',
+            borderRadius: '30% 70% 50% 50% / 60% 40% 60% 40%'
+          }}></div>
+          
+          {/* Gradient Orbs */}
+          <div className="absolute top-1/2 left-1/4 w-56 h-56 rounded-full opacity-20 animate-pulse-slow" style={{ 
+            background: 'radial-gradient(circle, #2d65bc, transparent)'
+          }}></div>
+          <div className="absolute bottom-1/3 right-1/4 w-64 h-64 rounded-full opacity-18 animate-pulse-medium" style={{ 
+            background: 'radial-gradient(circle, #2d65bc, transparent)'
+          }}></div>
+          
+          {/* Grid Pattern */}
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute top-0 left-0 w-full h-full" style={{
+              backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(45, 101, 188, 0.3) 1px, transparent 0)',
+              backgroundSize: '20px 20px'
+            }}></div>
+          </div>
+          
+          {/* Animated Lines */}
+          <div className="absolute top-1/4 left-0 w-full h-px theme-animation-line animate-line-move"></div>
+          <div className="absolute top-3/4 left-0 w-full h-px theme-animation-border animate-line-move-delayed"></div>
+        </div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
               Our <span className="theme-accent-primary">Technologies</span>

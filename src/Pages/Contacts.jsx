@@ -51,7 +51,71 @@ const Contacts = () => {
     <div className="min-h-screen theme-bg-primary">
       {/* Modern Hero Section */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 theme-gradient-primary opacity-90"></div>
+        {/* Background Animation Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* Particle System */}
+          <div className="absolute inset-0">
+            <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400 rounded-full opacity-40 animate-particle-1"></div>
+            <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-blue-500 rounded-full opacity-30 animate-particle-2"></div>
+            <div className="absolute bottom-1/3 left-1/3 w-2 h-2 bg-blue-500 rounded-full opacity-35 animate-particle-1"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-1 h-1 bg-blue-400 rounded-full opacity-40 animate-particle-2"></div>
+          </div>
+
+          {/* Floating Circles - BIG */}
+          <div className="absolute top-20 left-10 w-48 h-48 rounded-full opacity-25 animate-float-slow" style={{ backgroundColor: '#2d65bc' }}></div>
+          <div className="absolute top-40 right-20 w-40 h-40 rounded-full opacity-20 animate-float-medium" style={{ backgroundColor: '#2d65bc' }}></div>
+          <div className="absolute bottom-40 left-20 w-52 h-52 rounded-full opacity-25 animate-float-fast" style={{ backgroundColor: '#2d65bc' }}></div>
+          <div className="absolute bottom-20 right-10 w-36 h-36 rounded-full opacity-30 animate-float-slow" style={{ backgroundColor: '#2d65bc' }}></div>
+          
+          {/* Floating Squares */}
+          <div className="absolute top-60 left-1/4 w-24 h-24 opacity-25 animate-rotate-slow" style={{ backgroundColor: '#2d65bc', transform: 'rotate(45deg)' }}></div>
+          <div className="absolute top-80 right-1/3 w-20 h-20 opacity-20 animate-rotate-medium" style={{ backgroundColor: '#2d65bc', transform: 'rotate(45deg)' }}></div>
+          <div className="absolute bottom-60 left-1/3 w-28 h-28 opacity-22 animate-rotate-fast" style={{ backgroundColor: '#2d65bc', transform: 'rotate(45deg)' }}></div>
+          
+          {/* Floating Triangles */}
+          <div className="absolute top-32 right-1/4 w-0 h-0 opacity-25 animate-bounce-slow" style={{ 
+            borderLeft: '40px solid transparent',
+            borderRight: '40px solid transparent',
+            borderBottom: '70px solid #2d65bc'
+          }}></div>
+          <div className="absolute bottom-32 left-1/4 w-0 h-0 opacity-22 animate-bounce-medium" style={{ 
+            borderLeft: '30px solid transparent',
+            borderRight: '30px solid transparent',
+            borderBottom: '55px solid #2d65bc'
+          }}></div>
+          
+          {/* Organic Blob Shapes */}
+          <div className="absolute top-1/4 left-1/2 w-64 h-64 opacity-15 animate-blob-slow" style={{ 
+            background: 'linear-gradient(135deg, #2d65bc, #2d65bc)',
+            borderRadius: '60% 40% 70% 30% / 40% 60% 30% 70%'
+          }}></div>
+          <div className="absolute bottom-1/4 right-1/2 w-72 h-72 opacity-18 animate-blob-medium" style={{ 
+            background: 'linear-gradient(135deg, #2d65bc, #2d65bc)',
+            borderRadius: '30% 70% 50% 50% / 60% 40% 60% 40%'
+          }}></div>
+          
+          {/* Gradient Orbs */}
+          <div className="absolute top-1/2 left-1/4 w-56 h-56 rounded-full opacity-20 animate-pulse-slow" style={{ 
+            background: 'radial-gradient(circle, #2d65bc, transparent)'
+          }}></div>
+          <div className="absolute bottom-1/3 right-1/4 w-64 h-64 rounded-full opacity-18 animate-pulse-medium" style={{ 
+            background: 'radial-gradient(circle, #2d65bc, transparent)'
+          }}></div>
+          
+          {/* Grid Pattern */}
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute top-0 left-0 w-full h-full" style={{
+              backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(45, 101, 188, 0.3) 1px, transparent 0)',
+              backgroundSize: '20px 20px'
+            }}></div>
+          </div>
+          
+          {/* Animated Lines */}
+          <div className="absolute top-1/4 left-0 w-full h-px theme-animation-line animate-line-move"></div>
+          <div className="absolute top-3/4 left-0 w-full h-px theme-animation-border animate-line-move-delayed"></div>
+        </div>
+        
+        <div className="absolute inset-0 theme-gradient-primary opacity-50"></div>
         <div className="relative z-10 py-20 sm:py-24 lg:py-32">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto text-center">
@@ -81,8 +145,59 @@ const Contacts = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact-form" className="py-16 sm:py-20 lg:py-24 theme-bg-secondary">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="contact-form" className="py-16 sm:py-20 lg:py-24 theme-bg-secondary relative overflow-hidden">
+        {/* Background Animation Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+          {/* Floating Circles - BIG */}
+          <div className="absolute top-20 left-10 w-40 h-40 rounded-full opacity-20 animate-float-slow" style={{ backgroundColor: '#2d65bc' }}></div>
+          <div className="absolute top-40 right-20 w-36 h-36 rounded-full opacity-15 animate-float-medium" style={{ backgroundColor: '#2d65bc' }}></div>
+          <div className="absolute bottom-40 left-20 w-48 h-48 rounded-full opacity-18 animate-float-fast" style={{ backgroundColor: '#2d65bc' }}></div>
+          <div className="absolute bottom-20 right-10 w-32 h-32 rounded-full opacity-22 animate-float-slow" style={{ backgroundColor: '#2d65bc' }}></div>
+          
+          {/* Floating Squares */}
+          <div className="absolute top-60 left-1/4 w-20 h-20 opacity-20 animate-rotate-slow" style={{ backgroundColor: '#2d65bc', transform: 'rotate(45deg)' }}></div>
+          <div className="absolute top-80 right-1/3 w-18 h-18 opacity-16 animate-rotate-medium" style={{ backgroundColor: '#2d65bc', transform: 'rotate(45deg)' }}></div>
+          <div className="absolute bottom-60 left-1/3 w-24 h-24 opacity-18 animate-rotate-fast" style={{ backgroundColor: '#2d65bc', transform: 'rotate(45deg)' }}></div>
+          
+          {/* Floating Triangles */}
+          <div className="absolute top-32 right-1/4 w-0 h-0 opacity-20 animate-bounce-slow" style={{ 
+            borderLeft: '35px solid transparent',
+            borderRight: '35px solid transparent',
+            borderBottom: '60px solid #2d65bc'
+          }}></div>
+          <div className="absolute bottom-32 left-1/4 w-0 h-0 opacity-18 animate-bounce-medium" style={{ 
+            borderLeft: '28px solid transparent',
+            borderRight: '28px solid transparent',
+            borderBottom: '48px solid #2d65bc'
+          }}></div>
+          
+          {/* Organic Blob Shapes */}
+          <div className="absolute top-1/4 left-1/2 w-56 h-56 opacity-12 animate-blob-slow" style={{ 
+            background: 'linear-gradient(135deg, #2d65bc, #2d65bc)',
+            borderRadius: '60% 40% 70% 30% / 40% 60% 30% 70%'
+          }}></div>
+          <div className="absolute bottom-1/4 right-1/2 w-64 h-64 opacity-15 animate-blob-medium" style={{ 
+            background: 'linear-gradient(135deg, #2d65bc, #2d65bc)',
+            borderRadius: '30% 70% 50% 50% / 60% 40% 60% 40%'
+          }}></div>
+          
+          {/* Gradient Orbs */}
+          <div className="absolute top-1/2 left-1/4 w-48 h-48 rounded-full opacity-16 animate-pulse-slow" style={{ 
+            background: 'radial-gradient(circle, #2d65bc, transparent)'
+          }}></div>
+          <div className="absolute bottom-1/3 right-1/4 w-56 h-56 rounded-full opacity-15 animate-pulse-medium" style={{ 
+            background: 'radial-gradient(circle, #2d65bc, transparent)'
+          }}></div>
+          
+          {/* Grid Pattern */}
+          <div className="absolute inset-0 opacity-3">
+            <div className="absolute top-0 left-0 w-full h-full" style={{
+              backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(45, 101, 188, 0.15) 1px, transparent 0)',
+              backgroundSize: '25px 25px'
+            }}></div>
+          </div>
+        </div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-4">
@@ -320,8 +435,59 @@ const Contacts = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="theme-bg-primary py-16 sm:py-20 lg:py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="theme-bg-primary py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+        {/* Background Animation Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+          {/* Floating Circles - BIG */}
+          <div className="absolute top-20 left-10 w-44 h-44 rounded-full opacity-18 animate-float-slow" style={{ backgroundColor: '#2d65bc' }}></div>
+          <div className="absolute top-40 right-20 w-38 h-38 rounded-full opacity-14 animate-float-medium" style={{ backgroundColor: '#2d65bc' }}></div>
+          <div className="absolute bottom-40 left-20 w-52 h-52 rounded-full opacity-16 animate-float-fast" style={{ backgroundColor: '#2d65bc' }}></div>
+          <div className="absolute bottom-20 right-10 w-36 h-36 rounded-full opacity-20 animate-float-slow" style={{ backgroundColor: '#2d65bc' }}></div>
+          
+          {/* Floating Squares */}
+          <div className="absolute top-60 left-1/4 w-22 h-22 opacity-18 animate-rotate-slow" style={{ backgroundColor: '#2d65bc', transform: 'rotate(45deg)' }}></div>
+          <div className="absolute top-80 right-1/3 w-20 h-20 opacity-14 animate-rotate-medium" style={{ backgroundColor: '#2d65bc', transform: 'rotate(45deg)' }}></div>
+          <div className="absolute bottom-60 left-1/3 w-28 h-28 opacity-16 animate-rotate-fast" style={{ backgroundColor: '#2d65bc', transform: 'rotate(45deg)' }}></div>
+          
+          {/* Floating Triangles */}
+          <div className="absolute top-32 right-1/4 w-0 h-0 opacity-18 animate-bounce-slow" style={{ 
+            borderLeft: '38px solid transparent',
+            borderRight: '38px solid transparent',
+            borderBottom: '66px solid #2d65bc'
+          }}></div>
+          <div className="absolute bottom-32 left-1/4 w-0 h-0 opacity-16 animate-bounce-medium" style={{ 
+            borderLeft: '32px solid transparent',
+            borderRight: '32px solid transparent',
+            borderBottom: '55px solid #2d65bc'
+          }}></div>
+          
+          {/* Organic Blob Shapes */}
+          <div className="absolute top-1/4 left-1/2 w-60 h-60 opacity-10 animate-blob-slow" style={{ 
+            background: 'linear-gradient(135deg, #2d65bc, #2d65bc)',
+            borderRadius: '60% 40% 70% 30% / 40% 60% 30% 70%'
+          }}></div>
+          <div className="absolute bottom-1/4 right-1/2 w-68 h-68 opacity-13 animate-blob-medium" style={{ 
+            background: 'linear-gradient(135deg, #2d65bc, #2d65bc)',
+            borderRadius: '30% 70% 50% 50% / 60% 40% 60% 40%'
+          }}></div>
+          
+          {/* Gradient Orbs */}
+          <div className="absolute top-1/2 left-1/4 w-52 h-52 rounded-full opacity-14 animate-pulse-slow" style={{ 
+            background: 'radial-gradient(circle, #2d65bc, transparent)'
+          }}></div>
+          <div className="absolute bottom-1/3 right-1/4 w-60 h-60 rounded-full opacity-13 animate-pulse-medium" style={{ 
+            background: 'radial-gradient(circle, #2d65bc, transparent)'
+          }}></div>
+          
+          {/* Grid Pattern */}
+          <div className="absolute inset-0 opacity-2">
+            <div className="absolute top-0 left-0 w-full h-full" style={{
+              backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(45, 101, 188, 0.1) 1px, transparent 0)',
+              backgroundSize: '30px 30px'
+            }}></div>
+          </div>
+        </div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-4">
               Got <span className="theme-accent-primary">Questions?</span>
@@ -392,8 +558,45 @@ const Contacts = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 sm:py-20 lg:py-24 theme-gradient-accent">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-16 sm:py-20 lg:py-24 theme-gradient-accent relative overflow-hidden">
+        {/* Background Animation Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+          {/* BIG White Circles */}
+          <div className="absolute top-20 left-10 w-48 h-48 bg-white/15 rounded-full animate-float-slow"></div>
+          <div className="absolute top-40 right-20 w-44 h-44 bg-white/12 rounded-full animate-float-medium"></div>
+          <div className="absolute bottom-40 left-20 w-56 h-56 bg-white/15 rounded-full animate-float-fast"></div>
+          <div className="absolute bottom-20 right-10 w-40 h-40 bg-white/18 rounded-full animate-float-slow"></div>
+          
+          {/* BIG White Squares */}
+          <div className="absolute top-60 left-1/4 w-28 h-28 bg-white/15 opacity-90 animate-rotate-slow" style={{ transform: 'rotate(45deg)' }}></div>
+          <div className="absolute top-80 right-1/3 w-24 h-24 bg-white/12 opacity-90 animate-rotate-medium" style={{ transform: 'rotate(45deg)' }}></div>
+          <div className="absolute bottom-60 left-1/3 w-32 h-32 bg-white/14 opacity-90 animate-rotate-fast" style={{ transform: 'rotate(45deg)' }}></div>
+          
+          {/* BIG White Triangles */}
+          <div className="absolute top-32 right-1/4 w-0 h-0 opacity-15 animate-bounce-slow" style={{ 
+            borderLeft: '45px solid transparent',
+            borderRight: '45px solid transparent',
+            borderBottom: '78px solid rgba(255, 255, 255, 0.2)'
+          }}></div>
+          <div className="absolute bottom-32 left-1/4 w-0 h-0 opacity-13 animate-bounce-medium" style={{ 
+            borderLeft: '38px solid transparent',
+            borderRight: '38px solid transparent',
+            borderBottom: '66px solid rgba(255, 255, 255, 0.18)'
+          }}></div>
+          
+          {/* BIG White Organic Blobs */}
+          <div className="absolute top-1/4 left-1/2 w-72 h-72 bg-white/12 rounded-full animate-blob-slow"></div>
+          <div className="absolute bottom-1/4 right-1/2 w-80 h-80 bg-white/15 rounded-full animate-blob-medium"></div>
+          
+          {/* BIG White Gradient Orbs */}
+          <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-white/14 rounded-full animate-pulse-slow"></div>
+          <div className="absolute bottom-1/3 right-1/4 w-72 h-72 bg-white/12 rounded-full animate-pulse-medium"></div>
+          
+          {/* Animated Lines */}
+          <div className="absolute top-1/4 left-0 w-full h-px bg-white/8 animate-line-move"></div>
+          <div className="absolute top-3/4 left-0 w-full h-px bg-white/8 animate-line-move-delayed"></div>
+        </div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
               Ready to <span className="text-white/90">Get Started?</span>

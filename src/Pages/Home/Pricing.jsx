@@ -77,7 +77,7 @@ const Pricing = () => {
         
         {/* Gradient Orbs */}
         <div className="absolute top-40 left-1/6 w-40 h-40 bg-gradient-to-r from-green-300/8 to-red-300/8 rounded-full blur-xl animate-pulse-slow"></div>
-        <div className="absolute bottom-40 right-1/6 w-36 h-36 bg-gradient-to-r from-blue-300/5 to-cyan-300/8 rounded-full blur-xl animate-pulse-delayed"></div>
+        <div className="absolute bottom-40 right-1/6 w-36 h-36 bg-gradient-to-r from-blue-300/5 to-blue-500/8 rounded-full blur-xl animate-pulse-delayed"></div>
         <div className="absolute top-1/2 left-1/2 w-32 h-32 bg-gradient-to-r from-green-300/6 to-emerald-300/6 rounded-full blur-xl animate-pulse-slow"></div>
         
         {/* Animated Lines */}

@@ -65,38 +65,38 @@ export default function About() {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Particle System */}
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-cyan-400 rounded-full opacity-40 animate-particle-1"></div>
-          <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-cyan-500 rounded-full opacity-30 animate-particle-2"></div>
-          <div className="absolute bottom-1/3 left-1/3 w-2 h-2 bg-cyan-500 rounded-full opacity-35 animate-particle-1"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-1 h-1 bg-cyan-400 rounded-full opacity-40 animate-particle-2"></div>
+          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400 rounded-full opacity-40 animate-particle-1"></div>
+          <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-blue-500 rounded-full opacity-30 animate-particle-2"></div>
+          <div className="absolute bottom-1/3 left-1/3 w-2 h-2 bg-blue-500 rounded-full opacity-35 animate-particle-1"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-1 h-1 bg-blue-400 rounded-full opacity-40 animate-particle-2"></div>
         </div>
 
         {/* Floating Shapes - Top Area */}
-        <div className="absolute top-8 left-1/6 w-14 h-14 bg-cyan-400 opacity-20 animate-float transform rotate-30" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute top-8 left-1/6 w-14 h-14 bg-blue-400 opacity-20 animate-float transform rotate-30" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
         <div className="absolute top-12 right-1/4 w-12 h-12 bg-green-500 opacity-25 animate-float-delayed rounded-full"></div>
-        <div className="absolute top-6 left-2/3 w-10 h-10 bg-cyan-500 opacity-15 animate-float-slow transform rotate-60"></div>
+        <div className="absolute top-6 left-2/3 w-10 h-10 bg-blue-500 opacity-15 animate-float-slow transform rotate-60"></div>
         
         {/* Floating Shapes - Center Area */}
         <div className="absolute top-1/2 left-1/8 w-16 h-16 bg-green-400 opacity-20 animate-float transform rotate-45" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
-        <div className="absolute top-1/2 right-1/5 w-14 h-14 bg-cyan-400 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)'}}></div>
+        <div className="absolute top-1/2 right-1/5 w-14 h-14 bg-blue-400 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)'}}></div>
         <div className="absolute top-1/2 left-1/2 w-12 h-12 bg-green-500 opacity-15 animate-float-slow transform rotate-75"></div>
         
         {/* Floating Shapes - Bottom Area */}
-        <div className="absolute bottom-20 left-1/5 w-18 h-18 bg-cyan-400 opacity-20 animate-float transform rotate-30" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+        <div className="absolute bottom-20 left-1/5 w-18 h-18 bg-blue-400 opacity-20 animate-float transform rotate-30" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
         <div className="absolute bottom-16 right-1/5 w-16 h-16 bg-green-500 opacity-25 animate-float-delayed rounded-full"></div>
-        <div className="absolute bottom-12 left-3/4 w-14 h-14 bg-cyan-500 opacity-15 animate-float-slow transform rotate-60"></div>
+        <div className="absolute bottom-12 left-3/4 w-14 h-14 bg-blue-500 opacity-15 animate-float-slow transform rotate-60"></div>
         
         {/* Additional Diverse Shapes */}
         <div className="absolute top-1/6 left-1/3 w-8 h-8 bg-green-400 opacity-20 animate-float" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
-        <div className="absolute top-2/3 right-1/6 w-6 h-6 bg-cyan-500 opacity-25 animate-float-delayed transform rotate-45" style={{clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)'}}></div>
+        <div className="absolute top-2/3 right-1/6 w-6 h-6 bg-blue-500 opacity-25 animate-float-delayed transform rotate-45" style={{clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)'}}></div>
         <div className="absolute bottom-1/6 left-1/2 w-10 h-10 bg-green-500 opacity-15 animate-float-slow" style={{clipPath: 'polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)'}}></div>
         
         {/* Extra Small Shapes for More Coverage */}
-        <div className="absolute top-1/5 right-1/3 w-4 h-4 bg-cyan-400 opacity-30 animate-float transform rotate-90 rounded-full"></div>
+        <div className="absolute top-1/5 right-1/3 w-4 h-4 bg-blue-400 opacity-30 animate-float transform rotate-90 rounded-full"></div>
         <div className="absolute top-3/5 left-1/4 w-5 h-5 bg-green-500 opacity-25 animate-float-delayed" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
-        <div className="absolute bottom-1/5 right-1/4 w-6 h-6 bg-cyan-500 opacity-20 animate-float-slow transform rotate-30" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+        <div className="absolute bottom-1/5 right-1/4 w-6 h-6 bg-blue-500 opacity-20 animate-float-slow transform rotate-30" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
         <div className="absolute top-1/4 right-1/8 w-7 h-7 bg-green-400 opacity-25 animate-float transform rotate-60"></div>
-        <div className="absolute bottom-1/4 left-1/8 w-5 h-5 bg-cyan-400 opacity-30 animate-float-delayed rounded-full"></div>
+        <div className="absolute bottom-1/4 left-1/8 w-5 h-5 bg-blue-400 opacity-30 animate-float-delayed rounded-full"></div>
         <div className="absolute top-4/5 left-1/3 w-4 h-4 bg-green-500 opacity-20 animate-float-slow transform rotate-45" style={{clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)'}}></div>
       </div>
       
@@ -132,7 +132,7 @@ export default function About() {
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
+                    <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                     <span className="theme-text-secondary text-sm">Custom Development</span>
                   </div>
                   <div className="flex items-center space-x-2">
@@ -140,7 +140,7 @@ export default function About() {
                     <span className="theme-text-secondary text-sm">Cloud Solutions</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
+                    <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                     <span className="theme-text-secondary text-sm">AI Integration</span>
                   </div>
                 </div>
@@ -154,7 +154,7 @@ export default function About() {
                   alt="IT Solutions"
                   className="w-full h-auto rounded-2xl shadow-2xl"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/20 to-transparent rounded-2xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-500/20 to-transparent rounded-2xl"></div>
               </div>
             </div>
           </div>
@@ -225,7 +225,7 @@ export default function About() {
                 
                 <div className="space-y-4">
                   <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-cyan-400 rounded-full flex items-center justify-center mt-1">
+                    <div className="w-6 h-6 bg-blue-400 rounded-full flex items-center justify-center mt-1">
                       <div className="w-2 h-2 bg-white rounded-full"></div>
                     </div>
                     <div>
@@ -243,7 +243,7 @@ export default function About() {
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-cyan-400 rounded-full flex items-center justify-center mt-1">
+                    <div className="w-6 h-6 bg-blue-400 rounded-full flex items-center justify-center mt-1">
                       <div className="w-2 h-2 bg-white rounded-full"></div>
                     </div>
                     <div>
@@ -262,7 +262,7 @@ export default function About() {
                   alt="IT Solutions"
                   className="w-full h-auto rounded-2xl shadow-2xl"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/20 to-transparent rounded-2xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-500/20 to-transparent rounded-2xl"></div>
               </div>
             </div>
           </div>

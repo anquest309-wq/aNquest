@@ -271,7 +271,7 @@ export default function Services() {
           {/* Statistics Section */}
           <div 
             ref={statsRef}
-            className="bg-gradient-to-r from-cyan-300 via-cyan-500 to-cyan-800 backdrop-blur-sm rounded-3xl p-8 lg:p-12 theme-border-primary relative overflow-hidden"
+            className="bg-gradient-to-r from-[#7fa5e3] via-[#3b6ec1] to-[#0b4199] backdrop-blur-sm rounded-3xl p-8 lg:p-12 theme-border-primary relative overflow-hidden"
           >
             
             {/* Background Pattern */}

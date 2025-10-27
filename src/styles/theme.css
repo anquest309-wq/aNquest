@@ -44,11 +44,11 @@
   --theme-button-secondary-text: #1a1a1a;
   --theme-button-secondary-border: #2d65bc;
   /* Background Animation Variables */
-  --animation-color-primary: rgba(0, 255, 255, 0.15);
-  --animation-color-secondary: rgba(0, 206, 209, 0.12);
-  --animation-color-tertiary: rgba(64, 224, 208, 0.10);
-  --animation-border-color: rgba(0, 255, 255, 0.20);
-  --animation-line-color: rgba(0, 255, 255, 0.15);
+  --animation-color-primary: rgba(45, 101, 188, 0.15);
+  --animation-color-secondary: rgba(45, 101, 188, 0.12);
+  --animation-color-tertiary: rgba(45, 101, 188, 0.10);
+  --animation-border-color: rgba(45, 101, 188, 0.20);
+  --animation-line-color: rgba(45, 101, 188, 0.15);
   /* Service Hover Border Variables */
   --service-hover-border: #10b981;
   /* Footer Variables */
@@ -85,11 +85,11 @@
   --theme-button-secondary-text: #ffffff;
   --theme-button-secondary-border: #2d65bc;
   /* Background Animation Variables */
-  --animation-color-primary: rgba(0, 255, 255, 0.18);
-  --animation-color-secondary: rgba(0, 206, 209, 0.15);
-  --animation-color-tertiary: rgba(64, 224, 208, 0.12);
-  --animation-border-color: rgba(0, 255, 255, 0.25);
-  --animation-line-color: rgba(0, 255, 255, 0.18);
+  --animation-color-primary: rgba(45, 101, 188, 0.18);
+  --animation-color-secondary: rgba(45, 101, 188, 0.15);
+  --animation-color-tertiary: rgba(45, 101, 188, 0.12);
+  --animation-border-color: rgba(45, 101, 188, 0.25);
+  --animation-line-color: rgba(45, 101, 188, 0.18);
   /* Service Hover Border Variables */
   --service-hover-border: #2d65bc;
   /* Footer Variables */
@@ -227,7 +227,7 @@ body {
   color: var(--accent-secondary);
 }
 
-/* Ensure aNquest text always shows aqua color */
+/* Ensure aNquest text always shows blue accent color */
 span.theme-accent-primary {
   color: #2d65bc !important;
 }
@@ -650,6 +650,78 @@ h2 span.theme-accent-primary {
 
 .animate-center-pulse {
   animation: centerPulse 4s ease-in-out infinite;
+}
+
+/* Float and Delayed Float animations for shapes */
+.animate-float {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-slow 8s ease-in-out infinite 2s;
+}
+
+/* Pulse animations with delay */
+.animate-pulse-delayed {
+  animation: pulse-slow 4s ease-in-out infinite 2s;
+}
+
+/* Particle animations */
+@keyframes particle-1 {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+    opacity: 0.6;
+  }
+}
+
+@keyframes particle-2 {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(15px) translateX(-10px);
+    opacity: 0.5;
+  }
+}
+
+.animate-particle-1 {
+  animation: particle-1 6s ease-in-out infinite;
+}
+
+.animate-particle-2 {
+  animation: particle-2 4s ease-in-out infinite;
+}
+
+/* Line move animations */
+@keyframes line-move {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes line-move-delayed {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-line-move {
+  animation: line-move 15s linear infinite;
+}
+
+.animate-line-move-delayed {
+  animation: line-move-delayed 15s linear infinite 7.5s;
 }
 
 /* GIF Slide Animation */
