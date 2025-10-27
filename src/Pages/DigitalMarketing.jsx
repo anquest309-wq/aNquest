@@ -82,7 +82,7 @@ const DigitalMarketing = () => {
   return (
     <div className="min-h-screen theme-bg-secondary">
       {/* Hero Section */}
-      <section className="theme-gradient-primary text-white py-20 md:py-32">
+      <section className="theme-gradient-primary  py-20 md:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">

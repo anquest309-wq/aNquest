@@ -1,6 +1,269 @@
-import React from 'react';
-import { Code, Server, Database, Smartphone, Cloud, Wrench, Zap, Heart, CheckCircle } from 'lucide-react';
+import React, { useState } from 'react';
+import { Code, Server, Database, Smartphone, Cloud, Wrench, Zap, Heart, CheckCircle, Filter } from 'lucide-react';
 
+// Animated Background Component
+const AnimatedBackground = ({ variant = 'primary' }) => {
+  const sizes = {
+    large: { circles: 'w-48 h-48', squares: 'w-24 h-24', triangles: '70px', blobs: 'w-64 h-64', orbs: 'w-56 h-56' },
+    medium: { circles: 'w-32 h-32', squares: 'w-16 h-16', triangles: '50px', blobs: 'w-40 h-40', orbs: 'w-32 h-32' },
+    small: { circles: 'w-30 h-30', squares: 'w-14 h-14', triangles: '46px', blobs: 'w-42 h-42', orbs: 'w-30 h-30' }
+  };
+  
+  const size = sizes[variant] || sizes.medium;
+  
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      {/* Floating Circles */}
+      <div className={`absolute top-20 left-10 ${size.circles} rounded-full opacity-25 animate-float-slow`} style={{ backgroundColor: '#2d65bc' }}></div>
+      <div className={`absolute top-40 right-20 ${size.circles} rounded-full opacity-20 animate-float-medium`} style={{ backgroundColor: '#2d65bc' }}></div>
+      <div className={`absolute bottom-0 left-20 ${size.circles} rounded-full opacity-25 animate-float-fast`} style={{ backgroundColor: '#2d65bc' }}></div>
+      
+      {/* Floating Squares */}
+      <div className={`absolute top-30 left-1/4 ${size.squares} opacity-25 animate-rotate-slow`} style={{ backgroundColor: '#2d65bc', transform: 'rotate(45deg)' }}></div>
+      <div className={`absolute bottom-64 left-1/2 ${size.squares} opacity-19 animate-rotate-fast`} style={{ backgroundColor: '#2d65bc', transform: 'rotate(45deg)' }}></div>
+      
+      {/* Floating Triangles */}
+      <div className="absolute top-32 right-1/4 w-0 h-0 opacity-25 animate-bounce-slow" style={{ 
+        borderLeft: '40px solid transparent',
+        borderRight: '40px solid transparent',
+        borderBottom: `${size.triangles} solid #2d65bc`
+      }}></div>
+      
+      {/* Organic Blobs */}
+      <div className={`absolute top-1/4 left-1/2 ${size.blobs} opacity-15 animate-blob-slow`} style={{ 
+        background: 'linear-gradient(135deg, #2d65bc, #2d65bc)',
+        borderRadius: '60% 40% 70% 30% / 40% 60% 30% 70%'
+      }}></div>
+      
+      {/* Gradient Orbs */}
+      <div className={`absolute top-1/2 left-1/4 ${size.orbs} rounded-full opacity-20 animate-pulse-slow`} style={{ 
+        background: 'radial-gradient(circle, #2d65bc, transparent)'
+      }}></div>
+      
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-0 left-0 w-full h-full" style={{
+          backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(45, 101, 188, 0.3) 1px, transparent 0)',
+          backgroundSize: '20px 20px'
+        }}></div>
+      </div>
+    </div>
+  );
+};
+
+// Hero Section Component
+const HeroSection = () => (
+  <section className="theme-gradient-primary text-white py-16 md:py-24 lg:py-32 relative overflow-hidden">
+    <AnimatedBackground variant="large" />
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-4xl mx-auto text-center">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 leading-tight">
+          Our <span className="theme-accent-primary">Technologies</span>
+        </h1>
+        <p className="text-base sm:text-lg md:text-xl lg:text-2xl theme-text-secondary mb-6 md:mb-8 leading-relaxed px-4">
+          We leverage cutting-edge technologies to build innovative, scalable, and high-performance digital solutions
+        </p>
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 px-4">
+          {['50+ Technologies', 'Expert Level', 'Modern Stack'].map((badge) => (
+            <span key={badge} className="theme-bg-tertiary theme-text-primary px-3 sm:px-4 md:px-6 py-2 md:py-3 rounded-full text-xs sm:text-sm md:text-base font-medium">
+              {badge}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+// Technology Card Component
+const TechnologyCard = ({ tech, icon: Icon }) => (
+  <div className="group theme-card rounded-xl md:rounded-2xl theme-shadow-primary overflow-hidden transition-all duration-500 hover:theme-shadow-secondary hover:scale-105 relative h-full">
+    <div 
+      className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-20 transition-opacity duration-500"
+      style={{ backgroundImage: `url(${tech.bgImage})` }}
+    />
+    
+    <div className="relative p-4 sm:p-5 md:p-6">
+      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg md:rounded-xl flex items-center justify-center mb-3 md:mb-4 group-hover:scale-110 transition-transform duration-300">
+        <Icon className="w-5 h-5 sm:w-6 sm:h-6 theme-accent-primary" />
+      </div>
+      
+      <h3 className="text-base sm:text-lg font-bold theme-text-primary mb-2">
+        {tech.name}
+      </h3>
+      
+      <p className="text-xs sm:text-sm theme-text-muted leading-relaxed">
+        {tech.description}
+      </p>
+    </div>
+  </div>
+);
+
+// Technologies Grid Section Component
+const TechnologiesGridSection = ({ technologies, categories }) => {
+  const [activeFilter, setActiveFilter] = useState('All');
+  
+  const getCategoryIcon = (category) => {
+    const icons = {
+      Frontend: Code,
+      Backend: Server,
+      Database: Database,
+      Mobile: Smartphone,
+      Cloud: Cloud,
+      Tools: Wrench
+    };
+    return icons[category] || Code;
+  };
+  
+  const filteredTechs = activeFilter === 'All' 
+    ? technologies 
+    : technologies.filter(tech => tech.category === activeFilter);
+  
+  return (
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24 theme-bg-primary relative overflow-hidden">
+      <AnimatedBackground variant="medium" />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold theme-text-primary mb-3 sm:mb-4 md:mb-6 px-4">
+            Technology Stack
+          </h2>
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl theme-text-secondary max-w-2xl mx-auto leading-relaxed px-4">
+            Our comprehensive technology expertise spans across multiple domains
+          </p>
+        </div>
+
+        {/* Filter Buttons */}
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-10 md:mb-12 px-4">
+          <button
+            onClick={() => setActiveFilter('All')}
+            className={`px-3 sm:px-4 md:px-6 py-2 md:py-3 rounded-lg md:rounded-xl text-xs sm:text-sm md:text-base font-medium transition-all duration-300 ${
+              activeFilter === 'All'
+                ? 'theme-gradient-primary text-white'
+                : 'theme-card theme-text-primary hover:theme-shadow-primary'
+            }`}
+          >
+            All Technologies
+          </button>
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setActiveFilter(category)}
+              className={`px-3 sm:px-4 md:px-6 py-2 md:py-3 rounded-lg md:rounded-xl text-xs sm:text-sm md:text-base font-medium transition-all duration-300 ${
+                activeFilter === category
+                  ? 'theme-gradient-primary text-white'
+                  : 'theme-card theme-text-primary hover:theme-shadow-primary'
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
+        {/* Technologies Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
+          {filteredTechs.map((tech, index) => (
+            <TechnologyCard 
+              key={index} 
+              tech={tech} 
+              icon={getCategoryIcon(tech.category)} 
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Benefits Card Component
+const BenefitCard = ({ icon: Icon, title, description }) => (
+  <div className="theme-card rounded-xl md:rounded-2xl p-5 sm:p-6 md:p-8 text-center group hover:theme-shadow-secondary transition-all duration-300 hover:scale-105 h-full">
+    <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 theme-bg-tertiary rounded-xl md:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300">
+      <Icon className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 theme-accent-primary" />
+    </div>
+    <h3 className="text-lg sm:text-xl md:text-2xl font-bold theme-text-primary mb-2 sm:mb-3 md:mb-4">
+      {title}
+    </h3>
+    <p className="text-sm sm:text-base theme-text-secondary leading-relaxed">
+      {description}
+    </p>
+  </div>
+);
+
+// Benefits Section Component
+const BenefitsSection = () => {
+  const benefits = [
+    {
+      icon: Zap,
+      title: 'Performance First',
+      description: 'We prioritize technologies that deliver optimal performance and user experience'
+    },
+    {
+      icon: Heart,
+      title: 'Scalable Solutions',
+      description: 'Our technology stack grows with your business, ensuring long-term success'
+    },
+    {
+      icon: CheckCircle,
+      title: 'Future-Proof',
+      description: 'We use modern, actively maintained technologies with strong community support'
+    }
+  ];
+
+  return (
+    <section className="theme-bg-secondary py-12 sm:py-16 md:py-20 lg:py-24 relative overflow-hidden">
+      <AnimatedBackground variant="small" />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold theme-text-primary mb-3 sm:mb-4 md:mb-6 px-4">
+            Why Our Technology Choices?
+          </h2>
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl theme-text-secondary max-w-2xl mx-auto leading-relaxed px-4">
+            We carefully select technologies based on performance, scalability, and long-term viability
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 md:gap-8">
+          {benefits.map((benefit, index) => (
+            <BenefitCard key={index} {...benefit} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// CTA Section Component
+const CTASection = () => (
+  <section className="py-12 sm:py-16 md:py-20 lg:py-24 theme-gradient-accent">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="max-w-4xl mx-auto">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 md:mb-6 leading-tight px-4">
+          Ready to Build Something <span className="text-white/90">Amazing?</span>
+        </h2>
+        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 mb-6 sm:mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed px-4">
+          Let's discuss your project and how our technology expertise can bring your vision to life
+        </p>
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center max-w-md sm:max-w-none mx-auto px-4">
+          <a
+            href="/contacts"
+            className="bg-white theme-accent-primary font-bold py-3 md:py-4 px-5 sm:px-6 md:px-8 rounded-lg md:rounded-xl hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base md:text-lg hover:scale-105 hover:shadow-2xl"
+          >
+            Start Your Project
+          </a>
+          <a
+            href="/portfolio"
+            className="border-2 border-white text-white font-bold py-3 md:py-4 px-5 sm:px-6 md:px-8 rounded-lg md:rounded-xl hover:bg-white hover:theme-accent-primary transition-all duration-300 text-sm sm:text-base md:text-lg hover:scale-105"
+          >
+            View Our Work
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+// Main Technologies Component
 const Technologies = () => {
   const technologies = [
     { name: "React.js", description: "Modern UI library for building interactive user interfaces", category: "Frontend", bgImage: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=600&auto=format&fit=crop" },
@@ -46,225 +309,14 @@ const Technologies = () => {
     { name: "Chart.js", description: "Simple yet flexible charting library", category: "Tools", bgImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&auto=format&fit=crop" }
   ];
 
-  const getCategoryIcon = (category) => {
-    switch (category) {
-      case "Frontend": return Code;
-      case "Backend": return Server;
-      case "Database": return Database;
-      case "Mobile": return Smartphone;
-      case "Cloud": return Cloud;
-      case "Tools": return Wrench;
-      default: return Code;
-    }
-  };
+  const categories = ['Frontend', 'Backend', 'Database', 'Mobile', 'Cloud', 'Tools'];
 
   return (
     <div className="min-h-screen theme-bg-secondary">
-      {/* Hero Section */}
-      <section className="theme-gradient-primary text-white py-20 md:py-32 relative overflow-hidden">
-        {/* Background Animation Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-          {/* Floating Circles - BIG */}
-          <div className="absolute top-20 left-10 w-48 h-48 rounded-full opacity-25 animate-float-slow" style={{ backgroundColor: '#2d65bc' }}></div>
-          <div className="absolute top-40 right-20 w-40 h-40 rounded-full opacity-20 animate-float-medium" style={{ backgroundColor: '#2d65bc' }}></div>
-          <div className="absolute bottom-40 left-20 w-52 h-52 rounded-full opacity-25 animate-float-fast" style={{ backgroundColor: '#2d65bc' }}></div>
-          <div className="absolute bottom-20 right-10 w-36 h-36 rounded-full opacity-30 animate-float-slow" style={{ backgroundColor: '#2d65bc' }}></div>
-          
-          {/* Floating Squares */}
-          <div className="absolute top-60 left-1/4 w-24 h-24 opacity-25 animate-rotate-slow" style={{ backgroundColor: '#2d65bc', transform: 'rotate(45deg)' }}></div>
-          <div className="absolute top-80 right-1/3 w-20 h-20 opacity-20 animate-rotate-medium" style={{ backgroundColor: '#2d65bc', transform: 'rotate(45deg)' }}></div>
-          <div className="absolute bottom-60 left-1/3 w-28 h-28 opacity-22 animate-rotate-fast" style={{ backgroundColor: '#2d65bc', transform: 'rotate(45deg)' }}></div>
-          
-          {/* Floating Triangles */}
-          <div className="absolute top-32 right-1/4 w-0 h-0 opacity-25 animate-bounce-slow" style={{ 
-            borderLeft: '40px solid transparent',
-            borderRight: '40px solid transparent',
-            borderBottom: '70px solid #2d65bc'
-          }}></div>
-          <div className="absolute bottom-32 left-1/4 w-0 h-0 opacity-22 animate-bounce-medium" style={{ 
-            borderLeft: '30px solid transparent',
-            borderRight: '30px solid transparent',
-            borderBottom: '55px solid #2d65bc'
-          }}></div>
-          
-          {/* Organic Blob Shapes */}
-          <div className="absolute top-1/4 left-1/2 w-64 h-64 opacity-15 animate-blob-slow" style={{ 
-            background: 'linear-gradient(135deg, #2d65bc, #2d65bc)',
-            borderRadius: '60% 40% 70% 30% / 40% 60% 30% 70%'
-          }}></div>
-          <div className="absolute bottom-1/4 right-1/2 w-72 h-72 opacity-18 animate-blob-medium" style={{ 
-            background: 'linear-gradient(135deg, #2d65bc, #2d65bc)',
-            borderRadius: '30% 70% 50% 50% / 60% 40% 60% 40%'
-          }}></div>
-          
-          {/* Gradient Orbs */}
-          <div className="absolute top-1/2 left-1/4 w-56 h-56 rounded-full opacity-20 animate-pulse-slow" style={{ 
-            background: 'radial-gradient(circle, #2d65bc, transparent)'
-          }}></div>
-          <div className="absolute bottom-1/3 right-1/4 w-64 h-64 rounded-full opacity-18 animate-pulse-medium" style={{ 
-            background: 'radial-gradient(circle, #2d65bc, transparent)'
-          }}></div>
-          
-          {/* Grid Pattern */}
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute top-0 left-0 w-full h-full" style={{
-              backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(45, 101, 188, 0.3) 1px, transparent 0)',
-              backgroundSize: '20px 20px'
-            }}></div>
-          </div>
-          
-          {/* Animated Lines */}
-          <div className="absolute top-1/4 left-0 w-full h-px theme-animation-line animate-line-move"></div>
-          <div className="absolute top-3/4 left-0 w-full h-px theme-animation-border animate-line-move-delayed"></div>
-        </div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              Our <span className="theme-accent-primary">Technologies</span>
-            </h1>
-            <p className="text-lg sm:text-xl md:text-2xl theme-text-secondary mb-8 leading-relaxed">
-              We leverage cutting-edge technologies to build innovative, scalable, and high-performance digital solutions
-            </p>
-            <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
-              <span className="theme-bg-tertiary theme-text-primary px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base font-medium">
-                50+ Technologies
-              </span>
-              <span className="theme-bg-tertiary theme-text-primary px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base font-medium">
-                Expert Level
-              </span>
-              <span className="theme-bg-tertiary theme-text-primary px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base font-medium">
-                Modern Stack
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Technologies Grid */}
-      <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-4 sm:mb-6">
-              Technology Stack
-            </h2>
-            <p className="text-lg sm:text-xl theme-text-secondary max-w-2xl mx-auto leading-relaxed">
-              Our comprehensive technology expertise spans across multiple domains, ensuring we can tackle any project requirement
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {technologies.map((tech, index) => {
-              const IconComponent = getCategoryIcon(tech.category);
-              return (
-                <div 
-                  key={index} 
-                  className="group theme-card rounded-2xl theme-shadow-primary overflow-hidden transition-all duration-500 hover:theme-shadow-secondary hover:scale-105 relative"
-                >
-                  {/* Background Image - Shows on Hover */}
-                  <div 
-                    className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-20 transition-opacity duration-500"
-                    style={{ backgroundImage: `url(${tech.bgImage})` }}
-                  />
-                  
-                  <div className="relative p-6">
-                    <div className="w-full h-12  rounded-xl flex items-center  justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                      <IconComponent className="w-6 h-6 theme-accent-primary" />
-                    </div>
-                    
-                    <h3 className="text-lg font-bold theme-text-primary mb-2">
-                      {tech.name}
-                    </h3>
-                    
-                    <p className="text-sm theme-text-muted leading-relaxed">
-                      {tech.description}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Our Tech Stack */}
-      <section className="theme-bg-secondary py-16 sm:py-20 lg:py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-4 sm:mb-6">
-              Why Our Technology Choices?
-            </h2>
-            <p className="text-lg sm:text-xl theme-text-secondary max-w-2xl mx-auto leading-relaxed">
-              We carefully select technologies based on performance, scalability, and long-term viability
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            <div className="theme-card rounded-2xl p-6 sm:p-8 text-center group hover:theme-shadow-secondary transition-all duration-300 hover:scale-105">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 theme-bg-tertiary rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Zap className="w-8 h-8 sm:w-10 sm:h-10 theme-accent-primary" />
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold theme-text-primary mb-3 sm:mb-4">
-                Performance First
-              </h3>
-              <p className="theme-text-secondary leading-relaxed">
-                We prioritize technologies that deliver optimal performance and user experience
-              </p>
-            </div>
-
-            <div className="theme-card rounded-2xl p-6 sm:p-8 text-center group hover:theme-shadow-secondary transition-all duration-300 hover:scale-105">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 theme-bg-tertiary rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Heart className="w-8 h-8 sm:w-10 sm:h-10 theme-accent-primary" />
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold theme-text-primary mb-3 sm:mb-4">
-                Scalable Solutions
-              </h3>
-              <p className="theme-text-secondary leading-relaxed">
-                Our technology stack grows with your business, ensuring long-term success
-              </p>
-            </div>
-
-            <div className="theme-card rounded-2xl p-6 sm:p-8 text-center group hover:theme-shadow-secondary transition-all duration-300 hover:scale-105">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 theme-bg-tertiary rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
-                <CheckCircle className="w-8 h-8 sm:w-10 sm:h-10 theme-accent-primary" />
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold theme-text-primary mb-3 sm:mb-4">
-                Future-Proof
-              </h3>
-              <p className="theme-text-secondary leading-relaxed">
-                We use modern, actively maintained technologies with strong community support
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 sm:py-20 lg:py-24 theme-gradient-accent">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight">
-              Ready to Build Something <span className="text-white/90">Amazing?</span>
-            </h2>
-            <p className="text-base sm:text-lg lg:text-xl text-white/90 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed">
-              Let's discuss your project and how our technology expertise can bring your vision to life
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md sm:max-w-none mx-auto">
-              <a
-                href="/contacts"
-                className="bg-white theme-accent-primary font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-gray-50 transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
-              >
-                Start Your Project
-              </a>
-              <a
-                href="/portfolio"
-                className="border-2 border-white text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-white hover:theme-accent-primary transition-all duration-300 text-base sm:text-lg hover:scale-105"
-              >
-                View Our Work
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection />
+      <TechnologiesGridSection technologies={technologies} categories={categories} />
+      <BenefitsSection />
+      <CTASection />
     </div>
   );
 };

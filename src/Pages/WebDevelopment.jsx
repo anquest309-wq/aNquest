@@ -147,8 +147,6 @@ const WebDevelopment = () => {
           </div>
           
           {/* Animated Lines */}
-          <div className="absolute top-1/4 left-0 w-full h-px theme-animation-line animate-line-move"></div>
-          <div className="absolute top-3/4 left-0 w-full h-px theme-animation-border animate-line-move-delayed"></div>
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
@@ -280,7 +278,7 @@ const WebDevelopment = () => {
               </a>
               <a
                 href="/portfolio"
-                className="border-2 border-white text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-white hover:theme-accent-primary transition-all duration-300 text-base sm:text-lg hover:scale-105"
+                className="border-2 border-white text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-white hover:text-[#2d65bc] hover:theme-accent-primary transition-all duration-300 text-base sm:text-lg hover:scale-105"
               >
                 View Our Work
               </a>
