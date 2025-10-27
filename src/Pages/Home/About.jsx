@@ -108,7 +108,7 @@ export default function About() {
             <div className="inline-block">
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold theme-text-primary mb-6 relative">
                 About <span className="theme-accent-primary">aNquest</span>
-                <div className="absolute -bottom-2 left-0 w-full h-1 rounded-full" style={{background: 'linear-gradient(135deg, #00d4d4, #00cccc)'}}></div>
+                <div className="absolute -bottom-2 left-0 w-full h-1 rounded-full" style={{background: 'linear-gradient(135deg, #2d65bc, #2d65bc)'}}></div>
               </h2>
             </div>
             <p className="text-lg sm:text-xl theme-text-secondary max-w-3xl mx-auto leading-relaxed animate-fade-in">

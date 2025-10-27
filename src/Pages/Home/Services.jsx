@@ -146,7 +146,7 @@ export default function Services() {
          {/* Grid Pattern */}
          <div className="absolute inset-0 opacity-5">
            <div className="absolute top-0 left-0 w-full h-full" style={{
-             backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(0, 212, 212, 0.3) 1px, transparent 0)',
+             backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(45, 101, 188, 0.3) 1px, transparent 0)',
              backgroundSize: '20px 20px'
            }}></div>
          </div>
@@ -160,6 +160,44 @@ export default function Services() {
          <div className="absolute top-2/3 right-1/4 w-3 h-3 theme-animation-secondary rounded-full animate-particle-float-delayed"></div>
          <div className="absolute bottom-1/3 left-1/3 w-1 h-1 theme-animation-tertiary rounded-full animate-particle-float-slow"></div>
          <div className="absolute bottom-2/3 right-1/3 w-2 h-2 theme-animation-primary rounded-full animate-particle-float"></div>
+         
+         {/* Center Animated Shapes */}
+         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+           {/* Large Central Circle */}
+           <div className="absolute w-32 h-32 theme-animation-primary rounded-full animate-center-pulse opacity-20"></div>
+           <div className="absolute w-24 h-24 theme-animation-secondary rounded-full animate-center-float opacity-30 transform translate-x-8 translate-y-4"></div>
+           <div className="absolute w-16 h-16 theme-animation-tertiary rounded-full animate-center-pulse opacity-25 transform -translate-x-6 -translate-y-8"></div>
+           
+           {/* Rotating Squares */}
+           <div className="absolute w-20 h-20 theme-animation-primary animate-center-rotate opacity-15 transform translate-x-12 -translate-y-12"></div>
+           <div className="absolute w-14 h-14 theme-animation-secondary animate-center-float opacity-20 transform -translate-x-14 translate-y-10"></div>
+           <div className="absolute w-10 h-10 theme-animation-tertiary animate-center-rotate opacity-25 transform translate-x-6 translate-y-16"></div>
+           
+           {/* Floating Triangles */}
+           <div className="absolute w-0 h-0 border-l-12 border-r-12 border-b-20 border-transparent theme-animation-border animate-float-slow transform translate-x-16 -translate-y-6"></div>
+           <div className="absolute w-0 h-0 border-l-8 border-r-8 border-b-14 border-transparent theme-animation-line animate-float-delayed transform -translate-x-18 translate-y-8"></div>
+           <div className="absolute w-0 h-0 border-l-6 border-r-6 border-b-10 border-transparent theme-animation-primary animate-float transform translate-x-4 translate-y-20"></div>
+           
+           {/* Hexagon Shapes */}
+           <div className="absolute w-18 h-18 theme-animation-secondary animate-float-slow opacity-20 transform translate-x-20 translate-y-4" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+           <div className="absolute w-12 h-12 theme-animation-primary animate-float-delayed opacity-25 transform -translate-x-16 -translate-y-12" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+           <div className="absolute w-8 h-8 theme-animation-tertiary animate-float opacity-30 transform translate-x-8 translate-y-24" style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}></div>
+           
+           {/* Star Shapes */}
+           <div className="absolute w-16 h-16 theme-animation-primary animate-float-delayed opacity-15 transform translate-x-24 -translate-y-16" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
+           <div className="absolute w-10 h-10 theme-animation-secondary animate-float-slow opacity-20 transform -translate-x-20 translate-y-12" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
+           <div className="absolute w-6 h-6 theme-animation-tertiary animate-float opacity-25 transform translate-x-12 translate-y-28" style={{clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'}}></div>
+           
+           {/* Diamond Shapes */}
+           <div className="absolute w-14 h-14 theme-animation-secondary animate-center-rotate opacity-20 transform translate-x-28 translate-y-2"></div>
+           <div className="absolute w-8 h-8 theme-animation-primary animate-center-float opacity-25 transform -translate-x-22 -translate-y-14"></div>
+           <div className="absolute w-6 h-6 theme-animation-tertiary animate-center-pulse opacity-30 transform translate-x-16 translate-y-32"></div>
+           
+           {/* Blob Shapes */}
+           <div className="absolute w-22 h-22 theme-animation-primary animate-blob-slow opacity-15 transform translate-x-32 -translate-y-8"></div>
+           <div className="absolute w-16 h-16 theme-animation-secondary animate-blob-medium opacity-20 transform -translate-x-24 translate-y-16"></div>
+           <div className="absolute w-12 h-12 theme-animation-tertiary animate-blob-slow opacity-25 transform translate-x-20 translate-y-36"></div>
+         </div>
        </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -224,7 +262,7 @@ export default function Services() {
                   </div>
 
                   {/* Hover Effect Line */}
-                  <div className="absolute bottom-0 left-0 w-0 h-1 theme-gradient-accent transition-all duration-500 group-hover:w-full rounded-full"></div>
+                  <div className="absolute bottom-0 left-0 w-0 h-1 theme-service-hover-border transition-all duration-500 group-hover:w-full rounded-full"></div>
                 </div>
               ))}
             </div>
