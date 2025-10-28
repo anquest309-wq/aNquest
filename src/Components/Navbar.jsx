@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ThemeSwitcher from "./ThemeSwitcher";
+import { useTheme } from "../Context/ThemeContext";
 
 export default function Navbar() {
+  const { theme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null); // Closed by default
   const [clickedDropdown, setClickedDropdown] = useState(null); // No clicked dropdown by default
@@ -51,13 +53,37 @@ export default function Navbar() {
     }`;
   };
 
+  const getNavbarStyle = () => {
+    if (theme === 'light') {
+      return 'bg-gradient-to-r from-white to-[#2d65bc]';
+    } else if (theme === 'dark') {
+      return 'bg-gradient-to-r from-white to-[#1a1a1a]';
+    } else if (theme === 'green') {
+      return 'bg-gradient-to-r from-white to-[#064e3b]';
+    }
+    return 'bg-gradient-to-r from-white to-[#1a1a1a]';
+  };
+
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-black/20 backdrop-blur-md z-50">
+    <nav className={`fixed top-0 left-0 right-0 z-50 ${getNavbarStyle()}`}>
       <div className="container mx-auto px-4 sm:px-16  py-2 ">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* ===== Left: Logo + Hamburger ===== */}
           <div className="flex items-center space-x-3 sm:space-x-5">
-           
+            {/* Mobile Menu Toggle */}
+            <button 
+              onClick={toggleMenu}
+              className="lg:hidden text-gray-800 focus:outline-none"
+              aria-label="Toggle menu"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
 
             <div className="flex items-center space-x-2">
               <Link to="/">
@@ -73,8 +99,12 @@ export default function Navbar() {
 
           {/* ===== Center: Navigation ===== */}
           <div className="hidden lg:flex items-center space-x-3">
-            <Link to="/" className="text-white hover:text-[#2d65bc] transition-colors text-base py-3 px-3">
+            <Link to="/" className="text-gray-800 font-semibold hover:text-[#2d65bc] transition-colors text-base py-3 px-3">
               Home
+            </Link>
+            
+            <Link to="/about" className="text-gray-800 font-semibold hover:text-[#2d65bc] transition-colors text-base px-3">
+              About
             </Link>
             
             {/* Services Dropdown */}
@@ -84,7 +114,7 @@ export default function Navbar() {
               onMouseLeave={() => handleDropdownLeave()}
             >
               <button
-                className="text-white py-7 px-3 hover:text-[#2d65bc] transition-colors flex items-center space-x-1 text-base"
+                className="text-gray-800 font-semibold py-7 px-3 hover:text-[#2d65bc] transition-colors flex items-center space-x-1 text-base"
                 onClick={() => handleDropdownClick("services")}
               >
                 <span>Services</span>
@@ -154,10 +184,10 @@ export default function Navbar() {
               )}
             </div>
 
-            <Link to="/technologies" className="text-white hover:text-[#2d65bc] transition-colors text-base px-1">
+            <Link to="/technologies" className="text-gray-800 font-semibold hover:text-[#2d65bc] transition-colors text-base px-1">
               Technologies
             </Link>
-            <Link to="/contacts" className="text-white hover:text-[#2d65bc] transition-colors text-base px-3">
+            <Link to="/contacts" className="text-gray-800 font-semibold hover:text-[#2d65bc] transition-colors text-base px-3">
               Contacts
             </Link>
           </div>
@@ -169,53 +199,56 @@ export default function Navbar() {
               <ThemeSwitcher />
             </div>
             
-            <button className="bg-[#2d65bc] hover:bg-[#2d65bc]/90 text-white font-bold py-2 px-5 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-green-400/25 active:scale-95">
+            <Link to="/request-a-quote" className="bg-[#2d65bc] hover:bg-[#2d65bc]/90 text-white font-bold py-2 px-5 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-[#2d65bc]/25 active:scale-95">
               Request A Quote
-            </button>
+            </Link>
           </div>
         </div>
 
         {/* ===== Mobile Menu ===== */}
         {isMenuOpen && (
-          <div className="lg:hidden bg-black/95 text-white rounded-lg mt-3 p-4 space-y-3 animate-in fade-in duration-300">
-            <Link to="/" className="block hover:text-[#2d65bc] py-2 border-b border-gray-700">
+          <div className="lg:hidden bg-white/95 backdrop-blur-lg text-gray-800 rounded-lg mt-3 p-4 space-y-3 animate-in fade-in duration-300 shadow-lg">
+            <Link to="/" className="block font-semibold hover:text-[#2d65bc] py-2 border-b border-gray-300">
               Home
+            </Link>
+            <Link to="/about" className="block font-semibold hover:text-[#2d65bc] py-2 border-b border-gray-300">
+              About
             </Link>
             
             {/* Services Section in Mobile */}
-            <div className="border-b border-gray-700">
+            <div className="border-b border-gray-300">
               <div className="py-2 font-semibold text-[#2d65bc]">Services</div>
               <div className="ml-4 space-y-2">
-                <Link to="/web-development" className="block hover:text-[#2d65bc] py-1 text-sm">
+                <Link to="/web-development" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
                   Web Development
                 </Link>
-                <Link to="/app-development" className="block hover:text-[#2d65bc] py-1 text-sm">
+                <Link to="/app-development" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
                   Mobile App Development
                 </Link>
-                <Link to="/seo-services" className="block hover:text-[#2d65bc] py-1 text-sm">
+                <Link to="/seo-services" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
                   SEO Services
                 </Link>
-                <Link to="/digital-marketing" className="block hover:text-[#2d65bc] py-1 text-sm">
+                <Link to="/digital-marketing" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
                   Digital Marketing
                 </Link>
-                <Link to="/ui-ux-design" className="block hover:text-[#2d65bc] py-1 text-sm">
+                <Link to="/ui-ux-design" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
                   UI/UX Design
                 </Link>
-                <Link to="/e-commerce-solutions" className="block hover:text-[#2d65bc] py-1 text-sm">
+                <Link to="/e-commerce-solutions" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
                   E-Commerce Solutions
                 </Link>
               </div>
             </div>
             
-            <Link to="/technologies" className="block hover:text-[#2d65bc] py-2 border-b border-gray-700">
+            <Link to="/technologies" className="block font-semibold hover:text-[#2d65bc] py-2 border-b border-gray-300">
               Technologies
             </Link>
-            <Link to="/contacts" className="block hover:text-[#2d65bc] py-2">
+            <Link to="/contacts" className="block font-semibold hover:text-[#2d65bc] py-2">
               Contacts
             </Link>
             
             {/* Theme Switcher in Mobile */}
-            <div className="border-t border-gray-700 pt-3">
+            <div className="border-t border-gray-300 pt-3">
               <div className="py-2 font-semibold text-[#2d65bc]">Theme</div>
               <div className="ml-4">
                 <div className="theme-switcher-mobile">

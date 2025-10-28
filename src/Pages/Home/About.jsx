@@ -1,7 +1,22 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { useTheme } from '../../Context/ThemeContext'
 
 
 export default function About() {
+  const { theme } = useTheme();
+  
+  // Generate CTA background style based on theme (similar to navbar)
+  const getCtaStyle = () => {
+    if (theme === 'light') {
+      return 'bg-gradient-to-r from-white to-[#2d65bc]';
+    } else if (theme === 'dark') {
+      return 'bg-gradient-to-r from-white to-[#1a1a1a]';
+    } else if (theme === 'green') {
+      return 'bg-gradient-to-r from-white to-[#064e3b]';
+    }
+    return 'bg-gradient-to-r from-white to-[#2d65bc]';
+  };
+  
   const [isVisible, setIsVisible] = useState(false)
   const [counts, setCounts] = useState({
     projects: 0,
@@ -268,19 +283,26 @@ export default function About() {
           </div>
 
           {/* CTA Section */}
-          <div className="text-center theme-gradient-accent rounded-3xl p-8 lg:p-12 relative overflow-hidden animate-fade-in">
+          <div className={`text-center ${getCtaStyle()} rounded-3xl p-8 lg:p-12 relative overflow-hidden animate-fade-in shadow-2xl`}>
+            {/* Background decoration */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              <div className="absolute top-4 right-8 w-16 h-16 bg-white/10 rounded-full animate-float"></div>
+              <div className="absolute bottom-6 left-12 w-12 h-12 bg-white/15 rounded-full animate-float-delayed"></div>
+              <div className="absolute top-1/2 left-8 w-8 h-8 bg-white/20 rounded-full animate-float-slow"></div>
+              <div className="absolute bottom-8 right-16 w-10 h-10 bg-white/10 rounded-full animate-float"></div>
+            </div>
             <div className="relative z-10">
-              <h3 className="text-3xl sm:text-4xl font-bold theme-text-primary mb-6">
+              <h3 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">
                 Ready to Transform Your Business?
               </h3>
-              <p className="text-lg theme-text-secondary mb-8 max-w-2xl mx-auto">
+              <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
                 Let's discuss how our innovative IT solutions can help your business achieve its goals and stay ahead of the competition.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="theme-bg-primary theme-text-primary font-bold py-4 px-8 rounded-xl hover:theme-accent-primary transition-all duration-300 text-sm sm:text-base transform hover:scale-105">
+                <button className="bg-[#2d65bc] text-white font-bold py-4 px-8 rounded-xl hover:bg-[#2d65bc]/90 hover:shadow-lg transition-all duration-300 text-sm sm:text-base transform hover:scale-105 active:scale-95">
                   Get Started Today
                 </button>
-                <button className="border-2 theme-border-primary theme-text-primary font-bold py-4 px-8 rounded-xl hover:theme-bg-primary hover:theme-accent-primary transition-all duration-300 text-sm sm:text-base transform hover:scale-105">
+                <button className="border-2 border-gray-700 text-gray-700 bg-white/80 font-bold py-4 px-8 rounded-xl hover:bg-gray-700 hover:text-white hover:shadow-lg transition-all duration-300 text-sm sm:text-base transform hover:scale-105 active:scale-95">
                   Learn More
                 </button>
               </div>

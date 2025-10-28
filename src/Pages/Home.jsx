@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 
@@ -15,6 +16,7 @@ import Pricing from './Home/Pricing'
 import Testimonial from './Home/Testimonial'
 import Footer from '../Components/Footer'
 import GifCarousel from '../Components/GifCarousel'
+import TypingAnimation from '../Components/TypingAnimation'
 
 
 
@@ -139,20 +141,7 @@ export default function Home() {
     };
   }, []);
 
-  // const slides = [
-  //   {
-  //     id: 1,
-  //     image: slide1,
-  //     title: "Expert Web & App Development Solutions",
-  //     description: "Anquest Media specializes in creating cutting-edge web applications and mobile apps using modern technologies like React, Node.js, Python, and more. We deliver scalable, high-performance solutions that drive your business forward."
-  //   },
-  //   {
-  //     id: 2,
-  //     image: slide2,
-  //     title: "Full-Stack Development & SEO Excellence",
-  //     description: "From frontend to backend development, we master all programming languages including JavaScript, Python, Java, PHP, and more. Plus, our SEO experts ensure your digital presence ranks at the top."
-  //   }
-  // ]
+  
 
   return (
     <div className="relative min-h-screen overflow-hidden smooth-scroll momentum-scroll theme-transition">
@@ -208,36 +197,51 @@ export default function Home() {
             {/* Left Side - Text Content */}
               <div className="w-full lg:w-1/2 flex items-center justify-center lg:justify-start">
               <div className="max-w-2xl">
-                {/* Headline */}
-                  <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold theme-text-primary mb-6 leading-tight">
-                    Expert Digital Solutions & Innovation
-                </h1>
+                {/* Animated Headline */}
+                <TypingAnimation />
                 
                 {/* Description */}
-                  <p className="text-lg sm:text-xl theme-text-secondary leading-relaxed mb-8">
+                  <p className="text-lg sm:text-xl theme-text-secondary leading-relaxed mb-8 animate-fade-in-up" style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>
                     aNquest specializes in creating cutting-edge digital solutions across web development, mobile applications, digital marketing, and business automation. We deliver scalable, high-performance solutions that drive your business forward.
                 </p>
                 
                 {/* Call to Action Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up" style={{ animationDelay: '0.8s', animationFillMode: 'both' }}>
                   {/* Our Services Button */}
-                    <button className=" font-bold py-4 px-8 rounded-lg hover:shadow-lg" style={{
+                  <a 
+                    href="#services"
+                    className="hero-button-primary font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl active:scale-95 text-center"
+                    style={{
                       backgroundColor: 'var(--theme-button-bg)',
                       color: 'var(--theme-button-text)',
                       border: '2px solid var(--theme-button-border)'
-                    }}>
-                    <span className="relative z-10">Our Services</span>
-                     
-                  </button>
+                    }}
+                  >
+                    <span className="relative z-10 flex items-center justify-center">
+                      <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                      </svg>
+                      Our Services
+                    </span>
+                  </a>
                   
                   {/* Contact Us Button */}
-                    <button className="font-bold py-4 px-8 rounded-lg" style={{
+                  <Link 
+                    to="/contacts"
+                    className="hero-button-secondary font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl active:scale-95 text-center"
+                    style={{
                       backgroundColor: 'var(--theme-button-secondary-bg)',
                       color: 'var(--theme-button-secondary-text)',
                       border: '2px solid var(--theme-button-secondary-border)'
-                    }}>
-                    Contact Us
-                  </button>
+                    }}
+                  >
+                    <span className="relative z-10 flex items-center justify-center">
+                      <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                      Contact Us
+                    </span>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -261,7 +265,7 @@ export default function Home() {
 </section>
 
 {/* Services Section */}
-<section className="scroll-snap-section theme-section-alt">
+<section id="services" className="scroll-snap-section theme-section-alt">
   <Services/>
 </section>
 
@@ -428,6 +432,76 @@ export default function Home() {
         /* Apply scroll snap animation */
         .scroll-snap-section {
           animation: scrollSnap 0.3s ease-out;
+        }
+        
+        /* Enhanced typing animation effects */
+        @keyframes glow {
+          0%, 100% {
+            text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor;
+          }
+          50% {
+            text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+          }
+        }
+        
+        @keyframes slideInLeft {
+          0% {
+            opacity: 0;
+            transform: translateX(-50px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        
+        @keyframes fadeInUp {
+          0% {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        /* Animation classes */
+        .animate-glow {
+          animation: glow 2s ease-in-out infinite;
+        }
+        
+        .animate-slide-in-left {
+          animation: slideInLeft 0.8s ease-out;
+        }
+        
+        .animate-fade-in-up {
+          animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Hero Button Hover Effects */
+        .hero-button-primary:hover {
+          background: linear-gradient(135deg, var(--theme-button-bg), var(--accent-primary)) !important;
+          transform: translateY(-2px) scale(1.05);
+          box-shadow: 0 10px 25px rgba(45, 101, 188, 0.3), 0 0 20px rgba(45, 101, 188, 0.2);
+        }
+        
+        .hero-button-secondary:hover {
+          background: linear-gradient(135deg, var(--theme-button-secondary-bg), var(--accent-secondary)) !important;
+          transform: translateY(-2px) scale(1.05);
+          box-shadow: 0 10px 25px rgba(45, 101, 188, 0.2), 0 0 15px rgba(45, 101, 188, 0.15);
+        }
+        
+        .hero-button-primary:active,
+        .hero-button-secondary:active {
+          transform: translateY(0) scale(0.98);
+        }
+        
+        /* Smooth hover transitions for button icons */
+        .hero-button-primary:hover svg,
+        .hero-button-secondary:hover svg {
+          transform: translateX(2px);
+          transition: transform 0.3s ease;
         }
       `}</style>
     </div>

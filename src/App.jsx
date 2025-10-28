@@ -2,6 +2,8 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './Pages/Home'
+import About from './Pages/About'
+import RequestAQuote from './Pages/RequestAQuote'
 import WebDevelopment from './Pages/WebDevelopment'
 import AppDevelopment from './Pages/AppDevelopment'
 import SEOServices from './Pages/SEOServices'
@@ -29,6 +31,8 @@ function App() {
         
         <Routes>
           <Route path='/' element={<Home/>} />
+          <Route path='/about' element={<About/>} />
+          <Route path='/request-a-quote' element={<RequestAQuote/>} />
           <Route path='/web-development' element={<WebDevelopment/>} />
           <Route path='/app-development' element={<AppDevelopment/>} />
           <Route path='/seo-services' element={<SEOServices/>} />

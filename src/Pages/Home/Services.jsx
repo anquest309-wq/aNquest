@@ -1,7 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { useTheme } from '../../Context/ThemeContext'
 
 export default function Services() {
-  const [hoveredService, setHoveredService] = useState(null)
+  const { theme } = useTheme();
+  
+  // Generate statistics section background style based on theme (similar to navbar)
+  const getStatsStyle = () => {
+    if (theme === 'light') {
+      return 'bg-gradient-to-r from-white to-[#2d65bc]';
+    } else if (theme === 'dark') {
+      return 'bg-gradient-to-r from-white to-[#1a1a1a]';
+    } else if (theme === 'green') {
+      return 'bg-gradient-to-r from-white to-[#064e3b]';
+    }
+    return 'bg-gradient-to-r from-white to-[#2d65bc]';
+  };
+  const [_hoveredService, setHoveredService] = useState(null)
   const [counts, setCounts] = useState({
     clients: 0,
     satisfaction: 0,
@@ -44,29 +58,6 @@ export default function Services() {
     { value: 5, label: "Years Experience", suffix: "+" }
   ]
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            startCounting()
-          }
-        })
-      },
-      { threshold: 0.5 }
-    )
-
-    if (statsRef.current) {
-      observer.observe(statsRef.current)
-    }
-
-    return () => {
-      if (statsRef.current) {
-        observer.unobserve(statsRef.current)
-      }
-    }
-  }, [])
-
   const startCounting = () => {
     const targetValues = { clients: 549, satisfaction: 100, employees: 836, awards: 67 }
     const duration = 2000
@@ -91,6 +82,30 @@ export default function Services() {
       }
     }, stepDuration)
   }
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            startCounting()
+          }
+        })
+      },
+      { threshold: 0.5 }
+    )
+
+    const currentRef = statsRef.current
+    if (currentRef) {
+      observer.observe(currentRef)
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef)
+      }
+    }
+  }, [])
 
   return (
     <section className="py-16 lg:py-24 theme-bg-primary relative overflow-hidden">
@@ -271,28 +286,30 @@ export default function Services() {
           {/* Statistics Section */}
           <div 
             ref={statsRef}
-            className="bg-gradient-to-r from-[#7fa5e3] via-[#3b6ec1] to-[#0b4199] backdrop-blur-sm rounded-3xl p-8 lg:p-12 theme-border-primary relative overflow-hidden"
+            className={`${getStatsStyle()} backdrop-blur-sm rounded-3xl p-8 lg:p-12 shadow-2xl relative overflow-hidden`}
           >
             
             {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute top-10 left-10 w-20 h-20 border theme-border-primary rounded-full animate-pulse"></div>
-              <div className="absolute bottom-10 right-10 w-16 h-16 border theme-border-primary rounded-full animate-pulse"></div>
-              <div className="absolute top-1/2 left-1/4 w-12 h-12 border theme-border-primary rounded-full animate-pulse"></div>
+            <div className="absolute inset-0 opacity-20 pointer-events-none">
+              <div className="absolute top-10 left-10 w-20 h-20 bg-white/10 rounded-full animate-float"></div>
+              <div className="absolute bottom-10 right-10 w-16 h-16 bg-white/15 rounded-full animate-float-delayed"></div>
+              <div className="absolute top-1/2 left-1/4 w-12 h-12 bg-white/20 rounded-full animate-float-slow"></div>
+              <div className="absolute bottom-1/3 right-1/4 w-14 h-14 bg-white/10 rounded-full animate-float"></div>
+              <div className="absolute top-1/4 right-1/3 w-10 h-10 bg-white/15 rounded-full animate-float-delayed"></div>
             </div>
 
             <div className="relative z-10">
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
                 {stats.map((stat, index) => (
                   <div key={index} className="text-center group">
-                    <div className="text-4xl lg:text-5xl font-bold theme-text-primary mb-2 animate-count-up group-hover:theme-accent-primary transition-colors duration-300">
+                    <div className="text-4xl lg:text-5xl font-bold text-gray-800 mb-2 animate-count-up group-hover:text-[#2d65bc] transition-colors duration-300">
                       {index === 0 && counts.clients}
                       {index === 1 && counts.satisfaction}
                       {index === 2 && counts.employees}
                       {index === 3 && counts.awards}
                       {stat.suffix}
                     </div>
-                    <div className="theme-text-secondary text-sm lg:text-base font-medium group-hover:theme-text-primary transition-colors duration-300">
+                    <div className="text-gray-700 text-sm lg:text-base font-medium group-hover:text-gray-800 transition-colors duration-300">
                       {stat.label}
                     </div>
                   </div>
