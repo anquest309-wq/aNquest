@@ -78,14 +78,14 @@ const Projects = () => {
         <div className="absolute bottom-1/2 left-1/4 w-0 h-0 border-l-8 border-r-8 border-b-12 border-l-transparent border-r-transparent theme-animation-line animate-star-float-delayed"></div>
       </div>
       {/* ==== Header ==== */}
-      <div className="text-center mb-12 relative z-10">
-        <button className="theme-accent-primary theme-text-primary px-6 py-2 rounded-md font-semibold">
+      <div className="text-center mb-8 md:mb-12 px-4 relative z-10">
+        <button className="theme-text-primary px-4 md:px-6 py-2 rounded-md font-semibold text-sm md:text-base" style={{ backgroundColor: '#2d65bc' }}>
           Recent Projects
         </button>
-        <h2 className="text-4xl font-bold mt-6 theme-text-primary">
-          We've Completed <span className="theme-accent-primary">150+</span> Development Projects
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-4 md:mt-6 theme-text-primary px-2">
+          We've Completed <span style={{ color: '#2d65bc' }}>150+</span> Development Projects
         </h2>
-        <p className="text-2xl font-semibold mt-2 theme-text-secondary">
+        <p className="text-lg sm:text-xl md:text-2xl font-semibold mt-2 theme-text-secondary px-2">
           Explore Our Development Portfolio
         </p>
       </div>
@@ -102,7 +102,6 @@ const Projects = () => {
            }}
            slidesPerView={3}
            spaceBetween={30}
-           centeredSlides={true}
            loop={true}
            grabCursor={true}
            speed={800}
@@ -112,19 +111,22 @@ const Projects = () => {
            }}
            breakpoints={{
              0: {
-               slidesPerView: 3,
-               spaceBetween: 15,
+               slidesPerView: 1,
+               spaceBetween: 0,
+               centeredSlides: true,
              },
              768: {
-               slidesPerView: 3,
+               slidesPerView: 2,
                spaceBetween: 25,
+               centeredSlides: false,
              },
              1024: {
                slidesPerView: 3,
                spaceBetween: 30,
+               centeredSlides: true,
              },
            }}
-           className="max-w-6xl mx-auto"
+           className="max-w-2xl md:max-w-6xl mx-auto px-4"
          >
         {projects.map((project, i) => (
           <SwiperSlide key={i}>
@@ -132,31 +134,38 @@ const Projects = () => {
               <div
                 className={`relative overflow-hidden rounded-2xl transition-all duration-500 ${
                   isActive
-                    ? "scale-110 shadow-2xl z-10"
-                    : "scale-90 opacity-60"
+                    ? "scale-100 md:scale-110 shadow-2xl z-10 opacity-100"
+                    : "hidden md:block md:scale-90 md:opacity-60"
                 }`}
               >
                 <img
                   src={project.img}
                   alt={project.title}
-                  className="w-full h-80 object-cover"
+                  className="w-full h-64 sm:h-72 md:h-80 object-cover"
                 />
 
-                {/* Blue Top Overlay for Non-Active */}
+                {/* Blue Top Overlay for Non-Active (Desktop only) */}
                 {!isActive && (
-                  <div className="absolute top-4 left-4 theme-bg-primary theme-text-primary py-3 px-6 rounded-md">
+                  <div className="hidden md:block absolute top-8 left-14 theme-bg-primary theme-text-primary py-3 px-6 rounded-md">
                     <h3 className="font-bold text-lg">{project.title}</h3>
                     <p className="text-sm">{project.subtitle}</p>
                   </div>
                 )}
 
-                {/* Green Bottom Overlay for Active */}
+                {/* Info Overlay for Active (Mobile) */}
                 {isActive && (
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 theme-accent-primary theme-text-primary py-3 px-4 rounded-xl text-center shadow-2xl transform scale-105">
-                    <h3 className="font-bold text-md mb-1">{project.title}</h3>
-                    <p className="text-base font-semibold">Read More →</p>
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 md:hidden">
+                    <h3 className="font-bold text-lg text-white mb-1">{project.title}</h3>
+                    <p className="text-sm text-white/90">{project.subtitle}</p>
                   </div>
                 )}
+
+                {/* Desktop Overlay for Active (Optional - uncomment if needed) */}
+                {/* {isActive && (
+                  <div className="hidden md:block absolute bottom-4 left-1/2 -translate-x-1/2 theme-accent-primary theme-text-primary py-3 px-4 rounded-xl text-center shadow-2xl">
+                    <h3 className="font-bold text-md mb-1">{project.title}</h3>
+                  </div>
+                )} */}
               </div>
             )}
           </SwiperSlide>
@@ -164,7 +173,7 @@ const Projects = () => {
          </Swiper>
          
          {/* Custom Pagination Dots */}
-         <div className="swiper-pagination-custom flex justify-center mt-8 gap-3"></div>
+         <div className="swiper-pagination-custom flex justify-center mt-6 md:mt-8 gap-3 px-4"></div>
        </div>
        
        {/* CSS Animations */}
@@ -503,7 +512,7 @@ const styles = `
   }
   
   .swiper-pagination-bullet-active-custom {
-    background: var(--accent-primary);
+    background: #2d65bc;
     transform: scale(1.2);
   }
 `;

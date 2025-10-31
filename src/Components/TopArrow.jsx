@@ -11,8 +11,6 @@ export default function TopArrow() {
       return 'bg-gradient-to-r from-white to-[#2d65bc] hover:from-[#f8fafc] hover:to-[#1d4ed8] text-gray-800 border border-gray-200 backdrop-blur-sm';
     } else if (theme === 'dark') {
       return 'bg-gradient-to-r from-white to-[#1a1a1a] hover:from-[#f8fafc] hover:to-[#111111] text-gray-800 border border-gray-200 backdrop-blur-sm';
-    } else if (theme === 'green') {
-      return 'bg-gradient-to-r from-white to-[#064e3b] hover:from-[#f8fafc] hover:to-[#052e16] text-gray-800 border border-gray-200 backdrop-blur-sm';
     }
     return 'bg-gradient-to-r from-white to-[#2d65bc] hover:from-[#f8fafc] hover:to-[#1d4ed8] text-gray-800 border border-gray-200 backdrop-blur-sm';
   };

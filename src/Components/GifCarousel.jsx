@@ -4,7 +4,7 @@ import { useTheme } from '../Context/ThemeContext';
 const GifCarousel = () => {
   const { theme } = useTheme();
   const [currentGifType, setCurrentGifType] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isAutoPlaying] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   // GIF configurations - 2 types with 3 variants each
@@ -72,7 +72,7 @@ const GifCarousel = () => {
   return (
     <div className="w-full h-full flex flex-col items-center justify-center p-2 lg:pt-20">
       {/* GIF Display */}
-      <div className="relative w-full max-w-2xl h-80 lg:h-[70vh] mb-4 lg:mb-6 rounded-xl overflow-hidden group flex items-center justify-center">
+      <div className="relative w-full max-w-2xl h-80 lg:h-[70vh] mb-4 lg:mb-6 rounded-xl overflow-hidden group flex items-center justify-center border-2 border-transparent hover:border-[#2d65bc] transition-all duration-300">
         <img
           src={getCurrentGif()}
           alt={`${gifConfigs[currentGifType].name} - ${theme} theme`}

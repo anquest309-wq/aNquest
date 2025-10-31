@@ -46,7 +46,7 @@ export default function Navbar() {
 
   const dropdownClass = (name) => {
     const isActive = activeDropdown === name;
-    return `absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg transform transition-all duration-300 z-50 ${
+    return `absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-lg transform transition-all duration-300 z-50 ${
       isActive
         ? "opacity-100 scale-100 pointer-events-auto block"
         : "opacity-0 scale-95 pointer-events-none hidden"
@@ -58,8 +58,6 @@ export default function Navbar() {
       return 'bg-gradient-to-r from-white to-[#2d65bc]';
     } else if (theme === 'dark') {
       return 'bg-gradient-to-r from-white to-[#1a1a1a]';
-    } else if (theme === 'green') {
-      return 'bg-gradient-to-r from-white to-[#064e3b]';
     }
     return 'bg-gradient-to-r from-white to-[#1a1a1a]';
   };
@@ -137,42 +135,98 @@ export default function Navbar() {
               {activeDropdown === "services" && (
                 <div className={dropdownClass("services")}>
                   <div className="py-2">
-                    <Link
-                      to="/web-development"
-                      className="block px-4 py-2 text-gray-700 hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] transition-colors"
+                  <Link
+                      to="/crm-services"
+                      className="flex items-center px-4 py-2 text-gray-700 hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] transition-colors"
                     >
-                      Web Development
+                      <svg className="w-4 h-4 mr-3 text-[#2d65bc]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>
+                      CRM Services
                     </Link>
                     <Link
-                      to="/app-development"
-                      className="block px-4 py-2 text-gray-700 hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] transition-colors"
+                      to="/email-marketing-services"
+                      className="flex items-center px-4 py-2 text-gray-700 hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] transition-colors"
                     >
-                      Mobile App Development
+                      <svg className="w-4 h-4 mr-3 text-[#2d65bc]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                      Email Marketing Services
                     </Link>
                     <Link
-                      to="/seo-services"
-                      className="block px-4 py-2 text-gray-700 hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] transition-colors"
+                      to="/local-seo-services"
+                      className="flex items-center px-4 py-2 text-gray-700 hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] transition-colors"
                     >
-                      SEO Services
+                      <svg className="w-4 h-4 mr-3 text-[#2d65bc]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                      Local SEO Services
                     </Link>
                     <Link
-                      to="/digital-marketing"
-                      className="block px-4 py-2 text-gray-700 hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] transition-colors"
+                      to="/mobile-app-development-services"
+                      className="flex items-center px-4 py-2 text-gray-700 hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] transition-colors"
                     >
-                      Digital Marketing
+                      <svg className="w-4 h-4 mr-3 text-[#2d65bc]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a1 1 0 001-1V4a1 1 0 00-1-1H8a1 1 0 00-1 1v16a1 1 0 001 1z" />
+                      </svg>
+                      Mobile App Development Services
                     </Link>
                     <Link
-                      to="/ui-ux-design"
-                      className="block px-4 py-2 text-gray-700 hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] transition-colors"
+                      to="/online-reputation-management-services"
+                      className="flex items-center px-4 py-2 text-gray-700 hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] transition-colors"
                     >
-                      UI/UX Design
+                      <svg className="w-4 h-4 mr-3 text-[#2d65bc]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                      </svg>
+                      Online Reputation Management Services
                     </Link>
                     <Link
-                      to="/e-commerce-solutions"
-                      className="block px-4 py-2 text-gray-700 hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] transition-colors"
+                      to="/pay-per-click-ppc-services"
+                      className="flex items-center px-4 py-2 text-gray-700 hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] transition-colors"
                     >
-                      E-Commerce Solutions
+                      <svg className="w-4 h-4 mr-3 text-[#2d65bc]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                      </svg>
+                      Pay Per Click (PPC) Services
                     </Link>
+                    <Link
+                      to="/search-engine-optimization-services"
+                      className="flex items-center px-4 py-2 text-gray-700 hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] transition-colors"
+                    >
+                      <svg className="w-4 h-4 mr-3 text-[#2d65bc]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                      </svg>
+                      Search Engine Optimization Services
+                    </Link>
+                    <Link
+                      to="/social-media-optimization-services"
+                      className="flex items-center px-4 py-2 text-gray-700 hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] transition-colors"
+                    >
+                      <svg className="w-4 h-4 mr-3 text-[#2d65bc]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2h4a1 1 0 011 1v2a1 1 0 01-1 1h-1v12a2 2 0 01-2 2H6a2 2 0 01-2-2V8H3a1 1 0 01-1-1V5a1 1 0 011-1h4z" />
+                      </svg>
+                      Social Media Optimization Services
+                    </Link>
+                    <Link
+                      to="/web-design-services"
+                      className="flex items-center px-4 py-2 text-gray-700 hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] transition-colors"
+                    >
+                      <svg className="w-4 h-4 mr-3 text-[#2d65bc]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z" />
+                      </svg>
+                      Web Design Services
+                    </Link>
+                    <Link
+                      to="/web-development-services"
+                      className="flex items-center px-4 py-2 text-gray-700 hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] transition-colors"
+                    >
+                      <svg className="w-4 h-4 mr-3 text-[#2d65bc]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                      </svg>
+                      Web Development Services
+                    </Link>
+                   
                     <div className="border-t border-gray-200 my-2"></div>
                   </div>
                 </div>
@@ -186,6 +240,9 @@ export default function Navbar() {
 
             <Link to="/technologies" className="text-gray-800 font-semibold hover:text-[#2d65bc] transition-colors text-base px-1">
               Technologies
+            </Link>
+            <Link to="/blogs" className="text-gray-800 font-semibold hover:text-[#2d65bc] transition-colors text-base px-3">
+              Blogs
             </Link>
             <Link to="/contacts" className="text-gray-800 font-semibold hover:text-[#2d65bc] transition-colors text-base px-3">
               Contacts
@@ -219,29 +276,45 @@ export default function Navbar() {
             <div className="border-b border-gray-300">
               <div className="py-2 font-semibold text-[#2d65bc]">Services</div>
               <div className="ml-4 space-y-2">
-                <Link to="/web-development" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
-                  Web Development
+              <Link to="/crm-services" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
+                  CRM Services
                 </Link>
-                <Link to="/app-development" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
-                  Mobile App Development
+                <Link to="/email-marketing-services" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
+                  Email Marketing Services
                 </Link>
-                <Link to="/seo-services" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
-                  SEO Services
+                <Link to="/local-seo-services" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
+                  Local SEO Services
                 </Link>
-                <Link to="/digital-marketing" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
-                  Digital Marketing
+                <Link to="/mobile-app-development-services" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
+                  Mobile App Development Services
                 </Link>
-                <Link to="/ui-ux-design" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
-                  UI/UX Design
+                <Link to="/online-reputation-management-services" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
+                  Online Reputation Management Services
                 </Link>
-                <Link to="/e-commerce-solutions" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
-                  E-Commerce Solutions
+                <Link to="/pay-per-click-ppc-services" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
+                  Pay Per Click (PPC) Services
                 </Link>
+                <Link to="/search-engine-optimization-services" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
+                  Search Engine Optimization Services
+                </Link>
+                <Link to="/social-media-optimization-services" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
+                  Social Media Optimization Services
+                </Link>
+                <Link to="/web-design-services" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
+                  Web Design Services
+                </Link>
+                <Link to="/web-development-services" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
+                  Web Development Services
+                </Link>
+               
               </div>
             </div>
             
             <Link to="/technologies" className="block font-semibold hover:text-[#2d65bc] py-2 border-b border-gray-300">
               Technologies
+            </Link>
+            <Link to="/blogs" className="block font-semibold hover:text-[#2d65bc] py-2 border-b border-gray-300">
+              Blogs
             </Link>
             <Link to="/contacts" className="block font-semibold hover:text-[#2d65bc] py-2">
               Contacts

@@ -1,6 +1,19 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { useTheme } from '../Context/ThemeContext';
 
 const TypingAnimation = () => {
+  const { theme } = useTheme();
+
+  // Get theme-based color
+  const getThemeColor = () => {
+    if (theme === 'light') {
+      return '#2d65bc';
+    } else if (theme === 'dark') {
+      return '#ffffff';
+    }
+    return '#2d65bc';
+  };
+
   // Add internal styles for animations
   const animationStyles = `
     @keyframes slideInLeftInternal {
@@ -32,28 +45,23 @@ const TypingAnimation = () => {
   const titles = useMemo(() => [
     {
       text: "Expert Digital Solutions & ",
-      coloredWord: "Innovation",
-      color: "#2d65bc"
+      coloredWord: "Innovation"
     },
     {
       text: "Modern Web Development & ",
-      coloredWord: "Design",
-      color: "#10b981"
+      coloredWord: "Design"
     },
     {
       text: "Advanced Mobile Apps & ",
-      coloredWord: "Solutions",
-      color: "#8b5cf6"
+      coloredWord: "Solutions"
     },
     {
       text: "Digital Marketing & ",
-      coloredWord: "Growth",
-      color: "#f59e0b"
+      coloredWord: "Growth"
     },
     {
       text: "AI-Powered Business ",
-      coloredWord: "Automation",
-      color: "#ef4444"
+      coloredWord: "Automation"
     }
   ], []);
 
@@ -126,16 +134,16 @@ const TypingAnimation = () => {
     };
   }, [displayedText, displayedColoredWord, isTypingText, isDeleting, currentTitleIndex, titles]);
 
-  const currentTitle = titles[currentTitleIndex];
+  const themeColor = getThemeColor();
 
   return (
-    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold theme-text-primary mb-6 leading-tight min-h-[180px] md:min-h-[200px] lg:min-h-[240px] animate-slide-in-left-internal">
+    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold theme-text-primary flex items-center justify-center leading-tight min-h-[180px] md:min-h-[180px] lg:min-h-[200px]   animate-slide-in-left-internal">
       <span className="inline-block">
         {displayedText}
         <span 
           style={{ 
-            color: currentTitle.color,
-            textShadow: displayedColoredWord.length > 0 ? `0 0 10px ${currentTitle.color}40, 0 0 20px ${currentTitle.color}20` : 'none'
+            color: themeColor,
+            textShadow: displayedColoredWord.length > 0 ? `0 0 10px ${themeColor}40, 0 0 20px ${themeColor}20` : 'none'
           }}
           className="font-extrabold transition-all duration-300"
         >
@@ -144,7 +152,7 @@ const TypingAnimation = () => {
         <span 
           className={`inline-block w-1 h-8 md:h-10 lg:h-12 ml-1 bg-current animate-pulse ${showCursor ? 'opacity-100' : 'opacity-0'}`}
           style={{ 
-            backgroundColor: displayedColoredWord.length > 0 ? currentTitle.color : 'currentColor',
+            backgroundColor: displayedColoredWord.length > 0 ? themeColor : 'currentColor',
             transition: 'opacity 0.1s ease-in-out'
           }}
         />

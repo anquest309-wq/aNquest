@@ -82,11 +82,9 @@ const RequestAQuote = () => {
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-block px-4 py-2 theme-bg-tertiary rounded-full mb-6">
-              <span className="text-sm font-medium theme-accent-primary">Get A Quote</span>
-            </div>
+            
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
-              Request A <span className="theme-accent-primary">Quote</span>
+              Request A <span style={{ color: '#2d65bc' }}>Quote</span>
             </h1>
             <p className="text-xl sm:text-2xl theme-text-secondary mb-8 max-w-3xl mx-auto leading-relaxed">
               Tell us about your project and we'll provide you with a detailed quote within 24 hours.
@@ -96,7 +94,7 @@ const RequestAQuote = () => {
       </section>
 
       {/* Quote Form Section */}
-      <section className="py-16 sm:py-20 lg:py-24 theme-bg-secondary relative overflow-hidden">
+      <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary relative overflow-hidden">
         {/* Background Animation Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
           <div className="absolute top-20 left-10 w-40 h-40 rounded-full opacity-10 animate-float-slow" style={{ backgroundColor: '#2d65bc' }}></div>
@@ -125,8 +123,8 @@ const RequestAQuote = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-[#2d65bc] focus:border-transparent transition-all theme-bg-primary theme-text-primary"
-                      placeholder="John Doe"
+                      className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-accent-primary focus:border-transparent transition-all theme-bg-primary theme-text-primary"
+                      placeholder="Enter your full name"
                     />
                   </div>
                   <div className="space-y-2">
@@ -140,8 +138,8 @@ const RequestAQuote = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-[#2d65bc] focus:border-transparent transition-all theme-bg-primary theme-text-primary"
-                      placeholder="john@example.com"
+                      className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-accent-primary focus:border-transparent transition-all theme-bg-primary theme-text-primary"
+                      placeholder="Enter your email address"
                     />
                   </div>
                 </div>
@@ -159,8 +157,8 @@ const RequestAQuote = () => {
                       value={formData.phone}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-[#2d65bc] focus:border-transparent transition-all theme-bg-primary theme-text-primary"
-                      placeholder="+1 (555) 123-4567"
+                      className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-accent-primary focus:border-transparent transition-all theme-bg-primary theme-text-primary"
+                      placeholder="Enter your phone number"
                     />
                   </div>
                   <div className="space-y-2">
@@ -173,8 +171,8 @@ const RequestAQuote = () => {
                       name="company"
                       value={formData.company}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-[#2d65bc] focus:border-transparent transition-all theme-bg-primary theme-text-primary"
-                      placeholder="Company Inc."
+                      className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-accent-primary focus:border-transparent transition-all theme-bg-primary theme-text-primary"
+                      placeholder="Enter your company name"
                     />
                   </div>
                 </div>
@@ -191,7 +189,7 @@ const RequestAQuote = () => {
                       value={formData.service}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-[#2d65bc] focus:border-transparent transition-all theme-bg-primary theme-text-primary"
+                      className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-accent-primary focus:border-transparent transition-all theme-bg-primary theme-text-primary"
                     >
                       <option value="">Choose a service</option>
                       {services.map((service, index) => (
@@ -209,7 +207,7 @@ const RequestAQuote = () => {
                       value={formData.budget}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-[#2d65bc] focus:border-transparent transition-all theme-bg-primary theme-text-primary"
+                      className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-accent-primary focus:border-transparent transition-all theme-bg-primary theme-text-primary"
                     >
                       <option value="">Select budget</option>
                       {budgetRanges.map((range, index) => (
@@ -230,7 +228,7 @@ const RequestAQuote = () => {
                     value={formData.timeline}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-[#2d65bc] focus:border-transparent transition-all theme-bg-primary theme-text-primary"
+                    className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-accent-primary focus:border-transparent transition-all theme-bg-primary theme-text-primary"
                   >
                     <option value="">Select timeline</option>
                     {timelines.map((timeline, index) => (
@@ -251,7 +249,7 @@ const RequestAQuote = () => {
                     onChange={handleInputChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-[#2d65bc] focus:border-transparent transition-all theme-bg-primary theme-text-primary resize-none"
+                    className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-accent-primary focus:border-transparent transition-all theme-bg-primary theme-text-primary resize-none"
                     placeholder="Please describe your project goals, requirements, and any specific features you need..."
                   />
                 </div>
@@ -260,7 +258,8 @@ const RequestAQuote = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full theme-button-primary font-bold py-4 px-8 rounded-xl transition-all duration-200 flex items-center justify-center text-lg hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full text-white font-bold py-4 px-8 rounded-xl transition-all duration-200 flex items-center justify-center text-lg hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#1a4a8a]"
+                  style={{ backgroundColor: '#2d65bc' }}
                 >
                   {isSubmitting ? (
                     <>
@@ -291,7 +290,7 @@ const RequestAQuote = () => {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 sm:mb-16">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-4">
-                Why Choose <span className="theme-accent-primary">aNquest?</span>
+                Why Choose <span style={{ color: '#2d65bc' }}>aNquest?</span>
               </h2>
               <p className="text-lg sm:text-xl theme-text-secondary max-w-3xl mx-auto">
                 We deliver exceptional results for businesses worldwide
@@ -300,7 +299,7 @@ const RequestAQuote = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="theme-card rounded-2xl theme-shadow-primary p-6">
-                <div className="w-12 h-12 theme-accent-primary rounded-xl flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: '#2d65bc' }}>
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
@@ -310,7 +309,7 @@ const RequestAQuote = () => {
               </div>
 
               <div className="theme-card rounded-2xl theme-shadow-primary p-6">
-                <div className="w-12 h-12 theme-accent-primary rounded-xl flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: '#2d65bc' }}>
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
@@ -320,7 +319,7 @@ const RequestAQuote = () => {
               </div>
 
               <div className="theme-card rounded-2xl theme-shadow-primary p-6">
-                <div className="w-12 h-12 theme-accent-primary rounded-xl flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: '#2d65bc' }}>
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
@@ -349,10 +348,10 @@ const RequestAQuote = () => {
               Have questions or want to discuss your project? Contact us directly.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="tel:+15551234567" className="bg-white theme-accent-primary font-bold py-4 px-8 rounded-xl hover:bg-gray-50 transition-all duration-200 text-lg hover:scale-105">
+              <a href="tel:+15551234567" className="bg-white font-bold py-4 px-8 rounded-xl hover:bg-gray-50 transition-all duration-200 text-lg hover:scale-105" style={{ color: '#2d65bc' }}>
                 Call Us Now
               </a>
-              <a href="mailto:info@anquest.com" className="border-2 border-white text-white font-bold py-4 px-8 rounded-xl hover:bg-white hover:theme-accent-primary transition-all duration-200 text-lg hover:scale-105">
+              <a href="mailto:info@anquest.com" className="border-2 border-white text-white font-bold py-4 px-8 rounded-xl hover:bg-white hover:text-[#2d65bc] transition-all duration-200 text-lg hover:scale-105">
                 Email Us
               </a>
             </div>

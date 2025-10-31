@@ -113,7 +113,7 @@ const SEOServices = () => {
   ];
 
   return (
-    <div className="min-h-screen theme-bg-secondary">
+    <div className="min-h-screen theme-bg-primary">
       {/* Hero Section */}
       <section className="py-20 sm:py-32 md:py-40 theme-gradient-primary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -184,7 +184,7 @@ const SEOServices = () => {
       </section>
 
       {/* SEO Process */}
-      <section className="py-16 sm:py-20 lg:py-24 theme-bg-secondary">
+      <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center theme-text-primary mb-12 sm:mb-16">
             Our SEO Process
@@ -240,7 +240,7 @@ const SEOServices = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-16 sm:py-20 lg:py-24 theme-bg-secondary">
+      <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-4 sm:mb-6">

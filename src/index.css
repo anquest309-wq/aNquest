@@ -74,4 +74,109 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: #666;
 }
+
+/* Blog Content Styling */
+.blog-content {
+  line-height: 1.8;
+}
+
+.blog-content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  color: var(--theme-color);
+  position: relative;
+}
+
+.blog-content h2:after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--theme-color);
+  border-radius: 2px;
+}
+
+.blog-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--theme-color);
+}
+
+.blog-content p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: inherit;
+}
+
+.blog-content ul,
+.blog-content ol {
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+}
+
+.blog-content li {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.blog-content strong {
+  font-weight: 600;
+  color: var(--theme-color);
+}
+
+.blog-content blockquote {
+  border-left: 4px solid var(--theme-color);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  background: rgba(var(--theme-color), 0.05);
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.blog-content code {
+  background: #f8f9fa;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 0.9rem;
+  color: var(--theme-color);
+}
+
+.blog-content pre {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border: 1px solid #e9ecef;
+}
+
+.blog-content pre code {
+  background: transparent;
+  padding: 0;
+}
+
+/* Responsive blog content */
+@media (max-width: 768px) {
+  .blog-content h2 {
+    font-size: 1.75rem;
+  }
+  
+  .blog-content h3 {
+    font-size: 1.375rem;
+  }
+  
+  .blog-content p,
+  .blog-content li {
+    font-size: 1rem;
+  }
+}
   

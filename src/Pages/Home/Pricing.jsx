@@ -30,7 +30,7 @@ const Pricing = () => {
   ];
 
   return (
-    <div className="theme-bg-secondary py-20 relative overflow-hidden">
+    <div className="theme-bg-primary py-20 relative overflow-hidden">
       {/* Background Animations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Floating Circles */}

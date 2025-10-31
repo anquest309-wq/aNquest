@@ -50,13 +50,13 @@
   --animation-border-color: rgba(45, 101, 188, 0.20);
   --animation-line-color: rgba(45, 101, 188, 0.15);
   /* Service Hover Border Variables */
-  --service-hover-border: #10b981;
+  --service-hover-border: #2d65bc;
   /* Footer Variables */
-  --footer-text-primary: #10b981;
+  --footer-text-primary: #2d65bc;
   --footer-text-secondary: #a0a0a0;
-  --footer-icon-color: #10b981;
-  --footer-icon-bg: #10b981;
-  --footer-icon-bg-hover: #059669;
+  --footer-icon-color: #2d65bc;
+  --footer-icon-bg: #2d65bc;
+  --footer-icon-bg-hover: #1a4a8a;
   --footer-bg: #1a1a1a;
 }
 
@@ -97,49 +97,8 @@
   --footer-text-secondary: #6b7280;
   --footer-icon-color: #2d65bc;
   --footer-icon-bg: #2d65bc;
-  --footer-icon-bg-hover: #2d65bc;
+  --footer-icon-bg-hover: #1a4a8a;
   --footer-bg: #1a1a1a;
-}
-
-.theme-green {
-  --bg-primary: #064e3b;
-  --bg-secondary: #065f46;
-  --bg-tertiary: #047857;
-  --text-primary: #ffffff;
-  --text-secondary: #d1fae5;
-  --text-muted: #a7f3d0;
-  --accent-primary: #10b981;
-  --accent-secondary: #059669;
-  --border-primary: #047857;
-  --border-secondary: #059669;
-  --shadow-primary: rgba(16, 185, 129, 0.3);
-  --shadow-secondary: rgba(16, 185, 129, 0.5);
-  --gradient-primary: linear-gradient(135deg, #064e3b, #065f46);
-  --gradient-secondary: linear-gradient(135deg, #065f46, #047857);
-  --gradient-accent: linear-gradient(135deg, #10b981, #059669);
-  /* Home Section Button Variables */
-  --theme-button-bg: transparent;
-  --theme-button-text: #10b981;
-  --theme-button-border: #10b981;
-  --theme-button-hover: rgba(16, 185, 129, 0.1);
-  --theme-button-secondary-bg: #10b981;
-  --theme-button-secondary-text: #ffffff;
-  --theme-button-secondary-border: #10b981;
-  /* Background Animation Variables */
-  --animation-color-primary: rgba(0, 255, 255, 0.16);
-  --animation-color-secondary: rgba(0, 206, 209, 0.13);
-  --animation-color-tertiary: rgba(64, 224, 208, 0.11);
-  --animation-border-color: rgba(0, 255, 255, 0.22);
-  --animation-line-color: rgba(0, 255, 255, 0.16);
-  /* Service Hover Border Variables */
-  --service-hover-border: #10b981;
-  /* Footer Variables */
-  --footer-text-primary: #10b981;
-  --footer-text-secondary: #a7f3d0;
-  --footer-icon-color: #10b981;
-  --footer-icon-bg: #10b981;
-  --footer-icon-bg-hover: #059669;
-  --footer-bg: #065f46;
 }
 
 /* Global theme-aware styles */
@@ -215,10 +174,6 @@ body {
   background: linear-gradient(135deg, #1a1a1a, #000000) !important;
 }
 
-.theme-green .theme-gradient-accent {
-  background: linear-gradient(135deg, #10b981, #059669) !important;
-}
-
 .theme-accent-primary {
   color: var(--accent-primary) !important;
 }
@@ -227,15 +182,14 @@ body {
   color: var(--accent-secondary);
 }
 
-/* Ensure aNquest text always shows blue accent color */
+/* Ensure aNquest text shows theme accent color */
 span.theme-accent-primary {
-  color: #2d65bc !important;
+  color: var(--accent-primary) !important;
 }
 
 /* Specific rule for About section aNquest text */
 h2 span.theme-accent-primary {
-  color: #2d65bc !important;
-  text-shadow: 0 0 2px rgba(45, 101, 188, 0.3);
+  color: var(--accent-primary) !important;
 }
 
 /* Theme-aware animation utility classes */
@@ -413,15 +367,6 @@ h2 span.theme-accent-primary {
 
 .theme-light .theme-card:hover {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
-}
-
-/* Green mode specific adjustments */
-.theme-green .theme-card {
-  box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.3), 0 2px 4px -1px rgba(16, 185, 129, 0.2);
-}
-
-.theme-green .theme-card:hover {
-  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.4), 0 4px 6px -2px rgba(16, 185, 129, 0.3);
 }
 
 /* Background Shape Animations */

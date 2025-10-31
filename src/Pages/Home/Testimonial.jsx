@@ -29,7 +29,7 @@ const testimonials = [
 
 const Testimonial = () => {
   return (
-    <section className="py-20 theme-bg-primary relative overflow-hidden">
+    <section className="py-20 theme-bg-primary relative overflow-hidden" style={{ '--accent-blue': '#2d65bc' }}>
       {/* Background Animations */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Floating Circles */}
@@ -67,7 +67,7 @@ const Testimonial = () => {
       
       <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
         <h2 className="text-5xl font-extrabold theme-text-primary mb-12">
-          Client <span className="theme-accent-primary">Testimonials</span>
+          Client <span style={{ color: '#2d65bc' }}>Testimonials</span>
         </h2>
 
         {/* ===== Cards Container ===== */}
@@ -98,7 +98,9 @@ const Testimonial = () => {
                       <path d="M12 2C6.486 2 2 6.486 2 12c0 4.992 3.657 9.128 8.438 9.879-.116-.839-.222-2.126.046-3.047.243-.847 1.57-5.392 1.57-5.392s-.4-.8-.4-1.983c0-1.858 1.078-3.248 2.421-3.248 1.142 0 1.692.857 1.692 1.883 0 1.147-.729 2.86-1.104 4.449-.315 1.333.666 2.42 1.975 2.42 2.371 0 3.972-3.037 3.972-6.627C20.64 6.597 16.914 2 12 2z" />
                     </svg>
                   </div>
-                  <h3 className="text-lg font-semibold theme-text-primary group-hover:theme-accent-primary transition-colors duration-300">
+                  <h3 
+                    className="text-lg font-semibold theme-text-primary transition-colors duration-300 testimonial-company"
+                  >
                     {item.company}
                   </h3>
                 </div>
@@ -110,7 +112,7 @@ const Testimonial = () => {
                 {/* User Info */}
                 <div className="flex items-center justify-between">
                   <div className="group-hover:translate-x-2 transition-transform duration-300">
-                    <h4 className="text-lg font-semibold theme-text-primary group-hover:theme-accent-primary transition-colors duration-300">
+                    <h4 className="text-lg font-semibold theme-text-primary transition-colors duration-300 testimonial-name">
                       {item.name}
                     </h4>
                     <p className="theme-text-secondary text-sm group-hover:theme-text-primary transition-colors duration-300">{item.position}</p>
@@ -118,7 +120,8 @@ const Testimonial = () => {
                   <img
                     src={item.img}
                     alt={item.name}
-                    className="w-12 h-12 rounded-full object-cover border-2 theme-accent-primary group-hover:theme-accent-secondary group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
+                    className="w-12 h-12 rounded-full object-cover border-2 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
+                    style={{ borderColor: '#2d65bc' }}
                   />
                 </div>
               </div>
@@ -137,6 +140,20 @@ const Testimonial = () => {
       </div>
       
       {/* CSS Animations */}
+      <style>{`
+        .testimonial-company {
+          color: inherit;
+        }
+        .group:hover .testimonial-company {
+          color: var(--accent-blue, #2d65bc);
+        }
+        .testimonial-name {
+          color: inherit;
+        }
+        .group:hover .testimonial-name {
+          color: var(--accent-blue, #2d65bc);
+        }
+        `}</style>
       <style>{`
         @keyframes float {
           0%, 100% {

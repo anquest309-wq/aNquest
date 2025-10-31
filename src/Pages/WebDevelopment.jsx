@@ -84,7 +84,7 @@ const WebDevelopment = () => {
   ];
 
   return (
-    <div className="min-h-screen theme-bg-secondary">
+    <div className="min-h-screen theme-bg-primary">
       {/* Hero Section */}
       <section className="py-20 sm:py-32 md:py-40 theme-gradient-primary relative overflow-hidden">
         {/* Background Animation Elements */}
@@ -278,7 +278,7 @@ const WebDevelopment = () => {
               </a>
               <a
                 href="/portfolio"
-                className="border-2 border-white text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-white hover:text-[#2d65bc] hover:theme-accent-primary transition-all duration-300 text-base sm:text-lg hover:scale-105"
+                className="border-2 border-white text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-white hover:text-accent-primary hover:theme-accent-primary transition-all duration-300 text-base sm:text-lg hover:scale-105"
               >
                 View Our Work
               </a>

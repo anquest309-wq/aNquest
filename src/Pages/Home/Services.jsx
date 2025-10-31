@@ -7,15 +7,23 @@ export default function Services() {
   // Generate statistics section background style based on theme (similar to navbar)
   const getStatsStyle = () => {
     if (theme === 'light') {
-      return 'bg-gradient-to-r from-white to-[#2d65bc]';
+      return { background: 'linear-gradient(to right, white 0%, #f0f0f0 50%, #2d65bc 100%)' };
     } else if (theme === 'dark') {
-      return 'bg-gradient-to-r from-white to-[#1a1a1a]';
-    } else if (theme === 'green') {
-      return 'bg-gradient-to-r from-white to-[#064e3b]';
+      return { background: 'linear-gradient(to right, white 0%, #f0f0f0 50%, #1a1a1a 100%)' };
     }
-    return 'bg-gradient-to-r from-white to-[#2d65bc]';
+    return { background: 'linear-gradient(to right, white 0%, #f0f0f0 50%, #2d65bc 100%)' };
   };
-  const [_hoveredService, setHoveredService] = useState(null)
+
+  // Get hover border color based on theme
+  const getHoverBorderColor = () => {
+    if (theme === 'light') {
+      return '#2d65bc';
+    } else if (theme === 'dark') {
+      return '#ffffff';
+    }
+    return '#2d65bc';
+  };
+  const [hoveredService, setHoveredService] = useState(null)
   const [counts, setCounts] = useState({
     clients: 0,
     satisfaction: 0,
@@ -225,10 +233,10 @@ export default function Services() {
               <div className="mb-6 lg:mb-0">
                 <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold theme-text-primary leading-tight">
                   Expert Development & 
-                  <span className="theme-accent-primary"> SEO Solutions</span>
+                  <span style={{ color: '#2d65bc' }}> SEO Solutions</span>
                 </h2>
               </div>
-              <button className="theme-bg-primary theme-text-primary font-bold py-4 px-8 rounded-xl hover:theme-accent-primary transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-[var(--accent-primary)]/25 flex items-center gap-2 self-start lg:self-center">
+              <button className="theme-bg-primary theme-text-primary font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-[#2d65bc]/25 flex items-center gap-2 self-start lg:self-center" style={{ '--hover-color': '#2d65bc' }} onMouseEnter={(e) => e.currentTarget.style.color = '#2d65bc'} onMouseLeave={(e) => e.currentTarget.style.color = ''}>
                 View All Services
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -241,20 +249,25 @@ export default function Services() {
               {services.map((service, index) => (
                  <div
                    key={service.id}
-                   className="group relative theme-bg-tertiary backdrop-blur-sm rounded-2xl p-6 lg:p-8 theme-border-primary hover:theme-accent-primary transition-all duration-500 transform hover:scale-[1.02] hover:theme-bg-secondary"
+                   className="group relative theme-bg-tertiary backdrop-blur-sm rounded-2xl p-6 lg:p-8 transition-all duration-500 transform hover:scale-[1.02] hover:theme-bg-secondary"
                    onMouseEnter={() => setHoveredService(service.id)}
                    onMouseLeave={() => setHoveredService(null)}
                    style={{
-                     animationDelay: `${index * 0.1}s`
+                     animationDelay: `${index * 0.1}s`,
+                     border: hoveredService === service.id ? `2px solid ${getHoverBorderColor()}` : '2px solid transparent',
+                     transition: 'border-color 0.3s ease',
                    }}
                  >
                   <div className="flex flex-col lg:flex-row lg:items-center gap-6">
                     {/* Number and Title */}
                     <div className="flex items-center gap-4 lg:w-1/3">
-                      <div className="w-12 h-12 theme-accent-primary theme-text-primary rounded-full flex items-center justify-center font-bold text-lg">
+                      <div className="w-12 h-12 theme-text-primary rounded-full flex items-center justify-center font-bold text-lg" style={{ backgroundColor: '#2d65bc' }}>
                         {service.number}
                       </div>
-                      <h3 className="text-xl lg:text-2xl font-bold theme-text-primary group-hover:theme-accent-primary transition-colors duration-300">
+                      <h3 
+                        className="text-xl lg:text-2xl font-bold theme-text-primary transition-colors duration-300"
+                        style={{ color: hoveredService === service.id ? '#2d65bc' : '' }}
+                      >
                         {service.title}
                       </h3>
                     </div>
@@ -268,7 +281,7 @@ export default function Services() {
 
                     {/* Action Button */}
                     <div className="lg:w-1/6 flex justify-end">
-                      <button className="w-12 h-12 border-2 theme-accent-primary theme-text-primary rounded-full flex items-center justify-center hover:theme-bg-primary hover:theme-accent-primary transition-all duration-300 transform hover:scale-110 hover:rotate-45">
+                      <button className="w-12 h-12 border-2 theme-text-primary rounded-full flex items-center justify-center hover:theme-bg-primary transition-all duration-300 transform hover:scale-110 hover:rotate-45" style={{ borderColor: '#2d65bc' }} onMouseEnter={(e) => { e.currentTarget.style.color = '#2d65bc'; }} onMouseLeave={(e) => { e.currentTarget.style.color = ''; }}>
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>
@@ -277,7 +290,10 @@ export default function Services() {
                   </div>
 
                   {/* Hover Effect Line */}
-                  <div className="absolute bottom-0 left-0 w-0 h-1 theme-service-hover-border transition-all duration-500 group-hover:w-full rounded-full"></div>
+                  <div 
+                    className="absolute bottom-0 left-0 w-0 h-1 transition-all duration-500 group-hover:w-full rounded-full"
+                    style={{ backgroundColor: getHoverBorderColor() }}
+                  ></div>
                 </div>
               ))}
             </div>
@@ -286,7 +302,8 @@ export default function Services() {
           {/* Statistics Section */}
           <div 
             ref={statsRef}
-            className={`${getStatsStyle()} backdrop-blur-sm rounded-3xl p-8 lg:p-12 shadow-2xl relative overflow-hidden`}
+            className="backdrop-blur-sm rounded-3xl p-8 lg:p-12 shadow-2xl relative overflow-hidden"
+            style={getStatsStyle()}
           >
             
             {/* Background Pattern */}
@@ -302,7 +319,9 @@ export default function Services() {
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
                 {stats.map((stat, index) => (
                   <div key={index} className="text-center group">
-                    <div className="text-4xl lg:text-5xl font-bold text-gray-800 mb-2 animate-count-up group-hover:text-[#2d65bc] transition-colors duration-300">
+                    <div 
+                      className="text-4xl lg:text-5xl font-bold text-gray-800 mb-2 animate-count-up transition-colors duration-300"
+                    >
                       {index === 0 && counts.clients}
                       {index === 1 && counts.satisfaction}
                       {index === 2 && counts.employees}

@@ -1,6 +1,58 @@
 import React from 'react';
+import { useTheme } from '../Context/ThemeContext';
 
 const About = () => {
+  const { theme } = useTheme();
+
+  // Get hover text color based on theme
+  const getHoverTextColor = () => {
+    if (theme === 'light') {
+      return '#2d65bc';
+    } else if (theme === 'dark') {
+      return '#000000';
+    }
+    return '#2d65bc';
+  };
+
+  // Get stats number color based on theme
+  const getStatsColor = () => {
+    if (theme === 'light') {
+      return '#2d65bc';
+    } else if (theme === 'dark') {
+      return '#ffffff';
+    }
+    return '#2d65bc';
+  };
+
+  // Get CTA background based on theme
+  const getCTABackground = () => {
+    if (theme === 'light') {
+      return 'linear-gradient(135deg, #2d65bc, #1e4a8e)';
+    } else if (theme === 'dark') {
+      return 'linear-gradient(135deg, #1a1a1a, #000000)';
+    }
+    return 'linear-gradient(135deg, #2d65bc, #1e4a8e)';
+  };
+
+  // Get CTA text color based on theme
+  const getCTATextColor = () => {
+    if (theme === 'light') {
+      return 'text-white';
+    } else if (theme === 'dark') {
+      return 'text-white';
+    }
+    return 'text-white';
+  };
+
+  // Get CTA border color based on theme
+  const getCTABorderColor = () => {
+    if (theme === 'light') {
+      return 'border-white';
+    } else if (theme === 'dark') {
+      return 'border-white';
+    }
+    return 'border-white';
+  };
   const stats = [
     { number: "500+", label: "Projects Completed" },
     { number: "300+", label: "Happy Clients" },
@@ -60,11 +112,9 @@ const About = () => {
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-block px-4 py-2 theme-bg-tertiary rounded-full mb-6">
-              <span className="text-sm font-medium theme-accent-primary">About aNquest</span>
-            </div>
+            
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
-              Building Digital <span className="theme-accent-primary">Excellence</span>
+              Building Digital <span style={{ color: '#2d65bc' }}>Excellence</span>
             </h1>
             <p className="text-xl sm:text-2xl theme-text-secondary mb-8 max-w-3xl mx-auto leading-relaxed">
               We are a forward-thinking digital solutions company dedicated to transforming your ideas into reality.
@@ -74,12 +124,12 @@ const About = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 sm:py-20 lg:py-24 theme-bg-secondary relative overflow-hidden">
+      <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary relative overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-4xl sm:text-5xl lg:text-6xl font-bold theme-accent-primary mb-2">
+                <div className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-2" style={{ color: getStatsColor() }}>
                   {stat.number}
                 </div>
                 <div className="text-lg theme-text-secondary">
@@ -98,7 +148,7 @@ const About = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
               <div>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-6">
-                  Who We <span className="theme-accent-primary">Are</span>
+                  Who We <span style={{ color: '#2d65bc' }}>Are</span>
                 </h2>
                 <p className="text-lg theme-text-secondary mb-4 leading-relaxed">
                   At aNquest, we specialize in creating cutting-edge digital solutions across web development, mobile applications, digital marketing, and business automation.
@@ -118,7 +168,7 @@ const About = () => {
               </div>
               <div className="order-1 lg:order-2">
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-6">
-                  Our <span className="theme-accent-primary">Mission</span>
+                  Our <span style={{ color: '#2d65bc' }}>Mission</span>
                 </h2>
                 <p className="text-lg theme-text-secondary mb-4 leading-relaxed">
                   Our mission is to empower businesses with innovative digital solutions that drive growth and success.
@@ -133,7 +183,7 @@ const About = () => {
       </section>
 
       {/* Values Section */}
-      <section className="py-16 sm:py-20 lg:py-24 theme-bg-secondary relative overflow-hidden">
+      <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-40 h-40 rounded-full opacity-10 animate-float-slow" style={{ backgroundColor: '#2d65bc' }}></div>
           <div className="absolute bottom-40 left-20 w-52 h-52 rounded-full opacity-8 animate-float-fast" style={{ backgroundColor: '#2d65bc' }}></div>
@@ -142,7 +192,7 @@ const About = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-4">
-              Our <span className="theme-accent-primary">Values</span>
+              Our <span style={{ color: '#2d65bc' }}>Values</span>
             </h2>
             <p className="text-lg sm:text-xl theme-text-secondary max-w-3xl mx-auto">
               The principles that guide everything we do
@@ -152,7 +202,7 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
             {values.map((value, index) => (
               <div key={index} className="theme-card rounded-2xl theme-shadow-primary p-6 text-center hover:scale-105 transition-transform">
-                <div className="w-16 h-16 theme-accent-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: '#2d65bc' }}>
                   <div className="text-white">
                     {value.icon}
                   </div>
@@ -170,7 +220,7 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 sm:py-20 lg:py-24 theme-gradient-accent relative overflow-hidden">
+      <section className="py-5 sm:py-4 lg:py-5 relative overflow-hidden" style={{ background: getCTABackground() }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
           <div className="absolute top-20 left-10 w-48 h-48 bg-white/15 rounded-full animate-float-slow"></div>
           <div className="absolute bottom-40 left-20 w-56 h-56 bg-white/12 rounded-full animate-float-fast"></div>
@@ -178,23 +228,34 @@ const About = () => {
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-              Ready to Work <span className="text-white/90">Together?</span>
+            <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 ${getCTATextColor()}`}>
+              Ready to Work <span className="opacity-90">Together?</span>
             </h2>
-            <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            <p className={`text-lg sm:text-xl mb-8 max-w-2xl mx-auto ${getCTATextColor()} opacity-90`}>
               Let's discuss how we can bring your vision to life with our innovative solutions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/contacts" className="bg-white theme-accent-primary font-bold py-4 px-8 rounded-xl hover:bg-gray-50 transition-all duration-200 text-lg hover:scale-105">
+              <a href="/contacts" className="bg-white text-gray-800 font-bold py-4 px-8 rounded-xl hover:bg-gray-100 transition-all duration-200 text-lg hover:scale-105">
                 Get In Touch
               </a>
-              <a href="/#services" className="border-2 border-white text-white font-bold py-4 px-8 rounded-xl hover:bg-white hover:theme-accent-primary transition-all duration-200 text-lg hover:scale-105">
+              <a 
+                href="/#services" 
+                className={`border-2 ${getCTABorderColor()} ${getCTATextColor()} font-bold py-4 px-8 rounded-xl hover:bg-white hover:text-gray-800 transition-all duration-200 text-lg hover:scale-105 services-hover-text`}
+                style={{ ['--hover-color']: getHoverTextColor() }}
+              >
                 Our Services
               </a>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Custom styles for hover effect */}
+      <style>{`
+        .services-hover-text:hover {
+          color: var(--hover-color) !important;
+        }
+      `}</style>
     </div>
   );
 };

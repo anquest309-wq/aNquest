@@ -27,16 +27,6 @@ const ThemeSwitcher = () => {
       ),
       
     },
-    {
-      id: 'green',
-      name: 'Green',
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-        </svg>
-      ),
-      
-    }
   ];
 
   const currentTheme = themes.find(t => t.id === theme);
@@ -91,10 +81,20 @@ const ThemeSwitcher = () => {
                   theme === themeOption.id ? 'ring-2 ring-offset-2' : ''
                 }`}
                 style={{
-                  backgroundColor: theme === themeOption.id ? 'var(--accent-primary)' : 'transparent',
+                  backgroundColor: theme === themeOption.id ? '#2d65bc' : 'transparent',
                   color: theme === themeOption.id ? 'white' : 'var(--text-primary)',
-                  ringColor: 'var(--accent-primary)',
+                  ringColor: '#2d65bc',
                   ringOffsetColor: 'var(--bg-primary)'
+                }}
+                onMouseEnter={(e) => {
+                  if (theme !== themeOption.id) {
+                    e.currentTarget.style.backgroundColor = 'rgba(45, 101, 188, 0.1)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (theme !== themeOption.id) {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                  }
                 }}
               >
                 <span className="flex items-center justify-center">{themeOption.icon}</span>
@@ -124,12 +124,21 @@ const ThemeSwitcher = () => {
                     theme === themeOption.id ? 'ring-2 ring-offset-1' : ''
                   }`}
                   style={{
-                    backgroundColor: themeOption.id === 'dark' ? '#1a1a1a' : 
-                                   themeOption.id === 'light' ? '#ffffff' : '#064e3b',
+                    backgroundColor: themeOption.id === 'dark' ? '#1a1a1a' : '#ffffff',
                     color: themeOption.id === 'light' ? '#1a1a1a' : '#ffffff',
                     border: themeOption.id === 'light' ? '1px solid #e5e7eb' : 'none',
-                    ringColor: 'var(--accent-primary)',
+                    ringColor: '#2d65bc',
                     ringOffsetColor: 'var(--bg-primary)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.border = '2px solid #2d65bc';
+                  }}
+                  onMouseLeave={(e) => {
+                    if (themeOption.id === 'light') {
+                      e.currentTarget.style.border = '1px solid #e5e7eb';
+                    } else {
+                      e.currentTarget.style.border = 'none';
+                    }
                   }}
                 >
                   {themeOption.icon}

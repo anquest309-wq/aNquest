@@ -111,7 +111,7 @@ const ECommerceSolutions = () => {
   ];
 
   return (
-    <div className="min-h-screen theme-bg-secondary">
+    <div className="min-h-screen theme-bg-primary">
       {/* Hero Section */}
       <section className="theme-gradient-primary py-20 md:py-32 relative overflow-hidden">
         {/* Background Animation Elements */}
@@ -233,7 +233,7 @@ const ECommerceSolutions = () => {
       </section>
 
       {/* Platforms Section */}
-      <section className="py-16 sm:py-20 lg:py-24 theme-bg-secondary">
+      <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-4 sm:mb-6">
@@ -316,7 +316,7 @@ const ECommerceSolutions = () => {
       </section>
 
       {/* Integrations Section */}
-      <section className="py-16 sm:py-20 lg:py-24 theme-bg-secondary">
+      <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-4 sm:mb-6">

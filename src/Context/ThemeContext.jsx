@@ -22,7 +22,7 @@ export const ThemeProvider = ({ children }) => {
     const root = document.documentElement;
     
     // Remove all theme classes
-    root.classList.remove('theme-dark', 'theme-light', 'theme-green');
+    root.classList.remove('theme-dark', 'theme-light');
     
     // Add new theme class
     root.classList.add(`theme-${newTheme}`);
@@ -62,23 +62,6 @@ export const ThemeProvider = ({ children }) => {
         '--gradient-primary': 'linear-gradient(135deg, #ffffff, #f8fafc)',
         '--gradient-secondary': 'linear-gradient(135deg, #f8fafc, #f1f5f9)',
         '--gradient-accent': 'linear-gradient(135deg, #3b82f6, #2563eb)',
-      },
-      green: {
-        '--bg-primary': '#064e3b',
-        '--bg-secondary': '#065f46',
-        '--bg-tertiary': '#047857',
-        '--text-primary': '#ffffff',
-        '--text-secondary': '#d1fae5',
-        '--text-muted': '#a7f3d0',
-        '--accent-primary': '#10b981',
-        '--accent-secondary': '#059669',
-        '--border-primary': '#047857',
-        '--border-secondary': '#059669',
-        '--shadow-primary': 'rgba(16, 185, 129, 0.3)',
-        '--shadow-secondary': 'rgba(16, 185, 129, 0.5)',
-        '--gradient-primary': 'linear-gradient(135deg, #064e3b, #065f46)',
-        '--gradient-secondary': 'linear-gradient(135deg, #065f46, #047857)',
-        '--gradient-accent': 'linear-gradient(135deg, #10b981, #059669)',
       }
     };
 
