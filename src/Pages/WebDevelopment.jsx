@@ -1,7 +1,20 @@
 import React from 'react';
 import { Code, Server, Layers, ShoppingCart, FileText, Smartphone } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { useTheme } from '../Context/ThemeContext';
+import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleSquareBgAnimation';
 
 const WebDevelopment = () => {
+  const { theme } = useTheme();
+
+  const getThemeColor = () => {
+    if (theme === 'light') {
+      return '#2d65bc';
+    } else if (theme === 'dark') {
+      return '#ffffff';
+    }
+    return '#2d65bc';
+  };
   const services = [
     {
       title: "Frontend Development",
@@ -84,79 +97,38 @@ const WebDevelopment = () => {
   ];
 
   return (
-    <div className="min-h-screen theme-bg-primary">
+    <div className="min-h-screen theme-bg-primary pt-20">
       {/* Hero Section */}
-      <section className="py-20 sm:py-32 md:py-40 theme-gradient-primary relative overflow-hidden">
-        {/* Background Animation Elements */}
+      <section className="relative overflow-hidden sm:py-8">
+        <CircleSquareBgAnimation/>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {/* Particle System */}
-          <div className="absolute inset-0">
-            <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400 rounded-full opacity-40 animate-particle-1"></div>
-            <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-blue-500 rounded-full opacity-30 animate-particle-2"></div>
-            <div className="absolute bottom-1/3 left-1/3 w-2 h-2 bg-blue-500 rounded-full opacity-35 animate-particle-1"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-1 h-1 bg-blue-400 rounded-full opacity-40 animate-particle-2"></div>
-          </div>
-
-          {/* BIG Circles */}
-          <div className="absolute top-20 left-10 w-32 h-32 rounded-full opacity-15 animate-float-slow" style={{ backgroundColor: '#2d65bc' }}></div>
-          <div className="absolute top-40 right-20 w-28 h-28 rounded-full opacity-10 animate-float-medium" style={{ backgroundColor: '#2d65bc' }}></div>
-          <div className="absolute bottom-40 left-20 w-36 h-36 rounded-full opacity-12 animate-float-fast" style={{ backgroundColor: '#2d65bc' }}></div>
-          <div className="absolute bottom-20 right-10 w-24 h-24 rounded-full opacity-15 animate-float-slow" style={{ backgroundColor: '#2d65bc' }}></div>
-          
-          {/* BIG Squares */}
-          <div className="absolute top-60 left-1/4 w-16 h-16 opacity-15 animate-rotate-slow" style={{ backgroundColor: '#2d65bc', transform: 'rotate(45deg)' }}></div>
-          <div className="absolute top-80 right-1/3 w-14 h-14 opacity-12 animate-rotate-medium" style={{ backgroundColor: '#2d65bc', transform: 'rotate(45deg)' }}></div>
-          <div className="absolute bottom-60 left-1/3 w-20 h-20 opacity-10 animate-rotate-fast" style={{ backgroundColor: '#2d65bc', transform: 'rotate(45deg)' }}></div>
-          
-          {/* BIG Triangles */}
-          <div className="absolute top-32 right-1/4 w-0 h-0 opacity-15 animate-bounce-slow" style={{ 
-            borderLeft: '30px solid transparent',
-            borderRight: '30px solid transparent',
-            borderBottom: '52px solid #2d65bc'
-          }}></div>
-          <div className="absolute bottom-32 left-1/4 w-0 h-0 opacity-12 animate-bounce-medium" style={{ 
-            borderLeft: '25px solid transparent',
-            borderRight: '25px solid transparent',
-            borderBottom: '40px solid #2d65bc'
-          }}></div>
-          
-          {/* BIG Organic Blobs */}
-          <div className="absolute top-1/4 left-1/2 w-48 h-48 opacity-8 animate-blob-slow" style={{ 
-            background: 'linear-gradient(135deg, #2d65bc, #2d65bc)',
-            borderRadius: '60% 40% 70% 30% / 40% 60% 30% 70%'
-          }}></div>
-          <div className="absolute bottom-1/4 right-1/2 w-56 h-56 opacity-10 animate-blob-medium" style={{ 
-            background: 'linear-gradient(135deg, #2d65bc, #2d65bc)',
-            borderRadius: '30% 70% 50% 50% / 60% 40% 60% 40%'
-          }}></div>
-          
-          {/* BIG Gradient Orbs */}
-          <div className="absolute top-1/2 left-1/4 w-40 h-40 rounded-full opacity-15 animate-pulse-slow" style={{ 
-            background: 'radial-gradient(circle, #2d65bc, transparent)'
-          }}></div>
-          <div className="absolute bottom-1/3 right-1/4 w-48 h-48 rounded-full opacity-12 animate-pulse-medium" style={{ 
-            background: 'radial-gradient(circle, #2d65bc, transparent)'
-          }}></div>
-          
-          {/* Grid Pattern */}
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute top-0 left-0 w-full h-full" style={{
-              backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(45, 101, 188, 0.3) 1px, transparent 0)',
-              backgroundSize: '20px 20px'
-            }}></div>
-          </div>
-          
-          {/* Animated Lines */}
+          <div className="absolute top-20 left-10 w-48 h-48 rounded-full opacity-10 animate-float-slow" style={{ backgroundColor: getThemeColor() }}></div>
+          <div className="absolute bottom-40 left-20 w-52 h-52 rounded-full opacity-8 animate-float-fast" style={{ backgroundColor: getThemeColor() }}></div>
         </div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div className="container mx-auto px-4 sm:px-6 pt-32 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold theme-text-primary mb-6 leading-tight">
-              Web <span className="theme-accent-primary">Development</span> Services
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
+              Web <span style={{ color: '#2d65bc' }}>Development</span> Services
             </h1>
-            <p className="text-base sm:text-lg md:text-xl theme-text-secondary mb-8 leading-relaxed px-4">
+            <p className="text-xl sm:text-2xl theme-text-secondary mb-4 max-w-3xl mx-auto leading-relaxed">
               We create stunning, responsive websites and web applications using modern technologies. 
               From simple landing pages to complex web platforms, we deliver exceptional digital experiences.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+              <Link
+                to="/request-a-quote"
+                className="bg-[#2d65bc] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#1a4a8a] transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
+              >
+                Get Started
+              </Link>
+              <Link
+                to="/contacts"
+                className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white transition-all duration-300 text-base sm:text-lg hover:scale-105"
+              >
+                Contact Us
+              </Link>
+            </div>
           </div>
         </div>
       </section>

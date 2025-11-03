@@ -1,4 +1,5 @@
 import React from "react";
+import SectionsBgAnimation from "../../Components/Bg-animation-template/SectionsBgAnimation";
 
 const testimonials = [
   {
@@ -29,41 +30,9 @@ const testimonials = [
 
 const Testimonial = () => {
   return (
-    <section className="py-20 theme-bg-primary relative overflow-hidden" style={{ '--accent-blue': '#2d65bc' }}>
+    <section className="py-20  theme-bg-primary relative overflow-hidden" style={{ '--accent-blue': '#2d65bc' }}>
       {/* Background Animations */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Floating Circles */}
-        <div className="absolute top-10 left-10 w-20 h-20 theme-animation-primary rounded-full animate-float"></div>
-        <div className="absolute top-32 right-20 w-16 h-16 theme-animation-secondary rounded-full animate-float-delayed"></div>
-        <div className="absolute bottom-20 left-1/4 w-24 h-24 theme-animation-tertiary rounded-full animate-float-slow"></div>
-        <div className="absolute bottom-32 right-1/3 w-18 h-18 theme-animation-primary rounded-full animate-float-delayed-slow"></div>
-        
-        {/* Floating Triangles */}
-        <div className="absolute top-1/4 left-1/3 w-0 h-0 border-l-8 border-r-8 border-b-12 border-l-transparent border-r-transparent theme-animation-border animate-triangle-float"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-0 h-0 border-l-10 border-r-10 border-b-16 border-l-transparent border-r-transparent theme-animation-line animate-triangle-float-delayed"></div>
-        
-        {/* Floating Squares */}
-        <div className="absolute top-1/2 left-16 w-12 h-12 theme-animation-primary rotate-45 animate-square-float"></div>
-        <div className="absolute bottom-1/3 right-16 w-14 h-14 theme-animation-secondary rotate-45 animate-square-float-delayed"></div>
-        
-        {/* Floating Diamonds */}
-        <div className="absolute top-20 right-1/2 w-16 h-16 theme-animation-tertiary transform rotate-45 animate-diamond-float"></div>
-        <div className="absolute bottom-20 left-1/2 w-20 h-20 theme-animation-primary transform rotate-45 animate-diamond-float-delayed"></div>
-        
-        {/* Gradient Orbs */}
-        <div className="absolute top-1/3 right-10 w-32 h-32 theme-animation-primary rounded-full blur-xl animate-orb-float"></div>
-        <div className="absolute bottom-1/3 left-10 w-28 h-28 theme-animation-secondary rounded-full blur-xl animate-orb-float-delayed"></div>
-        
-        {/* Floating Lines */}
-        <div className="absolute top-1/2 left-0 w-40 h-1 theme-animation-line animate-line-move"></div>
-        <div className="absolute bottom-1/3 right-0 w-32 h-1 theme-animation-border animate-line-move-delayed"></div>
-        
-        {/* Particle Effects */}
-        <div className="absolute top-16 left-1/2 w-2 h-2 theme-animation-primary rounded-full animate-particle-float"></div>
-        <div className="absolute top-24 right-1/3 w-3 h-3 theme-animation-secondary rounded-full animate-particle-float-delayed"></div>
-        <div className="absolute bottom-16 left-1/3 w-2 h-2 theme-animation-tertiary rounded-full animate-particle-float-slow"></div>
-        <div className="absolute bottom-24 right-1/2 w-3 h-3 theme-animation-primary rounded-full animate-particle-float-delayed-slow"></div>
-      </div>
+      <SectionsBgAnimation />
       
       <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
         <h2 className="text-5xl font-extrabold theme-text-primary mb-12">
@@ -82,8 +51,8 @@ const Testimonial = () => {
               <div className="absolute top-0 left-0 w-full h-2 theme-gradient-accent rounded-t-3xl group-hover:h-3 transition-all duration-300"></div>
               
               {/* Floating Background Elements */}
-              <div className="absolute top-4 right-4 w-16 h-16 theme-animation-primary rounded-full blur-xl opacity-0 group-hover:opacity-100 group-hover:scale-150 transition-all duration-700"></div>
-              <div className="absolute bottom-4 left-4 w-12 h-12 theme-animation-secondary rounded-full blur-xl opacity-0 group-hover:opacity-100 group-hover:scale-150 transition-all duration-700"></div>
+              <div className="absolute top-4 right-4 w-16 h-16 rounded-full blur-xl opacity-0 group-hover:opacity-100 group-hover:scale-150 transition-all duration-700" style={{ backgroundColor: '#ffffff' }}></div>
+              <div className="absolute bottom-4 left-4 w-12 h-12 rounded-full blur-xl opacity-0 group-hover:opacity-100 group-hover:scale-150 transition-all duration-700" style={{ backgroundColor: '#ffffff' }}></div>
 
               {/* Card Content */}
               <div className="p-8 mt-4 relative z-10">

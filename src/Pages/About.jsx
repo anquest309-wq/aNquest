@@ -1,6 +1,14 @@
 import React from 'react';
 import { useTheme } from '../Context/ThemeContext';
-
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, EffectFade } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/effect-fade';
+// import { MinimalBgAnimation } from '../Components/Bg-animation-template';
+import DenseBgAnimation from '../Components/Bg-animation-template/DenseBgAnimation';import LargeShapesBgAnimation from '../Components/Bg-animation-template/LargeShapesBgAnimation';
+import CornerStructureBgAnimation from '../Components/Bg-animation-template/CornerStructureBgAnimation';
+import GridStructureBgAnimation from '../Components/Bg-animation-template/GridStructureBgAnimation';
+import SectionsBgAnimation from '../Components/Bg-animation-template/SectionsBgAnimation';
 const About = () => {
   const { theme } = useTheme();
 
@@ -55,9 +63,17 @@ const About = () => {
   };
   const stats = [
     { number: "500+", label: "Projects Completed" },
-    { number: "300+", label: "Happy Clients" },
-    { number: "15+", label: "Years Experience" },
-    { number: "50+", label: "Team Members" }
+    { number: "3500+", label: "Happy Clients" },
+    { number: "20+", label: "Years Experience" },
+    { number: "100+", label: "Team Members" }
+  ];
+
+  // Background images for hero carousel
+  const heroImages = [
+    'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80',
+    'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=80',
+    'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1920&q=80',
+    'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80'
   ];
 
   const values = [
@@ -102,17 +118,44 @@ const About = () => {
   return (
     <div className="min-h-screen theme-bg-primary">
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-20 sm:py-24 lg:py-32">
-        {/* Background Animation */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <section className="relative overflow-hidden h-screen min-h-[600px] flex items-center justify-center">
+        {/* Background Image Carousel */}
+        <div className="absolute inset-0 z-0">
+          <Swiper
+            modules={[Autoplay, EffectFade]}
+            effect="fade"
+            autoplay={{
+              delay: 4000,
+              disableOnInteraction: false,
+            }}
+            loop={true}
+            speed={1500}
+            className="w-full h-full"
+          >
+            {heroImages.map((image, index) => (
+              <SwiperSlide key={index} className="w-full h-full">
+                <div 
+                  className="w-full h-full bg-cover bg-center bg-no-repeat"
+                  style={{ backgroundImage: `url(${image})` }}
+                >
+                  {/* Dark overlay for better text readability */}
+                  <div className="absolute inset-0 bg-black/40"></div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        {/* Background Animation Shapes */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-[1]">
           <div className="absolute top-20 left-10 w-48 h-48 rounded-full opacity-10 animate-float-slow" style={{ backgroundColor: '#2d65bc' }}></div>
           <div className="absolute top-40 right-20 w-40 h-40 rounded-full opacity-8 animate-float-medium" style={{ backgroundColor: '#2d65bc' }}></div>
           <div className="absolute bottom-40 left-20 w-52 h-52 rounded-full opacity-10 animate-float-fast" style={{ backgroundColor: '#2d65bc' }}></div>
         </div>
         
+        {/* Content - Centered */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
               Building Digital <span style={{ color: '#2d65bc' }}>Excellence</span>
             </h1>
@@ -125,15 +168,55 @@ const About = () => {
 
       {/* Stats Section */}
       <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary relative overflow-hidden">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Background Animation */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-10 w-48 h-48 rounded-full opacity-10 animate-float-slow" style={{ backgroundColor: '#2d65bc' }}></div>
+          <div className="absolute bottom-40 right-20 w-40 h-40 rounded-full opacity-8 animate-float-medium" style={{ backgroundColor: '#2d65bc' }}></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-52 h-52 rounded-full opacity-5 animate-float-fast" style={{ backgroundColor: '#2d65bc' }}></div>
+        </div>
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-2" style={{ color: getStatsColor() }}>
-                  {stat.number}
-                </div>
-                <div className="text-lg theme-text-secondary">
-                  {stat.label}
+              <div 
+                key={index} 
+                className="group relative"
+              >
+                <div className="theme-card rounded-2xl theme-shadow-primary p-6 sm:p-8 text-center h-full transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                  style={{
+                    border: `2px solid ${theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(45, 101, 188, 0.1)'}`,
+                    background: theme === 'dark' 
+                      ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)'
+                      : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%)'
+                  }}
+                >
+                  {/* Decorative Icon Background */}
+                  <div 
+                    className="absolute top-4 right-4 w-16 h-16 rounded-full opacity-10 group-hover:opacity-20 transition-opacity duration-300"
+                    style={{ backgroundColor: getStatsColor() }}
+                  ></div>
+                  
+                  {/* Number */}
+                  <div 
+                    className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-3 relative z-10 transition-all duration-300 group-hover:scale-110" 
+                    style={{ color: getStatsColor() }}
+                  >
+                    {stat.number}
+                  </div>
+                  
+                  {/* Label */}
+                  <div className="text-base sm:text-lg theme-text-secondary font-medium relative z-10 group-hover:theme-text-primary transition-colors duration-300">
+                    {stat.label}
+                  </div>
+                  
+                  {/* Hover Border Effect */}
+                  <div 
+                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{
+                      border: `2px solid ${getStatsColor()}`,
+                      boxShadow: `0 0 20px ${getStatsColor()}40`
+                    }}
+                  ></div>
                 </div>
               </div>
             ))}
@@ -142,8 +225,11 @@ const About = () => {
       </section>
 
       {/* About Content Section */}
-      <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary relative overflow-hidden">
+        {/* Background Animation */}
+        <DenseBgAnimation />
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
               <div>
@@ -157,14 +243,22 @@ const About = () => {
                   With over 15 years of experience, we deliver scalable, high-performance solutions that drive your business forward.
                 </p>
               </div>
-              <div className="theme-card rounded-3xl theme-shadow-primary p-8">
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800" alt="Our Team" className="w-full h-64 object-cover rounded-2xl mb-6" />
+              <div className=" rounded-3xl  p-8 relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800" 
+                  alt="Our Team" 
+                  className="w-full h-64 object-cover rounded-2xl mb-6 animate-image-float" 
+                />
               </div>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="theme-card rounded-3xl theme-shadow-primary p-8 order-2 lg:order-1">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800" alt="Our Mission" className="w-full h-64 object-cover rounded-2xl mb-6" />
+              <div className=" rounded-3xl  p-8 order-2 lg:order-1 relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800" 
+                  alt="Our Mission" 
+                  className="w-full h-64 object-cover rounded-2xl mb-6 animate-image-float-delayed" 
+                />
               </div>
               <div className="order-1 lg:order-2">
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-6">
@@ -184,10 +278,8 @@ const About = () => {
 
       {/* Values Section */}
       <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary relative overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-40 h-40 rounded-full opacity-10 animate-float-slow" style={{ backgroundColor: '#2d65bc' }}></div>
-          <div className="absolute bottom-40 left-20 w-52 h-52 rounded-full opacity-8 animate-float-fast" style={{ backgroundColor: '#2d65bc' }}></div>
-        </div>
+        {/* Enhanced Background Animation */}
+        <SectionsBgAnimation />
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12 sm:mb-16">
@@ -199,20 +291,79 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-7xl mx-auto">
             {values.map((value, index) => (
-              <div key={index} className="theme-card rounded-2xl theme-shadow-primary p-6 text-center hover:scale-105 transition-transform">
-                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: '#2d65bc' }}>
-                  <div className="text-white">
-                    {value.icon}
+              <div 
+                key={index} 
+                className="group relative"
+              >
+                <div 
+                  className="theme-card rounded-2xl theme-shadow-primary p-6 sm:p-8 text-center h-full transition-all duration-300 hover:scale-105 hover:shadow-2xl relative overflow-hidden"
+                  style={{
+                    border: `2px solid ${theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(45, 101, 188, 0.1)'}`,
+                    background: theme === 'dark' 
+                      ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)'
+                      : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%)'
+                  }}
+                >
+                  {/* Decorative Background Gradient */}
+                  <div 
+                    className="absolute top-0 right-0 w-32 h-32 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-3xl"
+                    style={{ 
+                      background: `radial-gradient(circle, #2d65bc 0%, transparent 70%)`
+                    }}
+                  ></div>
+                  
+                  {/* Icon Container with Enhanced Styling */}
+                  <div className="relative z-10 mb-6">
+                    <div 
+                      className="w-20 h-20 rounded-full flex items-center justify-center mx-auto transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 shadow-lg"
+                      style={{ 
+                        background: `linear-gradient(135deg, #2d65bc 0%, #1e4a8e 100%)`,
+                        boxShadow: theme === 'dark' 
+                          ? '0 10px 30px rgba(45, 101, 188, 0.3)' 
+                          : '0 10px 30px rgba(45, 101, 188, 0.2)'
+                      }}
+                    >
+                      <div className="text-white transition-transform duration-300 group-hover:scale-110">
+                        {value.icon}
+                      </div>
+                    </div>
+                    
+                    {/* Icon Glow Effect */}
+                    <div 
+                      className="absolute inset-0 w-20 h-20 rounded-full mx-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"
+                      style={{ 
+                        background: `radial-gradient(circle, #2d65bc 0%, transparent 70%)`
+                      }}
+                    ></div>
                   </div>
+                  
+                  {/* Title */}
+                  <h3 className="text-xl sm:text-2xl font-bold theme-text-primary mb-3 relative z-10 transition-colors duration-300 group-hover:text-[#2d65bc]">
+                    {value.title}
+                  </h3>
+                  
+                  {/* Description */}
+                  <p className="theme-text-secondary text-sm sm:text-base leading-relaxed relative z-10 transition-colors duration-300">
+                    {value.description}
+                  </p>
+                  
+                  {/* Hover Border Effect */}
+                  <div 
+                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                    style={{
+                      border: `2px solid #2d65bc`,
+                      boxShadow: `0 0 30px rgba(45, 101, 188, 0.4), inset 0 0 30px rgba(45, 101, 188, 0.1)`
+                    }}
+                  ></div>
+                  
+                  {/* Bottom Accent Line */}
+                  <div 
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1 rounded-full transition-all duration-500 group-hover:w-20"
+                    style={{ backgroundColor: '#2d65bc' }}
+                  ></div>
                 </div>
-                <h3 className="text-xl font-bold theme-text-primary mb-3">
-                  {value.title}
-                </h3>
-                <p className="theme-text-secondary">
-                  {value.description}
-                </p>
               </div>
             ))}
           </div>
@@ -250,10 +401,48 @@ const About = () => {
         </div>
       </section>
 
-      {/* Custom styles for hover effect */}
+      {/* Custom styles for hover effect and image animations */}
       <style>{`
         .services-hover-text:hover {
           color: var(--hover-color) !important;
+        }
+        
+        @keyframes imageFloat {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          25% {
+            transform: translateY(-10px) rotate(0.5deg);
+          }
+          50% {
+            transform: translateY(-15px) rotate(0deg);
+          }
+          75% {
+            transform: translateY(-10px) rotate(-0.5deg);
+          }
+        }
+        
+        @keyframes imageFloatDelayed {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          25% {
+            transform: translateY(-12px) rotate(-0.5deg);
+          }
+          50% {
+            transform: translateY(-18px) rotate(0deg);
+          }
+          75% {
+            transform: translateY(-12px) rotate(0.5deg);
+          }
+        }
+        
+        .animate-image-float {
+          animation: imageFloat 6s ease-in-out infinite;
+        }
+        
+        .animate-image-float-delayed {
+          animation: imageFloatDelayed 7s ease-in-out infinite;
         }
       `}</style>
     </div>

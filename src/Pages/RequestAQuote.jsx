@@ -1,6 +1,23 @@
 import React, { useState } from 'react';
+import { useTheme } from '../Context/ThemeContext';
+import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleSquareBgAnimation';
+import SectionsBgAnimation from '../Components/Bg-animation-template/SectionsBgAnimation';
+import MinimalBgAnimation from '../Components/Bg-animation-template/MinimalBgAnimation';
+import GeometricBgAnimation from '../Components/Bg-animation-template/GeometricBgAnimation';
+import MinimalBigShapesAnimation from '../Components/Bg-animation-template/MinimalBigShapesAnimation';
 
 const RequestAQuote = () => {
+  const { theme } = useTheme();
+  
+  // Get theme-based colors
+  const getThemeColor = () => {
+    if (theme === 'light') {
+      return '#2d65bc';
+    } else if (theme === 'dark') {
+      return '#1a1a1a';
+    }
+    return '#2d65bc';
+  };
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -70,23 +87,21 @@ const RequestAQuote = () => {
   ];
 
   return (
-    <div className="min-h-screen theme-bg-primary">
+    <div className="min-h-screen theme-bg-primary pt-20">
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-20 sm:py-24 lg:py-32">
-        {/* Background Animation */}
+      <section className="relative overflow-hidden sm:py-8">
+        <CircleSquareBgAnimation/>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-48 h-48 rounded-full opacity-10 animate-float-slow" style={{ backgroundColor: '#2d65bc' }}></div>
-          <div className="absolute top-40 right-20 w-40 h-40 rounded-full opacity-8 animate-float-medium" style={{ backgroundColor: '#2d65bc' }}></div>
-          <div className="absolute bottom-40 left-20 w-52 h-52 rounded-full opacity-10 animate-float-fast" style={{ backgroundColor: '#2d65bc' }}></div>
+          <div className="absolute top-20 left-10 w-48 h-48 rounded-full opacity-10 animate-float-slow" style={{ backgroundColor: getThemeColor() }}></div>
+          <div className="absolute bottom-40 left-20 w-52 h-52 rounded-full opacity-8 animate-float-fast" style={{ backgroundColor: getThemeColor() }}></div>
         </div>
         
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 pt-32 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
               Request A <span style={{ color: '#2d65bc' }}>Quote</span>
             </h1>
-            <p className="text-xl sm:text-2xl theme-text-secondary mb-8 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl sm:text-2xl theme-text-secondary mb-4 max-w-3xl mx-auto leading-relaxed">
               Tell us about your project and we'll provide you with a detailed quote within 24 hours.
             </p>
           </div>
@@ -96,10 +111,7 @@ const RequestAQuote = () => {
       {/* Quote Form Section */}
       <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary relative overflow-hidden">
         {/* Background Animation Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-          <div className="absolute top-20 left-10 w-40 h-40 rounded-full opacity-10 animate-float-slow" style={{ backgroundColor: '#2d65bc' }}></div>
-          <div className="absolute bottom-40 left-20 w-52 h-52 rounded-full opacity-8 animate-float-fast" style={{ backgroundColor: '#2d65bc' }}></div>
-        </div>
+      <SectionsBgAnimation/>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto">
@@ -285,8 +297,9 @@ const RequestAQuote = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary relative overflow-hidden">
+        <GeometricBgAnimation/>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 sm:mb-16">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-4">
@@ -334,6 +347,7 @@ const RequestAQuote = () => {
 
       {/* CTA Section */}
       <section className="py-16 sm:py-20 lg:py-24 theme-gradient-accent relative overflow-hidden">
+      <MinimalBigShapesAnimation/>
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
           <div className="absolute top-20 left-10 w-48 h-48 bg-white/15 rounded-full animate-float-slow"></div>
           <div className="absolute bottom-40 left-20 w-56 h-56 bg-white/12 rounded-full animate-float-fast"></div>

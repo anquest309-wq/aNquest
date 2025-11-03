@@ -6,9 +6,9 @@ const ThemeContext = createContext();
 // Theme provider component
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
-    // Get theme from localStorage or default to 'dark'
+    // Get theme from localStorage or default to 'light'
     const savedTheme = localStorage.getItem('theme');
-    return savedTheme || 'dark';
+    return savedTheme || 'light';
   });
 
   // Save theme to localStorage whenever it changes
@@ -33,6 +33,7 @@ export const ThemeProvider = ({ children }) => {
         '--bg-primary': '#1a1a1a',
         '--bg-secondary': '#2d2d2d',
         '--bg-tertiary': '#3a3a3a',
+        '--bg-services': 'white',
         '--text-primary': '#ffffff',
         '--text-secondary': '#e5e5e5',
         '--text-muted': '#a0a0a0',
@@ -52,6 +53,7 @@ export const ThemeProvider = ({ children }) => {
         '--bg-tertiary': '#f1f5f9',
         '--text-primary': '#1a1a1a',
         '--text-secondary': '#374151',
+        '--bg-services': '#e9edf9',
         '--text-muted': '#6b7280',
         '--accent-primary': '#3b82f6',
         '--accent-secondary': '#2563eb',

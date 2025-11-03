@@ -35,6 +35,26 @@ export default function Home() {
     return '#2d65bc';
   };
 
+  // Generate CTA background style based on theme
+  const getCtaStyle = () => {
+    if (theme === 'light') {
+      return { background: 'linear-gradient(to right, white 0%, #f0f0f0 50%, #2d65bc 100%)' };
+    } else if (theme === 'dark') {
+      return { background: 'linear-gradient(to right, white 0%, #f0f0f0 50%, #1a1a1a 100%)' };
+    }
+    return { background: 'linear-gradient(to right, white 0%, #f0f0f0 50%, #2d65bc 100%)' };
+  };
+
+  // Get CTA text colors based on theme
+  const getCTATextColor = () => {
+    if (theme === 'light') {
+      return 'text-gray-800';
+    } else if (theme === 'dark') {
+      return 'text-[#2d65bc]';
+    }
+    return 'text-gray-800';
+  };
+
   // Enhanced smooth scrolling effect
   useEffect(() => {
     // Add enhanced smooth scrolling CSS
@@ -219,7 +239,7 @@ export default function Home() {
                 </p>
                 
                 {/* Call to Action Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up" style={{ animationDelay: '0.8s', animationFillMode: 'both' }}>
+                <div className="flex  flex-col sm:flex-row gap-10 animate-fade-in-up" style={{ animationDelay: '0.8s', animationFillMode: 'both' }}>
                   {/* Our Services Button */}
                   <a 
                     href="#services"
@@ -230,9 +250,7 @@ export default function Home() {
                     }}
                   >
                     <span className="relative z-10 flex items-center justify-center">
-                      <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                      </svg>
+                      
                       Our Services
                     </span>
                   </a>
@@ -240,16 +258,12 @@ export default function Home() {
                   {/* Contact Us Button */}
                   <Link 
                     to="/contacts"
-                    className="hero-button-secondary font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl active:scale-95 text-center text-white"
-                    style={{
-                      backgroundColor: '#2d65bc',
-                      border: '2px solid #2d65bc'
-                    }}
+                    className="border-2 font-bold py-4 text-[rgb(31,103,218)] hover:text-white hover:bg-[#2d65bc]
+                    px-8 rounded-lg transition-all duration-300 transform hover:scale-105 border-[#2d65bc] text-center"
+                   
                   >
                     <span className="relative z-10 flex items-center justify-center">
-                      <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
+                      
                     Contact Us
                     </span>
                   </Link>
@@ -288,7 +302,7 @@ export default function Home() {
 
 
 {/* Testimonial Section */}
-<section className="scroll-snap-section theme-section-alt">
+<section className="scroll-snap-section ">
   <Testimonial/>
 </section>
 
@@ -299,7 +313,49 @@ export default function Home() {
 
 
 
-
+  {/* CTA Section */}
+  <section className="  animate-fade-in py-16 lg:py-2">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center rounded-3xl py-5 sm:py-4 lg:py-5 px-8 lg:px-12 relative overflow-hidden animate-fade-in shadow-2xl" style={getCtaStyle()}>
+              {/* Background decoration */}
+              <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute top-4 right-8 w-16 h-16 bg-white/10 rounded-full animate-float"></div>
+                <div className="absolute bottom-6 left-12 w-12 h-12 bg-white/15 rounded-full animate-float-delayed"></div>
+                <div className="absolute top-1/2 left-8 w-8 h-8 bg-white/20 rounded-full animate-float-slow"></div>
+                <div className="absolute bottom-8 right-16 w-10 h-10 bg-white/10 rounded-full animate-float"></div>
+              </div>
+              <div className="relative z-10">
+                <h3 className={`text-3xl sm:text-4xl font-bold mb-6 ${getCTATextColor()}`}>
+                  Ready to Transform Your Business?
+                </h3>
+                <p className={`text-lg mb-8 max-w-2xl mx-auto ${
+                      theme === 'dark' ? 'text-[black]' : 'text-gray-800'
+                    } opacity-90`}>
+                  Let's discuss how our innovative IT solutions can help your business achieve its goals and stay ahead of the competition.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link 
+                    to="/contacts" 
+                    className="bg-[#2d65bc] text-white font-bold py-4 px-8 rounded-xl
+                     hover:bg-[#2d65bc]/90 hover:shadow-lg transition-all duration-300 text-sm sm:text-base transform hover:scale-105 active:scale-95"
+                  >
+                    Get Started Today
+                  </Link>
+                  <a 
+                    href="#services"
+                    className={`border-2 border-[#2d65bc] font-bold py-4 px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white hover:shadow-lg transition-all duration-300 text-sm sm:text-base transform hover:scale-105 active:scale-95 ${
+                      theme === 'dark' ? 'bg-white/10 text-[#2d65bc]' : 'bg-white/80 text-gray-800'
+                    }`}
+                  >
+                    Learn More
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
 
       {/* Custom Swiper Styles */}
@@ -631,6 +687,17 @@ export default function Home() {
           }
         }
         
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
         @keyframes fadeInUp {
           0% {
             opacity: 0;
@@ -639,6 +706,33 @@ export default function Home() {
           100% {
             opacity: 1;
             transform: translateY(0);
+          }
+        }
+        
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-20px) rotate(180deg);
+          }
+        }
+        
+        @keyframes floatDelayed {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-15px) rotate(-180deg);
+          }
+        }
+        
+        @keyframes floatSlow {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-10px) rotate(90deg);
           }
         }
         
@@ -651,8 +745,24 @@ export default function Home() {
           animation: slideInLeft 0.8s ease-out;
         }
         
+        .animate-fade-in {
+          animation: fadeIn 1s ease-out;
+        }
+        
         .animate-fade-in-up {
           animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+        
+        .animate-float-delayed {
+          animation: floatDelayed 8s ease-in-out infinite;
+        }
+        
+        .animate-float-slow {
+          animation: floatSlow 10s ease-in-out infinite;
         }
         
         /* Hero Button Hover Effects */

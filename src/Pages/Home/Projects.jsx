@@ -4,6 +4,8 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
+import SectionsBgAnimation from "../../Components/Bg-animation-template/SectionsBgAnimation";
+// import DenseBgAnimation from "../../Components/Bg-animation-template/DenseBgAnimation";
 const projects = [
   {
     title: "E-Commerce Platform",
@@ -36,47 +38,8 @@ const Projects = () => {
   return (
     <div className="py-20 theme-bg-primary relative overflow-hidden">
       {/* Background Animations */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Floating Circles */}
-        <div className="absolute top-16 left-16 w-24 h-24 theme-animation-primary rounded-full animate-float"></div>
-        <div className="absolute top-40 right-24 w-20 h-20 theme-animation-secondary rounded-full animate-float-delayed"></div>
-        <div className="absolute bottom-24 left-1/3 w-28 h-28 theme-animation-tertiary rounded-full animate-float-slow"></div>
-        <div className="absolute bottom-40 right-1/4 w-22 h-22 theme-animation-primary rounded-full animate-float-delayed-slow"></div>
-        
-        {/* Floating Triangles */}
-        <div className="absolute top-1/3 left-1/4 w-0 h-0 border-l-10 border-r-10 border-b-16 border-l-transparent border-r-transparent theme-animation-border animate-triangle-float"></div>
-        <div className="absolute bottom-1/3 right-1/3 w-0 h-0 border-l-12 border-r-12 border-b-20 border-l-transparent border-r-transparent theme-animation-line animate-triangle-float-delayed"></div>
-        
-        {/* Floating Squares */}
-        <div className="absolute top-1/2 left-20 w-16 h-16 theme-animation-secondary rotate-45 animate-square-float"></div>
-        <div className="absolute bottom-1/4 right-20 w-18 h-18 theme-animation-tertiary rotate-45 animate-square-float-delayed"></div>
-        
-        {/* Floating Diamonds */}
-        <div className="absolute top-24 right-1/2 w-20 h-20 theme-animation-primary transform rotate-45 animate-diamond-float"></div>
-        <div className="absolute bottom-24 left-1/2 w-24 h-24 theme-animation-secondary transform rotate-45 animate-diamond-float-delayed"></div>
-        
-        {/* Gradient Orbs */}
-        <div className="absolute top-1/4 right-16 w-36 h-36 theme-animation-primary rounded-full blur-xl animate-orb-float"></div>
-        <div className="absolute bottom-1/4 left-16 w-32 h-32 theme-animation-secondary rounded-full blur-xl animate-orb-float-delayed"></div>
-        
-        {/* Floating Lines */}
-        <div className="absolute top-1/2 left-0 w-48 h-1 theme-animation-line animate-line-move"></div>
-        <div className="absolute bottom-1/3 right-0 w-40 h-1 theme-animation-border animate-line-move-delayed"></div>
-        
-        {/* Particle Effects */}
-        <div className="absolute top-20 left-1/2 w-3 h-3 theme-animation-primary rounded-full animate-particle-float"></div>
-        <div className="absolute top-32 right-1/3 w-4 h-4 theme-animation-secondary rounded-full animate-particle-float-delayed"></div>
-        <div className="absolute bottom-20 left-1/3 w-3 h-3 theme-animation-tertiary rounded-full animate-particle-float-slow"></div>
-        <div className="absolute bottom-32 right-1/2 w-4 h-4 theme-animation-primary rounded-full animate-particle-float-delayed-slow"></div>
-        
-        {/* Hexagon Shapes */}
-        <div className="absolute top-1/3 left-1/2 w-16 h-16 theme-animation-secondary transform rotate-30 animate-hexagon-float"></div>
-        <div className="absolute bottom-1/3 right-1/2 w-20 h-20 theme-animation-tertiary transform rotate-30 animate-hexagon-float-delayed"></div>
-        
-        {/* Star Shapes */}
-        <div className="absolute top-1/2 right-1/4 w-0 h-0 border-l-6 border-r-6 border-b-10 border-l-transparent border-r-transparent theme-animation-border animate-star-float"></div>
-        <div className="absolute bottom-1/2 left-1/4 w-0 h-0 border-l-8 border-r-8 border-b-12 border-l-transparent border-r-transparent theme-animation-line animate-star-float-delayed"></div>
-      </div>
+      <SectionsBgAnimation />
+      {/* <DenseBgAnimation /> */}
       {/* ==== Header ==== */}
       <div className="text-center mb-8 md:mb-12 px-4 relative z-10">
         <button className="theme-text-primary px-4 md:px-6 py-2 rounded-md font-semibold text-sm md:text-base" style={{ backgroundColor: '#2d65bc' }}>

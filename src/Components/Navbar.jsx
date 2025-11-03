@@ -134,7 +134,7 @@ export default function Navbar() {
               {/* Services Dropdown */}
               {activeDropdown === "services" && (
                 <div className={dropdownClass("services")}>
-                  <div className="py-2">
+                  <div className="py-2 bg-[var(--bg-services)]">
                   <Link
                       to="/crm-services"
                       className="flex items-center px-4 py-2 text-gray-700 hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] transition-colors"
@@ -273,9 +273,9 @@ export default function Navbar() {
             </Link>
             
             {/* Services Section in Mobile */}
-            <div className="border-b border-gray-300">
+            <div className="border-b  border-gray-300">
               <div className="py-2 font-semibold text-[#2d65bc]">Services</div>
-              <div className="ml-4 space-y-2">
+              <div className="ml-4 space-y-2 bg-[#6565c8]">
               <Link to="/crm-services" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
                   CRM Services
                 </Link>

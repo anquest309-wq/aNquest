@@ -9,7 +9,7 @@ const TypingAnimation = () => {
     if (theme === 'light') {
       return '#2d65bc';
     } else if (theme === 'dark') {
-      return '#ffffff';
+      return '#2d65bc';
     }
     return '#2d65bc';
   };

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useTheme } from '../Context/ThemeContext';
+import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleSquareBgAnimation';
+import MinimalBigShapesAnimation from '../Components/Bg-animation-template/MinimalBigShapesAnimation';
 
 const Contacts = () => {
   const { theme } = useTheme();
@@ -11,6 +13,16 @@ const Contacts = () => {
     } else {
       return '#2d65bc'; // Light theme uses blue
     }
+  };
+
+  // Get theme-based colors
+  const getThemeColor = () => {
+    if (theme === 'light') {
+      return '#2d65bc';
+    } else if (theme === 'dark') {
+      return '#1a1a1a';
+    }
+    return '#2d65bc';
   };
 
   const [formData, setFormData] = useState({
@@ -60,12 +72,29 @@ const Contacts = () => {
   ];
 
   return (
-    <div className="min-h-screen theme-bg-primary">
-      {/* Modern Hero Section */}
-     
+    <div className="min-h-screen theme-bg-primary pt-20">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden sm:py-8 ">
+        <CircleSquareBgAnimation/>
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-10 w-48 h-48 rounded-full opacity-10 animate-float-slow" style={{ backgroundColor: getThemeColor() }}></div>
+          <div className="absolute bottom-40 left-20 w-52 h-52 rounded-full opacity-8 animate-float-fast" style={{ backgroundColor: getThemeColor() }}></div>
+        </div>
+        
+        <div className="container mx-auto px-4 sm:px-6 pt-32 lg:px-8 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
+              Get in <span style={{ color: '#2d65bc' }}>Touch</span>
+            </h1>
+            <p className="text-xl sm:text-2xl theme-text-secondary mb-4 max-w-3xl mx-auto leading-relaxed">
+              Have a project in mind? Let's discuss how we can bring your vision to life.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Contact Section */}
-      <section id="contact-form" className="py-16  sm:py-20 lg:py-24 theme-bg-primary relative overflow-hidden">
+      <section id="contact-form" className="py-6  sm:py-5 lg:py-5 theme-bg-primary relative overflow-hidden">
         {/* Background Animation Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
           {/* Floating Circles - BIG */}
@@ -119,7 +148,7 @@ const Contacts = () => {
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
-          <div className="text-center mb-12 sm:mb-16 pt-32 py-20">
+          <div className="text-center mb-6 sm:mb-16 pt-12 ">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-4">
               Let's Build Something <span style={{ color: '#2d65bc' }}>Amazing</span>
             </h2>
@@ -339,7 +368,7 @@ const Contacts = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="theme-bg-primary py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+      <section className="theme-bg-primary py-12 sm:py-16 lg:py-20 relative overflow-hidden">
         {/* Background Animation Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
           {/* Floating Circles - BIG */}
@@ -392,69 +421,129 @@ const Contacts = () => {
           </div>
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-4">
+          <div className="text-center mb-16 sm:mb-20">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold theme-text-primary mb-6">
               Got <span style={{ color: '#2d65bc' }}>Questions?</span>
             </h2>
-            <p className="text-lg sm:text-xl theme-text-secondary max-w-3xl mx-auto">
+            <p className="text-xl sm:text-2xl theme-text-secondary max-w-3xl mx-auto leading-relaxed">
               Here are answers to some common questions about our services
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-            <div className="theme-card rounded-2xl theme-shadow-primary p-6 sm:p-8">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#2d65bc' }}>
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
+            <div className="group theme-card rounded-3xl theme-shadow-primary p-8 sm:p-10 hover:scale-105 transition-all duration-300 hover:shadow-2xl relative overflow-hidden border-2 border-transparent hover:border-[#2d65bc]/20">
+              {/* Gradient Background on Hover */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-3xl" style={{ 
+                background: `linear-gradient(135deg, ${getThemeColor()}, ${getThemeColor()}80)`
+              }}></div>
+              
+              {/* Decorative Circle */}
+              <div className="absolute top-4 right-4 w-24 h-24 rounded-full opacity-5 group-hover:opacity-15 transition-opacity duration-300" style={{ backgroundColor: getThemeColor() }}></div>
+              
+              <div className="relative z-10">
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-xl" style={{ 
+                  background: `linear-gradient(135deg, #2d65bc, #1e4a8e)`,
+                  boxShadow: '0 10px 30px rgba(45, 101, 188, 0.4)'
+                }}>
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <div>
-                  <h3 className="text-lg font-bold theme-text-primary mb-2">How quickly can you start?</h3>
-                  <p className="theme-text-secondary">We typically begin new projects within 1-2 weeks after contract signing and initial consultation.</p>
-                </div>
+                <h3 className="text-xl sm:text-2xl font-bold theme-text-primary mb-4 group-hover:text-[#2d65bc] transition-colors duration-300">
+                  How quickly can you start?
+                </h3>
+                <p className="theme-text-secondary text-base sm:text-lg leading-relaxed">
+                  We typically begin new projects within 1-2 weeks after contract signing and initial consultation.
+                </p>
+                {/* Accent Line */}
+                <div className="mt-6 h-1 w-0 group-hover:w-full transition-all duration-500 ease-in-out rounded-full bg-gradient-to-r from-[#2d65bc] to-[#1e4a8e]"></div>
               </div>
             </div>
 
-            <div className="theme-card rounded-2xl theme-shadow-primary p-6 sm:p-8">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#2d65bc' }}>
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="group theme-card rounded-3xl theme-shadow-primary p-8 sm:p-10 hover:scale-105 transition-all duration-300 hover:shadow-2xl relative overflow-hidden border-2 border-transparent hover:border-[#2d65bc]/20">
+              {/* Gradient Background on Hover */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-3xl" style={{ 
+                background: `linear-gradient(135deg, ${getThemeColor()}, ${getThemeColor()}80)`
+              }}></div>
+              
+              {/* Decorative Circle */}
+              <div className="absolute top-4 right-4 w-24 h-24 rounded-full opacity-5 group-hover:opacity-15 transition-opacity duration-300" style={{ backgroundColor: getThemeColor() }}></div>
+              
+              <div className="relative z-10">
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-xl" style={{ 
+                  background: `linear-gradient(135deg, #2d65bc, #1e4a8e)`,
+                  boxShadow: '0 10px 30px rgba(45, 101, 188, 0.4)'
+                }}>
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a9.75 9.75 0 100 19.5 9.75 9.75 0 000-19.5z" />
                   </svg>
                 </div>
-                <div>
-                  <h3 className="text-lg font-bold theme-text-primary mb-2">Do you provide support?</h3>
-                  <p className="theme-text-secondary">Yes! We offer comprehensive maintenance and support packages for all our projects.</p>
-                </div>
+                <h3 className="text-xl sm:text-2xl font-bold theme-text-primary mb-4 group-hover:text-[#2d65bc] transition-colors duration-300">
+                  Do you provide support?
+                </h3>
+                <p className="theme-text-secondary text-base sm:text-lg leading-relaxed">
+                  Yes! We offer comprehensive maintenance and support packages for all our projects.
+                </p>
+                {/* Accent Line */}
+                <div className="mt-6 h-1 w-0 group-hover:w-full transition-all duration-500 ease-in-out rounded-full bg-gradient-to-r from-[#2d65bc] to-[#1e4a8e]"></div>
               </div>
             </div>
 
-            <div className="theme-card rounded-2xl theme-shadow-primary p-6 sm:p-8">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#2d65bc' }}>
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="group theme-card rounded-3xl theme-shadow-primary p-8 sm:p-10 hover:scale-105 transition-all duration-300 hover:shadow-2xl relative overflow-hidden border-2 border-transparent hover:border-[#2d65bc]/20">
+              {/* Gradient Background on Hover */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-3xl" style={{ 
+                background: `linear-gradient(135deg, ${getThemeColor()}, ${getThemeColor()}80)`
+              }}></div>
+              
+              {/* Decorative Circle */}
+              <div className="absolute top-4 right-4 w-24 h-24 rounded-full opacity-5 group-hover:opacity-15 transition-opacity duration-300" style={{ backgroundColor: getThemeColor() }}></div>
+              
+              <div className="relative z-10">
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-xl" style={{ 
+                  background: `linear-gradient(135deg, #2d65bc, #1e4a8e)`,
+                  boxShadow: '0 10px 30px rgba(45, 101, 188, 0.4)'
+                }}>
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <div>
-                  <h3 className="text-lg font-bold theme-text-primary mb-2">What's included in consultation?</h3>
-                  <p className="theme-text-secondary">We discuss your project requirements, timeline, budget, and provide initial recommendations.</p>
-                </div>
+                <h3 className="text-xl sm:text-2xl font-bold theme-text-primary mb-4 group-hover:text-[#2d65bc] transition-colors duration-300">
+                  What's included in consultation?
+                </h3>
+                <p className="theme-text-secondary text-base sm:text-lg leading-relaxed">
+                  We discuss your project requirements, timeline, budget, and provide initial recommendations.
+                </p>
+                {/* Accent Line */}
+                <div className="mt-6 h-1 w-0 group-hover:w-full transition-all duration-500 ease-in-out rounded-full bg-gradient-to-r from-[#2d65bc] to-[#1e4a8e]"></div>
               </div>
             </div>
 
-            <div className="theme-card rounded-2xl theme-shadow-primary p-6 sm:p-8">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#2d65bc' }}>
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="group theme-card rounded-3xl theme-shadow-primary p-8 sm:p-10 hover:scale-105 transition-all duration-300 hover:shadow-2xl relative overflow-hidden border-2 border-transparent hover:border-[#2d65bc]/20">
+              {/* Gradient Background on Hover */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-3xl" style={{ 
+                background: `linear-gradient(135deg, ${getThemeColor()}, ${getThemeColor()}80)`
+              }}></div>
+              
+              {/* Decorative Circle */}
+              <div className="absolute top-4 right-4 w-24 h-24 rounded-full opacity-5 group-hover:opacity-15 transition-opacity duration-300" style={{ backgroundColor: getThemeColor() }}></div>
+              
+              <div className="relative z-10">
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-xl" style={{ 
+                  background: `linear-gradient(135deg, #2d65bc, #1e4a8e)`,
+                  boxShadow: '0 10px 30px rgba(45, 101, 188, 0.4)'
+                }}>
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
-              </div>
-                <div>
-                  <h3 className="text-lg font-bold theme-text-primary mb-2">Do you work with small businesses?</h3>
-                  <p className="theme-text-secondary">Absolutely! We work with businesses of all sizes, from startups to enterprise clients.</p>
-              </div>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-bold theme-text-primary mb-4 group-hover:text-[#2d65bc] transition-colors duration-300">
+                  Do you work with small businesses?
+                </h3>
+                <p className="theme-text-secondary text-base sm:text-lg leading-relaxed">
+                  Absolutely! We work with businesses of all sizes, from startups to enterprise clients.
+                </p>
+                {/* Accent Line */}
+                <div className="mt-6 h-1 w-0 group-hover:w-full transition-all duration-500 ease-in-out rounded-full bg-gradient-to-r from-[#2d65bc] to-[#1e4a8e]"></div>
               </div>
             </div>
           </div>
@@ -464,75 +553,14 @@ const Contacts = () => {
       {/* CTA Section */}
       <section className="relative overflow-hidden">
         {/* Background Animation Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {/* Particle System */}
-          <div className="absolute inset-0">
-            <div className="absolute top-1/4 left-1/4 w-2 h-2 rounded-full opacity-40 animate-particle-1" style={{ backgroundColor: getAnimationColor() }}></div>
-            <div className="absolute top-1/3 right-1/3 w-1 h-1 rounded-full opacity-30 animate-particle-2" style={{ backgroundColor: getAnimationColor() }}></div>
-            <div className="absolute bottom-1/3 left-1/3 w-2 h-2 rounded-full opacity-35 animate-particle-1" style={{ backgroundColor: getAnimationColor() }}></div>
-            <div className="absolute bottom-1/4 right-1/4 w-1 h-1 rounded-full opacity-40 animate-particle-2" style={{ backgroundColor: getAnimationColor() }}></div>
-          </div>
-
-          {/* Floating Circles - BIG */}
-          <div className="absolute top-20 left-10 w-48 h-48 rounded-full opacity-25 animate-float-slow" style={{ backgroundColor: getAnimationColor() }}></div>
-          <div className="absolute top-40 right-20 w-40 h-40 rounded-full opacity-20 animate-float-medium" style={{ backgroundColor: getAnimationColor() }}></div>
-          <div className="absolute bottom-40 left-20 w-52 h-52 rounded-full opacity-25 animate-float-fast" style={{ backgroundColor: getAnimationColor() }}></div>
-          <div className="absolute bottom-20 right-10 w-36 h-36 rounded-full opacity-30 animate-float-slow" style={{ backgroundColor: getAnimationColor() }}></div>
-          
-          {/* Floating Squares */}
-          <div className="absolute top-60 left-1/4 w-24 h-24 opacity-25 animate-rotate-slow" style={{ backgroundColor: getAnimationColor(), transform: 'rotate(45deg)' }}></div>
-          <div className="absolute top-80 right-1/3 w-20 h-20 opacity-20 animate-rotate-medium" style={{ backgroundColor: getAnimationColor(), transform: 'rotate(45deg)' }}></div>
-          <div className="absolute bottom-60 left-1/3 w-28 h-28 opacity-22 animate-rotate-fast" style={{ backgroundColor: getAnimationColor(), transform: 'rotate(45deg)' }}></div>
-          
-          {/* Floating Triangles */}
-          <div className="absolute top-32 right-1/4 w-0 h-0 opacity-25 animate-bounce-slow" style={{ 
-            borderLeft: '40px solid transparent',
-            borderRight: '40px solid transparent',
-            borderBottom: `70px solid ${getAnimationColor()}`
-          }}></div>
-          <div className="absolute bottom-32 left-1/4 w-0 h-0 opacity-22 animate-bounce-medium" style={{ 
-            borderLeft: '30px solid transparent',
-            borderRight: '30px solid transparent',
-            borderBottom: `55px solid ${getAnimationColor()}`
-          }}></div>
-          
-          {/* Organic Blob Shapes */}
-          <div className="absolute top-1/4 left-1/2 w-64 h-64 opacity-15 animate-blob-slow" style={{ 
-            background: `linear-gradient(135deg, ${getAnimationColor()}, ${getAnimationColor()})`,
-            borderRadius: '60% 40% 70% 30% / 40% 60% 30% 70%'
-          }}></div>
-          <div className="absolute bottom-1/4 right-1/2 w-72 h-72 opacity-18 animate-blob-medium" style={{ 
-            background: `linear-gradient(135deg, ${getAnimationColor()}, ${getAnimationColor()})`,
-            borderRadius: '30% 70% 50% 50% / 60% 40% 60% 40%'
-          }}></div>
-          
-          {/* Gradient Orbs */}
-          <div className="absolute top-1/2 left-1/4 w-56 h-56 rounded-full opacity-20 animate-pulse-slow" style={{ 
-            background: `radial-gradient(circle, ${getAnimationColor()}, transparent)`
-          }}></div>
-          <div className="absolute bottom-1/3 right-1/4 w-64 h-64 rounded-full opacity-18 animate-pulse-medium" style={{ 
-            background: `radial-gradient(circle, ${getAnimationColor()}, transparent)`
-          }}></div>
-          
-          {/* Grid Pattern */}
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute top-0 left-0 w-full h-full" style={{
-              backgroundImage: `radial-gradient(circle at 1px 1px, rgba(45, 101, 188, 0.3) 1px, transparent 0)`,
-              backgroundSize: '20px 20px'
-            }}></div>
-          </div>
-          
-          {/* Animated Lines */}
-          <div className="absolute top-1/4 left-0 w-full h-px theme-animation-line animate-line-move"></div>
-          <div className="absolute top-3/4 left-0 w-full h-px theme-animation-border animate-line-move-delayed"></div>
-        </div>
+        <MinimalBigShapesAnimation/>
         
         <div className="absolute inset-0 theme-gradient-primary opacity-50"></div>
-        <div className="relative z-10 py-20 sm:py-24 lg:py-32">
+        <div className="relative z-10 py-6 sm:py-6 lg:pt-12">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto text-center">
              
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
+              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-6 theme-text-primary">
                 Ready to <span style={{ color: '#2d65bc' }}>Transform</span> Your Ideas?
           </h1>
               <p className="text-xl sm:text-2xl theme-text-secondary mb-8 max-w-3xl mx-auto leading-relaxed">

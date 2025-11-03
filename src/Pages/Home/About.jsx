@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useTheme } from '../../Context/ThemeContext'
-
+import SectionsBgAnimation from '../../Components/Bg-animation-template/SectionsBgAnimation';
+import DenseBgAnimation from '../../Components/Bg-animation-template/DenseBgAnimation';
 
 export default function About() {
   const { theme } = useTheme();
@@ -38,7 +39,7 @@ export default function About() {
     if (theme === 'light') {
       return 'text-gray-800';
     } else if (theme === 'dark') {
-      return 'text-gray-200';
+      return 'text-[#2d65bc]';
     }
     return 'text-gray-800';
   };
@@ -105,43 +106,8 @@ export default function About() {
   return (
     <section className="py-16 lg:py-24 theme-bg-primary overflow-hidden relative">
       {/* Background Animation Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Particle System */}
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-2 h-2 rounded-full opacity-40 animate-particle-1" style={{ backgroundColor: themeColor }}></div>
-          <div className="absolute top-1/3 right-1/3 w-1 h-1 rounded-full opacity-30 animate-particle-2" style={{ backgroundColor: themeColor }}></div>
-          <div className="absolute bottom-1/3 left-1/3 w-2 h-2 rounded-full opacity-35 animate-particle-1" style={{ backgroundColor: themeColor }}></div>
-          <div className="absolute bottom-1/4 right-1/4 w-1 h-1 rounded-full opacity-40 animate-particle-2" style={{ backgroundColor: themeColor }}></div>
-        </div>
-
-        {/* Floating Shapes - Top Area */}
-        <div className="absolute top-8 left-1/6 w-14 h-14 opacity-20 animate-float transform rotate-30" style={{ backgroundColor: themeColor, clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}></div>
-        <div className="absolute top-12 right-1/4 w-12 h-12 opacity-25 animate-float-delayed rounded-full" style={{ backgroundColor: themeColor }}></div>
-        <div className="absolute top-6 left-2/3 w-10 h-10 opacity-15 animate-float-slow transform rotate-60" style={{ backgroundColor: themeColor }}></div>
-
-        {/* Floating Shapes - Center Area */}
-        <div className="absolute top-1/2 left-1/8 w-16 h-16 opacity-20 animate-float transform rotate-45" style={{ backgroundColor: themeColor, clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)' }}></div>
-        <div className="absolute top-1/2 right-1/5 w-14 h-14 opacity-25 animate-float-delayed" style={{ backgroundColor: themeColor, clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }}></div>
-        <div className="absolute top-1/2 left-1/2 w-12 h-12 opacity-15 animate-float-slow transform rotate-75" style={{ backgroundColor: themeColor }}></div>
-
-        {/* Floating Shapes - Bottom Area */}
-        <div className="absolute bottom-20 left-1/5 w-18 h-18 opacity-20 animate-float transform rotate-30" style={{ backgroundColor: themeColor, clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}></div>
-        <div className="absolute bottom-16 right-1/5 w-16 h-16 opacity-25 animate-float-delayed rounded-full" style={{ backgroundColor: themeColor }}></div>
-        <div className="absolute bottom-12 left-3/4 w-14 h-14 opacity-15 animate-float-slow transform rotate-60" style={{ backgroundColor: themeColor }}></div>
-
-        {/* Additional Diverse Shapes */}
-        <div className="absolute top-1/6 left-1/3 w-8 h-8 opacity-20 animate-float" style={{ backgroundColor: themeColor, clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)' }}></div>
-        <div className="absolute top-2/3 right-1/6 w-6 h-6 opacity-25 animate-float-delayed transform rotate-45" style={{ backgroundColor: themeColor, clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }}></div>
-        <div className="absolute bottom-1/6 left-1/2 w-10 h-10 opacity-15 animate-float-slow" style={{ backgroundColor: themeColor, clipPath: 'polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)' }}></div>
-
-        {/* Extra Small Shapes for More Coverage */}
-        <div className="absolute top-1/5 right-1/3 w-4 h-4 opacity-30 animate-float transform rotate-90 rounded-full" style={{ backgroundColor: themeColor }}></div>
-        <div className="absolute top-3/5 left-1/4 w-5 h-5 opacity-25 animate-float-delayed" style={{ backgroundColor: themeColor, clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}></div>
-        <div className="absolute bottom-1/5 right-1/4 w-6 h-6 opacity-20 animate-float-slow transform rotate-30" style={{ backgroundColor: themeColor, clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)' }}></div>
-        <div className="absolute top-1/4 right-1/8 w-7 h-7 opacity-25 animate-float transform rotate-60" style={{ backgroundColor: themeColor }}></div>
-        <div className="absolute bottom-1/4 left-1/8 w-5 h-5 opacity-30 animate-float-delayed rounded-full" style={{ backgroundColor: themeColor }}></div>
-        <div className="absolute top-4/5 left-1/3 w-4 h-4 opacity-20 animate-float-slow transform rotate-45" style={{ backgroundColor: themeColor, clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }}></div>
-      </div>
+      {/* <SectionsBgAnimation /> */}
+      <DenseBgAnimation />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
@@ -311,7 +277,9 @@ export default function About() {
               <h3 className={`text-3xl sm:text-4xl font-bold mb-6 ${getCTATextColor()}`}>
                 Ready to Transform Your Business?
               </h3>
-              <p className={`text-lg mb-8 max-w-2xl mx-auto ${getCTATextColor()} opacity-90`}>
+              <p className={`text-lg mb-8 max-w-2xl mx-auto ${
+                    theme === 'dark' ? 'text-[black]' : 'text-gray-800'
+                  } opacity-90`}>
                 Let's discuss how our innovative IT solutions can help your business achieve its goals and stay ahead of the competition.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -321,7 +289,7 @@ export default function About() {
                 </button>
                 <button 
                   className={`border-2 border-[#2d65bc] font-bold py-4 px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white hover:shadow-lg transition-all duration-300 text-sm sm:text-base transform hover:scale-105 active:scale-95 ${
-                    theme === 'dark' ? 'bg-white/10 text-white' : 'bg-white/80 text-gray-800'
+                    theme === 'dark' ? 'bg-white/10 text-[#2d65bc]' : 'bg-white/80 text-gray-800'
                   }`}
                 >
                   Learn More

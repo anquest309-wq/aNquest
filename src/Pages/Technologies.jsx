@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { Code, Server, Database, Smartphone, Cloud, Wrench, Zap, Shield, Globe, Sparkles, ArrowRight, ChevronRight, Monitor, Layers, FileCode, Palette, Settings, GitBranch } from 'lucide-react';
 import { useTheme } from '../Context/ThemeContext';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SectionsBgAnimation from '../Components/Bg-animation-template/SectionsBgAnimation';
+import { Autoplay, EffectCoverflow, Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import MinimalBgAnimation from '../Components/Bg-animation-template/MinimalBgAnimation';
+import DenseBgAnimation from '../Components/Bg-animation-template/DenseBgAnimation';
+import 'swiper/css/navigation';
 
 // Gradient Background Component
 const GradientBg = () => (
@@ -59,10 +67,7 @@ const HeroSection = () => {
 
     <div className="container mx-auto px-4 relative z-10">
       <div className="max-w-5xl mx-auto text-center">
-        <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-8 border border-white/20">
-          <Sparkles className="w-4 h-4 text-yellow-400" />
-          <span className="theme-text-primary text-sm font-medium">50+ Modern Technologies</span>
-        </div>
+       
         
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold theme-text-primary mb-6 leading-tight">
           Technology
@@ -117,15 +122,11 @@ const CategoryShowcase = ({ onSelectCategory }) => {
   ];
 
   return (
-    <section id="stack" className="py-32 theme-bg-primary relative overflow-hidden">
+    <section id="stack" className="py-10  theme-bg-primary relative overflow-hidden">
       <AnimatedBg theme={theme} />
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 theme-text-primary px-4 py-2 rounded-full mb-6 font-medium" style={{ backgroundColor: '#2d65bc20', color: '#2d65bc' }}>
-            <Globe className="w-4 h-4" />
-            Full Stack Expertise
-          </div>
-          <h2 className="text-5xl md:text-6xl font-bold theme-text-primary mb-6">
+        <div className="text-center mb-10">
+          <h2 className="text-5xl md:text-6xl font-bold theme-text-primary mb-3">
             Our Technology
             <span className="block" style={{ color: '#2d65bc' }}>
               Categories
@@ -136,42 +137,156 @@ const CategoryShowcase = ({ onSelectCategory }) => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {categoryData.map((category, index) => {
-            const Icon = category.icon;
-            const themeColor = getThemeColor();
-            return (
-              <div
-                key={category.name}
-                className="group relative theme-card rounded-3xl theme-shadow-primary p-8 hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden"
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                onClick={() => onSelectCategory(category.name)}
-              >
-                <div 
-                  className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500"
-                  style={{ backgroundColor: themeColor }}
-                ></div>
-                
-                <div 
-                  className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500"
-                  style={{ backgroundColor: themeColor }}
-                >
-                  <Icon className="w-8 h-8 text-white" />
-                </div>
-                
-                <h3 className="text-2xl font-bold theme-text-primary mb-2">{category.name}</h3>
-                <p className="theme-text-secondary mb-4">{category.description}</p>
-                
-                <div className="flex items-center font-semibold group-hover:gap-2 transition-all duration-300" style={{ color: themeColor }}>
-                  <span>Explore</span>
-                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </div>
-            );
-          })}
+        {/* Horizontal Swipable Row with Swiper */}
+        <div className=" -mx-4 px-4 ">
+          <Swiper
+            modules={[Autoplay, EffectCoverflow, Navigation]}
+            effect="coverflow"
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView="auto"
+            spaceBetween={0}
+            loop={true}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: false,
+            }}
+            breakpoints={{
+              320: {
+                slidesPerView: 1,
+                spaceBetween: 0,
+              },
+              640: {
+                slidesPerView: 1.5,
+                spaceBetween: 0,
+              },
+              768: {
+                slidesPerView: 2.5,
+                spaceBetween: 0,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 0,
+              },
+            }}
+            className="categorySwiper"
+          >
+            {categoryData.map((category, index) => {
+              const Icon = category.icon;
+              const themeColor = getThemeColor();
+              return (
+                <SwiperSlide key={category.name}>
+                  <div
+                    className="group relative theme-card rounded-3xl theme-shadow-primary p-8 hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden flex-shrink-0 w-80 md:w-80 flex flex-col items-center justify-center text-center mx-auto"
+                    style={{
+                      border: `2px solid ${theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(45, 101, 188, 0.1)'}`,
+                      background: theme === 'dark' 
+                        ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)'
+                        : 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%)'
+                    }}
+                    onMouseEnter={() => setHoveredIndex(index)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                    onClick={() => onSelectCategory(category.name)}
+                  >
+                  {/* Decorative Background Gradient */}
+                  <div 
+                    className="absolute top-0 right-0 w-40 h-40 rounded-full opacity-0 group-hover:opacity-15 transition-opacity duration-500 blur-3xl"
+                    style={{ 
+                      background: `radial-gradient(circle, ${themeColor} 0%, transparent 70%)`
+                    }}
+                  ></div>
+                  
+                  {/* Hover Background Overlay */}
+                  <div 
+                    className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-500"
+                    style={{ backgroundColor: themeColor }}
+                  ></div>
+                  
+                  {/* Icon Container with Enhanced Styling */}
+                  <div className="relative z-10 mb-6 flex justify-center">
+                    <div 
+                      className="w-20 h-20 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg"
+                      style={{ 
+                        background: `linear-gradient(135deg, ${themeColor} 0%, #1e4a8e 100%)`,
+                        boxShadow: `0 10px 30px ${themeColor}40`
+                      }}
+                    >
+                      <Icon className="w-10 h-10 text-white transition-transform duration-300 group-hover:scale-110" />
+                    </div>
+                    
+                    {/* Icon Glow Effect */}
+                    <div 
+                      className="absolute inset-0 w-20 h-20 rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"
+                      style={{ 
+                        background: `radial-gradient(circle, ${themeColor} 0%, transparent 70%)`
+                      }}
+                    ></div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="relative z-10 flex flex-col items-center text-center">
+                    <h3 className="text-2xl md:text-3xl font-bold theme-text-primary mb-3 group-hover:text-[#2d65bc] transition-colors duration-300">
+                      {category.name}
+                    </h3>
+                    <p className="theme-text-secondary mb-6 text-base md:text-lg leading-relaxed">
+                      {category.description}
+                    </p>
+                    
+                    {/* Explore Button */}
+                    <div className="flex items-center justify-center font-semibold group-hover:gap-3 transition-all duration-300" style={{ color: themeColor }}>
+                      <span className="text-base md:text-lg">Explore</span>
+                      <ChevronRight className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-2 transition-transform duration-300" />
+                    </div>
+                  </div>
+                  
+                  {/* Hover Border Effect */}
+                  <div 
+                    className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                    style={{
+                      border: `2px solid ${themeColor}`,
+                      boxShadow: `0 0 40px ${themeColor}50, inset 0 0 40px ${themeColor}20`
+                    }}
+                  ></div>
+                  
+                  {/* Bottom Accent Line */}
+                  <div 
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1.5 rounded-full transition-all duration-500 group-hover:w-24"
+                    style={{ backgroundColor: themeColor }}
+                  ></div>
+                  </div>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
         </div>
       </div>
+      
+      {/* Custom Swiper Styles */}
+      <style>{`
+        .categorySwiper {
+          padding: 20px 0 40px 0;
+        }
+        
+        .categorySwiper .swiper-slide {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        
+        @media (max-width: 768px) {
+          .categorySwiper {
+            overflow: visible;
+          }
+        }
+      `}</style>
     </section>
   );
 };
@@ -189,53 +304,54 @@ const HorizontalTechStack = ({ technologies, activeCategory }) => {
     return '#2d65bc';
   };
 
-  // Get technology-specific icons
-  const getTechIcon = (techName, category) => {
-    const iconMap = {
-      'React.js': Code,
-      'Next.js': Monitor,
-      'Vue.js': Layers,
-      'Angular': FileCode,
-      'TypeScript': Code,
-      'Tailwind CSS': Palette,
-      'Node.js': Server,
-      'Express.js': Server,
-      'Python': Code,
-      'Django': Server,
-      'FastAPI': Server,
-      'PHP': Code,
-      'MongoDB': Database,
-      'PostgreSQL': Database,
-      'MySQL': Database,
-      'Redis': Database,
-      'Firebase': Database,
-      'Supabase': Database,
-      'React Native': Smartphone,
-      'Flutter': Smartphone,
-      'Ionic': Smartphone,
-      'Expo': Smartphone,
-      'Swift': Smartphone,
-      'Kotlin': Smartphone,
-      'AWS': Cloud,
-      'Vercel': Cloud,
-      'Netlify': Cloud,
-      'Docker': Cloud,
-      'GitHub Actions': Cloud,
-      'Heroku': Cloud,
-      'Git': GitBranch,
-      'Webpack': Settings,
-      'GSAP': Wrench,
-      'Framer Motion': Wrench,
-      'Swiper': Wrench,
-      'Chart.js': Wrench
+  // Get technology-specific logo images
+  const getTechLogo = (techName) => {
+    const logoMap = {
+      'React.js': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
+      'Next.js': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
+      'Vue.js': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg',
+      'Angular': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg',
+      'TypeScript': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
+      'Tailwind CSS': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg',
+      'Node.js': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
+      'Express.js': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg',
+      'Python': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+      'Django': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg',
+      'FastAPI': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg',
+      'PHP': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',
+      'MongoDB': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
+      'PostgreSQL': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
+      'MySQL': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
+      'Redis': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg',
+      'Firebase': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg',
+      'Supabase': 'https://cdn.simpleicons.org/supabase/3ECF8E',
+      'React Native': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
+      'Flutter': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg',
+      'Ionic': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ionic/ionic-original.svg',
+      'Expo': 'https://cdn.simpleicons.org/expo/000020',
+      'Swift': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg',
+      'Kotlin': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg',
+      'AWS': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+      'Vercel': 'https://cdn.simpleicons.org/vercel/000000',
+      'Netlify': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/netlify/netlify-original.svg',
+      'Docker': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
+      'GitHub Actions': 'https://cdn.simpleicons.org/githubactions/2088FF',
+      'Heroku': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/heroku/heroku-original.svg',
+      'Git': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
+      'Webpack': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/webpack/webpack-original.svg',
+      'GSAP': 'https://cdn.simpleicons.org/gsap/88CE02',
+      'Framer Motion': 'https://cdn.simpleicons.org/framermotion/0055FF',
+      'Swiper': 'https://cdn.simpleicons.org/swiper/6332F6',
+      'Chart.js': 'https://cdn.simpleicons.org/chartdotjs/FF6384'
     };
     
-    return iconMap[techName] || iconMap[category] || Code;
+    return logoMap[techName] || 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg';
   };
 
   return (
-    <section className="py-32 theme-bg-primary relative overflow-hidden">
-      <AnimatedBg theme={theme} />
+    <section className="py-3 theme-bg-primary relative overflow-hidden ">
+      {/* <MinimalBgAnimation /> */}
+      <DenseBgAnimation />
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-5xl font-bold theme-text-primary mb-6">
@@ -247,93 +363,109 @@ const HorizontalTechStack = ({ technologies, activeCategory }) => {
         </div>
 
         <div className="relative">
-          {/* Single Row with All Technologies */}
-          <div className="overflow-x-auto pb-6 scrollbar-hide">
-            <div className="flex gap-6 min-w-max px-4">
+          {/* Swiper with All Technologies */}
+          <div >
+            <Swiper
+              modules={[Autoplay]}
+              grabCursor={true}
+              slidesPerView="auto"
+              spaceBetween={24}
+              loop={true}
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+              }}
+              breakpoints={{
+                320: {
+                  slidesPerView: 1,
+                  spaceBetween: 16,
+                },
+                640: {
+                  slidesPerView: 1.5,
+                  spaceBetween: 20,
+                },
+                768: {
+                  slidesPerView: 2.5,
+                  spaceBetween: 24,
+                },
+                1024: {
+                  slidesPerView: 3.5,
+                  spaceBetween: 24,
+                },
+              }}
+              className="techStackSwiper"
+            >
               {filteredTechs.map((tech, index) => {
-                const IconComponent = getTechIcon(tech.name, tech.category);
+                const techLogo = getTechLogo(tech.name);
                 const themeColor = getThemeColor();
                 
                 return (
-                  <div
-                    key={index}
-                    className="group relative w-80 theme-card rounded-2xl p-6 theme-shadow-primary hover:shadow-xl transition-all duration-500 hover:scale-105 flex-shrink-0 border theme-border-primary"
-                  >
-                    <div 
-                      className="absolute inset-0 opacity-0 group-hover:opacity-5 rounded-2xl transition-all duration-500"
-                      style={{ backgroundColor: themeColor }}
-                    ></div>
-                    
-                    <div className="relative text-center">
+                  <SwiperSlide key={index}>
+                    <div className="group relative w-80 theme-card rounded-2xl p-6 theme-shadow-primary hover:shadow-xl transition-all duration-500 hover:scale-105 flex-shrink-0 border theme-border-primary mx-auto">
                       <div 
-                        className="w-16 h-16 rounded-xl shadow-md flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 mx-auto"
+                        className="absolute inset-0 opacity-0 group-hover:opacity-5 rounded-2xl transition-all duration-500"
                         style={{ backgroundColor: themeColor }}
-                      >
-                        <IconComponent className="w-8 h-8 text-white" />
-                      </div>
+                      ></div>
                       
-                      <h4 className="text-xl font-bold theme-text-primary mb-3">{tech.name}</h4>
-                      <p className="theme-text-secondary text-sm leading-relaxed mb-6 px-2">{tech.description}</p>
-                      
-                      <div className="flex items-center justify-center">
-                        <span 
-                          className="text-xs font-semibold text-white px-4 py-2 rounded-full inline-flex items-center gap-2"
-                          style={{ backgroundColor: themeColor }}
+                      <div className="relative text-center">
+                        <div 
+                          className="w-16 h-16 rounded-xl shadow-md flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 mx-auto bg-white p-2"
                         >
-                          {tech.category}
-                          <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-all duration-300" />
-                        </span>
+                          <img 
+                            src={techLogo} 
+                            alt={tech.name}
+                            className="w-full h-full object-contain"
+                            loading="lazy"
+                            onError={(e) => {
+                              // Fallback to a colored square if image fails to load
+                              e.target.style.display = 'none';
+                              const fallback = document.createElement('div');
+                              fallback.className = 'w-full h-full';
+                              fallback.style.backgroundColor = themeColor;
+                              fallback.style.borderRadius = '4px';
+                              e.target.parentElement.appendChild(fallback);
+                            }}
+                          />
+                        </div>
+                        
+                        <h4 className="text-xl font-bold theme-text-primary mb-3">{tech.name}</h4>
+                        <p className="theme-text-secondary text-sm leading-relaxed mb-6 px-2">{tech.description}</p>
+                        
+                        <div className="flex items-center justify-center">
+                          <span 
+                            className="text-xs font-semibold text-white px-4 py-2 rounded-full inline-flex items-center gap-2"
+                            style={{ backgroundColor: themeColor }}
+                          >
+                            {tech.category}
+                            <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-all duration-300" />
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </SwiperSlide>
                 );
               })}
-            </div>
-          </div>
-          
-          {/* Scroll Indicators */}
-          <div className="flex justify-center mt-8 gap-2">
-            {Array.from({ length: Math.ceil(filteredTechs.length / 4) }).map((_, index) => (
-              <div
-                key={index}
-                className="w-2 h-2 rounded-full theme-border-secondary opacity-50"
-                style={{ backgroundColor: getThemeColor() }}
-              />
-            ))}
+            </Swiper>
           </div>
         </div>
       </div>
       
-      <style jsx>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
+      <style>{`
+        .techStackSwiper {
+          padding: 10px 0 30px 0;
         }
         
-        .overflow-x-auto {
-          scroll-behavior: smooth;
-          -webkit-overflow-scrolling: touch;
+        .techStackSwiper .swiper-slide {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: auto;
         }
         
-        /* Custom scrollbar for desktop */
-        @media (min-width: 768px) {
-          .scrollbar-hide::-webkit-scrollbar {
-            height: 4px;
-            display: block;
-          }
-          .scrollbar-hide::-webkit-scrollbar-track {
-            background: var(--bg-secondary);
-            border-radius: 2px;
-          }
-          .scrollbar-hide::-webkit-scrollbar-thumb {
-            background: var(--accent-primary);
-            border-radius: 2px;
-          }
-          .scrollbar-hide::-webkit-scrollbar-thumb:hover {
-            opacity: 0.8;
+        @media (max-width: 768px) {
+          .techStackSwiper {
+            overflow: visible;
           }
         }
       `}</style>
@@ -371,7 +503,7 @@ const BenefitsSection = () => {
   const themeColor = getThemeColor();
 
   return (
-    <section id="benefits" className="py-32 theme-bg-primary relative overflow-hidden">
+    <section id="benefits" className="py-5 theme-bg-primary relative overflow-hidden">
       <AnimatedBg theme={theme} />
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-20">
@@ -413,15 +545,9 @@ const BenefitsSection = () => {
 const CTASection = () => {
   return (
     <section className="py-3 sm:py-3 md:py-3 lg:py-4 theme-gradient-accent relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRjMC0yLjIxLTEuNzktNC00LTRzLTQgMS43OS00IDQgMS43OSA0IDQgNCA0LTEuNzkgNC00em0wLTEwYzAtMi4yMS0xLjc5LTQtNC00cy00IDEuNzktNCA0IDEuNzkgNCA0IDQgNC0xLjc5IDQtNHptMC0xMGMwLTIuMjEtMS43OS00LTQtNHMtNCAxLjc5LTQgNCAxLjc5IDQgNCA0IDQtMS43OSA0LTR6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-20"></div>
+     
+      {/* Floating Elements */}<SectionsBgAnimation/>
       
-      {/* Floating Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-48 h-48 bg-white/15 rounded-full animate-float-slow"></div>
-        <div className="absolute bottom-40 left-20 w-56 h-56 bg-white/12 rounded-full animate-float-fast"></div>
-        <div className="absolute top-1/2 right-10 w-40 h-40 bg-white/10 rounded-full animate-float-medium" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute bottom-20 right-1/4 w-44 h-44 bg-white/12 rounded-full animate-float-slow" style={{ animationDelay: '2s' }}></div>
-      </div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto text-center">

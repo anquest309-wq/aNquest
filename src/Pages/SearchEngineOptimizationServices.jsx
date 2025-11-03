@@ -2,6 +2,7 @@ import React from 'react';
 import { Search, TrendingUp, FileText, Link2, BarChart3, Zap, Target, CheckCircle, Globe, Layers, Users, PenTool } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../Context/ThemeContext';
+import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleSquareBgAnimation';
 
 const SearchEngineOptimizationServices = () => {
   const { theme } = useTheme();
@@ -146,153 +147,22 @@ const SearchEngineOptimizationServices = () => {
   ];
 
   return (
-    <div className="min-h-screen theme-bg-primary">
-      <style>{`
-        @keyframes floatSlow {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-30px); }
-        }
-        @keyframes floatMedium {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-25px); }
-        }
-        @keyframes floatFast {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
-        }
-        @keyframes rotateSlow {
-          0% { transform: rotate(45deg); }
-          100% { transform: rotate(405deg); }
-        }
-        @keyframes rotateMedium {
-          0% { transform: rotate(45deg); }
-          100% { transform: rotate(405deg); }
-        }
-        @keyframes rotateFast {
-          0% { transform: rotate(45deg); }
-          100% { transform: rotate(405deg); }
-        }
-        @keyframes bounceSlow {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-15px); }
-        }
-        @keyframes bounceMedium {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-12px); }
-        }
-        @keyframes blobSlow {
-          0%, 100% {
-            border-radius: 60% 40% 70% 30% / 40% 60% 30% 70%;
-            transform: translateY(0px);
-          }
-          50% {
-            border-radius: 30% 70% 50% 50% / 60% 40% 60% 40%;
-            transform: translateY(-20px);
-          }
-        }
-        @keyframes blobMedium {
-          0%, 100% {
-            border-radius: 30% 70% 50% 50% / 60% 40% 60% 40%;
-            transform: translateY(0px);
-          }
-          50% {
-            border-radius: 60% 40% 70% 30% / 40% 60% 30% 70%;
-            transform: translateY(-15px);
-          }
-        }
-        @keyframes pulseSlow {
-          0%, 100% { transform: scale(1); opacity: 0.2; }
-          50% { transform: scale(1.1); opacity: 0.3; }
-        }
-        @keyframes pulseMedium {
-          0%, 100% { transform: scale(1); opacity: 0.15; }
-          50% { transform: scale(1.08); opacity: 0.25; }
-        }
-        .animate-float-slow { animation: floatSlow 8s ease-in-out infinite; }
-        .animate-float-medium { animation: floatMedium 6s ease-in-out infinite; }
-        .animate-float-fast { animation: floatFast 4s ease-in-out infinite; }
-        .animate-rotate-slow { animation: rotateSlow 12s linear infinite; }
-        .animate-rotate-medium { animation: rotateMedium 10s linear infinite; }
-        .animate-rotate-fast { animation: rotateFast 8s linear infinite; }
-        .animate-bounce-slow { animation: bounceSlow 5s ease-in-out infinite; }
-        .animate-bounce-medium { animation: bounceMedium 4s ease-in-out infinite; }
-        .animate-blob-slow { animation: blobSlow 10s ease-in-out infinite; }
-        .animate-blob-medium { animation: blobMedium 8s ease-in-out infinite; }
-        .animate-pulse-slow { animation: pulseSlow 4s ease-in-out infinite; }
-        .animate-pulse-medium { animation: pulseMedium 3s ease-in-out infinite; }
-      `}</style>
-      <section className="py-20 sm:py-32 md:py-40 theme-gradient-primary relative overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-          {/* Big Circles */}
-          <div className="absolute top-10 left-10 w-72 h-72 rounded-full opacity-10 animate-float-slow" style={{ backgroundColor: getThemeColor() }}></div>
-          <div className="absolute top-32 right-20 w-64 h-64 rounded-full opacity-8 animate-float-medium" style={{ backgroundColor: getThemeColor() }}></div>
-          <div className="absolute bottom-20 left-20 w-80 h-80 rounded-full opacity-12 animate-float-fast" style={{ backgroundColor: getThemeColor() }}></div>
-          <div className="absolute bottom-40 right-10 w-56 h-56 rounded-full opacity-9 animate-float-slow" style={{ backgroundColor: getThemeColor() }}></div>
-          {/* Medium Circles */}
-          <div className="absolute top-60 left-1/4 w-48 h-48 rounded-full opacity-8 animate-float-medium" style={{ backgroundColor: getThemeColor() }}></div>
-          <div className="absolute top-80 right-1/3 w-40 h-40 rounded-full opacity-7 animate-float-fast" style={{ backgroundColor: getThemeColor() }}></div>
-          <div className="absolute bottom-60 left-1/3 w-52 h-52 rounded-full opacity-10 animate-float-slow" style={{ backgroundColor: getThemeColor() }}></div>
-          {/* Small Circles */}
-          <div className="absolute top-40 left-1/2 w-24 h-24 rounded-full opacity-6 animate-float-fast" style={{ backgroundColor: getThemeColor() }}></div>
-          <div className="absolute bottom-80 right-1/4 w-32 h-32 rounded-full opacity-8 animate-float-medium" style={{ backgroundColor: getThemeColor() }}></div>
-          {/* Big Squares */}
-          <div className="absolute top-20 left-1/3 w-36 h-36 opacity-8 animate-rotate-slow" style={{ backgroundColor: getThemeColor(), transform: 'rotate(45deg)' }}></div>
-          <div className="absolute top-60 right-1/4 w-32 h-32 opacity-7 animate-rotate-medium" style={{ backgroundColor: getThemeColor(), transform: 'rotate(45deg)' }}></div>
-          <div className="absolute bottom-40 left-1/4 w-40 h-40 opacity-9 animate-rotate-fast" style={{ backgroundColor: getThemeColor(), transform: 'rotate(45deg)' }}></div>
-          {/* Medium Squares */}
-          <div className="absolute top-80 left-1/2 w-24 h-24 opacity-6 animate-rotate-medium" style={{ backgroundColor: getThemeColor(), transform: 'rotate(45deg)' }}></div>
-          <div className="absolute bottom-60 right-1/3 w-28 h-28 opacity-8 animate-rotate-slow" style={{ backgroundColor: getThemeColor(), transform: 'rotate(45deg)' }}></div>
-          {/* Small Squares */}
-          <div className="absolute top-50 left-1/5 w-16 h-16 opacity-5 animate-rotate-fast" style={{ backgroundColor: getThemeColor(), transform: 'rotate(45deg)' }}></div>
-          {/* Big Triangles */}
-          <div className="absolute top-32 right-1/4 w-0 h-0 opacity-8 animate-bounce-slow" style={{ 
-            borderLeft: '60px solid transparent',
-            borderRight: '60px solid transparent',
-            borderBottom: `104px solid ${getThemeColor()}`
-          }}></div>
-          <div className="absolute bottom-32 left-1/4 w-0 h-0 opacity-7 animate-bounce-medium" style={{ 
-            borderLeft: '50px solid transparent',
-            borderRight: '50px solid transparent',
-            borderBottom: `87px solid ${getThemeColor()}`
-          }}></div>
-          {/* Medium Triangles */}
-          <div className="absolute top-70 right-1/2 w-0 h-0 opacity-6 animate-bounce-slow" style={{ 
-            borderLeft: '35px solid transparent',
-            borderRight: '35px solid transparent',
-            borderBottom: `61px solid ${getThemeColor()}`
-          }}></div>
-          {/* Big Blobs */}
-          <div className="absolute top-1/4 left-1/2 w-96 h-96 opacity-8 animate-blob-slow" style={{ 
-            backgroundColor: getThemeColor(),
-            borderRadius: '60% 40% 70% 30% / 40% 60% 30% 70%'
-          }}></div>
-          <div className="absolute bottom-1/4 right-1/2 w-88 h-88 opacity-10 animate-blob-medium" style={{ 
-            backgroundColor: getThemeColor(),
-            borderRadius: '30% 70% 50% 50% / 60% 40% 60% 40%'
-          }}></div>
-          {/* Medium Blobs */}
-          <div className="absolute top-1/2 left-1/4 w-64 h-64 opacity-7 animate-blob-slow" style={{ 
-            backgroundColor: getThemeColor(),
-            borderRadius: '50% 50% 60% 40% / 40% 60% 50% 50%'
-          }}></div>
-          {/* Big Orbs */}
-          <div className="absolute top-1/3 left-1/3 w-72 h-72 rounded-full opacity-9 animate-pulse-slow" style={{ 
-            background: `radial-gradient(circle, ${getThemeColor()}, transparent)`
-          }}></div>
-          <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full opacity-8 animate-pulse-medium" style={{ 
-            background: `radial-gradient(circle, ${getThemeColor()}, transparent)`
-          }}></div>
-        </div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div className="min-h-screen theme-bg-primary pt-20">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden sm:py-8">
+        <CircleSquareBgAnimation/>
+       
+        
+        <div className="container mx-auto px-4 sm:px-6 pt-32 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold theme-text-primary mb-6 leading-tight">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
               Search Engine Optimization <span style={{ color: '#2d65bc' }}>Services</span>
             </h1>
-            <p className="text-base sm:text-lg md:text-xl theme-text-secondary mb-8 leading-relaxed px-4">
+            <p className="text-xl sm:text-2xl theme-text-secondary mb-4 max-w-3xl mx-auto leading-relaxed">
               Boost your online visibility and drive more traffic to your website with our comprehensive 
               SEO services. We help businesses rank higher and grow faster.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <Link
                 to="/request-a-quote"
                 className="bg-[#2d65bc] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#1a4a8a] transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
