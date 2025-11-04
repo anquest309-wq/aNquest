@@ -36,7 +36,7 @@ const ThemeSwitcher = () => {
       {/* Theme Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-1 sm:space-x-2 px-2 sm:px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95"
+        className="flex items-center space-x-1 sm:space-x-2 px-2  py-3 rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95"
         style={{
           backgroundColor: 'var(--bg-secondary)',
           color: 'var(--text-primary)',

@@ -106,7 +106,7 @@ const WebDevelopment = () => {
           <div className="absolute bottom-40 left-20 w-52 h-52 rounded-full opacity-8 animate-float-fast" style={{ backgroundColor: getThemeColor() }}></div>
         </div>
         
-        <div className="container mx-auto px-4 sm:px-6 pt-32 lg:px-8 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 pt-22 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
               Web <span style={{ color: '#2d65bc' }}>Development</span> Services

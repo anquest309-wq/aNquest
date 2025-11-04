@@ -8,6 +8,8 @@ import 'swiper/css/effect-fade';
 import DenseBgAnimation from '../Components/Bg-animation-template/DenseBgAnimation';import LargeShapesBgAnimation from '../Components/Bg-animation-template/LargeShapesBgAnimation';
 import CornerStructureBgAnimation from '../Components/Bg-animation-template/CornerStructureBgAnimation';
 import GridStructureBgAnimation from '../Components/Bg-animation-template/GridStructureBgAnimation';
+import MinimalBigShapesAnimation from '../Components/Bg-animation-template/MinimalBigShapesAnimation';
+import CTABgAnimation from '../Components/Bg-animation-template/CTABgAnimation';
 import SectionsBgAnimation from '../Components/Bg-animation-template/SectionsBgAnimation';
 const About = () => {
   const { theme } = useTheme();
@@ -156,10 +158,10 @@ const About = () => {
         {/* Content - Centered */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 text-white">
               Building Digital <span style={{ color: '#2d65bc' }}>Excellence</span>
             </h1>
-            <p className="text-xl sm:text-2xl theme-text-secondary mb-8 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl sm:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
               We are a forward-thinking digital solutions company dedicated to transforming your ideas into reality.
             </p>
           </div>
@@ -167,22 +169,22 @@ const About = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary relative overflow-hidden">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 theme-bg-primary relative overflow-hidden">
         {/* Background Animation */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-48 h-48 rounded-full opacity-10 animate-float-slow" style={{ backgroundColor: '#2d65bc' }}></div>
-          <div className="absolute bottom-40 right-20 w-40 h-40 rounded-full opacity-8 animate-float-medium" style={{ backgroundColor: '#2d65bc' }}></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-52 h-52 rounded-full opacity-5 animate-float-fast" style={{ backgroundColor: '#2d65bc' }}></div>
+          <div className="absolute top-20 left-10 w-32 h-32 sm:w-48 sm:h-48 rounded-full opacity-10 animate-float-slow" style={{ backgroundColor: '#2d65bc' }}></div>
+          <div className="absolute bottom-40 right-20 w-28 h-28 sm:w-40 sm:h-40 rounded-full opacity-8 animate-float-medium" style={{ backgroundColor: '#2d65bc' }}></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-36 h-36 sm:w-52 sm:h-52 rounded-full opacity-5 animate-float-fast" style={{ backgroundColor: '#2d65bc' }}></div>
         </div>
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {stats.map((stat, index) => (
               <div 
                 key={index} 
                 className="group relative"
               >
-                <div className="theme-card rounded-2xl theme-shadow-primary p-6 sm:p-8 text-center h-full transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                <div className="theme-card rounded-xl sm:rounded-2xl theme-shadow-primary p-4 sm:p-6 lg:p-8 text-center h-full transition-all duration-300 hover:scale-105 hover:shadow-xl"
                   style={{
                     border: `2px solid ${theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(45, 101, 188, 0.1)'}`,
                     background: theme === 'dark' 
@@ -192,26 +194,26 @@ const About = () => {
                 >
                   {/* Decorative Icon Background */}
                   <div 
-                    className="absolute top-4 right-4 w-16 h-16 rounded-full opacity-10 group-hover:opacity-20 transition-opacity duration-300"
+                    className="absolute top-2 right-2 sm:top-4 sm:right-4 w-12 h-12 sm:w-16 sm:h-16 rounded-full opacity-10 group-hover:opacity-20 transition-opacity duration-300"
                     style={{ backgroundColor: getStatsColor() }}
                   ></div>
                   
                   {/* Number */}
                   <div 
-                    className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-3 relative z-10 transition-all duration-300 group-hover:scale-110" 
+                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-3 relative z-10 transition-all duration-300 group-hover:scale-110" 
                     style={{ color: getStatsColor() }}
                   >
                     {stat.number}
                   </div>
                   
                   {/* Label */}
-                  <div className="text-base sm:text-lg theme-text-secondary font-medium relative z-10 group-hover:theme-text-primary transition-colors duration-300">
+                  <div className="text-sm sm:text-base md:text-lg theme-text-secondary font-medium relative z-10 group-hover:theme-text-primary transition-colors duration-300 leading-tight">
                     {stat.label}
                   </div>
                   
                   {/* Hover Border Effect */}
                   <div 
-                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    className="absolute inset-0 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     style={{
                       border: `2px solid ${getStatsColor()}`,
                       boxShadow: `0 0 20px ${getStatsColor()}40`
@@ -225,49 +227,49 @@ const About = () => {
       </section>
 
       {/* About Content Section */}
-      <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary relative overflow-hidden">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 theme-bg-primary relative overflow-hidden">
         {/* Background Animation */}
         <DenseBgAnimation />
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center mb-8 sm:mb-12 lg:mb-16">
               <div>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold theme-text-primary mb-4 sm:mb-6">
                   Who We <span style={{ color: '#2d65bc' }}>Are</span>
                 </h2>
-                <p className="text-lg theme-text-secondary mb-4 leading-relaxed">
+                <p className="text-base sm:text-lg theme-text-secondary mb-3 sm:mb-4 leading-relaxed">
                   At aNquest, we specialize in creating cutting-edge digital solutions across web development, mobile applications, digital marketing, and business automation.
                 </p>
-                <p className="text-lg theme-text-secondary leading-relaxed">
+                <p className="text-base sm:text-lg theme-text-secondary leading-relaxed">
                   With over 15 years of experience, we deliver scalable, high-performance solutions that drive your business forward.
                 </p>
               </div>
-              <div className=" rounded-3xl  p-8 relative">
+              <div className="rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 relative">
                 <img 
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800" 
                   alt="Our Team" 
-                  className="w-full h-64 object-cover rounded-2xl mb-6 animate-image-float" 
+                  className="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover rounded-xl sm:rounded-2xl animate-image-float" 
                 />
               </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className=" rounded-3xl  p-8 order-2 lg:order-1 relative">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
+              <div className="rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 order-2 lg:order-1 relative">
                 <img 
                   src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800" 
                   alt="Our Mission" 
-                  className="w-full h-64 object-cover rounded-2xl mb-6 animate-image-float-delayed" 
+                  className="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover rounded-xl sm:rounded-2xl animate-image-float-delayed" 
                 />
               </div>
               <div className="order-1 lg:order-2">
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold theme-text-primary mb-4 sm:mb-6">
                   Our <span style={{ color: '#2d65bc' }}>Mission</span>
                 </h2>
-                <p className="text-lg theme-text-secondary mb-4 leading-relaxed">
+                <p className="text-base sm:text-lg theme-text-secondary mb-3 sm:mb-4 leading-relaxed">
                   Our mission is to empower businesses with innovative digital solutions that drive growth and success.
                 </p>
-                <p className="text-lg theme-text-secondary leading-relaxed">
+                <p className="text-base sm:text-lg theme-text-secondary leading-relaxed">
                   We believe in building long-term partnerships and delivering value that goes beyond just code.
                 </p>
               </div>
@@ -372,10 +374,7 @@ const About = () => {
 
       {/* CTA Section */}
       <section className="py-5 sm:py-4 lg:py-5 relative overflow-hidden" style={{ background: getCTABackground() }}>
-        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-          <div className="absolute top-20 left-10 w-48 h-48 bg-white/15 rounded-full animate-float-slow"></div>
-          <div className="absolute bottom-40 left-20 w-56 h-56 bg-white/12 rounded-full animate-float-fast"></div>
-        </div>
+      <CTABgAnimation/>
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="max-w-4xl mx-auto">

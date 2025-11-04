@@ -147,7 +147,7 @@ const SocialMediaOptimizationServices = () => {
   ];
 
   return (
-    <div className="min-h-screen theme-bg-primary pt-20">
+    <div className="min-h-screen theme-bg-primary pt-10">
       {/* Hero Section */}
       <section className="relative overflow-hidden sm:py-8">
         <CircleSquareBgAnimation/>
@@ -159,8 +159,7 @@ const SocialMediaOptimizationServices = () => {
               Social Media Optimization <span style={{ color: '#2d65bc' }}>Services</span>
             </h1>
             <p className="text-xl sm:text-2xl theme-text-secondary mb-4 max-w-3xl mx-auto leading-relaxed">
-              Grow your brand's presence on social media with strategic content, engagement, and advertising. 
-              We help businesses build communities and drive results across all social platforms.
+            We help brands engage, grow, and succeed on social platforms.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <Link

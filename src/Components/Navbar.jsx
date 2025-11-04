@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { useTheme } from "../Context/ThemeContext";
@@ -8,8 +8,22 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null); // Closed by default
   const [clickedDropdown, setClickedDropdown] = useState(null); // No clicked dropdown by default
+  const [isServicesOpen, setIsServicesOpen] = useState(false); // Mobile services menu state
+  const [isMenuAnimating, setIsMenuAnimating] = useState(false); // For slide animation
+  const scrollPositionRef = useRef(0);
 
-  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+  const toggleMenu = () => {
+    if (!isMenuOpen) {
+      setIsMenuOpen(true);
+      // Trigger animation after a tiny delay to ensure smooth slide-in
+      setTimeout(() => setIsMenuAnimating(true), 10);
+      setIsServicesOpen(false); // Reset services menu when opening main menu
+    } else {
+      setIsMenuAnimating(false);
+      // Wait for animation to complete before hiding
+      setTimeout(() => setIsMenuOpen(false), 300);
+    }
+  };
 
   const handleDropdownHover = (name) => {
     if (!clickedDropdown) {
@@ -44,6 +58,27 @@ export default function Navbar() {
     return () => document.removeEventListener("click", handleClickOutside);
   }, [clickedDropdown]);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen && isMenuAnimating) {
+      // Save current scroll position
+      scrollPositionRef.current = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollPositionRef.current}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+      
+      return () => {
+        // Restore scroll position when menu closes
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.style.overflow = '';
+        window.scrollTo(0, scrollPositionRef.current);
+      };
+    }
+  }, [isMenuOpen, isMenuAnimating]);
+
   const dropdownClass = (name) => {
     const isActive = activeDropdown === name;
     return `absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-lg transform transition-all duration-300 z-50 ${
@@ -66,23 +101,8 @@ export default function Navbar() {
     <nav className={`fixed top-0 left-0 right-0 z-50 ${getNavbarStyle()}`}>
       <div className="container mx-auto px-4 sm:px-16  py-2 ">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* ===== Left: Logo + Hamburger ===== */}
+          {/* ===== Left: Logo ===== */}
           <div className="flex items-center space-x-3 sm:space-x-5">
-            {/* Mobile Menu Toggle */}
-            <button 
-              onClick={toggleMenu}
-              className="lg:hidden text-gray-800 focus:outline-none"
-              aria-label="Toggle menu"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {isMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
-
             <div className="flex items-center space-x-2">
               <Link to="/">
               <div className="w-28 h-28  rounded-full flex items-center justify-center">
@@ -249,87 +269,233 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* ===== Right: Theme Switcher + CTA ===== */}
-          <div className="md:flex hidden items-center space-x-4">
-            {/* Theme Switcher */}
-            <div className="theme-switcher-navbar">
-              <ThemeSwitcher />
+          {/* ===== Right: Theme Switcher + CTA + Hamburger Menu ===== */}
+          <div className="flex items-center space-x-4">
+            {/* Theme Switcher + CTA - Hidden on mobile, visible on md+ */}
+            <div className="hidden md:flex items-center space-x-4">
+              {/* Theme Switcher */}
+              <div className="theme-switcher-navbar">
+                <ThemeSwitcher />
+              </div>
+              
+              <Link to="/request-a-quote" className="bg-[#2d65bc] hover:bg-[#2d65bc]/90 text-white font-bold py-3 px-5 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-[#2d65bc]/25 active:scale-95">
+                Request A Quote
+              </Link>
             </div>
-            
-            <Link to="/request-a-quote" className="bg-[#2d65bc] hover:bg-[#2d65bc]/90 text-white font-bold py-2 px-5 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-[#2d65bc]/25 active:scale-95">
-              Request A Quote
-            </Link>
+
+            {/* Mobile Menu Toggle - Shows on tablet and mobile, after Request A Quote button */}
+            <button 
+              onClick={toggleMenu}
+              className="lg:hidden text-white focus:outline-none"
+              aria-label="Toggle menu"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
           </div>
         </div>
 
-        {/* ===== Mobile Menu ===== */}
+        {/* ===== Mobile Menu Overlay & Sidebar ===== */}
         {isMenuOpen && (
-          <div className="lg:hidden bg-white/95 backdrop-blur-lg text-gray-800 rounded-lg mt-3 p-4 space-y-3 animate-in fade-in duration-300 shadow-lg">
-            <Link to="/" className="block font-semibold hover:text-[#2d65bc] py-2 border-b border-gray-300">
-              Home
-            </Link>
-            <Link to="/about" className="block font-semibold hover:text-[#2d65bc] py-2 border-b border-gray-300">
-              About
-            </Link>
+          <>
+            {/* Backdrop */}
+            <div 
+              className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden transition-opacity duration-300 ${
+                isMenuAnimating ? 'opacity-100' : 'opacity-0'
+              }`}
+              onClick={toggleMenu}
+            ></div>
             
-            {/* Services Section in Mobile */}
-            <div className="border-b  border-gray-300">
-              <div className="py-2 font-semibold text-[#2d65bc]">Services</div>
-              <div className="ml-4 space-y-2 bg-[#6565c8]">
-              <Link to="/crm-services" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
-                  CRM Services
-                </Link>
-                <Link to="/email-marketing-services" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
-                  Email Marketing Services
-                </Link>
-                <Link to="/local-seo-services" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
-                  Local SEO Services
-                </Link>
-                <Link to="/mobile-app-development-services" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
-                  Mobile App Development Services
-                </Link>
-                <Link to="/online-reputation-management-services" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
-                  Online Reputation Management Services
-                </Link>
-                <Link to="/pay-per-click-ppc-services" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
-                  Pay Per Click (PPC) Services
-                </Link>
-                <Link to="/search-engine-optimization-services" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
-                  Search Engine Optimization Services
-                </Link>
-                <Link to="/social-media-optimization-services" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
-                  Social Media Optimization Services
-                </Link>
-                <Link to="/web-design-services" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
-                  Web Design Services
-                </Link>
-                <Link to="/web-development-services" className="block text-gray-700 hover:text-[#2d65bc] py-1 text-sm">
-                  Web Development Services
-                </Link>
-               
+            {/* Sidebar Menu */}
+            <div className={`fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white z-50 lg:hidden shadow-2xl transform transition-transform duration-300 ease-in-out overflow-y-auto ${
+              isMenuAnimating ? 'translate-x-0' : 'translate-x-full'
+            }`}>
+              {/* Header with Logo and Close Button */}
+              <div className="flex items-center justify-between p-4 border-b border-gray-200">
+                {/* Logo */}
+                <div className="flex items-center space-x-2">
+                  <Link to="/" onClick={toggleMenu}>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-10 h-10 rounded-full flex items-center justify-center">
+                        <img 
+                          src="https://ik.imagekit.io/y7b5pqyxj/anquest__2_-removebg-preview.png?updatedAt=1761570866349" 
+                          alt="aNquest Logo" 
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                      <div>
+                        <div className="font-bold text-gray-900 text-lg">aNquest</div>
+                        <div className="text-xs text-gray-500">Think. Code. Deliver.</div>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+                
+                {/* Close Button */}
+                <button
+                  onClick={toggleMenu}
+                  className="text-gray-800 hover:text-gray-600 focus:outline-none transition-colors"
+                  aria-label="Close menu"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
               </div>
-            </div>
-            
-            <Link to="/technologies" className="block font-semibold hover:text-[#2d65bc] py-2 border-b border-gray-300">
-              Technologies
-            </Link>
-            <Link to="/blogs" className="block font-semibold hover:text-[#2d65bc] py-2 border-b border-gray-300">
-              Blogs
-            </Link>
-            <Link to="/contacts" className="block font-semibold hover:text-[#2d65bc] py-2">
-              Contacts
-            </Link>
-            
-            {/* Theme Switcher in Mobile */}
-            <div className="border-t border-gray-300 pt-3">
-              <div className="py-2 font-semibold text-[#2d65bc]">Theme</div>
-              <div className="ml-4">
-                <div className="theme-switcher-mobile">
-                  <ThemeSwitcher />
+
+              {/* Menu Items */}
+              <div className="py-2">
+                <Link 
+                  to="/" 
+                  onClick={toggleMenu}
+                  className="block px-4 py-3 text-gray-800 font-semibold hover:bg-gray-50 hover:text-[#2d65bc] transition-colors border-b border-gray-200"
+                >
+                  Home
+                </Link>
+                
+                <Link 
+                  to="/about" 
+                  onClick={toggleMenu}
+                  className="block px-4 py-3 text-gray-800 font-semibold hover:bg-gray-50 hover:text-[#2d65bc] transition-colors border-b border-gray-200"
+                >
+                  About
+                </Link>
+                
+                {/* Services Section - Expandable */}
+                <div className="border-b border-gray-200">
+                  <button
+                    onClick={() => setIsServicesOpen(!isServicesOpen)}
+                    className="w-full flex items-center justify-between px-4 py-3 text-[#2d65bc] font-semibold hover:bg-gray-50 transition-colors"
+                  >
+                    <span>Services</span>
+                    <svg 
+                      className={`w-4 h-4 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`}
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  
+                  {/* Services Submenu */}
+                  {isServicesOpen && (
+                    <div className="bg-[#f4f4f5] text-black space-y-1 py-2">
+                      <Link 
+                        to="/crm-services" 
+                        onClick={toggleMenu}
+                        className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
+                      >
+                        CRM Services
+                      </Link>
+                      <Link 
+                        to="/email-marketing-services" 
+                        onClick={toggleMenu}
+                        className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
+                      >
+                        Email Marketing Services
+                      </Link>
+                      <Link 
+                        to="/local-seo-services" 
+                        onClick={toggleMenu}
+                        className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
+                      >
+                        Local SEO Services
+                      </Link>
+                      <Link 
+                        to="/mobile-app-development-services" 
+                        onClick={toggleMenu}
+                        className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
+                      >
+                        Mobile App Development Services
+                      </Link>
+                      <Link 
+                        to="/online-reputation-management-services" 
+                        onClick={toggleMenu}
+                        className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
+                      >
+                        Online Reputation Management Services
+                      </Link>
+                      <Link 
+                        to="/pay-per-click-ppc-services" 
+                        onClick={toggleMenu}
+                        className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
+                      >
+                        Pay Per Click (PPC) Services
+                      </Link>
+                      <Link 
+                        to="/search-engine-optimization-services" 
+                        onClick={toggleMenu}
+                        className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
+                      >
+                        Search Engine Optimization Services
+                      </Link>
+                      <Link 
+                        to="/social-media-optimization-services" 
+                        onClick={toggleMenu}
+                        className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
+                      >
+                        Social Media Optimization Services
+                      </Link>
+                      <Link 
+                        to="/web-design-services" 
+                        onClick={toggleMenu}
+                        className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
+                      >
+                        Web Design Services
+                      </Link>
+                      <Link 
+                        to="/web-development-services" 
+                        onClick={toggleMenu}
+                        className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
+                      >
+                        Web Development Services
+                      </Link>
+                    </div>
+                  )}
+                </div>
+                
+                <Link 
+                  to="/technologies" 
+                  onClick={toggleMenu}
+                  className="block px-4 py-3 text-gray-800 font-semibold hover:bg-gray-50 hover:text-[#2d65bc] transition-colors border-b border-gray-200"
+                >
+                  Technologies
+                </Link>
+                
+                <Link 
+                  to="/blogs" 
+                  onClick={toggleMenu}
+                  className="block px-4 py-3 text-gray-800 font-semibold hover:bg-gray-50 hover:text-[#2d65bc] transition-colors border-b border-gray-200"
+                >
+                  Blogs
+                </Link>
+                
+                <Link 
+                  to="/contacts" 
+                  onClick={toggleMenu}
+                  className="block px-4 py-3 text-gray-800 font-semibold hover:bg-gray-50 hover:text-[#2d65bc] transition-colors border-b border-gray-200"
+                >
+                  Contacts
+                </Link>
+                
+                {/* Theme Switcher in Mobile */}
+                <div className="border-t border-gray-200 pt-3 mt-2">
+                  <div className="px-4 py-2 font-semibold text-[#2d65bc]">Theme</div>
+                  <div className="px-4 pb-3">
+                    <div className="theme-switcher-mobile">
+                      <ThemeSwitcher />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </>
         )}
       </div>
     </nav>

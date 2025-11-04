@@ -6,8 +6,10 @@ import SectionsBgAnimation from '../Components/Bg-animation-template/SectionsBgA
 import { Autoplay, EffectCoverflow, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
-import MinimalBgAnimation from '../Components/Bg-animation-template/MinimalBgAnimation';
+// import MinimalBgAnimation from '../Components/Bg-animation-template/MinimalBgAnimation';
+import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleSquareBgAnimation';
 import DenseBgAnimation from '../Components/Bg-animation-template/DenseBgAnimation';
+import  CTABgAnimation from '../Components/Bg-animation-template/CTABgAnimation'
 import 'swiper/css/navigation';
 
 // Gradient Background Component
@@ -46,8 +48,8 @@ const AnimatedBg = ({ theme }) => {
 // Hero Section
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center theme-gradient-primary overflow-hidden">
-    <GradientBg />
+    <section className="relative py-10 pt-38 flex items-center justify-center theme-gradient-primary overflow-hidden">
+    <CircleSquareBgAnimation/>
     
     {/* Floating Elements */}
     <div className="absolute inset-0 opacity-20">
@@ -69,14 +71,15 @@ const HeroSection = () => {
       <div className="max-w-5xl mx-auto text-center">
        
         
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold theme-text-primary mb-6 leading-tight">
-          Technology
-          <span className="block" style={{ color: '#2d65bc' }}>
-            Excellence
-          </span>
-        </h1>
+      <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold theme-text-primary mb-6 leading-tight">
+  Technology{" "}
+  <span className="inline" style={{ color: '#2d65bc' }}>
+    Excellence
+  </span>
+</h1>
+
         
-        <p className="text-xl md:text-2xl theme-text-secondary mb-12 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-xl md:text-2xl theme-text-secondary mb-5 max-w-3xl mx-auto leading-relaxed">
           Building tomorrow's digital experiences with cutting-edge technology stacks that scale
         </p>
         
@@ -85,7 +88,7 @@ const HeroSection = () => {
             Explore Stack
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </a>
-          <a href="#benefits" className="text-white px-8 py-4 rounded-full font-semibold hover:bg-[#1a4a8a] transition-all duration-300 border-2 border-[#2d65bc]" style={{ backgroundColor: '#2d65bc' }}>
+          <a href="#benefits" className="text-[#2d65bc] bg-white px-8 py-4 rounded-full font-semibold hover:bg-[#2d65bc] hover:text-white transition-all duration-300 border-2 border-[#2d65bc]">
             Learn More
           </a>
         </div>
@@ -546,7 +549,8 @@ const CTASection = () => {
   return (
     <section className="py-3 sm:py-3 md:py-3 lg:py-4 theme-gradient-accent relative overflow-hidden">
      
-      {/* Floating Elements */}<SectionsBgAnimation/>
+      {/* Floating Elements */}
+      <CTABgAnimation/>
       
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -562,15 +566,15 @@ const CTASection = () => {
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 sm:px-0">
             <a
               href="/contacts"
-              className="group text-white px-6 py-3 sm:px-8 sm:py-3 md:px-7 md:py-4 rounded-full font-bold hover:scale-105 transition-all duration-300 shadow-2xl flex items-center justify-center gap-2 text-sm sm:text-base md:text-lg w-full sm:w-auto hover:bg-[#1a4a8a]"
-              style={{ backgroundColor: '#2d65bc' }}
+              className="group text-black bg-white px-6 py-3 sm:px-8 sm:py-3 md:px-7 md:py-4 rounded-full font-bold hover:scale-105 transition-all duration-300 shadow-2xl flex items-center justify-center gap-2 text-sm sm:text-base md:text-lg w-full sm:w-auto hover:bg-[#f3f4f7]"
+              
             >
               Start Your Project
               <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
             </a>
             <a
               href="/portfolio"
-              className="bg-white/10 backdrop-blur-sm text-white px-6 py-3 sm:px-8 sm:py-4 md:px-7 md:py-4 rounded-full font-bold hover:bg-white/20 transition-all duration-300 border-2 border-white/20 text-sm sm:text-base md:text-lg w-full sm:w-auto"
+              className="bg-white/10 backdrop-blur-sm text-white px-6 py-3 sm:px-8 sm:py-4 md:px-7 md:py-4 rounded-full font-bold hover:bg-white hover:text-black transition-all duration-300 border-2 border-white/20 text-sm sm:text-base md:text-lg w-full sm:w-auto"
             >
               View Portfolio
             </a>

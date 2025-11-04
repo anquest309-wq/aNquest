@@ -153,14 +153,13 @@ const WebDevelopmentServices = () => {
         <CircleSquareBgAnimation/>
        
         
-        <div className="container mx-auto px-4 sm:px-6 pt-32 lg:px-8 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 pt-22 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
               Web Development <span style={{ color: '#2d65bc' }}>Services</span>
             </h1>
             <p className="text-xl sm:text-2xl theme-text-secondary mb-4 max-w-3xl mx-auto leading-relaxed">
-              Build powerful, scalable web applications and websites that drive business growth. 
-              We develop custom solutions using modern technologies and best practices.
+            Develop modern, high-performance web apps that fuel business success.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <Link

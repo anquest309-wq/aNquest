@@ -6,6 +6,7 @@ import DenseBgAnimation from '../Components/Bg-animation-template/DenseBgAnimati
 import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleSquareBgAnimation';
 import { MinimalBigShapesAnimation } from '../Components/Bg-animation-template';
 // import GridStructureBgAnimation from '../Components/Bg-animation-template/GridStructureBgAnimation';
+import CTABgAnimation from "../Components/Bg-animation-template/CTABgAnimation"
 
 const Blogs = () => {
   const { theme } = useTheme();
@@ -349,10 +350,7 @@ const Blogs = () => {
       {/* Hero Section */}
       <section className="relative overflow-hidden     sm:py-8 ">
         <CircleSquareBgAnimation/>
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-48 h-48 rounded-full opacity-10 animate-float-slow" style={{ backgroundColor: getThemeColor() }}></div>
-          <div className="absolute bottom-40 left-20 w-52 h-52 rounded-full opacity-8 animate-float-fast" style={{ backgroundColor: getThemeColor() }}></div>
-        </div>
+       
         
         <div className="container mx-auto px-4 sm:px-6 pt-32 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
@@ -502,12 +500,8 @@ const Blogs = () => {
 
       {/* CTA Section */}
       <section className="py-12 sm:py-16 md:py-20 lg:py-24 relative overflow-hidden" style={{ background: getCTABackground() }}>
-        <MinimalBigShapesAnimation/>
-        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-          {/* <div className="absolute top-20 left-10 w-48 h-48 bg-white/15 rounded-full animate-float-slow"></div> */}
-          <div className="absolute bottom-40 left-20 w-56 h-56 bg-white/12 rounded-full animate-float-fast"></div>
-          <div className="absolute top-1/2 right-10 w-40 h-40 bg-white/10 rounded-full animate-float-medium" style={{ animationDelay: '1s' }}></div>
-        </div>
+      <CTABgAnimation/>
+       
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="max-w-4xl mx-auto">

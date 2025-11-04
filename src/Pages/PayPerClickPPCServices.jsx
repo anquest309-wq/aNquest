@@ -147,7 +147,7 @@ const PayPerClickPPCServices = () => {
   ];
 
   return (
-    <div className="min-h-screen theme-bg-primary pt-20">
+    <div className="min-h-screen theme-bg-primary pt-10">
       {/* Hero Section */}
       <section className="relative overflow-hidden sm:py-8">
         <CircleSquareBgAnimation/>
@@ -159,8 +159,7 @@ const PayPerClickPPCServices = () => {
               Pay Per Click (PPC) <span style={{ color: '#2d65bc' }}>Services</span>
             </h1>
             <p className="text-xl sm:text-2xl theme-text-secondary mb-4 max-w-3xl mx-auto leading-relaxed">
-              Drive immediate traffic and conversions with targeted PPC advertising. 
-              We manage your paid search campaigns to maximize ROI and grow your business.
+            Drive traffic and boost conversions with targeted PPC campaigns.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <Link

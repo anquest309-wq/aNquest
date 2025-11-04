@@ -147,7 +147,7 @@ const WebDesignServices = () => {
   ];
 
   return (
-    <div className="min-h-screen theme-bg-primary pt-20">
+    <div className="min-h-screen theme-bg-primary pt-10">
       {/* Hero Section */}
       <section className="relative overflow-hidden sm:py-8">
         <CircleSquareBgAnimation/>
@@ -159,8 +159,7 @@ const WebDesignServices = () => {
               Web Design <span style={{ color: '#2d65bc' }}>Services</span>
             </h1>
             <p className="text-xl sm:text-2xl theme-text-secondary mb-4 max-w-3xl mx-auto leading-relaxed">
-              Create stunning, user-friendly websites that engage visitors and drive conversions. 
-              We design websites that look great and work perfectly across all devices.
+            Create modern websites that attract, engage, and convert.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <Link

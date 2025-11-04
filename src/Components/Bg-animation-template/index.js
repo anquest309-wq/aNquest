@@ -13,4 +13,5 @@ export { default as ZigzagStructureBgAnimation } from './ZigzagStructureBgAnimat
 export { default as LayeredStructureBgAnimation } from './LayeredStructureBgAnimation';
 export { default as CircleSquareBgAnimation } from './CircleSquareBgAnimation';
 export { default as MinimalBigShapesAnimation } from './MinimalBigShapesAnimation';
+export { default as CTABgAnimation } from './CTABgAnimation';
 

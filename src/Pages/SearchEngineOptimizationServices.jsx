@@ -147,7 +147,7 @@ const SearchEngineOptimizationServices = () => {
   ];
 
   return (
-    <div className="min-h-screen theme-bg-primary pt-20">
+    <div className="min-h-screen theme-bg-primary pt-10">
       {/* Hero Section */}
       <section className="relative overflow-hidden sm:py-8">
         <CircleSquareBgAnimation/>
@@ -159,8 +159,7 @@ const SearchEngineOptimizationServices = () => {
               Search Engine Optimization <span style={{ color: '#2d65bc' }}>Services</span>
             </h1>
             <p className="text-xl sm:text-2xl theme-text-secondary mb-4 max-w-3xl mx-auto leading-relaxed">
-              Boost your online visibility and drive more traffic to your website with our comprehensive 
-              SEO services. We help businesses rank higher and grow faster.
+            Rank higher, reach more customers, and grow faster with SEO.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <Link

@@ -226,57 +226,53 @@ export default function Home() {
           </div>
           
           <div className="container mx-auto px-4 sm:px-6 lg:px-18 h-full relative z-10">
-            <div className="flex items-center h-full gap-8 lg:gap-12">
-            {/* Left Side - Text Content */}
-              <div className="w-full lg:w-1/2 flex items-center justify-center lg:justify-start">
-              <div className="max-w-2xl">
-                {/* Animated Headline */}
-                <TypingAnimation />
-                
-                {/* Description */}
+            <div className="flex flex-col lg:flex-row items-center h-full gap-8 lg:gap-12 py-8 lg:py-0">
+              {/* Right Side - GIF Carousel (Top on mobile/tablet, Right on desktop) */}
+              <div className="w-full lg:w-1/2 flex items-center justify-center order-1 lg:order-2">
+                <GifCarousel />
+              </div>
+            
+              {/* Left Side - Text Content (Bottom on mobile/tablet, Left on desktop) */}
+              <div className="w-full lg:w-1/2 flex items-center justify-center lg:justify-start order-2 lg:order-1">
+                <div className="max-w-2xl">
+                  {/* Animated Headline */}
+                  <TypingAnimation />
+                  
+                  {/* Description */}
                   <p className="text-lg sm:text-xl theme-text-secondary leading-relaxed mb-8 animate-fade-in-up" style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>
                     aNquest specializes in creating cutting-edge digital solutions across web development, mobile applications, digital marketing, and business automation. We deliver scalable, high-performance solutions that drive your business forward.
-                </p>
-                
-                {/* Call to Action Buttons */}
-                <div className="flex  flex-col sm:flex-row gap-10 animate-fade-in-up" style={{ animationDelay: '0.8s', animationFillMode: 'both' }}>
-                  {/* Our Services Button */}
-                  <a 
-                    href="#services"
-                    className="hero-button-primary font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl active:scale-95 text-center text-white"
-                    style={{
-                      backgroundColor: '#2d65bc',
-                      border: '2px solid #2d65bc'
-                    }}
-                  >
-                    <span className="relative z-10 flex items-center justify-center">
-                      
-                      Our Services
-                    </span>
-                  </a>
+                  </p>
                   
-                  {/* Contact Us Button */}
-                  <Link 
-                    to="/contacts"
-                    className="border-2 font-bold py-4 text-[rgb(31,103,218)] hover:text-white hover:bg-[#2d65bc]
-                    px-8 rounded-lg transition-all duration-300 transform hover:scale-105 border-[#2d65bc] text-center"
-                   
-                  >
-                    <span className="relative z-10 flex items-center justify-center">
-                      
-                    Contact Us
-                    </span>
-                  </Link>
+                  {/* Call to Action Buttons */}
+                  <div className="flex flex-col sm:flex-row gap-10 animate-fade-in-up" style={{ animationDelay: '0.8s', animationFillMode: 'both' }}>
+                    {/* Our Services Button */}
+                    <a 
+                      href="#services"
+                      className="hero-button-primary font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl active:scale-95 text-center text-white"
+                      style={{
+                        backgroundColor: '#2d65bc',
+                        border: '2px solid #2d65bc'
+                      }}
+                    >
+                      <span className="relative z-10 flex items-center justify-center">
+                        Our Services
+                      </span>
+                    </a>
+                    
+                    {/* Contact Us Button */}
+                    <Link 
+                      to="/contacts"
+                      className="border-2 font-bold py-4 text-[rgb(31,103,218)] hover:text-white hover:bg-[#2d65bc] px-8 rounded-lg transition-all duration-300 transform hover:scale-105 border-[#2d65bc] text-center"
+                    >
+                      <span className="relative z-10 flex items-center justify-center">
+                        Contact Us
+                      </span>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
-            
-              {/* Right Side - GIF Carousel */}
-              <div className="w-full lg:w-1/2 flex items-center justify-center">
-                <GifCarousel />
-            </div>
           </div>
-        </div>
       </section>
 
 

@@ -91,10 +91,7 @@ const RequestAQuote = () => {
       {/* Hero Section */}
       <section className="relative overflow-hidden sm:py-8">
         <CircleSquareBgAnimation/>
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-48 h-48 rounded-full opacity-10 animate-float-slow" style={{ backgroundColor: getThemeColor() }}></div>
-          <div className="absolute bottom-40 left-20 w-52 h-52 rounded-full opacity-8 animate-float-fast" style={{ backgroundColor: getThemeColor() }}></div>
-        </div>
+       
         
         <div className="container mx-auto px-4 sm:px-6 pt-32 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
@@ -346,7 +343,7 @@ const RequestAQuote = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 sm:py-20 lg:py-24 theme-gradient-accent relative overflow-hidden">
+      <section className="py-6 sm:py-10 lg:py-14 theme-gradient-accent relative overflow-hidden">
       <MinimalBigShapesAnimation/>
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
           <div className="absolute top-20 left-10 w-48 h-48 bg-white/15 rounded-full animate-float-slow"></div>
@@ -362,10 +359,10 @@ const RequestAQuote = () => {
               Have questions or want to discuss your project? Contact us directly.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="tel:+15551234567" className="bg-white font-bold py-4 px-8 rounded-xl hover:bg-gray-50 transition-all duration-200 text-lg hover:scale-105" style={{ color: '#2d65bc' }}>
+              <a href="tel:+15551234567" className="bg-white font-bold py-4 px-8 rounded-xl hover:bg-gray-50 transition-all duration-200 text-lg hover:scale-105 text-black" >
                 Call Us Now
               </a>
-              <a href="mailto:info@anquest.com" className="border-2 border-white text-white font-bold py-4 px-8 rounded-xl hover:bg-white hover:text-[#2d65bc] transition-all duration-200 text-lg hover:scale-105">
+              <a href="mailto:info@anquest.com" className="border-2 border-white text-white font-bold py-4 px-8 rounded-xl hover:bg-white hover:text-black transition-all duration-200 text-lg hover:scale-105">
                 Email Us
               </a>
             </div>
