@@ -3,6 +3,7 @@ import { Code, Server, Layers, ShoppingCart, FileText, Smartphone } from 'lucide
 import { Link } from 'react-router-dom';
 import { useTheme } from '../Context/ThemeContext';
 import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleSquareBgAnimation';
+import { buildUrl } from '../utils/urlUtils';
 
 const WebDevelopment = () => {
   const { theme } = useTheme();
@@ -116,14 +117,14 @@ const WebDevelopment = () => {
               From simple landing pages to complex web platforms, we deliver exceptional digital experiences.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-              <Link
-                to="/request-a-quote"
+              <Link 
+                to={buildUrl('/request-a-quote')}
                 className="bg-[#2d65bc] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#1a4a8a] transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
               >
                 Get Started
               </Link>
-              <Link
-                to="/contacts"
+              <Link 
+                to={buildUrl('/contacts')}
                 className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white transition-all duration-300 text-base sm:text-lg hover:scale-105"
               >
                 Contact Us

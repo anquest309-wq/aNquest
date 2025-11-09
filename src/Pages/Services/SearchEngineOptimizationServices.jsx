@@ -1,10 +1,12 @@
 import React from 'react';
-import { Code, Server, Layers, ShoppingCart, Smartphone, Zap, Shield, BarChart3, Database, CheckCircle, Target, Globe } from 'lucide-react';
+import { Search, TrendingUp, FileText, Link2, BarChart3, Zap, Target, CheckCircle, Globe, Layers, Users, PenTool } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useTheme } from '../Context/ThemeContext';
-import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleSquareBgAnimation';
+import { useTheme } from '../../Context/ThemeContext';
+import CircleSquareBgAnimation from '../../Components/Bg-animation-template/CircleSquareBgAnimation';
+import SEO from '../../Components/SEO';
+import { buildUrl } from '../../utils/urlUtils';
 
-const WebDevelopmentServices = () => {
+const SearchEngineOptimizationServices = () => {
   const { theme } = useTheme();
 
   const getThemeColor = () => {
@@ -32,81 +34,81 @@ const WebDevelopmentServices = () => {
   };
   const services = [
     {
-      title: "Frontend Development",
-      description: "Modern, responsive user interfaces built with React, Vue.js, and Angular. We create engaging user experiences that work perfectly across all devices.",
-      icon: Code,
-      bgImage: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&auto=format&fit=crop",
+      title: "SEO Audit & Analysis",
+      description: "Comprehensive analysis of your website's SEO performance. We identify issues and opportunities to improve your search engine rankings.",
+      icon: BarChart3,
+      bgImage: "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=800&auto=format&fit=crop",
       features: [
-        "React & Next.js Development",
-        "Vue.js & Nuxt.js",
-        "Angular Applications",
-        "Responsive Design",
-        "UI/UX Implementation"
+        "Technical SEO Audit",
+        "Content Analysis",
+        "Site Speed Optimization",
+        "Mobile-First Analysis",
+        "Competitor Research"
       ]
     },
     {
-      title: "Backend Development",
-      description: "Robust server-side applications and APIs built with Node.js, Python, and PHP. We ensure your backend is scalable, secure, and performant.",
-      icon: Server,
-      bgImage: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&fit=crop",
+      title: "Keyword Research",
+      description: "Strategic keyword research to identify the best opportunities for your business. We find high-value keywords that drive qualified traffic.",
+      icon: Search,
+      bgImage: "https://images.unsplash.com/photo-1432888622747-4eb9a8f2c293?w=800&auto=format&fit=crop",
       features: [
-        "Node.js & Express",
-        "Python & Django",
-        "PHP & Laravel",
-        "RESTful APIs",
-        "Database Design"
+        "Long-tail Keywords",
+        "Local SEO Keywords",
+        "Competitor Analysis",
+        "Search Volume Analysis",
+        "Keyword Difficulty Assessment"
       ]
     },
     {
-      title: "Full-Stack Development",
-      description: "Complete web solutions from frontend to backend. We handle every aspect of your web application development for a seamless end-to-end experience.",
+      title: "On-Page SEO",
+      description: "Optimize your website's content and structure for better search engine visibility. We ensure every page is optimized for maximum impact.",
+      icon: FileText,
+      bgImage: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&auto=format&fit=crop",
+      features: [
+        "Title Tags & Meta Descriptions",
+        "Header Structure (H1-H6)",
+        "Internal Linking",
+        "Image Optimization",
+        "Content Optimization"
+      ]
+    },
+    {
+      title: "Off-Page SEO",
+      description: "Build authority and credibility through strategic link building and digital PR. We help establish your brand as an industry leader.",
+      icon: Link2,
+      bgImage: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&auto=format&fit=crop",
+      features: [
+        "Link Building",
+        "Digital PR",
+        "Guest Posting",
+        "Social Media Signals",
+        "Brand Mentions"
+      ]
+    },
+    {
+      title: "Technical SEO",
+      description: "Improve your website's technical foundation for better search engine crawling, indexing, and ranking performance.",
       icon: Layers,
-      bgImage: "https://images.unsplash.com/photo-1537884944318-390069bb8665?w=800&auto=format&fit=crop",
+      bgImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop",
       features: [
-        "End-to-End Solutions",
-        "MERN Stack",
-        "MEAN Stack",
-        "Database Integration",
-        "Deployment & DevOps"
+        "Site Speed Optimization",
+        "Mobile Responsiveness",
+        "Schema Markup",
+        "XML Sitemaps",
+        "Canonical Tags"
       ]
     },
     {
-      title: "E-Commerce Development",
-      description: "Build powerful online stores with custom features, seamless checkout, and mobile optimization. We create e-commerce platforms that drive sales.",
-      icon: ShoppingCart,
-      bgImage: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&auto=format&fit=crop",
+      title: "Content Marketing",
+      description: "Create valuable, engaging content that attracts and converts your target audience. We develop content strategies that drive results.",
+      icon: PenTool,
+      bgImage: "https://images.unsplash.com/photo-1542435503-956c469947f6?w=800&auto=format&fit=crop",
       features: [
-        "Custom Store Design",
-        "Product Management",
-        "Payment Integration",
-        "Order Processing",
-        "Inventory Tracking"
-      ]
-    },
-    {
-      title: "Web Application Development",
-      description: "Build custom web applications tailored to your business needs. From simple web apps to complex enterprise solutions.",
-      icon: Globe,
-      bgImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop",
-      features: [
-        "Custom Applications",
-        "Progressive Web Apps",
-        "Real-time Features",
-        "API Integration",
-        "Cloud Deployment"
-      ]
-    },
-    {
-      title: "Maintenance & Support",
-      description: "Keep your website running smoothly with ongoing maintenance, updates, security patches, and technical support.",
-      icon: Shield,
-      bgImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop",
-      features: [
-        "Bug Fixes",
-        "Security Updates",
-        "Performance Optimization",
-        "Feature Updates",
-        "24/7 Support"
+        "Blog Writing",
+        "Content Strategy",
+        "Copywriting",
+        "Video Content",
+        "Infographics"
       ]
     }
   ];
@@ -114,62 +116,69 @@ const WebDevelopmentServices = () => {
   const processSteps = [
     {
       number: "1",
-      title: "Planning & Analysis",
-      description: "We analyze your requirements and create a detailed development plan."
+      title: "Research & Analysis",
+      description: "We analyze your current SEO status and identify opportunities."
     },
     {
       number: "2",
-      title: "Design & Development",
-      description: "We design and build your website with best practices."
+      title: "Strategy Development",
+      description: "We create a customized SEO strategy for your business."
     },
     {
       number: "3",
-      title: "Testing & QA",
-      description: "We thoroughly test your website across devices and browsers."
+      title: "Implementation",
+      description: "We implement the strategy with ongoing optimization."
     },
     {
       number: "4",
-      title: "Launch & Support",
-      description: "We launch your site and provide ongoing maintenance."
+      title: "Monitoring & Reporting",
+      description: "We track progress and provide detailed reports."
     }
   ];
 
   const results = [
-    { percentage: "99.9%", title: "Uptime", description: "Average website availability and reliability" },
-    { percentage: "50%", title: "Faster Load Times", description: "Average improvement in page speed" },
-    { percentage: "200%", title: "Performance Boost", description: "Average increase in overall performance" }
+    { percentage: "300%", title: "Increase in Organic Traffic", description: "Average increase in organic search traffic within 6 months" },
+    { percentage: "85%", title: "Keyword Ranking Improvement", description: "Percentage of targeted keywords ranking in top 10" },
+    { percentage: "250%", title: "ROI Improvement", description: "Average return on investment for SEO campaigns" }
   ];
 
   const benefits = [
-    { icon: Zap, title: "Fast Development", description: "Agile methodologies for quicker time-to-market" },
-    { icon: Shield, title: "Secure & Scalable", description: "Enterprise-grade security and scalability" },
-    { icon: CheckCircle, title: "Quality Code", description: "Clean, maintainable, and well-documented code" }
+    { icon: TrendingUp, title: "Proven Results", description: "Track record of delivering consistent ranking improvements" },
+    { icon: Target, title: "Targeted Strategy", description: "Customized SEO plans tailored to your business goals" },
+    { icon: Zap, title: "Fast Implementation", description: "Quick turnaround on optimization recommendations" }
   ];
 
   return (
-    <div className="min-h-screen theme-bg-primary pt-20">
+    <>
+      <SEO 
+        title="Search Engine Optimization (SEO) Services - aNquest Media"
+        description="Enhance your website ranking with aNquest's expert Search Engine Optimization services. Drive organic traffic, boost visibility, and grow your business online."
+        keywords="aNquest SEO services, search engine optimization India, organic search marketing, on-page SEO, off-page SEO, technical SEO, keyword research, website ranking improvement, digital marketing India, SEO agency Ghaziabad"
+        canonicalUrl="https://anquestmedia.com/search-engine-optimization-services"
+      />
+      <div className="min-h-screen theme-bg-primary pt-10">
       {/* Hero Section */}
       <section className="relative overflow-hidden sm:py-8">
         <CircleSquareBgAnimation/>
        
         
-        <div className="container mx-auto px-4 sm:px-6 pt-22 lg:px-8 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 pt-32 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
-              Web Development <span style={{ color: '#2d65bc' }}>Services</span>
+              Search Engine Optimization <span style={{ color: '#2d65bc' }}>Services</span>
             </h1>
             <p className="text-xl sm:text-2xl theme-text-secondary mb-4 max-w-3xl mx-auto leading-relaxed">
-            Develop modern, high-performance web apps that fuel business success.
+            Rank higher, reach more customers, and grow faster with SEO.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <Link
-                to="/request-a-quote"
+                to={buildUrl('/search-engine-optimization-services/request-a-quote')}
                 className="bg-[#2d65bc] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#1a4a8a] transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
               >
                 Get Started
               </Link>
               <Link
-                to="/contacts"
+                to={buildUrl('/search-engine-optimization-services/contacts')}
                 className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white transition-all duration-300 text-base sm:text-lg hover:scale-105"
               >
                 Contact Us
@@ -181,22 +190,39 @@ const WebDevelopmentServices = () => {
 
       <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+          {/* Big Circles */}
           <div className="absolute top-20 left-10 w-64 h-64 rounded-full opacity-8 animate-float-slow" style={{ backgroundColor: getThemeColor() }}></div>
           <div className="absolute top-40 right-20 w-56 h-56 rounded-full opacity-7 animate-float-medium" style={{ backgroundColor: getThemeColor() }}></div>
           <div className="absolute bottom-40 left-20 w-72 h-72 rounded-full opacity-10 animate-float-fast" style={{ backgroundColor: getThemeColor() }}></div>
+          {/* Medium Circles */}
           <div className="absolute top-60 left-1/4 w-48 h-48 rounded-full opacity-6 animate-float-medium" style={{ backgroundColor: getThemeColor() }}></div>
           <div className="absolute bottom-60 right-1/3 w-48 h-48 rounded-full opacity-8 animate-float-slow" style={{ backgroundColor: getThemeColor() }}></div>
+          {/* Small Circles */}
           <div className="absolute top-80 left-1/2 w-28 h-28 rounded-full opacity-5 animate-float-fast" style={{ backgroundColor: getThemeColor() }}></div>
+          {/* Big Squares */}
           <div className="absolute top-32 left-1/3 w-32 h-32 opacity-7 animate-rotate-slow" style={{ backgroundColor: getThemeColor(), transform: 'rotate(45deg)' }}></div>
           <div className="absolute bottom-32 right-1/4 w-36 h-36 opacity-8 animate-rotate-medium" style={{ backgroundColor: getThemeColor(), transform: 'rotate(45deg)' }}></div>
+          {/* Medium Squares */}
           <div className="absolute top-70 left-1/2 w-24 h-24 opacity-6 animate-rotate-fast" style={{ backgroundColor: getThemeColor(), transform: 'rotate(45deg)' }}></div>
-          <div className="absolute top-40 right-1/4 w-0 h-0 opacity-7 animate-bounce-slow" style={{ borderLeft: '45px solid transparent', borderRight: '45px solid transparent', borderBottom: `78px solid ${getThemeColor()}` }}></div>
-          <div className="absolute top-1/4 right-1/4 w-80 h-80 opacity-9 animate-blob-slow" style={{ backgroundColor: getThemeColor(), borderRadius: '60% 40% 70% 30% / 40% 60% 30% 70%' }}></div>
-          <div className="absolute top-1/2 left-1/4 w-68 h-68 rounded-full opacity-8 animate-pulse-slow" style={{ background: `radial-gradient(circle, ${getThemeColor()}, transparent)` }}></div>
+          {/* Big Triangles */}
+          <div className="absolute top-40 right-1/4 w-0 h-0 opacity-7 animate-bounce-slow" style={{ 
+            borderLeft: '45px solid transparent',
+            borderRight: '45px solid transparent',
+            borderBottom: `78px solid ${getThemeColor()}`
+          }}></div>
+          {/* Big Blobs */}
+          <div className="absolute top-1/4 right-1/4 w-80 h-80 opacity-9 animate-blob-slow" style={{ 
+            backgroundColor: getThemeColor(),
+            borderRadius: '60% 40% 70% 30% / 40% 60% 30% 70%'
+          }}></div>
+          {/* Big Orbs */}
+          <div className="absolute top-1/2 left-1/4 w-68 h-68 rounded-full opacity-8 animate-pulse-slow" style={{ 
+            background: `radial-gradient(circle, ${getThemeColor()}, transparent)`
+          }}></div>
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center theme-text-primary mb-12 sm:mb-16">
-            Our Web Development Services
+            Our SEO Services
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {services.map((service, index) => {
@@ -211,7 +237,7 @@ const WebDevelopmentServices = () => {
                     style={{ backgroundImage: `url(${service.bgImage})` }}
                   />
                   <div className="relative p-6 sm:p-8 flex flex-col items-center text-center flex-grow">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 theme-bg-tertiary rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg" style={{ backgroundColor: '#2d65bc' }}>
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 theme-bg-tertiary rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                       <IconComponent className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                     </div>
                     <h3 className="text-xl sm:text-2xl font-bold theme-text-primary mb-4">
@@ -238,19 +264,35 @@ const WebDevelopmentServices = () => {
 
       <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+          {/* Big Circles */}
           <div className="absolute top-20 left-10 w-72 h-72 rounded-full opacity-9 animate-float-slow" style={{ backgroundColor: getThemeColor() }}></div>
           <div className="absolute bottom-40 right-20 w-64 h-64 rounded-full opacity-8 animate-float-medium" style={{ backgroundColor: getThemeColor() }}></div>
+          {/* Medium Circles */}
           <div className="absolute top-60 left-1/3 w-48 h-48 rounded-full opacity-7 animate-float-fast" style={{ backgroundColor: getThemeColor() }}></div>
+          {/* Small Circles */}
           <div className="absolute top-80 right-1/4 w-32 h-32 rounded-full opacity-6 animate-float-slow" style={{ backgroundColor: getThemeColor() }}></div>
+          {/* Big Squares */}
           <div className="absolute top-40 left-1/4 w-36 h-36 opacity-8 animate-rotate-slow" style={{ backgroundColor: getThemeColor(), transform: 'rotate(45deg)' }}></div>
           <div className="absolute bottom-32 right-1/3 w-32 h-32 opacity-7 animate-rotate-medium" style={{ backgroundColor: getThemeColor(), transform: 'rotate(45deg)' }}></div>
-          <div className="absolute top-32 right-1/4 w-0 h-0 opacity-8 animate-bounce-slow" style={{ borderLeft: '50px solid transparent', borderRight: '50px solid transparent', borderBottom: `87px solid ${getThemeColor()}` }}></div>
-          <div className="absolute top-1/4 left-1/2 w-88 h-88 opacity-10 animate-blob-slow" style={{ backgroundColor: getThemeColor(), borderRadius: '30% 70% 50% 50% / 60% 40% 60% 40%' }}></div>
-          <div className="absolute top-1/2 right-1/4 w-76 h-76 rounded-full opacity-9 animate-pulse-medium" style={{ background: `radial-gradient(circle, ${getThemeColor()}, transparent)` }}></div>
+          {/* Big Triangles */}
+          <div className="absolute top-32 right-1/4 w-0 h-0 opacity-8 animate-bounce-slow" style={{ 
+            borderLeft: '50px solid transparent',
+            borderRight: '50px solid transparent',
+            borderBottom: `87px solid ${getThemeColor()}`
+          }}></div>
+          {/* Big Blobs */}
+          <div className="absolute top-1/4 left-1/2 w-88 h-88 opacity-10 animate-blob-slow" style={{ 
+            backgroundColor: getThemeColor(),
+            borderRadius: '30% 70% 50% 50% / 60% 40% 60% 40%'
+          }}></div>
+          {/* Big Orbs */}
+          <div className="absolute top-1/2 right-1/4 w-76 h-76 rounded-full opacity-9 animate-pulse-medium" style={{ 
+            background: `radial-gradient(circle, ${getThemeColor()}, transparent)`
+          }}></div>
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center theme-text-primary mb-12 sm:mb-16">
-            Our Development Process
+            Our SEO Process
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {processSteps.map((step, index) => (
@@ -275,18 +317,34 @@ const WebDevelopmentServices = () => {
 
       <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+          {/* Big Circles */}
           <div className="absolute top-20 right-10 w-68 h-68 rounded-full opacity-8 animate-float-medium" style={{ backgroundColor: getThemeColor() }}></div>
           <div className="absolute bottom-40 left-20 w-76 h-76 rounded-full opacity-10 animate-float-slow" style={{ backgroundColor: getThemeColor() }}></div>
+          {/* Medium Circles */}
           <div className="absolute top-60 left-1/4 w-52 h-52 rounded-full opacity-7 animate-float-fast" style={{ backgroundColor: getThemeColor() }}></div>
+          {/* Small Circles */}
           <div className="absolute bottom-80 right-1/3 w-36 h-36 rounded-full opacity-6 animate-float-medium" style={{ backgroundColor: getThemeColor() }}></div>
+          {/* Big Squares */}
           <div className="absolute top-40 left-1/3 w-40 h-40 opacity-8 animate-rotate-medium" style={{ backgroundColor: getThemeColor(), transform: 'rotate(45deg)' }}></div>
-          <div className="absolute bottom-32 left-1/4 w-0 h-0 opacity-7 animate-bounce-medium" style={{ borderLeft: '48px solid transparent', borderRight: '48px solid transparent', borderBottom: `83px solid ${getThemeColor()}` }}></div>
-          <div className="absolute top-1/3 right-1/4 w-84 h-84 opacity-9 animate-blob-medium" style={{ backgroundColor: getThemeColor(), borderRadius: '50% 50% 60% 40% / 40% 60% 50% 50%' }}></div>
-          <div className="absolute top-1/2 left-1/4 w-70 h-70 rounded-full opacity-8 animate-pulse-slow" style={{ background: `radial-gradient(circle, ${getThemeColor()}, transparent)` }}></div>
+          {/* Big Triangles */}
+          <div className="absolute bottom-32 left-1/4 w-0 h-0 opacity-7 animate-bounce-medium" style={{ 
+            borderLeft: '48px solid transparent',
+            borderRight: '48px solid transparent',
+            borderBottom: `83px solid ${getThemeColor()}`
+          }}></div>
+          {/* Big Blobs */}
+          <div className="absolute top-1/3 right-1/4 w-84 h-84 opacity-9 animate-blob-medium" style={{ 
+            backgroundColor: getThemeColor(),
+            borderRadius: '50% 50% 60% 40% / 40% 60% 50% 50%'
+          }}></div>
+          {/* Big Orbs */}
+          <div className="absolute top-1/2 left-1/4 w-70 h-70 rounded-full opacity-8 animate-pulse-slow" style={{ 
+            background: `radial-gradient(circle, ${getThemeColor()}, transparent)`
+          }}></div>
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center theme-text-primary mb-12 sm:mb-16">
-            Web Development Results
+            SEO Results You Can Expect
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {results.map((result, index) => (
@@ -311,25 +369,42 @@ const WebDevelopmentServices = () => {
 
       <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+          {/* Big Circles */}
           <div className="absolute top-20 left-10 w-70 h-70 rounded-full opacity-9 animate-float-slow" style={{ backgroundColor: getThemeColor() }}></div>
           <div className="absolute top-40 right-20 w-62 h-62 rounded-full opacity-8 animate-float-medium" style={{ backgroundColor: getThemeColor() }}></div>
           <div className="absolute bottom-40 left-20 w-74 h-74 rounded-full opacity-10 animate-float-fast" style={{ backgroundColor: getThemeColor() }}></div>
+          {/* Medium Circles */}
           <div className="absolute top-60 right-1/4 w-46 h-46 rounded-full opacity-7 animate-float-slow" style={{ backgroundColor: getThemeColor() }}></div>
+          {/* Small Circles */}
           <div className="absolute bottom-80 left-1/2 w-30 h-30 rounded-full opacity-6 animate-float-medium" style={{ backgroundColor: getThemeColor() }}></div>
+          {/* Big Squares */}
           <div className="absolute top-32 right-1/3 w-34 h-34 opacity-8 animate-rotate-slow" style={{ backgroundColor: getThemeColor(), transform: 'rotate(45deg)' }}></div>
           <div className="absolute bottom-32 left-1/4 w-38 h-38 opacity-7 animate-rotate-fast" style={{ backgroundColor: getThemeColor(), transform: 'rotate(45deg)' }}></div>
+          {/* Medium Squares */}
           <div className="absolute top-70 left-1/2 w-26 h-26 opacity-6 animate-rotate-medium" style={{ backgroundColor: getThemeColor(), transform: 'rotate(45deg)' }}></div>
-          <div className="absolute top-40 left-1/4 w-0 h-0 opacity-8 animate-bounce-slow" style={{ borderLeft: '52px solid transparent', borderRight: '52px solid transparent', borderBottom: `90px solid ${getThemeColor()}` }}></div>
-          <div className="absolute top-1/4 left-1/2 w-86 h-86 opacity-10 animate-blob-slow" style={{ backgroundColor: getThemeColor(), borderRadius: '60% 40% 70% 30% / 40% 60% 30% 70%' }}></div>
-          <div className="absolute bottom-1/3 right-1/4 w-72 h-72 rounded-full opacity-9 animate-pulse-medium" style={{ background: `radial-gradient(circle, ${getThemeColor()}, transparent)` }}></div>
+          {/* Big Triangles */}
+          <div className="absolute top-40 left-1/4 w-0 h-0 opacity-8 animate-bounce-slow" style={{ 
+            borderLeft: '52px solid transparent',
+            borderRight: '52px solid transparent',
+            borderBottom: `90px solid ${getThemeColor()}`
+          }}></div>
+          {/* Big Blobs */}
+          <div className="absolute top-1/4 left-1/2 w-86 h-86 opacity-10 animate-blob-slow" style={{ 
+            backgroundColor: getThemeColor(),
+            borderRadius: '60% 40% 70% 30% / 40% 60% 30% 70%'
+          }}></div>
+          {/* Big Orbs */}
+          <div className="absolute bottom-1/3 right-1/4 w-72 h-72 rounded-full opacity-9 animate-pulse-medium" style={{ 
+            background: `radial-gradient(circle, ${getThemeColor()}, transparent)`
+          }}></div>
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-4 sm:mb-6">
-              Why Choose Our Web Development Services?
+              Why Choose Our SEO Services?
             </h2>
             <p className="text-lg sm:text-xl theme-text-secondary max-w-2xl mx-auto leading-relaxed">
-              Expert web development that delivers results
+              We deliver measurable results that grow your business
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
@@ -356,48 +431,58 @@ const WebDevelopmentServices = () => {
         </div>
       </section>
 
-      <section className="py-5 sm:py-4 lg:py-5 relative overflow-hidden" style={{ background: getCTABackground() }}>
+        <section className="py-5 sm:py-4 lg:py-5 relative overflow-hidden" style={{ background: getCTABackground() }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+          {/* Big White Circles */}
           <div className="absolute top-20 left-10 w-48 h-48 bg-white/15 rounded-full animate-float-slow"></div>
           <div className="absolute top-40 right-20 w-44 h-44 bg-white/12 rounded-full animate-float-medium"></div>
           <div className="absolute bottom-40 left-20 w-56 h-56 bg-white/15 rounded-full animate-float-fast"></div>
           <div className="absolute bottom-20 right-10 w-40 h-40 bg-white/18 rounded-full animate-float-slow"></div>
+          {/* Big White Squares */}
           <div className="absolute top-60 left-1/4 w-28 h-28 bg-white/15 opacity-90 animate-rotate-slow" style={{ transform: 'rotate(45deg)' }}></div>
           <div className="absolute bottom-60 right-1/3 w-32 h-32 bg-white/14 opacity-90 animate-rotate-fast" style={{ transform: 'rotate(45deg)' }}></div>
-          <div className="absolute top-32 right-1/4 w-0 h-0 opacity-15 animate-bounce-slow" style={{ borderLeft: '45px solid transparent', borderRight: '45px solid transparent', borderBottom: '78px solid rgba(255, 255, 255, 0.2)' }}></div>
+          {/* Big White Triangles */}
+          <div className="absolute top-32 right-1/4 w-0 h-0 opacity-15 animate-bounce-slow" style={{ 
+            borderLeft: '45px solid transparent',
+            borderRight: '45px solid transparent',
+            borderBottom: '78px solid rgba(255, 255, 255, 0.2)'
+          }}></div>
+          {/* Big White Blobs */}
           <div className="absolute top-1/4 left-1/2 w-72 h-72 bg-white/12 rounded-full animate-blob-slow"></div>
           <div className="absolute bottom-1/4 right-1/2 w-80 h-80 bg-white/15 rounded-full animate-blob-medium"></div>
+          {/* Big White Orbs */}
           <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-white/14 rounded-full animate-pulse-slow"></div>
           <div className="absolute bottom-1/3 right-1/4 w-72 h-72 bg-white/12 rounded-full animate-pulse-medium"></div>
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="max-w-4xl mx-auto">
             <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight ${getCTATextColor()}`}>
-              Ready to Build Your <span className="opacity-90">Web Application?</span>
+              Ready to Dominate <span className="opacity-90">Search Results?</span>
             </h2>
             <p className={`text-base sm:text-lg lg:text-xl mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed ${getCTATextColor()} opacity-90`}>
-              Let's turn your vision into reality. Get started with a free consultation today!
+              Let's discuss your SEO goals and create a strategy that drives more traffic and conversions to your website.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md sm:max-w-none mx-auto">
               <Link
-                to="/request-a-quote"
+                to={buildUrl('/search-engine-optimization-services/request-a-quote')}
                 className="bg-white text-gray-800 font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-gray-100 transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
               >
-                Get Your Free Consultation
+                Get Your SEO Audit
               </Link>
               <Link
-                to="/contacts"
+                to={buildUrl('/search-engine-optimization-services/contacts')}
                 className="border-2 border-white text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-white hover:text-gray-800 transition-all duration-300 text-base sm:text-lg hover:scale-105"
               >
-                Contact Our Team
+                Start SEO Campaign
               </Link>
             </div>
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 
-export default WebDevelopmentServices;
+export default SearchEngineOptimizationServices;
 

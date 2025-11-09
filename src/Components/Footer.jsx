@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { MapPin, Mail, Phone, Facebook, Linkedin, Twitter, Youtube, Send } from "lucide-react";
+import { MapPin, Mail, Phone, Facebook, Twitter, Youtube, Send, Instagram } from "lucide-react";
 import { useTheme } from '../Context/ThemeContext';
+import { buildUrl } from '../utils/urlUtils';
 
 const Footer = () => {
   const { theme } = useTheme();
@@ -55,7 +56,7 @@ const Footer = () => {
     >
       <div className="max-w-7xl mx-auto px-6" style={footerTextColor ? { color: footerTextColor } : {}}>
         {/* Main Footer Content - 4 Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5  mb-6">
           {/* Column 1: Company Info with Logo, Description, and Social Media */}
           <div className="flex flex-col">
             {/* Logo */}
@@ -70,59 +71,121 @@ const Footer = () => {
             
             {/* Social Media Icons */}
             <div className="flex space-x-2">
-              <a href="#" className="w-10 h-10 theme-footer-icon-bg text-white rounded-lg flex items-center justify-center transition-colors duration-300 hover:opacity-80">
+              <a
+                href="https://www.facebook.com/anquestmedia1"
+                aria-label="Visit aNquest on Facebook"
+                title="Facebook"
+                className="w-10 h-10 theme-footer-icon-bg text-white rounded-lg flex items-center justify-center transition-colors duration-300 hover:opacity-80"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 theme-footer-icon-bg text-white rounded-lg flex items-center justify-center transition-colors duration-300 hover:opacity-80">
+              <a
+                href="https://x.com/anquestmedia"
+                aria-label="Visit aNquest on X"
+                title="X (Twitter)"
+                className="w-10 h-10 theme-footer-icon-bg text-white rounded-lg flex items-center justify-center transition-colors duration-300 hover:opacity-80"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Twitter className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 theme-footer-icon-bg text-white rounded-lg flex items-center justify-center transition-colors duration-300 hover:opacity-80">
+              <a
+                href="https://www.youtube.com/@anquestmedia"
+                aria-label="Visit aNquest on YouTube"
+                title="YouTube"
+                className="w-10 h-10 theme-footer-icon-bg text-white rounded-lg flex items-center justify-center transition-colors duration-300 hover:opacity-80"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Youtube className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 theme-footer-icon-bg text-white rounded-lg flex items-center justify-center transition-colors duration-300 hover:opacity-80">
-                <Linkedin className="w-5 h-5" />
+              <a
+                href="https://www.instagram.com/anquestmedia/"
+                aria-label="Visit aNquest on Instagram"
+                title="Instagram"
+                className="w-10 h-10 theme-footer-icon-bg text-white rounded-lg flex items-center justify-center transition-colors duration-300 hover:opacity-80"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Instagram className="w-5 h-5" />
               </a>
             </div>
           </div>
 
           {/* Column 2: Company Links */}
           <div className="flex flex-col">
+            <h3 className="text-base font-bold theme-footer-text-primary mb-4">Services</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to={buildUrl('/crm-services')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
+                  CRM Services
+                </Link>
+              </li>
+              <li>
+                <Link to={buildUrl('/web-design-services')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
+                  Web Design
+                </Link>
+              </li>
+              <li>
+                <Link to={buildUrl('/web-development-services')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
+                  Web Development
+                </Link>
+              </li>
+              <li>
+                <Link to={buildUrl('/search-engine-optimization-services')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
+                  SEO Services
+                </Link>
+              </li>
+              <li>
+                <Link to={buildUrl('/email-marketing-services')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
+                  Email Marketing
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 3: Services */}
+          
+          <div className="flex flex-col ">
             <h3 className="text-base font-bold theme-footer-text-primary mb-4">Company</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/about" className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
+                <Link to={buildUrl('/about')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/contacts" className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
+                <Link to={buildUrl('/contacts')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
                   Get in Touch
                 </Link>
               </li>
               <li>
-                <Link to="/help" className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
+                <Link to={buildUrl('/help')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
                   Help & Faqs
                 </Link>
               </li>
               <li>
-                <Link to="/privacy" className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
+                <Link to={buildUrl('/privacy')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link to="/support" className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
+                <Link to={buildUrl('/support')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
                   Support
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 3: Information - Contact Details */}
+
+          {/* Column 4: Information - Contact Details */}
           <div className="flex flex-col">
             <h3 className="text-base font-bold theme-footer-text-primary mb-4">Information</h3>
             
             {/* Tabs */}
-            <div className="flex gap-1 mb-3 border-b theme-border-primary">
+            <div className="flex gap-1 mb-3 border-b theme-border-primary  w-50">
               <button
                 onClick={() => setActiveTab('US')}
                 className={`px-3 py-1.5 font-semibold text-xs transition-all duration-300 relative ${
@@ -204,7 +267,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Column 4: Email Subscription */}
+          {/* Column 5: Email Subscription */}
           <div className="flex flex-col">
             <h3 className="text-base font-bold theme-footer-text-primary mb-4">Subscribe</h3>
             
@@ -221,6 +284,7 @@ const Footer = () => {
                 />
                 <button
                   type="submit"
+                  aria-label="Subscribe to the newsletter"
                   className="w-12 h-10 theme-footer-icon-bg text-white rounded-lg flex items-center justify-center transition-colors duration-300 hover:opacity-80"
                 >
                   <Send className="w-5 h-5" />
@@ -240,7 +304,7 @@ const Footer = () => {
 
         {/* Bottom Section - Copyright */}
         <div className="text-center theme-footer-text-secondary text-sm">
-          © 2025 aNquest, All Rights Reserved. Design By ThemeEaster
+          © 2025 aNquest Media, All Rights Reserved.
         </div>
       </div>
 

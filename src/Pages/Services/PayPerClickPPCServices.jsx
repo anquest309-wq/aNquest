@@ -1,10 +1,12 @@
 import React from 'react';
-import { MapPin, TrendingUp, Star, Search, FileText, Building2, Globe, CheckCircle, Target, BarChart3, Users, Zap } from 'lucide-react';
+import { DollarSign, Target, TrendingUp, BarChart3, Search, MousePointerClick, Zap, CheckCircle, Users, Filter, Globe, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useTheme } from '../Context/ThemeContext';
-import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleSquareBgAnimation';
+import { useTheme } from '../../Context/ThemeContext';
+import CircleSquareBgAnimation from '../../Components/Bg-animation-template/CircleSquareBgAnimation';
+import SEO from '../../Components/SEO';
+import { buildUrl } from '../../utils/urlUtils';
 
-const LocalSEOServices = () => {
+const PayPerClickPPCServices = () => {
   const { theme } = useTheme();
 
   const getThemeColor = () => {
@@ -32,81 +34,81 @@ const LocalSEOServices = () => {
   };
   const services = [
     {
-      title: "Google My Business Optimization",
-      description: "Optimize your Google Business Profile to improve local visibility and attract nearby customers. We ensure your business information is complete and accurate.",
-      icon: Building2,
-      bgImage: "https://images.unsplash.com/photo-1569025743873-ea3a9ade89f9?w=800&auto=format&fit=crop",
-      features: [
-        "Profile Optimization",
-        "Photo Optimization",
-        "Category Selection",
-        "Business Hours Setup",
-        "Service Area Configuration"
-      ]
-    },
-    {
-      title: "Local Citations",
-      description: "Build consistent business citations across major directories and platforms to improve local search rankings and online visibility.",
-      icon: Globe,
+      title: "Google Ads Management",
+      description: "Create and manage high-performing Google Ads campaigns that drive qualified traffic and maximize your return on ad spend.",
+      icon: Search,
       bgImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop",
       features: [
-        "Directory Submissions",
-        "NAP Consistency",
-        "Industry-Specific Listings",
-        "Citation Cleanup",
-        "Local Schema Markup"
+        "Search Campaigns",
+        "Display Advertising",
+        "Shopping Ads",
+        "YouTube Ads",
+        "Performance Max"
       ]
     },
     {
-      title: "Local Keyword Research",
-      description: "Identify high-value local keywords that your target audience uses to find businesses like yours in their area.",
-      icon: Search,
-      bgImage: "https://images.unsplash.com/photo-1432888622747-4eb9a8f2c293?w=800&auto=format&fit=crop",
+      title: "Facebook & Instagram Ads",
+      description: "Leverage social media advertising to reach your target audience on Facebook, Instagram, and Meta platforms.",
+      icon: Users,
+      bgImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&auto=format&fit=crop",
       features: [
-        "Local Keyword Analysis",
-        "Competitor Research",
-        "Long-tail Keywords",
-        "Geo-targeted Terms",
-        "Search Volume Analysis"
+        "Social Media Ads",
+        "Audience Targeting",
+        "Carousel Ads",
+        "Video Ads",
+        "Retargeting"
       ]
     },
     {
-      title: "Review Management",
-      description: "Encourage positive reviews and manage your online reputation to build trust with potential customers.",
-      icon: Star,
-      bgImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop",
+      title: "Microsoft Advertising",
+      description: "Expand your reach with Microsoft Advertising (formerly Bing Ads) to target audiences across Microsoft's network.",
+      icon: Globe,
+      bgImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop",
       features: [
-        "Review Generation Strategies",
-        "Review Response Management",
-        "Review Monitoring",
-        "Review Analytics",
-        "Reputation Recovery"
+        "Bing Search Ads",
+        "LinkedIn Integration",
+        "Cross-Platform Reach",
+        "Lower Competition",
+        "Professional Audience"
       ]
     },
     {
-      title: "Local Content Marketing",
-      description: "Create location-specific content that resonates with local customers and improves your local search presence.",
-      icon: FileText,
-      bgImage: "https://images.unsplash.com/photo-1542435503-956c469947f6?w=800&auto=format&fit=crop",
+      title: "PPC Strategy & Planning",
+      description: "Develop comprehensive PPC strategies aligned with your business goals. We analyze market opportunities and create data-driven plans.",
+      icon: Target,
+      bgImage: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format&fit=crop",
       features: [
-        "Local Blog Posts",
-        "Location Pages",
-        "Community Content",
-        "Event Coverage",
-        "Local News Integration"
+        "Keyword Research",
+        "Competitor Analysis",
+        "Budget Allocation",
+        "Campaign Structure",
+        "Performance Forecasting"
       ]
     },
     {
-      title: "Local Link Building",
-      description: "Build quality local backlinks from reputable local websites, directories, and community organizations.",
-      icon: TrendingUp,
-      bgImage: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&auto=format&fit=crop",
+      title: "Landing Page Optimization",
+      description: "Create high-converting landing pages that turn PPC traffic into customers. We optimize for conversion rate and user experience.",
+      icon: MousePointerClick,
+      bgImage: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&auto=format&fit=crop",
       features: [
-        "Local Directory Links",
-        "Chamber of Commerce",
-        "Local Partnerships",
-        "Sponsorships",
-        "Community Involvement"
+        "Conversion Optimization",
+        "A/B Testing",
+        "Mobile Optimization",
+        "Fast Load Times",
+        "Clear CTAs"
+      ]
+    },
+    {
+      title: "PPC Analytics & Reporting",
+      description: "Track and analyze your PPC performance with detailed reports. Understand what's working and optimize for better results.",
+      icon: BarChart3,
+      bgImage: "https://images.unsplash.com/photo-1556155092-490a1ba16284?w=800&auto=format&fit=crop",
+      features: [
+        "Performance Dashboards",
+        "ROI Tracking",
+        "Conversion Attribution",
+        "Cost Analysis",
+        "Monthly Reports"
       ]
     }
   ];
@@ -114,63 +116,69 @@ const LocalSEOServices = () => {
   const processSteps = [
     {
       number: "1",
-      title: "Local Audit",
-      description: "We analyze your current local SEO presence and identify opportunities."
+      title: "Audit & Strategy",
+      description: "We analyze your goals and create a custom PPC strategy."
     },
     {
       number: "2",
-      title: "Optimization",
-      description: "We optimize your Google Business Profile and online listings."
+      title: "Campaign Setup",
+      description: "We set up and launch your PPC campaigns across platforms."
     },
     {
       number: "3",
-      title: "Content & Citations",
-      description: "We build citations and create local content to improve visibility."
+      title: "Optimization",
+      description: "We continuously optimize campaigns for better performance."
     },
     {
       number: "4",
-      title: "Ongoing Management",
-      description: "We monitor, optimize, and report on your local SEO performance."
+      title: "Scale & Grow",
+      description: "We scale successful campaigns and expand reach."
     }
   ];
 
   const results = [
-    { percentage: "85%", title: "Increase in Local Visibility", description: "Average improvement in local search rankings" },
-    { percentage: "200%", title: "More Local Leads", description: "Increase in qualified local inquiries" },
-    { percentage: "4.8★", title: "Average Rating", description: "Improved review scores and customer satisfaction" }
+    { percentage: "400%", title: "Average ROI", description: "Return on investment for our PPC campaigns" },
+    { percentage: "50%", title: "Lower Cost Per Click", description: "Average reduction in CPC through optimization" },
+    { percentage: "300%", title: "Increase in Conversions", description: "Average improvement in conversion rates" }
   ];
 
   const benefits = [
-    { icon: Target, title: "Targeted Traffic", description: "Attract customers who are ready to buy in your area" },
-    { icon: MapPin, title: "Local Dominance", description: "Rank higher in 'near me' searches and local maps" },
-    { icon: BarChart3, title: "Measurable ROI", description: "Track calls, directions, and website visits from local searches" }
+    { icon: DollarSign, title: "Cost-Effective", description: "Pay only when users click on your ads" },
+    { icon: Target, title: "Precise Targeting", description: "Reach exactly the right audience at the right time" },
+    { icon: Zap, title: "Fast Results", description: "See immediate traffic and leads from day one" }
   ];
 
   return (
-    <div className="min-h-screen theme-bg-primary pt-20">
+    <>
+      <SEO 
+        title="PPC Services - Expert Pay-Per-Click Advertising Solution"
+        description="Maximize your ROI with aNquest's expert Pay Per Click (PPC) services. Drive targeted traffic, boost conversions, and grow your business with smart ad campaigns."
+        keywords="aNquest PPC services, pay-per-click advertising India, Google Ads management, PPC campaign optimisation, paid search marketing, digital advertising services India, PPC lead generation, PPC agency Uttar Pradesh"
+        canonicalUrl="https://anquestmedia.com/pay-per-click-ppc-services"
+      />
+      <div className="min-h-screen theme-bg-primary pt-10">
       {/* Hero Section */}
       <section className="relative overflow-hidden sm:py-8">
         <CircleSquareBgAnimation/>
+       
         
-        
-        <div className="container mx-auto px-4 sm:px-6 pt-22 lg:px-8 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 pt-32 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
-              Local SEO <span style={{ color: '#2d65bc' }}>Services</span>
+              Pay Per Click (PPC) <span style={{ color: '#2d65bc' }}>Services</span>
             </h1>
             <p className="text-xl sm:text-2xl theme-text-secondary mb-4 max-w-3xl mx-auto leading-relaxed">
-              Dominate local search results and attract customers in your area. 
-              We help local businesses get found by customers searching for products and services nearby.
+            Drive traffic and boost conversions with targeted PPC campaigns.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <Link
-                to="/request-a-quote"
+                to={buildUrl('/pay-per-click-ppc-services/request-a-quote')}
                 className="bg-[#2d65bc] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#1a4a8a] transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
               >
                 Get Started
               </Link>
               <Link
-                to="/contacts"
+                to={buildUrl('/pay-per-click-ppc-services/contacts')}
                 className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white transition-all duration-300 text-base sm:text-lg hover:scale-105"
               >
                 Contact Us
@@ -197,9 +205,8 @@ const LocalSEOServices = () => {
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center theme-text-primary mb-12 sm:mb-16">
-            Our Local SEO Services
+            Our PPC Services
           </h2>
-          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {services.map((service, index) => {
               const IconComponent = service.icon;
@@ -212,7 +219,6 @@ const LocalSEOServices = () => {
                     className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-15 transition-opacity duration-500"
                     style={{ backgroundImage: `url(${service.bgImage})` }}
                   />
-                  
                   <div className="relative p-6 sm:p-8 flex flex-col items-center text-center flex-grow">
                     <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg" style={{ backgroundColor: '#2d65bc' }}>
                       <IconComponent className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
@@ -253,7 +259,7 @@ const LocalSEOServices = () => {
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center theme-text-primary mb-12 sm:mb-16">
-            Our Local SEO Process
+            Our PPC Process
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {processSteps.map((step, index) => (
@@ -289,7 +295,7 @@ const LocalSEOServices = () => {
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center theme-text-primary mb-12 sm:mb-16">
-            Local SEO Results
+            PPC Results You Can Expect
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {results.map((result, index) => (
@@ -329,10 +335,10 @@ const LocalSEOServices = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-4 sm:mb-6">
-              Why Choose Our Local SEO Services?
+              Why Choose Our PPC Services?
             </h2>
             <p className="text-lg sm:text-xl theme-text-secondary max-w-2xl mx-auto leading-relaxed">
-              Get found by customers in your local area
+              Expert PPC management that maximizes your ROI
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
@@ -376,20 +382,20 @@ const LocalSEOServices = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="max-w-4xl mx-auto">
             <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight ${getCTATextColor()}`}>
-              Ready to Dominate Your <span className="opacity-90">Local Market?</span>
+              Ready to Drive More <span className="opacity-90">Traffic & Sales?</span>
             </h2>
             <p className={`text-base sm:text-lg lg:text-xl mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed ${getCTATextColor()} opacity-90`}>
-              Let's help your local business get found by customers searching for what you offer.
+              Let's create PPC campaigns that deliver immediate results. Get started with a free consultation today!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md sm:max-w-none mx-auto">
               <Link
-                to="/request-a-quote"
+                to={buildUrl('/pay-per-click-ppc-services/request-a-quote')}
                 className="bg-white text-gray-800 font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-gray-100 transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
               >
-                Get Your Free Local SEO Audit
+                Get Your Free PPC Audit
               </Link>
               <Link
-                to="/contacts"
+                to={buildUrl('/pay-per-click-ppc-services/contacts')}
                 className="border-2 border-white text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-white hover:text-gray-800 transition-all duration-300 text-base sm:text-lg hover:scale-105"
               >
                 Contact Our Team
@@ -398,9 +404,10 @@ const LocalSEOServices = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 
-export default LocalSEOServices;
+export default PayPerClickPPCServices;
 

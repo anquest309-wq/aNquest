@@ -1,5 +1,6 @@
 import React from 'react';
 import { Target, TrendingUp, Users, BarChart3, Smartphone, Globe, Mail, Share2, Eye, MousePointer, Zap, Award } from 'lucide-react';
+import { buildUrl } from '../utils/urlUtils';
 
 const DigitalMarketing = () => {
   const services = [
@@ -277,13 +278,13 @@ const DigitalMarketing = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md sm:max-w-none mx-auto">
               <a
-                href="/contacts"
+                href={buildUrl('/contacts')}
                 className="bg-white theme-accent-primary font-bold py-4 px-8 rounded-xl hover:bg-gray-50 transition-all duration-200 text-lg hover:scale-105"
               >
                 Start Marketing Campaign
               </a>
               <a
-                href="/contacts"
+                href={buildUrl('/contacts')}
                 className="border-2 border-white text-white font-bold py-4 px-8 rounded-xl hover:bg-white hover:theme-accent-primary transition-all duration-200 text-lg hover:scale-105"
               >
                 Get Free Audit

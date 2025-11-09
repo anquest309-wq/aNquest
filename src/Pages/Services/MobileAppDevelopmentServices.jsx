@@ -1,10 +1,12 @@
 import React from 'react';
-import { Shield, Star, Search, TrendingUp, AlertCircle, CheckCircle, BarChart3, Users, Globe, MessageSquare, FileText, Zap } from 'lucide-react';
+import { Smartphone, Code, Zap, Shield, BarChart3, Users, Globe, CheckCircle, Target, Layers, Palette, Database } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useTheme } from '../Context/ThemeContext';
-import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleSquareBgAnimation';
+import { useTheme } from '../../Context/ThemeContext';
+import CircleSquareBgAnimation from '../../Components/Bg-animation-template/CircleSquareBgAnimation';
+import SEO from '../../Components/SEO';
+import { buildUrl } from '../../utils/urlUtils';
 
-const OnlineReputationManagementServices = () => {
+const MobileAppDevelopmentServices = () => {
   const { theme } = useTheme();
 
   const getThemeColor = () => {
@@ -32,81 +34,81 @@ const OnlineReputationManagementServices = () => {
   };
   const services = [
     {
-      title: "Reputation Monitoring",
-      description: "Track what people are saying about your brand across the web. Get real-time alerts for reviews, mentions, and social media posts.",
-      icon: Search,
-      bgImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop",
+      title: "iOS App Development",
+      description: "Build stunning native iOS applications using Swift and SwiftUI. We create apps that deliver exceptional user experiences on iPhone and iPad.",
+      icon: Smartphone,
+      bgImage: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&auto=format&fit=crop",
       features: [
-        "24/7 Monitoring",
-        "Review Tracking",
-        "Social Media Monitoring",
-        "Mention Alerts",
-        "Competitor Analysis"
+        "Swift & SwiftUI",
+        "UIKit Development",
+        "App Store Optimization",
+        "iOS Design Guidelines",
+        "Core Data Integration"
       ]
     },
     {
-      title: "Review Management",
-      description: "Build a positive online reputation by encouraging satisfied customers to leave reviews and effectively managing negative feedback.",
-      icon: Star,
+      title: "Android App Development",
+      description: "Develop powerful Android applications using Kotlin and Jetpack Compose. We create apps that work seamlessly across all Android devices.",
+      icon: Code,
+      bgImage: "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?w=800&auto=format&fit=crop",
+      features: [
+        "Kotlin & Java",
+        "Jetpack Compose",
+        "Material Design",
+        "Google Play Optimization",
+        "Firebase Integration"
+      ]
+    },
+    {
+      title: "Cross-Platform Development",
+      description: "Build apps that work on both iOS and Android with a single codebase. Using React Native or Flutter for faster development and lower costs.",
+      icon: Globe,
+      bgImage: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&auto=format&fit=crop",
+      features: [
+        "React Native",
+        "Flutter Development",
+        "Code Reusability",
+        "Native Performance",
+        "Single Codebase"
+      ]
+    },
+    {
+      title: "App UI/UX Design",
+      description: "Design beautiful, intuitive mobile app interfaces that users love. We create designs that are both functional and visually appealing.",
+      icon: Palette,
+      bgImage: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&auto=format&fit=crop",
+      features: [
+        "User Research",
+        "Wireframing",
+        "Prototyping",
+        "Design Systems",
+        "Usability Testing"
+      ]
+    },
+    {
+      title: "Backend Development",
+      description: "Build robust backend systems to power your mobile apps. APIs, databases, cloud infrastructure, and server-side logic.",
+      icon: Database,
+      bgImage: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&fit=crop",
+      features: [
+        "RESTful APIs",
+        "GraphQL",
+        "Cloud Services",
+        "Database Design",
+        "Server Architecture"
+      ]
+    },
+    {
+      title: "App Maintenance & Support",
+      description: "Keep your mobile app running smoothly with ongoing maintenance, updates, bug fixes, and feature enhancements.",
+      icon: Shield,
       bgImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop",
       features: [
-        "Review Generation",
-        "Review Response",
-        "Review Optimization",
-        "Review Strategy",
-        "Review Recovery"
-      ]
-    },
-    {
-      title: "Content Reputation Repair",
-      description: "Push down negative content and replace it with positive, optimized content that reflects well on your brand.",
-      icon: TrendingUp,
-      bgImage: "https://images.unsplash.com/photo-1432888622747-4eb9a8f2c293?w=800&auto=format&fit=crop",
-      features: [
-        "Content Creation",
-        "SEO Content",
-        "Negative Content Suppression",
-        "Positive Content Promotion",
-        "Brand Messaging"
-      ]
-    },
-    {
-      title: "Social Media Reputation",
-      description: "Manage and improve your brand's reputation across all social media platforms. Engage with customers and build trust.",
-      icon: MessageSquare,
-      bgImage: "https://images.unsplash.com/photo-1542435503-956c469947f6?w=800&auto=format&fit=crop",
-      features: [
-        "Social Media Monitoring",
-        "Crisis Management",
-        "Community Engagement",
-        "Influencer Relations",
-        "Social Listening"
-      ]
-    },
-    {
-      title: "Reputation Reporting",
-      description: "Get comprehensive reports on your online reputation health, including sentiment analysis and actionable insights.",
-      icon: BarChart3,
-      bgImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop",
-      features: [
-        "Sentiment Analysis",
-        "Review Analytics",
-        "Trend Reports",
-        "Competitive Insights",
-        "ROI Measurement"
-      ]
-    },
-    {
-      title: "Crisis Management",
-      description: "Respond quickly to reputation threats and negative publicity with strategic crisis management and damage control.",
-      icon: AlertCircle,
-      bgImage: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&auto=format&fit=crop",
-      features: [
-        "Crisis Response",
-        "Damage Control",
-        "Rapid Response Plan",
-        "Reputation Recovery",
-        "Media Relations"
+        "Bug Fixes",
+        "Performance Optimization",
+        "OS Updates",
+        "Feature Updates",
+        "24/7 Support"
       ]
     }
   ];
@@ -114,62 +116,69 @@ const OnlineReputationManagementServices = () => {
   const processSteps = [
     {
       number: "1",
-      title: "Reputation Audit",
-      description: "We analyze your current online reputation across all platforms."
+      title: "Discovery & Planning",
+      description: "We analyze your requirements and create a detailed development plan."
     },
     {
       number: "2",
-      title: "Strategy Development",
-      description: "We create a customized reputation management strategy."
+      title: "Design & Prototype",
+      description: "We design the app interface and create interactive prototypes."
     },
     {
       number: "3",
-      title: "Implementation",
-      description: "We implement reputation-building tactics and monitoring."
+      title: "Development",
+      description: "We build your app using best practices and modern technologies."
     },
     {
       number: "4",
-      title: "Ongoing Management",
-      description: "We continuously monitor and improve your reputation."
+      title: "Testing & Launch",
+      description: "We test thoroughly and help you launch on app stores."
     }
   ];
 
   const results = [
-    { percentage: "4.5+★", title: "Average Rating", description: "Improvement in overall online ratings" },
-    { percentage: "300%", title: "Increase in Reviews", description: "More positive reviews and testimonials" },
-    { percentage: "85%", title: "Reputation Score", description: "Average improvement in reputation health" }
+    { percentage: "4.8★", title: "App Store Rating", description: "Average user rating across our developed apps" },
+    { percentage: "2M+", title: "Downloads", description: "Total downloads for apps we've developed" },
+    { percentage: "95%", title: "User Satisfaction", description: "Client satisfaction rate with our services" }
   ];
 
   const benefits = [
-    { icon: Shield, title: "Protect Your Brand", description: "Safeguard your reputation from negative content" },
-    { icon: TrendingUp, title: "Build Trust", description: "Establish credibility with positive online presence" },
-    { icon: CheckCircle, title: "Proactive Management", description: "Stay ahead of potential reputation issues" }
+    { icon: Zap, title: "Fast Development", description: "Agile methodologies for faster time-to-market" },
+    { icon: Shield, title: "Secure & Scalable", description: "Enterprise-grade security and scalability" },
+    { icon: BarChart3, title: "Performance Optimized", description: "Apps that load fast and run smoothly" }
   ];
 
   return (
-    <div className="min-h-screen theme-bg-primary pt-10">
+    <>
+      <SEO 
+        title="Best Mobile App Development Services by aNquest Media"
+        description="aNquest offers top-notch mobile app development services to build innovative, user-friendly apps that enhance engagement and accelerate your business growth."
+        keywords="aNquest mobile app development, mobile application services India, iOS app development, Android app development, cross-platform mobile apps, Flutter app development India, React Native app services, enterprise mobile apps India"
+        canonicalUrl="https://anquestmedia.com/mobile-app-development-services"
+      />
+      <div className="min-h-screen theme-bg-primary pt-20">
       {/* Hero Section */}
       <section className="relative overflow-hidden sm:py-8">
         <CircleSquareBgAnimation/>
        
         
-        <div className="container mx-auto px-4 sm:px-6 pt-32 lg:px-8 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 pt-22 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
-              Online Reputation Management <span style={{ color: '#2d65bc' }}>Services</span>
+              Mobile App Development <span style={{ color: '#2d65bc' }}>Services</span>
             </h1>
             <p className="text-xl sm:text-2xl theme-text-secondary mb-4 max-w-3xl mx-auto leading-relaxed">
-            Build trust and maintain a strong digital reputation.
+            Transform ideas into high-performing mobile apps for iOS & Android.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <Link
-                to="/request-a-quote"
+                to={buildUrl('/mobile-app-development-services/request-a-quote')}
                 className="bg-[#2d65bc] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#1a4a8a] transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
               >
                 Get Started
               </Link>
               <Link
-                to="/contacts"
+                to={buildUrl('/mobile-app-development-services/contacts')}
                 className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white transition-all duration-300 text-base sm:text-lg hover:scale-105"
               >
                 Contact Us
@@ -196,7 +205,7 @@ const OnlineReputationManagementServices = () => {
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center theme-text-primary mb-12 sm:mb-16">
-            Our Reputation Management Services
+            Our Mobile App Development Services
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {services.map((service, index) => {
@@ -250,7 +259,7 @@ const OnlineReputationManagementServices = () => {
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center theme-text-primary mb-12 sm:mb-16">
-            Our Reputation Management Process
+            Our Development Process
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {processSteps.map((step, index) => (
@@ -286,7 +295,7 @@ const OnlineReputationManagementServices = () => {
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center theme-text-primary mb-12 sm:mb-16">
-            Reputation Management Results
+            Our Development Results
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {results.map((result, index) => (
@@ -326,10 +335,10 @@ const OnlineReputationManagementServices = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-4 sm:mb-6">
-              Why Choose Our Reputation Management?
+              Why Choose Our Mobile App Development?
             </h2>
             <p className="text-lg sm:text-xl theme-text-secondary max-w-2xl mx-auto leading-relaxed">
-              Protect and enhance your online reputation
+              Expert mobile app development that delivers results
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
@@ -373,20 +382,20 @@ const OnlineReputationManagementServices = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="max-w-4xl mx-auto">
             <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight ${getCTATextColor()}`}>
-              Ready to Protect Your <span className="opacity-90">Online Reputation?</span>
+              Ready to Build Your <span className="opacity-90">Mobile App?</span>
             </h2>
             <p className={`text-base sm:text-lg lg:text-xl mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed ${getCTATextColor()} opacity-90`}>
-              Let's build and protect your brand's online reputation. Get started with a free audit today!
+              Let's turn your app idea into reality. Get started with a free consultation today!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md sm:max-w-none mx-auto">
               <Link
-                to="/request-a-quote"
+                to={buildUrl('/mobile-app-development-services/request-a-quote')}
                 className="bg-white text-gray-800 font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-gray-100 transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
               >
-                Get Your Free Reputation Audit
+                Get Your Free Consultation
               </Link>
               <Link
-                to="/contacts"
+                to={buildUrl('/mobile-app-development-services/contacts')}
                 className="border-2 border-white text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-white hover:text-gray-800 transition-all duration-300 text-base sm:text-lg hover:scale-105"
               >
                 Contact Our Team
@@ -395,9 +404,10 @@ const OnlineReputationManagementServices = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 
-export default OnlineReputationManagementServices;
+export default MobileAppDevelopmentServices;
 

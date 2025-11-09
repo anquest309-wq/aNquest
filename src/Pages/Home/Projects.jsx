@@ -1,8 +1,9 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
+import { Pagination, Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 import SectionsBgAnimation from "../../Components/Bg-animation-template/SectionsBgAnimation";
 // import DenseBgAnimation from "../../Components/Bg-animation-template/DenseBgAnimation";
@@ -20,7 +21,7 @@ const projects = [
   {
     title: "SaaS Dashboard",
     subtitle: "Vue.js & Laravel",
-    img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
+    img: "https://images.unsplash.com/photo-1556155092-490a1ba16284?w=800",
   },
   {
     title: "Food Delivery App",
@@ -30,7 +31,7 @@ const projects = [
   {
     title: "Portfolio Website",
     subtitle: "Next.js & Tailwind",
-    img: "https://images.unsplash.com/photo-1467232004584-a241de8b6ef3?w=800",
+    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&auto=format&fit=crop",
   },
 ];
 
@@ -56,7 +57,7 @@ const Projects = () => {
        {/* ==== Swiper Section ==== */}
        <div className="relative z-10">
          <Swiper
-           modules={[Pagination, Autoplay]}
+           modules={[Pagination, Autoplay, Navigation]}
            pagination={{ 
              clickable: true,
              el: '.swiper-pagination-custom',
@@ -67,10 +68,14 @@ const Projects = () => {
            spaceBetween={30}
            loop={true}
            grabCursor={true}
+           allowTouchMove={true}
+           touchRatio={1}
+           touchAngle={45}
            speed={800}
            autoplay={{
              delay: 2500,
              disableOnInteraction: false,
+             pauseOnMouseEnter: true,
            }}
            breakpoints={{
              0: {
@@ -472,11 +477,20 @@ const styles = `
     border-radius: 50%;
     transition: all 0.3s ease;
     cursor: pointer;
+    pointer-events: auto;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .swiper-pagination-bullet-custom:hover {
+    background: #2d65bc;
+    transform: scale(1.3);
   }
   
   .swiper-pagination-bullet-active-custom {
     background: #2d65bc;
-    transform: scale(1.2);
+    transform: scale(1.4);
+    box-shadow: 0 0 10px rgba(45, 101, 188, 0.5);
   }
 `;
 

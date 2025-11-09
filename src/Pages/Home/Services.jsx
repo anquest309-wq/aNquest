@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useTheme } from '../../Context/ThemeContext'
-// import ParticlesBgAnimation from '../../Components/Bg-animation-template/ParticlesBgAnimation';
 import GeometricBgAnimation from '../../Components/Bg-animation-template/GeometricBgAnimation';
 
 export default function Services() {
@@ -92,15 +91,6 @@ export default function Services() {
       }
     }, stepDuration)
   }
-
-  const getThemeColor = () => {
-    if (theme === 'light') {
-      return '#2d65bc';
-    } else if (theme === 'dark') {
-      return '#ffffff';
-    }
-    return '#2d65bc';
-  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -194,7 +184,14 @@ export default function Services() {
 
                     {/* Action Button */}
                     <div className="lg:w-1/6 flex justify-end">
-                      <button className="w-12 h-12 border-2 theme-text-primary rounded-full flex items-center justify-center hover:theme-bg-primary transition-all duration-300 transform hover:scale-110 hover:rotate-45" style={{ borderColor: '#2d65bc' }} onMouseEnter={(e) => { e.currentTarget.style.color = '#2d65bc'; }} onMouseLeave={(e) => { e.currentTarget.style.color = ''; }}>
+                      <button
+                        type="button"
+                        aria-label={`Learn more about ${service.title}`}
+                        className="w-12 h-12 border-2 theme-text-primary rounded-full flex items-center justify-center hover:theme-bg-primary transition-all duration-300 transform hover:scale-110 hover:rotate-45"
+                        style={{ borderColor: '#2d65bc' }}
+                        onMouseEnter={(e) => { e.currentTarget.style.color = '#2d65bc'; }}
+                        onMouseLeave={(e) => { e.currentTarget.style.color = ''; }}
+                      >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>

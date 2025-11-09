@@ -1,8 +1,10 @@
 import React from 'react';
 import { Palette, Monitor, Smartphone, Eye, Layers, Zap, Code, PenTool, CheckCircle, Target, Users, TrendingUp, ShoppingCart } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useTheme } from '../Context/ThemeContext';
-import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleSquareBgAnimation';
+import { useTheme } from '../../Context/ThemeContext';
+import CircleSquareBgAnimation from '../../Components/Bg-animation-template/CircleSquareBgAnimation';
+import SEO from '../../Components/SEO';
+import { buildUrl } from '../../utils/urlUtils';
 
 const WebDesignServices = () => {
   const { theme } = useTheme();
@@ -87,7 +89,7 @@ const WebDesignServices = () => {
       title: "WordPress Design",
       description: "Create custom WordPress websites with professional designs. Beautiful themes, custom layouts, and easy-to-manage content management systems.",
       icon: Code,
-      bgImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop",
+      bgImage: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&auto=format&fit=crop",
       features: [
         "Custom Themes",
         "Plugin Integration",
@@ -100,7 +102,7 @@ const WebDesignServices = () => {
       title: "Redesign & Refresh",
       description: "Transform outdated websites into modern, engaging experiences. We refresh existing designs while maintaining brand identity and improving functionality.",
       icon: TrendingUp,
-      bgImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop",
+      bgImage: "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=800&auto=format&fit=crop",
       features: [
         "Design Audit",
         "Modern Updates",
@@ -147,7 +149,14 @@ const WebDesignServices = () => {
   ];
 
   return (
-    <div className="min-h-screen theme-bg-primary pt-10">
+    <>
+      <SEO 
+        title="aNquest | Web Design Services - Custom & Responsive Websites"
+        description="aNquest offers creative and responsive web design services that enhance user experience, boost brand presence, and drive online business success."
+        keywords="aNquest web design services, custom website design India, responsive website development, corporate web design, e-commerce web design, UX/UI web design India, website redesign, web design agency Ghaziabad"
+        canonicalUrl="https://anquestmedia.com/web-design-services"
+      />
+      <div className="min-h-screen theme-bg-primary pt-10">
       {/* Hero Section */}
       <section className="relative overflow-hidden sm:py-8">
         <CircleSquareBgAnimation/>
@@ -163,13 +172,13 @@ const WebDesignServices = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <Link
-                to="/request-a-quote"
+                to={buildUrl('/web-design-services/request-a-quote')}
                 className="bg-[#2d65bc] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#1a4a8a] transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
               >
                 Get Started
               </Link>
               <Link
-                to="/contacts"
+                to={buildUrl('/web-design-services/contacts')}
                 className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white transition-all duration-300 text-base sm:text-lg hover:scale-105"
               >
                 Contact Us
@@ -337,13 +346,13 @@ const WebDesignServices = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md sm:max-w-none mx-auto">
               <Link
-                to="/request-a-quote"
+                to={buildUrl('/web-design-services/request-a-quote')}
                 className="bg-white text-gray-800 font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-gray-100 transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
               >
                 Get Your Free Consultation
               </Link>
               <Link
-                to="/contacts"
+                to={buildUrl('/web-design-services/contacts')}
                 className="border-2 border-white text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-white hover:text-gray-800 transition-all duration-300 text-base sm:text-lg hover:scale-105"
               >
                 Contact Our Team
@@ -352,7 +361,8 @@ const WebDesignServices = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 

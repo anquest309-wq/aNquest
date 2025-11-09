@@ -8,6 +8,7 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 // import MinimalBgAnimation from '../Components/Bg-animation-template/MinimalBgAnimation';
 import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleSquareBgAnimation';
+import SEO from '../Components/SEO';
 import DenseBgAnimation from '../Components/Bg-animation-template/DenseBgAnimation';
 import  CTABgAnimation from '../Components/Bg-animation-template/CTABgAnimation'
 import 'swiper/css/navigation';
@@ -634,7 +635,14 @@ const Technologies = () => {
   ];
 
   return (
-    <div className="min-h-screen theme-bg-primary">
+    <>
+      <SEO 
+        title="aNquest Media | Technologies - Cutting-Edge IT & Digital Platforms"
+        description="Explore aNquest Technologies for innovative IT and digital platforms. We deliver cutting-edge solutions to enhance performance, scalability, and business success."
+        keywords="aNquest technologies, IT platforms India, digital transformation solutions, cloud & AI services, enterprise software technologies, CRM & ERP technology, custom software development India"
+        canonicalUrl="https://anquestmedia.com/technologies"
+      />
+      <div className="min-h-screen theme-bg-primary">
       <HeroSection />
       <CategoryShowcase 
         onSelectCategory={setActiveCategory}
@@ -644,8 +652,9 @@ const Technologies = () => {
         activeCategory={activeCategory}
       />
       <BenefitsSection />
-      <CTASection />
-    </div>
+      <CTASection       />
+      </div>
+    </>
   );
 };
 

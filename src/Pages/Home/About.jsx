@@ -157,8 +157,8 @@ export default function About() {
             <div className="order-1 lg:order-2 animate-slide-in-right">
               <div className="relative">
                 <img
-                  src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                  alt="IT Solutions"
+                  src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=1000&q=80"
+                  alt="Digital Solutions Team"
                   className="w-full h-auto rounded-2xl shadow-2xl"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t rounded-2xl" style={{ background: `linear-gradient(to top, ${hexToRgba(themeColor, 0.2)}, transparent)` }}></div>
@@ -171,8 +171,8 @@ export default function About() {
             <div className="order-2 lg:order-1 animate-slide-in-left">
               <div className="relative">
                 <img
-                  src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                  alt="IT Solutions"
+                  src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1000&q=80"
+                  alt="IT Services"
                   className="w-full h-auto rounded-2xl shadow-2xl"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t rounded-2xl" style={{ background: `linear-gradient(to top, ${hexToRgba(themeColor, 0.2)}, transparent)` }}></div>
@@ -255,8 +255,8 @@ export default function About() {
             <div className="order-1 lg:order-2 animate-slide-in-right">
               <div className="relative">
                 <img
-                  src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                  alt="IT Solutions"
+                  src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1000&q=80"
+                  alt="Technology Solutions"
                   className="w-full h-auto rounded-2xl shadow-2xl"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t rounded-2xl" style={{ background: `linear-gradient(to top, ${hexToRgba(themeColor, 0.2)}, transparent)` }}></div>

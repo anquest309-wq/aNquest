@@ -1,10 +1,12 @@
 import React from 'react';
-import { Users, BarChart3, Target, TrendingUp, Zap, Database, CheckCircle, ArrowRight, Filter, Calendar, Globe, ChartLine, UserCheck, Building2, MessageSquare, Settings } from 'lucide-react';
+import { Mail, BarChart3, Users, Target, TrendingUp, Zap, Send, CheckCircle, ArrowRight, Filter, Calendar, Globe, ChartLine } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useTheme } from '../Context/ThemeContext';
-import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleSquareBgAnimation';
+import { useTheme } from '../../Context/ThemeContext';
+import CircleSquareBgAnimation from '../../Components/Bg-animation-template/CircleSquareBgAnimation';
+import SEO from '../../Components/SEO';
+import { buildUrl } from '../../utils/urlUtils';
 
-const CRMServices = () => {
+const EmailMarketingServices = () => {
   const { theme } = useTheme();
 
   const getThemeColor = () => {
@@ -30,84 +32,83 @@ const CRMServices = () => {
   const getCTATextColor = () => {
     return 'text-white';
   };
-  
   const services = [
     {
-      title: "CRM Implementation",
-      description: "Complete CRM system setup and configuration tailored to your business needs. We help you choose and implement the right CRM solution for maximum efficiency.",
-      icon: Settings,
-      bgImage: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&auto=format&fit=crop",
-      features: [
-        "CRM Platform Selection",
-        "Custom Configuration",
-        "Data Migration",
-        "User Training",
-        "System Integration"
-      ]
-    },
-    {
-      title: "Sales Pipeline Management",
-      description: "Streamline your sales process with automated pipeline management. Track deals, forecast revenue, and close more sales with intelligent CRM workflows.",
-      icon: TrendingUp,
-      bgImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop",
-      features: [
-        "Deal Tracking",
-        "Sales Forecasting",
-        "Pipeline Automation",
-        "Activity Management",
-        "Performance Analytics"
-      ]
-    },
-    {
-      title: "Customer Data Management",
-      description: "Centralize all customer information in one place. Manage contacts, interactions, and history to build stronger customer relationships.",
-      icon: Database,
-      bgImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop",
-      features: [
-        "Contact Management",
-        "Interaction History",
-        "Data Cleansing",
-        "Segmentation",
-        "Data Security"
-      ]
-    },
-    {
-      title: "Marketing Automation",
-      description: "Automate your marketing campaigns and nurture leads effectively. Create personalized customer journeys that convert prospects into customers.",
-      icon: Zap,
+      title: "Email Campaign Design",
+      description: "Create visually stunning email templates that engage your audience and drive conversions. We design responsive, mobile-friendly emails that look great on any device.",
+      icon: Mail,
       bgImage: "https://images.unsplash.com/photo-1556155092-490a1ba16284?w=800&auto=format&fit=crop",
       features: [
-        "Lead Nurturing",
-        "Email Campaigns",
-        "Workflow Automation",
-        "Behavioral Triggers",
-        "Campaign Tracking"
+        "Responsive Email Templates",
+        "Mobile-Optimized Design",
+        "Brand Consistency",
+        "A/B Testing Ready",
+        "Interactive Elements"
       ]
     },
     {
-      title: "Customer Support Integration",
-      description: "Integrate customer support with your CRM to provide seamless service experiences. Track support tickets and customer satisfaction.",
-      icon: MessageSquare,
+      title: "Email Automation",
+      description: "Set up automated email sequences that nurture leads, onboard customers, and re-engage inactive subscribers. Save time while maximizing engagement.",
+      icon: Zap,
+      bgImage: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&fit=crop",
+      features: [
+        "Welcome Sequences",
+        "Drip Campaigns",
+        "Behavioral Triggers",
+        "Lead Nurturing",
+        "Abandoned Cart Recovery"
+      ]
+    },
+    {
+      title: "Email List Management",
+      description: "Build, segment, and maintain a healthy email list. We help you grow your subscriber base and keep it clean and engaged.",
+      icon: Users,
       bgImage: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop",
       features: [
-        "Ticket Management",
-        "Support History",
-        "Customer Portal",
-        "Knowledge Base",
-        "Satisfaction Surveys"
+        "List Building Strategies",
+        "Segmentation",
+        "List Cleaning",
+        "Opt-in Optimization",
+        "Compliance Management"
       ]
     },
     {
-      title: "Analytics & Reporting",
-      description: "Get comprehensive insights into your business performance with advanced CRM analytics and customizable reports.",
+      title: "Email Analytics & Reporting",
+      description: "Track and analyze your email performance with detailed reports. Understand what works and optimize for better results.",
       icon: BarChart3,
       bgImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop",
       features: [
-        "Sales Reports",
-        "Performance Dashboards",
-        "Custom Reports",
-        "Real-time Analytics",
-        "Data Visualization"
+        "Open Rate Tracking",
+        "Click-Through Analysis",
+        "Conversion Tracking",
+        "Revenue Attribution",
+        "Performance Dashboards"
+      ]
+    },
+    {
+      title: "Lead Generation Campaigns",
+      description: "Capture high-quality leads through strategic email marketing campaigns. Turn visitors into subscribers and subscribers into customers.",
+      icon: Target,
+      bgImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop",
+      features: [
+        "Lead Magnet Creation",
+        "Landing Page Integration",
+        "Multi-Step Forms",
+        "Lead Scoring",
+        "CRM Integration"
+      ]
+    },
+    {
+      title: "Transactional Emails",
+      description: "Design and optimize transactional emails including receipts, confirmations, and notifications to enhance customer experience.",
+      icon: Send,
+      bgImage: "https://images.unsplash.com/photo-1432888622747-4eb9a8f2c293?w=800&auto=format&fit=crop",
+      features: [
+        "Order Confirmations",
+        "Shipping Notifications",
+        "Password Resets",
+        "Account Updates",
+        "Personalization"
       ]
     }
   ];
@@ -115,63 +116,73 @@ const CRMServices = () => {
   const processSteps = [
     {
       number: "1",
-      title: "Assessment & Planning",
-      description: "We analyze your business needs and create a customized CRM strategy."
+      title: "Strategy Development",
+      description: "We analyze your goals and create a customized email marketing strategy."
     },
     {
       number: "2",
-      title: "System Setup",
-      description: "We configure and customize your CRM platform to match your workflow."
+      title: "Campaign Setup",
+      description: "We design and set up your email campaigns with best practices."
     },
     {
       number: "3",
-      title: "Data Migration",
-      description: "We securely migrate your existing data into the new CRM system."
+      title: "Automation Implementation",
+      description: "We configure automated workflows to nurture your audience."
     },
     {
       number: "4",
-      title: "Training & Support",
-      description: "We provide comprehensive training and ongoing support for your team."
+      title: "Optimization & Growth",
+      description: "We continuously optimize and expand your email marketing efforts."
     }
   ];
 
   const results = [
-    { percentage: "300%", title: "ROI Increase", description: "Businesses see significant return on CRM investment" },
-    { percentage: "45%", title: "Sales Growth", description: "Average increase in sales productivity" },
-    { percentage: "60%", title: "Time Saved", description: "Reduction in administrative tasks" }
+    { percentage: "250%", title: "Average ROI", description: "Email marketing delivers exceptional return on investment" },
+    { percentage: "40%", title: "Higher Conversion", description: "Compared to social media marketing" },
+    { percentage: "98%", title: "Email Deliverability", description: "Ensuring your emails reach the inbox" }
   ];
 
   const benefits = [
-    { icon: TrendingUp, title: "Increased Revenue", description: "Streamlined sales process drives higher conversion rates" },
-    { icon: Users, title: "Better Customer Relationships", description: "Centralized customer data improves service quality" },
-    { icon: ChartLine, title: "Data-Driven Decisions", description: "Advanced analytics provide actionable business insights" }
+    { icon: TrendingUp, title: "Increased Engagement", description: "Personalized emails drive higher open and click rates" },
+    { icon: CheckCircle, title: "Better Segmentation", description: "Target the right audience with the right message" },
+    { icon: ChartLine, title: "Measurable Results", description: "Track every metric from opens to conversions" }
   ];
 
   return (
-    <div className="min-h-screen theme-bg-primary pt-20">
+    <>
+      <SEO 
+        title="Email Marketing Services - Engage, Convert & Retain"
+        description="Boost your brand with aNquest's professional email marketing services. Engage customers, increase conversions, and grow your business with smart campaigns."
+        keywords="aNquest email marketing, email marketing services India, email campaign management, email automation, subscriber engagement solutions, email list growth, targeted email marketing, digital marketing agency email services"
+        canonicalUrl="https://anquestmedia.com/email-marketing-services"
+      />
+      <div className="min-h-screen theme-bg-primary pt-20">
       {/* Hero Section */}
       <section className="relative overflow-hidden sm:py-8">
         <CircleSquareBgAnimation/>
-        
+        {/* <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-10 w-48 h-48 rounded-full opacity-10 animate-float-slow" style={{ backgroundColor: getThemeColor() }}></div>
+          <div className="absolute bottom-40 left-20 w-52 h-52 rounded-full opacity-8 animate-float-fast" style={{ backgroundColor: getThemeColor() }}></div>
+        </div> */}
         
         <div className="container mx-auto px-4 sm:px-6 pt-22 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
-              CRM <span style={{ color: '#2d65bc' }}>Services</span>
+              Email Marketing <span style={{ color: '#2d65bc' }}>Services</span>
             </h1>
-            <p className="text-xl sm:text-2xl theme-text-secondary mb-4 max-w-3xl mx-auto leading-relaxed">
-              Transform your customer relationships with comprehensive CRM solutions. 
-              We help you manage contacts, automate sales processes, and grow your business with intelligent CRM systems.
+            <p className="text-xl sm:text-2xl  theme-text-secondary mb-4 max-w-3xl mx-auto leading-relaxed">
+              Drive engagement and conversions with professional email marketing campaigns. 
+              We help you build relationships, nurture leads, and grow your business through strategic email marketing.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <Link
-                to="/request-a-quote"
+                to={buildUrl('/email-marketing-services/request-a-quote')}
                 className="bg-[#2d65bc] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#1a4a8a] transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
               >
                 Get Started
               </Link>
               <Link
-                to="/contacts"
+                to={buildUrl('/email-marketing-services/contacts')}
                 className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white transition-all duration-300 text-base sm:text-lg hover:scale-105"
               >
                 Contact Us
@@ -216,7 +227,7 @@ const CRMServices = () => {
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center theme-text-primary mb-12 sm:mb-16">
-            Our CRM Services
+            Our Email Marketing Services
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
@@ -233,8 +244,8 @@ const CRMServices = () => {
                   />
                   
                   <div className="relative p-6 sm:p-8 flex flex-col items-center text-center flex-grow">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 theme-bg-tertiary rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                      <IconComponent className="w-8 h-8 sm:w-10 sm:h-10" style={{ color: '#2d65bc' }} />
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg" style={{ backgroundColor: '#2d65bc' }}>
+                      <IconComponent className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                     </div>
 
                     <h3 className="text-xl sm:text-2xl font-bold theme-text-primary mb-4">
@@ -292,7 +303,7 @@ const CRMServices = () => {
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center theme-text-primary mb-12 sm:mb-16">
-            Our CRM Implementation Process
+            Our Email Marketing Process
           </h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
@@ -346,7 +357,7 @@ const CRMServices = () => {
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center theme-text-primary mb-12 sm:mb-16">
-            CRM Results
+            Email Marketing Results
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
@@ -405,10 +416,10 @@ const CRMServices = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-4 sm:mb-6">
-              Why Choose Our CRM Services?
+              Why Choose Our Email Marketing Services?
             </h2>
             <p className="text-lg sm:text-xl theme-text-secondary max-w-2xl mx-auto leading-relaxed">
-              Professional CRM solutions that drive business growth
+              Professional email marketing that drives results
             </p>
           </div>
 
@@ -420,8 +431,8 @@ const CRMServices = () => {
                   key={index} 
                   className="theme-card rounded-2xl p-6 sm:p-8 text-center hover:theme-shadow-secondary transition-all duration-300 hover:scale-105"
                 >
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 theme-bg-tertiary rounded-2xl flex items-center justify-center mx-auto mb-6">
-                    <IconComponent className="w-8 h-8 sm:w-10 sm:h-10" style={{ color: '#2d65bc' }} />
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center mx-auto mb-6" style={{ backgroundColor: '#2d65bc' }}>
+                    <IconComponent className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                   </div>
                   <h3 className="text-lg sm:text-xl font-bold theme-text-primary mb-3">
                     {item.title}
@@ -462,20 +473,20 @@ const CRMServices = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="max-w-4xl mx-auto">
             <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight ${getCTATextColor()}`}>
-              Ready to Transform Your Business with <span className="opacity-90">CRM?</span>
+              Ready to Grow Your Business with <span className="opacity-90">Email Marketing?</span>
             </h2>
             <p className={`text-base sm:text-lg lg:text-xl mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed ${getCTATextColor()} opacity-90`}>
-              Let's implement a CRM solution that streamlines your sales process and improves customer relationships. Get started today!
+              Let's create email marketing campaigns that engage your audience and drive conversions. Get started today!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md sm:max-w-none mx-auto">
               <Link
-                to="/request-a-quote"
+                to={buildUrl('/email-marketing-services/request-a-quote')}
                 className="bg-white text-gray-800 font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-gray-100 transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
               >
                 Get Your Free Consultation
               </Link>
               <Link
-                to="/contacts"
+                to={buildUrl('/email-marketing-services/contacts')}
                 className="border-2 border-white text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-white hover:text-gray-800 transition-all duration-300 text-base sm:text-lg hover:scale-105"
               >
                 Contact Our Team
@@ -484,8 +495,10 @@ const CRMServices = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 
-export default CRMServices;
+export default EmailMarketingServices;
+

@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTheme } from '../Context/ThemeContext';
 import { ArrowLeft, Calendar, Clock, User, Share2, BookOpen } from 'lucide-react';
+import blogPosts, { findBlogBySlug } from '../data/blogPosts';
+import { buildUrl } from '../utils/urlUtils';
+import MinimalBigShapesAnimation from '../Components/Bg-animation-template/MinimalBigShapesAnimation';
 
 const BlogDetails = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const { theme } = useTheme();
 
   // Get theme-based colors
@@ -18,9 +21,8 @@ const BlogDetails = () => {
     }
     return '#2d65bc';
   };
-
   // Blog posts data (in a real app, this would come from an API or database)
-  const blogPosts = {
+  /* Legacy inline blog data retained for reference
     1: {
       id: 1,
       title: "The Future of Web Development in 2024",
@@ -203,11 +205,78 @@ const BlogDetails = () => {
       date: "March 10, 2024",
       category: "Mobile Development",
       readTime: "6 min read",
-      tags: ["Mobile Development", "React Native", "Flutter", "AI", "5G", "UX"]
+    tags: ["Mobile Development", "React Native", "Flutter", "AI", "5G", "UX"]
     }
   };
+  */
 
-  const blog = blogPosts[id];
+  const blog = useMemo(() => findBlogBySlug(slug), [slug]);
+  const relatedPosts = useMemo(
+    () => blogPosts.filter((post) => post.slug !== slug).slice(0, 3),
+    [slug]
+  );
+
+  const renderSection = (section, index) => {
+    const key = `${section.type}-${index}`;
+
+    switch (section.type) {
+      case 'heading': {
+        if (section.level === 2) {
+          return (
+            <h2
+              key={key}
+              className="text-3xl sm:text-4xl font-bold theme-text-primary mt-12 mb-6 leading-tight"
+            >
+              {section.content}
+            </h2>
+          );
+        }
+
+        return (
+          <h3
+            key={key}
+            className="text-2xl font-semibold theme-text-primary mt-10 mb-4 leading-tight"
+          >
+            {section.content}
+          </h3>
+        );
+      }
+      case 'list': {
+        const ListComponent = section.ordered ? 'ol' : 'ul';
+        return (
+          <ListComponent
+            key={key}
+            className={`pl-6 mb-6 space-y-2 ${
+              section.ordered ? 'list-decimal' : 'list-disc'
+            } theme-text-secondary`}
+          >
+            {section.items?.map((item, itemIndex) => (
+              <li key={`${key}-item-${itemIndex}`} className="leading-relaxed">
+                {item}
+              </li>
+            ))}
+          </ListComponent>
+        );
+      }
+      case 'quote':
+        return (
+          <blockquote
+            key={key}
+            className="border-l-4 pl-6 italic text-lg theme-text-secondary my-6"
+            style={{ borderColor: getThemeColor() }}
+          >
+            {section.content}
+          </blockquote>
+        );
+      case 'paragraph':
+      default:
+        return (
+          <p key={key} className="text-lg leading-relaxed theme-text-secondary mb-6">
+            {section.content}
+          </p>
+        );
+    }
+  };
 
   if (!blog) {
     return (
@@ -215,8 +284,8 @@ const BlogDetails = () => {
         <div className="text-center">
           <h1 className="text-4xl font-bold theme-text-primary mb-4">Blog Not Found</h1>
           <p className="theme-text-secondary mb-8">The blog post you're looking for doesn't exist.</p>
-          <Link 
-            to="/blogs" 
+      <Link 
+        to={buildUrl('/blogs')} 
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white transition-all duration-200 hover:scale-105"
             style={{ backgroundColor: getThemeColor() }}
           >
@@ -230,16 +299,37 @@ const BlogDetails = () => {
 
   return (
     <div className="min-h-screen theme-bg-primary">
+      {/* Floating Back Button */}
+      <button
+        type="button"
+        onClick={() => window.history.length > 1 ? window.history.back() : window.location.assign(buildUrl('/blogs'))}
+        className="fixed top-26 left-4 z-40 flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-white shadow-lg transition-transform duration-200 hover:scale-105"
+        style={{ backgroundColor: getThemeColor() }}
+        aria-label="Go back to the previous page"
+      >
+        <ArrowLeft className="w-4 h-4" />
+        Back
+      </button>
+
       {/* Navigation */}
       <div className="theme-bg-primary py-4">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
           <Link 
-            to="/blogs" 
+            to={buildUrl('/blogs')} 
             className="inline-flex items-center gap-2 theme-text-secondary hover:theme-text-primary transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Blogs
           </Link>
+          <button
+            onClick={() => window.history.length > 1 ? window.history.back() : null}
+            className="inline-flex items-center gap-2 text-sm sm:text-base px-4 py-2 rounded-full font-medium transition-all duration-200 hover:scale-105 theme-text-secondary hover:theme-text-primary"
+            style={{ backgroundColor: `${getThemeColor()}12` }}
+            aria-label="Go back to the previous page"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Go Back
+          </button>
         </div>
       </div>
 
@@ -291,27 +381,31 @@ const BlogDetails = () => {
       <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            {/* Featured Image Placeholder */}
-            <div className="w-full h-64 sm:h-80 lg:h-96 bg-gradient-to-br from-slate-200 to-slate-300 rounded-3xl mb-12 flex items-center justify-center">
-              <BookOpen className="w-16 h-16 text-slate-400" />
+            {/* Featured Media */}
+            <div className="w-full h-64 sm:h-80 lg:h-96 rounded-3xl overflow-hidden mb-12">
+              {blog.image ? (
+                <img
+                  src={blog.image}
+                  alt={blog.title}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="w-full h-full bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center">
+                  <BookOpen className="w-16 h-16 text-slate-400" />
+                </div>
+              )}
             </div>
             
             {/* Article Content */}
-            <article className="prose prose-lg max-w-none theme-text-primary">
-              <div 
-                dangerouslySetInnerHTML={{ __html: blog.content }}
-                className="blog-content"
-                style={{
-                  '--theme-color': getThemeColor()
-                }}
-              />
+            <article className="max-w-none">
+              {blog.sections?.map((section, index) => renderSection(section, index))}
             </article>
             
             {/* Tags */}
             <div className="mt-12 pt-8 border-t border-gray-200">
               <h3 className="text-lg font-semibold theme-text-primary mb-4">Tags:</h3>
               <div className="flex flex-wrap gap-3">
-                {blog.tags.map((tag, index) => (
+                {blog.tags?.map((tag, index) => (
                   <span 
                     key={index}
                     className="px-3 py-1 rounded-full text-sm font-medium transition-all duration-200 hover:scale-105 cursor-pointer"
@@ -322,33 +416,100 @@ const BlogDetails = () => {
                 ))}
               </div>
             </div>
+
+            {relatedPosts.length > 0 && (
+              <div className="mt-16 pt-12 border-t border-gray-200">
+                <h3 className="text-2xl font-bold theme-text-primary mb-8">
+                  More from aNquest
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {relatedPosts.map((post) => (
+                    <Link
+                      key={post.id}
+                to={buildUrl(`/blog/${post.slug}`)}
+                      className="group theme-card rounded-2xl overflow-hidden transition-all duration-300 hover:theme-shadow-secondary hover:-translate-y-1"
+                    >
+                      <div className="h-48 w-full overflow-hidden bg-gradient-to-br from-slate-200 to-slate-300">
+                        <img
+                          src={post.image}
+                          alt={post.title}
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        />
+                      </div>
+                      <div className="p-6 flex flex-col gap-3">
+                        <div className="flex items-center gap-3 text-sm theme-text-secondary">
+                          <span style={{ color: getThemeColor() }} className="font-medium">
+                            {post.category}
+                          </span>
+                          <span>•</span>
+                          <span>{post.readTime}</span>
+                        </div>
+                        <h4 className="text-xl font-semibold theme-text-primary leading-snug line-clamp-2">
+                          {post.title}
+                        </h4>
+                        <p className="theme-text-secondary text-sm line-clamp-3">
+                          {post.excerpt}
+                        </p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Back Buttons */}
+            <div className="mt-16 flex flex-col sm:flex-row gap-4">
+              <Link
+                to={buildUrl('/blogs')}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white transition-all duration-200 hover:scale-105"
+                style={{ backgroundColor: getThemeColor() }}
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Back to Blogs
+              </Link>
+              <button
+                type="button"
+                onClick={() => window.history.length > 1 ? window.history.back() : null}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-200 theme-text-primary theme-bg-secondary hover:theme-bg-primary hover:text-white"
+                style={{ border: `1px solid ${getThemeColor()}` }}
+                aria-label="Go back to the previous page"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Go Back
+              </button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 sm:py-20 lg:py-24" style={{ background: `linear-gradient(135deg, ${getThemeColor()}, ${getThemeColor()}CC)` }}>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-              Ready to Get <span className="text-white/90">Started?</span>
-            </h2>
-            <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Let's discuss how we can help bring your digital ideas to life.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                to="/request-a-quote"
-                className="bg-white text-gray-800 font-bold py-4 px-8 rounded-full hover:bg-gray-100 transition-all duration-200 hover:scale-105"
-              >
-                Request a Quote
-              </Link>
-              <Link 
-                to="/contacts"
-                className="border-2 border-white text-white font-bold py-4 px-8 rounded-full hover:bg-white hover:text-gray-800 transition-all duration-200 hover:scale-105"
-              >
-                Contact Us
-              </Link>
+      <section className="relative overflow-hidden">
+        <MinimalBigShapesAnimation />
+        <div className="absolute inset-0 theme-gradient-primary opacity-50"></div>
+        <div className="relative z-10 py-16 sm:py-20 lg:py-24">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-6">
+                Ready to Bring Your Story to <span style={{ color: '#2d65bc' }}>Life?</span>
+              </h2>
+              <p className="text-lg sm:text-xl theme-text-secondary mb-8 max-w-2xl mx-auto leading-relaxed">
+                Talk to our team about turning your content vision into a compelling digital experience.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  to={buildUrl('/request-a-quote')}
+                  className="text-white font-bold py-4 px-8 rounded-xl transition-all duration-200 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
+                  style={{ backgroundColor: '#2d65bc' }}
+                >
+                  Request a Quote
+                </Link>
+                <Link 
+                  to={buildUrl('/contacts')}
+                  className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold py-4 px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white transition-all duration-200 text-base sm:text-lg hover:scale-105"
+                >
+                  Contact Us
+                </Link>
+              </div>
             </div>
           </div>
         </div>

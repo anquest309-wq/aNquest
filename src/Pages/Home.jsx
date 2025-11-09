@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 import { useTheme } from '../Context/ThemeContext'
+import SEO from '../Components/SEO'
+import { buildUrl } from '../utils/urlUtils'
 
 
 
@@ -177,7 +179,14 @@ export default function Home() {
   
 
   return (
-    <div className="relative min-h-screen overflow-hidden smooth-scroll momentum-scroll theme-transition">
+    <>
+      <SEO 
+        title="aNquest Media | Digital & Brand Strategy - CRM Software Agency"
+        description="aNquest Media is a top digital and brand strategy agency offering powerful CRM software solutions to enhance customer engagement and accelerate business growth."
+        keywords="digital marketing agency, social media marketing, content creation services, web design and development, digital advertising, aNquest, CRM Software Agency"
+        canonicalUrl="https://anquestmedia.com/"
+      />
+      <div className="relative min-h-screen overflow-hidden smooth-scroll momentum-scroll theme-transition">
 
       {/* Hero Section with Animation */}
         <section className="relative h-screen w-full scroll-snap-section theme-hero overflow-hidden">
@@ -261,7 +270,7 @@ export default function Home() {
                     
                     {/* Contact Us Button */}
                     <Link 
-                      to="/contacts"
+                      to={buildUrl('/contacts')}
                       className="border-2 font-bold py-4 text-[rgb(31,103,218)] hover:text-white hover:bg-[#2d65bc] px-8 rounded-lg transition-all duration-300 transform hover:scale-105 border-[#2d65bc] text-center"
                     >
                       <span className="relative z-10 flex items-center justify-center">
@@ -332,7 +341,7 @@ export default function Home() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link 
-                    to="/contacts" 
+                    to={buildUrl('/contacts')}
                     className="bg-[#2d65bc] text-white font-bold py-4 px-8 rounded-xl
                      hover:bg-[#2d65bc]/90 hover:shadow-lg transition-all duration-300 text-sm sm:text-base transform hover:scale-105 active:scale-95"
                   >
@@ -786,6 +795,7 @@ export default function Home() {
           transition: transform 0.3s ease;
         }
       `}</style>
-    </div>
+      </div>
+    </>
   )
 }
