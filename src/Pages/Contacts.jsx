@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useTheme } from '../Context/ThemeContext';
 import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleSquareBgAnimation';
 import MinimalBigShapesAnimation from '../Components/Bg-animation-template/MinimalBigShapesAnimation';
@@ -67,6 +67,10 @@ const Contacts = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formErrors, setFormErrors] = useState({});
   const [status, setStatus] = useState({ type: null, message: '' });
+
+  const handleExternalLink = (url) => {
+    window.location.href = url;
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -488,7 +492,14 @@ const Contacts = () => {
                 <div className="theme-card rounded-2xl theme-shadow-primary p-6">
                   <h3 className="text-xl font-bold theme-text-primary mb-4">Quick Contact</h3>
                   <div className="space-y-4">
-                    <a href="tel:+12343923647" className="flex items-center gap-3 p-3 theme-bg-tertiary rounded-xl hover:theme-bg-secondary transition-colors">
+                    <Link
+                      to="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleExternalLink('tel:+12343923647');
+                      }}
+                      className="flex items-center gap-3 p-3 theme-bg-tertiary rounded-xl hover:theme-bg-secondary transition-colors"
+                    >
                       <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#2d65bc' }}>
                         <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -498,9 +509,16 @@ const Contacts = () => {
                         <p className="font-semibold theme-text-primary">US Office</p>
                         <p className="text-sm theme-text-secondary">+1(234) 392-3647</p>
                       </div>
-                    </a>
+                    </Link>
                     
-                    <a href="tel:+919266140654" className="flex items-center gap-3 p-3 theme-bg-tertiary rounded-xl hover:theme-bg-secondary transition-colors">
+                    <Link
+                      to="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleExternalLink('tel:+919266140654');
+                      }}
+                      className="flex items-center gap-3 p-3 theme-bg-tertiary rounded-xl hover:theme-bg-secondary transition-colors"
+                    >
                       <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#2d65bc' }}>
                         <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -510,9 +528,16 @@ const Contacts = () => {
                         <p className="font-semibold theme-text-primary">IND Office</p>
                         <p className="text-sm theme-text-secondary">+91 92661 40654</p>
                       </div>
-                    </a>
+                    </Link>
                     
-                    <a href="mailto:info@anquest.com" className="flex items-center gap-3 p-3 theme-bg-tertiary rounded-xl hover:theme-bg-secondary transition-colors">
+                    <Link
+                      to="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleExternalLink('mailto:info@anquest.com');
+                      }}
+                      className="flex items-center gap-3 p-3 theme-bg-tertiary rounded-xl hover:theme-bg-secondary transition-colors"
+                    >
                       <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#2d65bc' }}>
                         <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -522,7 +547,7 @@ const Contacts = () => {
                         <p className="font-semibold theme-text-primary">Email Us</p>
                         <p className="text-sm theme-text-secondary">info@anquest.com</p>
                     </div>
-                    </a>
+                    </Link>
                     
                     <a href="https://maps.google.com" className="flex items-center gap-3 p-3 theme-bg-tertiary rounded-xl hover:theme-bg-secondary transition-colors">
                       <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#2d65bc' }}>
@@ -774,18 +799,38 @@ const Contacts = () => {
                   Start Your Project
                 </a>
                 <div className="flex flex-col gap-2">
-                  <a href="tel:+12343923647" className="flex items-center gap-2 theme-text-primary transition-colors" style={{ '--hover-color': '#2d65bc' }} onMouseEnter={(e) => e.currentTarget.style.color = '#2d65bc'} onMouseLeave={(e) => e.currentTarget.style.color = ''}>
+                  <Link
+                    to="#"
+                    className="flex items-center gap-2 theme-text-primary transition-colors"
+                    style={{ '--hover-color': '#2d65bc' }}
+                    onMouseEnter={(e) => e.currentTarget.style.color = '#2d65bc'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = ''}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleExternalLink('tel:+12343923647');
+                    }}
+                  >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                     <span className="font-medium">US: +1(234) 392-3647</span>
-                  </a>
-                  <a href="tel:+919266140654" className="flex items-center gap-2 theme-text-primary transition-colors" style={{ '--hover-color': '#2d65bc' }} onMouseEnter={(e) => e.currentTarget.style.color = '#2d65bc'} onMouseLeave={(e) => e.currentTarget.style.color = ''}>
+                  </Link>
+                  <Link
+                    to="#"
+                    className="flex items-center gap-2 theme-text-primary transition-colors"
+                    style={{ '--hover-color': '#2d65bc' }}
+                    onMouseEnter={(e) => e.currentTarget.style.color = '#2d65bc'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = ''}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleExternalLink('tel:+919266140654');
+                    }}
+                  >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                     <span className="font-medium">IND: +91 92661 40654</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
