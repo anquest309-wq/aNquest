@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Home, ArrowLeft, Search } from 'lucide-react';
 import { useTheme } from '../Context/ThemeContext';
+import { buildUrl } from '../utils/urlUtils';
 
 const NotFound = () => {
   const { theme } = useTheme();
@@ -98,7 +99,7 @@ const NotFound = () => {
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Link
-              to="/"
+              to={buildUrl('/')}
               className="bg-[#2d65bc] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#1a4a8a] transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl flex items-center gap-2"
             >
               <Home className="w-5 h-5" />
@@ -120,25 +121,25 @@ const NotFound = () => {
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Link
-                to="/about"
+                to={buildUrl('/about')}
                 className="theme-bg-tertiary hover:theme-bg-secondary rounded-lg p-4 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
               >
                 <span className="theme-text-primary font-semibold">About Us</span>
               </Link>
               <Link
-                to="/services"
+                to={buildUrl('/services')}
                 className="theme-bg-tertiary hover:theme-bg-secondary rounded-lg p-4 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
               >
                 <span className="theme-text-primary font-semibold">Services</span>
               </Link>
               <Link
-                to="/technologies"
+                to={buildUrl('/technologies')}
                 className="theme-bg-tertiary hover:theme-bg-secondary rounded-lg p-4 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
               >
                 <span className="theme-text-primary font-semibold">Technologies</span>
               </Link>
               <Link
-                to="/contacts"
+                to={buildUrl('/contacts')}
                 className="theme-bg-tertiary hover:theme-bg-secondary rounded-lg p-4 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
               >
                 <span className="theme-text-primary font-semibold">Contact Us</span>

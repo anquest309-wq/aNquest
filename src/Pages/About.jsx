@@ -11,6 +11,7 @@ import GridStructureBgAnimation from '../Components/Bg-animation-template/GridSt
 import MinimalBigShapesAnimation from '../Components/Bg-animation-template/MinimalBigShapesAnimation';
 import CTABgAnimation from '../Components/Bg-animation-template/CTABgAnimation';
 import SectionsBgAnimation from '../Components/Bg-animation-template/SectionsBgAnimation';
+import SEO from '../Components/SEO';
 const About = () => {
   const { theme } = useTheme();
 
@@ -72,10 +73,10 @@ const About = () => {
 
   // Background images for hero carousel
   const heroImages = [
-    'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80',
-    'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=80',
+    'https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=1920&q=80',
+    'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1920&q=80',
     'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1920&q=80',
-    'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80'
+    'https://images.unsplash.com/photo-1556155092-490a1ba16284?w=1920&q=80'
   ];
 
   const values = [
@@ -118,9 +119,16 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen theme-bg-primary">
+    <>
+      <SEO 
+        title="About aNquest Media | Digital & CRM Software Agency Empowering Brands"
+        description="Learn about aNquest, a leading digital and software agency delivering innovative strategies, creative design, and CRM solutions to help brands grow effectively."
+        keywords="aNquest, about aNquest, digital creative agency, CRM Software Agency, web & mobile development, digital marketing services, business automation solutions"
+        canonicalUrl="https://anquestmedia.com/about"
+      />
+      <div className="min-h-screen theme-bg-primary ">
       {/* Hero Section */}
-      <section className="relative overflow-hidden h-screen min-h-[600px] flex items-center justify-center">
+      <section className="relative overflow-hidden  h-screen min-h-[600px] flex items-center justify-center">
         {/* Background Image Carousel */}
         <div className="absolute inset-0 z-0">
           <Swiper
@@ -156,7 +164,7 @@ const About = () => {
         </div>
         
         {/* Content - Centered */}
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 text-white">
               Building Digital <span style={{ color: '#2d65bc' }}>Excellence</span>
@@ -247,7 +255,7 @@ const About = () => {
               </div>
               <div className="rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800" 
+                  src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=800" 
                   alt="Our Team" 
                   className="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover rounded-xl sm:rounded-2xl animate-image-float" 
                 />
@@ -257,7 +265,7 @@ const About = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
               <div className="rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 order-2 lg:order-1 relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800" 
+                  src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800" 
                   alt="Our Mission" 
                   className="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover rounded-xl sm:rounded-2xl animate-image-float-delayed" 
                 />
@@ -444,7 +452,8 @@ const About = () => {
           animation: imageFloatDelayed 7s ease-in-out infinite;
         }
       `}</style>
-    </div>
+      </div>
+    </>
   );
 };
 

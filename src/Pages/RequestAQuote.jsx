@@ -1,23 +1,41 @@
 import React, { useState } from 'react';
-import { useTheme } from '../Context/ThemeContext';
+import { useNavigate } from 'react-router-dom';
+import emailjs from '@emailjs/browser';
 import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleSquareBgAnimation';
 import SectionsBgAnimation from '../Components/Bg-animation-template/SectionsBgAnimation';
 import MinimalBgAnimation from '../Components/Bg-animation-template/MinimalBgAnimation';
 import GeometricBgAnimation from '../Components/Bg-animation-template/GeometricBgAnimation';
 import MinimalBigShapesAnimation from '../Components/Bg-animation-template/MinimalBigShapesAnimation';
 
+const resolveEnv = (key) => {
+  if (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env[key] !== undefined) {
+    return import.meta.env[key];
+  }
+  if (typeof globalThis !== 'undefined' && globalThis.process?.env && globalThis.process.env[key] !== undefined) {
+    return globalThis.process.env[key];
+  }
+  return undefined;
+};
+
+const DEFAULT_EMAILJS_SERVICE_ID = 'service_41sg0p7';
+const DEFAULT_EMAILJS_TEMPLATE_ID = 'template_urm06yv';
+const DEFAULT_EMAILJS_PUBLIC_KEY = 'c6yjlhrYVqaAq5W0w';
+
+const EMAILJS_SERVICE_ID =
+  resolveEnv('VITE_EMAILJS_SERVICE_ID') ||
+  resolveEnv('REACT_APP_EMAILJS_SERVICE_ID') ||
+  DEFAULT_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID =
+  resolveEnv('VITE_EMAILJS_TEMPLATE_ID') ||
+  resolveEnv('REACT_APP_EMAILJS_TEMPLATE_ID') ||
+  DEFAULT_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY =
+  resolveEnv('VITE_EMAILJS_PUBLIC_KEY') ||
+  resolveEnv('REACT_APP_EMAILJS_PUBLIC_KEY') ||
+  DEFAULT_EMAILJS_PUBLIC_KEY;
+
 const RequestAQuote = () => {
-  const { theme } = useTheme();
-  
-  // Get theme-based colors
-  const getThemeColor = () => {
-    if (theme === 'light') {
-      return '#2d65bc';
-    } else if (theme === 'dark') {
-      return '#1a1a1a';
-    }
-    return '#2d65bc';
-  };
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -30,22 +48,110 @@ const RequestAQuote = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formErrors, setFormErrors] = useState({});
+  const [status, setStatus] = useState({ type: null, message: '' });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+
+    if (name === 'phone') {
+      const numericValue = value.replace(/\D/g, '').slice(0, 12);
+      setFormData(prev => ({
+        ...prev,
+        [name]: numericValue
+      }));
+
+      setFormErrors(prev => ({
+        ...prev,
+        phone:
+          numericValue.length === 0
+            ? 'Phone number is required.'
+            : numericValue.length !== 12
+              ? 'Phone number must be exactly 12 digits.'
+              : ''
+      }));
+      return;
+    }
+
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
+
+    if (formErrors[name]) {
+      setFormErrors(prev => ({ ...prev, [name]: '' }));
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+      setStatus({
+        type: 'error',
+        message: 'Our quote request form is currently unavailable. Please email us directly at info@anquest.com.'
+      });
+      return;
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const errors = {
+      name: formData.name.trim() ? '' : 'Full name is required.',
+      email: !formData.email.trim()
+        ? 'Email address is required.'
+        : emailPattern.test(formData.email)
+          ? ''
+          : 'Enter a valid email address.',
+      phone: !formData.phone
+        ? 'Phone number is required.'
+        : formData.phone.length !== 12
+          ? 'Phone number must be exactly 12 digits.'
+          : '',
+      service: formData.service ? '' : 'Please select a service.',
+      budget: formData.budget ? '' : 'Please select a budget range.',
+      timeline: formData.timeline ? '' : 'Please select a project timeline.',
+      message: formData.message.trim()
+        ? ''
+        : 'Please describe your project so we can help effectively.'
+    };
+
+    const hasErrors = Object.values(errors).some(Boolean);
+
+    if (hasErrors) {
+      setFormErrors(errors);
+      setStatus({
+        type: 'error',
+        message: 'Please fix the errors in the form before submitting.'
+      });
+      return;
+    }
+
+    setFormErrors({});
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      alert('Thank you for your quote request! We will get back to you within 24 hours.');
+    setStatus({ type: null, message: '' });
+
+    const templateParams = {
+      web_name: 'aNquest Media',
+      message: `
+      Quote Request Details
+      ---------------------
+      Name: ${formData.name}
+      Email: ${formData.email}
+      Phone: ${formData.phone}
+      Company: ${formData.company || 'Not provided'}
+      Service: ${formData.service}
+      Budget: ${formData.budget}
+      Timeline: ${formData.timeline}
+      Message: ${formData.message}
+      `
+    };
+
+    try {
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY);
+      setStatus({
+        type: 'success',
+        message: 'Thank you! Our team will prepare your custom quote and reach out within one business day.'
+      });
       setFormData({
         name: '',
         email: '',
@@ -56,8 +162,16 @@ const RequestAQuote = () => {
         timeline: '',
         message: ''
       });
+      setTimeout(() => navigate('/thank-you'), 800);
+    } catch (error) {
+      console.error('EmailJS quote submission failed:', error);
+      setStatus({
+        type: 'error',
+        message: 'Something went wrong while sending your request. Please try again or email us at info@anquest.com.'
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 2000);
+    }
   };
 
   const services = [
@@ -119,6 +233,17 @@ const RequestAQuote = () => {
               </div>
               
               <form onSubmit={handleSubmit} className="space-y-6">
+                {status.message && (
+                  <div
+                    className={`rounded-2xl px-4 py-3 text-sm font-semibold ${
+                      status.type === 'success'
+                        ? 'bg-green-100 text-green-700'
+                        : 'bg-red-100 text-red-700'
+                    }`}
+                  >
+                    {status.message}
+                  </div>
+                )}
                 {/* Name and Email */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
@@ -131,10 +256,17 @@ const RequestAQuote = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-accent-primary focus:border-transparent transition-all theme-bg-primary theme-text-primary"
+                      className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all theme-bg-primary theme-text-primary ${
+                        formErrors.name
+                          ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
+                          : 'theme-border-primary focus:ring-[#2d65bc] focus:border-[#2d65bc]'
+                      }`}
+                      aria-invalid={formErrors.name ? 'true' : 'false'}
                       placeholder="Enter your full name"
                     />
+                    {formErrors.name && (
+                      <p className="text-sm text-red-600">{formErrors.name}</p>
+                    )}
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="email" className="block text-sm font-semibold theme-text-primary">
@@ -146,10 +278,17 @@ const RequestAQuote = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-accent-primary focus:border-transparent transition-all theme-bg-primary theme-text-primary"
+                      className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all theme-bg-primary theme-text-primary ${
+                        formErrors.email
+                          ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
+                          : 'theme-border-primary focus:ring-[#2d65bc] focus:border-[#2d65bc]'
+                      }`}
+                      aria-invalid={formErrors.email ? 'true' : 'false'}
                       placeholder="Enter your email address"
                     />
+                    {formErrors.email && (
+                      <p className="text-sm text-red-600">{formErrors.email}</p>
+                    )}
                   </div>
                 </div>
 
@@ -165,10 +304,17 @@ const RequestAQuote = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-accent-primary focus:border-transparent transition-all theme-bg-primary theme-text-primary"
+                      className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all theme-bg-primary theme-text-primary ${
+                        formErrors.phone
+                          ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
+                          : 'theme-border-primary focus:ring-[#2d65bc] focus:border-[#2d65bc]'
+                      }`}
+                      aria-invalid={formErrors.phone ? 'true' : 'false'}
                       placeholder="Enter your phone number"
                     />
+                    {formErrors.phone && (
+                      <p className="text-sm text-red-600">{formErrors.phone}</p>
+                    )}
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="company" className="block text-sm font-semibold theme-text-primary">
@@ -197,14 +343,21 @@ const RequestAQuote = () => {
                       name="service"
                       value={formData.service}
                       onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-accent-primary focus:border-transparent transition-all theme-bg-primary theme-text-primary"
+                      className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all theme-bg-primary theme-text-primary ${
+                        formErrors.service
+                          ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
+                          : 'theme-border-primary focus:ring-[#2d65bc] focus:border-[#2d65bc]'
+                      }`}
+                      aria-invalid={formErrors.service ? 'true' : 'false'}
                     >
                       <option value="">Choose a service</option>
                       {services.map((service, index) => (
                         <option key={index} value={service}>{service}</option>
                       ))}
                     </select>
+                    {formErrors.service && (
+                      <p className="text-sm text-red-600">{formErrors.service}</p>
+                    )}
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="budget" className="block text-sm font-semibold theme-text-primary">
@@ -215,14 +368,21 @@ const RequestAQuote = () => {
                       name="budget"
                       value={formData.budget}
                       onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-accent-primary focus:border-transparent transition-all theme-bg-primary theme-text-primary"
+                      className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all theme-bg-primary theme-text-primary ${
+                        formErrors.budget
+                          ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
+                          : 'theme-border-primary focus:ring-[#2d65bc] focus:border-[#2d65bc]'
+                      }`}
+                      aria-invalid={formErrors.budget ? 'true' : 'false'}
                     >
                       <option value="">Select budget</option>
                       {budgetRanges.map((range, index) => (
                         <option key={index} value={range}>{range}</option>
                       ))}
                     </select>
+                    {formErrors.budget && (
+                      <p className="text-sm text-red-600">{formErrors.budget}</p>
+                    )}
                   </div>
                 </div>
 
@@ -236,14 +396,21 @@ const RequestAQuote = () => {
                     name="timeline"
                     value={formData.timeline}
                     onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-accent-primary focus:border-transparent transition-all theme-bg-primary theme-text-primary"
+                    className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all theme-bg-primary theme-text-primary ${
+                      formErrors.timeline
+                        ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
+                        : 'theme-border-primary focus:ring-[#2d65bc] focus:border-[#2d65bc]'
+                    }`}
+                    aria-invalid={formErrors.timeline ? 'true' : 'false'}
                   >
                     <option value="">Select timeline</option>
                     {timelines.map((timeline, index) => (
                       <option key={index} value={timeline}>{timeline}</option>
                     ))}
                   </select>
+                  {formErrors.timeline && (
+                    <p className="text-sm text-red-600">{formErrors.timeline}</p>
+                  )}
                 </div>
 
                 {/* Message */}
@@ -256,11 +423,18 @@ const RequestAQuote = () => {
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
-                    required
                     rows={6}
-                    className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-accent-primary focus:border-transparent transition-all theme-bg-primary theme-text-primary resize-none"
+                    className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all theme-bg-primary theme-text-primary resize-none ${
+                      formErrors.message
+                        ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
+                        : 'theme-border-primary focus:ring-[#2d65bc] focus:border-[#2d65bc]'
+                    }`}
+                    aria-invalid={formErrors.message ? 'true' : 'false'}
                     placeholder="Please describe your project goals, requirements, and any specific features you need..."
                   />
+                  {formErrors.message && (
+                    <p className="text-sm text-red-600">{formErrors.message}</p>
+                  )}
                 </div>
 
                 {/* Submit Button */}

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { useTheme } from "../Context/ThemeContext";
+import { buildUrl } from '../utils/urlUtils';
 
 export default function Navbar() {
   const { theme } = useTheme();
@@ -104,7 +105,7 @@ export default function Navbar() {
           {/* ===== Left: Logo ===== */}
           <div className="flex items-center space-x-3 sm:space-x-5">
             <div className="flex items-center space-x-2">
-              <Link to="/">
+              <Link to={buildUrl('/')}>
               <div className="w-28 h-28  rounded-full flex items-center justify-center">
               <img src="https://ik.imagekit.io/y7b5pqyxj/anquest__2_-removebg-preview.png?updatedAt=1761570866349" alt="aNquest Logo" />
               </div>
@@ -117,11 +118,11 @@ export default function Navbar() {
 
           {/* ===== Center: Navigation ===== */}
           <div className="hidden lg:flex items-center space-x-3">
-            <Link to="/" className="text-gray-800 font-semibold hover:text-[#2d65bc] transition-colors text-base py-3 px-3">
+            <Link to={buildUrl('/')} className="text-gray-800 font-semibold hover:text-[#2d65bc] transition-colors text-base py-3 px-3">
               Home
             </Link>
             
-            <Link to="/about" className="text-gray-800 font-semibold hover:text-[#2d65bc] transition-colors text-base px-3">
+            <Link to={buildUrl('/about')} className="text-gray-800 font-semibold hover:text-[#2d65bc] transition-colors text-base px-3">
               About
             </Link>
             
@@ -155,8 +156,8 @@ export default function Navbar() {
               {activeDropdown === "services" && (
                 <div className={dropdownClass("services")}>
                   <div className="py-2 bg-[var(--bg-services)]">
-                  <Link
-                      to="/crm-services"
+                    <Link
+                      to={buildUrl('/crm-services')}
                       className="flex items-center px-4 py-2 text-gray-700 hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] transition-colors"
                     >
                       <svg className="w-4 h-4 mr-3 text-[#2d65bc]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -165,7 +166,7 @@ export default function Navbar() {
                       CRM Services
                     </Link>
                     <Link
-                      to="/email-marketing-services"
+                      to={buildUrl('/email-marketing-services')}
                       className="flex items-center px-4 py-2 text-gray-700 hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] transition-colors"
                     >
                       <svg className="w-4 h-4 mr-3 text-[#2d65bc]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -174,7 +175,7 @@ export default function Navbar() {
                       Email Marketing Services
                     </Link>
                     <Link
-                      to="/local-seo-services"
+                      to={buildUrl('/local-seo-services')}
                       className="flex items-center px-4 py-2 text-gray-700 hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] transition-colors"
                     >
                       <svg className="w-4 h-4 mr-3 text-[#2d65bc]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -184,7 +185,7 @@ export default function Navbar() {
                       Local SEO Services
                     </Link>
                     <Link
-                      to="/mobile-app-development-services"
+                      to={buildUrl('/mobile-app-development-services')}
                       className="flex items-center px-4 py-2 text-gray-700 hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] transition-colors"
                     >
                       <svg className="w-4 h-4 mr-3 text-[#2d65bc]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -193,7 +194,7 @@ export default function Navbar() {
                       Mobile App Development Services
                     </Link>
                     <Link
-                      to="/online-reputation-management-services"
+                      to={buildUrl('/online-reputation-management-services')}
                       className="flex items-center px-4 py-2 text-gray-700 hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] transition-colors"
                     >
                       <svg className="w-4 h-4 mr-3 text-[#2d65bc]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -202,7 +203,7 @@ export default function Navbar() {
                       Online Reputation Management Services
                     </Link>
                     <Link
-                      to="/pay-per-click-ppc-services"
+                      to={buildUrl('/pay-per-click-ppc-services')}
                       className="flex items-center px-4 py-2 text-gray-700 hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] transition-colors"
                     >
                       <svg className="w-4 h-4 mr-3 text-[#2d65bc]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -211,7 +212,7 @@ export default function Navbar() {
                       Pay Per Click (PPC) Services
                     </Link>
                     <Link
-                      to="/search-engine-optimization-services"
+                      to={buildUrl('/search-engine-optimization-services')}
                       className="flex items-center px-4 py-2 text-gray-700 hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] transition-colors"
                     >
                       <svg className="w-4 h-4 mr-3 text-[#2d65bc]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -220,7 +221,7 @@ export default function Navbar() {
                       Search Engine Optimization Services
                     </Link>
                     <Link
-                      to="/social-media-optimization-services"
+                      to={buildUrl('/social-media-optimization-services')}
                       className="flex items-center px-4 py-2 text-gray-700 hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] transition-colors"
                     >
                       <svg className="w-4 h-4 mr-3 text-[#2d65bc]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -229,7 +230,7 @@ export default function Navbar() {
                       Social Media Optimization Services
                     </Link>
                     <Link
-                      to="/web-design-services"
+                      to={buildUrl('/web-design-services')}
                       className="flex items-center px-4 py-2 text-gray-700 hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] transition-colors"
                     >
                       <svg className="w-4 h-4 mr-3 text-[#2d65bc]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -238,7 +239,7 @@ export default function Navbar() {
                       Web Design Services
                     </Link>
                     <Link
-                      to="/web-development-services"
+                      to={buildUrl('/web-development-services')}
                       className="flex items-center px-4 py-2 text-gray-700 hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] transition-colors"
                     >
                       <svg className="w-4 h-4 mr-3 text-[#2d65bc]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -258,13 +259,13 @@ export default function Navbar() {
               )}
             </div>
 
-            <Link to="/technologies" className="text-gray-800 font-semibold hover:text-[#2d65bc] transition-colors text-base px-1">
+            <Link to={buildUrl('/technologies')} className="text-gray-800 font-semibold hover:text-[#2d65bc] transition-colors text-base px-1">
               Technologies
             </Link>
-            <Link to="/blogs" className="text-gray-800 font-semibold hover:text-[#2d65bc] transition-colors text-base px-3">
+            <Link to={buildUrl('/blogs')} className="text-gray-800 font-semibold hover:text-[#2d65bc] transition-colors text-base px-3">
               Blogs
             </Link>
-            <Link to="/contacts" className="text-gray-800 font-semibold hover:text-[#2d65bc] transition-colors text-base px-3">
+            <Link to={buildUrl('/contacts')} className="text-gray-800 font-semibold hover:text-[#2d65bc] transition-colors text-base px-3">
               Contacts
             </Link>
           </div>
@@ -278,7 +279,7 @@ export default function Navbar() {
                 <ThemeSwitcher />
               </div>
               
-              <Link to="/request-a-quote" className="bg-[#2d65bc] hover:bg-[#2d65bc]/90 text-white font-bold py-3 px-5 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-[#2d65bc]/25 active:scale-95">
+              <Link to={buildUrl('/request-a-quote')} className="bg-[#2d65bc] hover:bg-[#2d65bc]/90 text-white font-bold py-3 px-5 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-[#2d65bc]/25 active:scale-95">
                 Request A Quote
               </Link>
             </div>
@@ -319,7 +320,7 @@ export default function Navbar() {
               <div className="flex items-center justify-between p-4 border-b border-gray-200">
                 {/* Logo */}
                 <div className="flex items-center space-x-2">
-                  <Link to="/" onClick={toggleMenu}>
+                  <Link to={buildUrl('/')} onClick={toggleMenu}>
                     <div className="flex items-center space-x-2">
                       <div className="w-10 h-10 rounded-full flex items-center justify-center">
                         <img 
@@ -350,16 +351,16 @@ export default function Navbar() {
 
               {/* Menu Items */}
               <div className="py-2">
-                <Link 
-                  to="/" 
+                <Link
+                  to={buildUrl('/')} 
                   onClick={toggleMenu}
                   className="block px-4 py-3 text-gray-800 font-semibold hover:bg-gray-50 hover:text-[#2d65bc] transition-colors border-b border-gray-200"
                 >
                   Home
                 </Link>
                 
-                <Link 
-                  to="/about" 
+                <Link
+                  to={buildUrl('/about')} 
                   onClick={toggleMenu}
                   className="block px-4 py-3 text-gray-800 font-semibold hover:bg-gray-50 hover:text-[#2d65bc] transition-colors border-b border-gray-200"
                 >
@@ -387,70 +388,70 @@ export default function Navbar() {
                   {isServicesOpen && (
                     <div className="bg-[#f4f4f5] text-black space-y-1 py-2">
                       <Link 
-                        to="/crm-services" 
+                        to={buildUrl('/crm-services')} 
                         onClick={toggleMenu}
                         className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
                       >
                         CRM Services
                       </Link>
                       <Link 
-                        to="/email-marketing-services" 
+                        to={buildUrl('/email-marketing-services')} 
                         onClick={toggleMenu}
                         className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
                       >
                         Email Marketing Services
                       </Link>
                       <Link 
-                        to="/local-seo-services" 
+                        to={buildUrl('/local-seo-services')} 
                         onClick={toggleMenu}
                         className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
                       >
                         Local SEO Services
                       </Link>
                       <Link 
-                        to="/mobile-app-development-services" 
+                        to={buildUrl('/mobile-app-development-services')} 
                         onClick={toggleMenu}
                         className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
                       >
                         Mobile App Development Services
                       </Link>
                       <Link 
-                        to="/online-reputation-management-services" 
+                        to={buildUrl('/online-reputation-management-services')} 
                         onClick={toggleMenu}
                         className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
                       >
                         Online Reputation Management Services
                       </Link>
                       <Link 
-                        to="/pay-per-click-ppc-services" 
+                        to={buildUrl('/pay-per-click-ppc-services')} 
                         onClick={toggleMenu}
                         className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
                       >
                         Pay Per Click (PPC) Services
                       </Link>
                       <Link 
-                        to="/search-engine-optimization-services" 
+                        to={buildUrl('/search-engine-optimization-services')} 
                         onClick={toggleMenu}
                         className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
                       >
                         Search Engine Optimization Services
                       </Link>
                       <Link 
-                        to="/social-media-optimization-services" 
+                        to={buildUrl('/social-media-optimization-services')} 
                         onClick={toggleMenu}
                         className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
                       >
                         Social Media Optimization Services
                       </Link>
                       <Link 
-                        to="/web-design-services" 
+                        to={buildUrl('/web-design-services')} 
                         onClick={toggleMenu}
                         className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
                       >
                         Web Design Services
                       </Link>
                       <Link 
-                        to="/web-development-services" 
+                        to={buildUrl('/web-development-services')} 
                         onClick={toggleMenu}
                         className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
                       >
@@ -460,24 +461,24 @@ export default function Navbar() {
                   )}
                 </div>
                 
-                <Link 
-                  to="/technologies" 
+                <Link
+                  to={buildUrl('/technologies')} 
                   onClick={toggleMenu}
                   className="block px-4 py-3 text-gray-800 font-semibold hover:bg-gray-50 hover:text-[#2d65bc] transition-colors border-b border-gray-200"
                 >
                   Technologies
                 </Link>
                 
-                <Link 
-                  to="/blogs" 
+                <Link
+                  to={buildUrl('/blogs')} 
                   onClick={toggleMenu}
                   className="block px-4 py-3 text-gray-800 font-semibold hover:bg-gray-50 hover:text-[#2d65bc] transition-colors border-b border-gray-200"
                 >
                   Blogs
                 </Link>
                 
-                <Link 
-                  to="/contacts" 
+                <Link
+                  to={buildUrl('/contacts')} 
                   onClick={toggleMenu}
                   className="block px-4 py-3 text-gray-800 font-semibold hover:bg-gray-50 hover:text-[#2d65bc] transition-colors border-b border-gray-200"
                 >

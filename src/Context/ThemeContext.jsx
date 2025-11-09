@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 // Theme context
@@ -37,15 +38,15 @@ export const ThemeProvider = ({ children }) => {
         '--text-primary': '#ffffff',
         '--text-secondary': '#e5e5e5',
         '--text-muted': '#a0a0a0',
-        '--accent-primary': '#10b981',
-        '--accent-secondary': '#059669',
+        '--accent-primary': '#2d65bc',
+        '--accent-secondary': '#1e4a8e',
         '--border-primary': '#404040',
         '--border-secondary': '#525252',
         '--shadow-primary': 'rgba(0, 0, 0, 0.3)',
         '--shadow-secondary': 'rgba(0, 0, 0, 0.5)',
         '--gradient-primary': 'linear-gradient(135deg, #1a1a1a, #2d2d2d)',
         '--gradient-secondary': 'linear-gradient(135deg, #2d2d2d, #3a3a3a)',
-        '--gradient-accent': 'linear-gradient(135deg, #10b981, #059669)',
+        '--gradient-accent': 'linear-gradient(135deg, #2d65bc, #1e4a8e)',
       },
       light: {
         '--bg-primary': '#ffffff',
@@ -67,7 +68,8 @@ export const ThemeProvider = ({ children }) => {
       }
     };
 
-    const currentTheme = themes[newTheme];
+    const currentTheme = themes[newTheme] || themes.light;
+
     Object.entries(currentTheme).forEach(([property, value]) => {
       root.style.setProperty(property, value);
     });
@@ -92,5 +94,5 @@ export const useTheme = () => {
   }
   return context;
 };
-
 export default ThemeContext;
+

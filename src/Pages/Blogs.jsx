@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../Context/ThemeContext';
 import DenseBgAnimation from '../Components/Bg-animation-template/DenseBgAnimation';
@@ -7,11 +7,15 @@ import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleS
 import { MinimalBigShapesAnimation } from '../Components/Bg-animation-template';
 // import GridStructureBgAnimation from '../Components/Bg-animation-template/GridStructureBgAnimation';
 import CTABgAnimation from "../Components/Bg-animation-template/CTABgAnimation"
+import SEO from '../Components/SEO';
+import blogPostsData from '../data/blogPosts';
+import { buildUrl } from '../utils/urlUtils';
 
 const Blogs = () => {
   const { theme } = useTheme();
   const [currentPage, setCurrentPage] = useState(1);
   const blogsPerPage = 9; // Number of blogs per page
+  const blogPosts = useMemo(() => blogPostsData, []);
 
   // Get theme-based colors
   const getThemeColor = () => {
@@ -43,6 +47,7 @@ const Blogs = () => {
     return 'text-white';
   };
 
+  /* Legacy static blog data (kept for reference)
   const blogPosts = [
     {
       id: 1,
@@ -62,7 +67,7 @@ const Blogs = () => {
       date: "March 12, 2024",
       category: "SEO",
       readTime: "7 min read",
-      image: "https://images.unsplash.com/photo-1432888622747-4eb9a8f2d93c?w=800&h=600&fit=crop"
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&q=80"
     },
     {
       id: 3,
@@ -92,7 +97,7 @@ const Blogs = () => {
       date: "March 5, 2024",
       category: "Backend Development",
       readTime: "10 min read",
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop"
+      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop"
     },
     {
       id: 6,
@@ -152,7 +157,7 @@ const Blogs = () => {
       date: "February 18, 2024",
       category: "Mobile Development",
       readTime: "6 min read",
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop"
+      image: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=800&h=600&fit=crop"
     },
     {
       id: 12,
@@ -172,7 +177,7 @@ const Blogs = () => {
       date: "February 12, 2024",
       category: "Web Development",
       readTime: "7 min read",
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop"
+      image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop"
     },
     {
       id: 14,
@@ -182,7 +187,7 @@ const Blogs = () => {
       date: "February 10, 2024",
       category: "Security",
       readTime: "11 min read",
-      image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop"
+      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop"
     },
     {
       id: 15,
@@ -202,7 +207,7 @@ const Blogs = () => {
       date: "February 5, 2024",
       category: "Web Development",
       readTime: "6 min read",
-      image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=600&fit=crop"
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop"
     },
     {
       id: 17,
@@ -212,7 +217,7 @@ const Blogs = () => {
       date: "February 3, 2024",
       category: "Web Development",
       readTime: "8 min read",
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop"
+      image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop"
     },
     {
       id: 18,
@@ -222,7 +227,7 @@ const Blogs = () => {
       date: "February 1, 2024",
       category: "Web Development",
       readTime: "7 min read",
-      image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=600&fit=crop"
+      image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&h=600&fit=crop"
     },
     {
       id: 19,
@@ -242,7 +247,7 @@ const Blogs = () => {
       date: "January 27, 2024",
       category: "Web Development",
       readTime: "9 min read",
-      image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=600&fit=crop"
+      image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop"
     },
     {
       id: 21,
@@ -262,7 +267,7 @@ const Blogs = () => {
       date: "January 23, 2024",
       category: "Programming",
       readTime: "11 min read",
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop"
+      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop"
     },
     {
       id: 23,
@@ -302,7 +307,7 @@ const Blogs = () => {
       date: "January 15, 2024",
       category: "DevOps",
       readTime: "10 min read",
-      image: "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&h=600&fit=crop"
+      image: "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=800&h=600&fit=crop"
     },
     {
       id: 27,
@@ -312,9 +317,10 @@ const Blogs = () => {
       date: "January 13, 2024",
       category: "Backend Development",
       readTime: "8 min read",
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop"
+      image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop"
     }
   ];
+  */
 
   // Calculate pagination
   const totalPages = Math.ceil(blogPosts.length / blogsPerPage);
@@ -346,7 +352,14 @@ const Blogs = () => {
   };
 
   return (
-    <div className="min-h-screen theme-bg-primary pt-20">
+    <>
+      <SEO 
+        title="aNquest Media - Official Blog - News, Insights, Updates and Tips"
+        description="Stay updated with aNquest's official blog featuring the latest news, insights, updates, and expert tips on digital marketing, branding, and CRM technologies."
+        keywords="aNquest blogs, digital marketing insights, technology trends, social media tips, SEO strategies, branding ideas, content marketing, digital platforms"
+        canonicalUrl="https://anquestmedia.com/blogs"
+      />
+      <div className="min-h-screen theme-bg-primary pt-20">
       {/* Hero Section */}
       <section className="relative overflow-hidden     sm:py-8 ">
         <CircleSquareBgAnimation/>
@@ -378,7 +391,7 @@ const Blogs = () => {
               {currentBlogs.map((post) => (
                 <Link
                   key={post.id}
-                  to={`/blog/${post.id}`}
+                  to={buildUrl(`/blog/${post.slug}`)}
                   className="theme-card rounded-3xl theme-shadow-primary overflow-hidden hover:scale-105 transition-all duration-300 cursor-pointer block"
                 >
                   <div className="h-48 w-full overflow-hidden bg-gradient-to-br from-slate-200 to-slate-300">
@@ -525,6 +538,7 @@ const Blogs = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

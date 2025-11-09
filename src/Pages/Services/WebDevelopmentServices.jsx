@@ -1,10 +1,12 @@
 import React from 'react';
-import { DollarSign, Target, TrendingUp, BarChart3, Search, MousePointerClick, Zap, CheckCircle, Users, Filter, Globe, Sparkles } from 'lucide-react';
+import { Code, Server, Layers, ShoppingCart, Smartphone, Zap, Shield, BarChart3, Database, CheckCircle, Target, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useTheme } from '../Context/ThemeContext';
-import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleSquareBgAnimation';
+import { useTheme } from '../../Context/ThemeContext';
+import CircleSquareBgAnimation from '../../Components/Bg-animation-template/CircleSquareBgAnimation';
+import SEO from '../../Components/SEO';
+import { buildUrl } from '../../utils/urlUtils';
 
-const PayPerClickPPCServices = () => {
+const WebDevelopmentServices = () => {
   const { theme } = useTheme();
 
   const getThemeColor = () => {
@@ -32,81 +34,81 @@ const PayPerClickPPCServices = () => {
   };
   const services = [
     {
-      title: "Google Ads Management",
-      description: "Create and manage high-performing Google Ads campaigns that drive qualified traffic and maximize your return on ad spend.",
-      icon: Search,
-      bgImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop",
+      title: "Frontend Development",
+      description: "Modern, responsive user interfaces built with React, Vue.js, and Angular. We create engaging user experiences that work perfectly across all devices.",
+      icon: Code,
+      bgImage: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop",
       features: [
-        "Search Campaigns",
-        "Display Advertising",
-        "Shopping Ads",
-        "YouTube Ads",
-        "Performance Max"
+        "React & Next.js Development",
+        "Vue.js & Nuxt.js",
+        "Angular Applications",
+        "Responsive Design",
+        "UI/UX Implementation"
       ]
     },
     {
-      title: "Facebook & Instagram Ads",
-      description: "Leverage social media advertising to reach your target audience on Facebook, Instagram, and Meta platforms.",
-      icon: Users,
-      bgImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&auto=format&fit=crop",
+      title: "Backend Development",
+      description: "Robust server-side applications and APIs built with Node.js, Python, and PHP. We ensure your backend is scalable, secure, and performant.",
+      icon: Server,
+      bgImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop",
       features: [
-        "Social Media Ads",
-        "Audience Targeting",
-        "Carousel Ads",
-        "Video Ads",
-        "Retargeting"
+        "Node.js & Express",
+        "Python & Django",
+        "PHP & Laravel",
+        "RESTful APIs",
+        "Database Design"
       ]
     },
     {
-      title: "Microsoft Advertising",
-      description: "Expand your reach with Microsoft Advertising (formerly Bing Ads) to target audiences across Microsoft's network.",
+      title: "Full-Stack Development",
+      description: "Complete web solutions from frontend to backend. We handle every aspect of your web application development for a seamless end-to-end experience.",
+      icon: Layers,
+      bgImage: "https://images.unsplash.com/photo-1537884944318-390069bb8665?w=800&auto=format&fit=crop",
+      features: [
+        "End-to-End Solutions",
+        "MERN Stack",
+        "MEAN Stack",
+        "Database Integration",
+        "Deployment & DevOps"
+      ]
+    },
+    {
+      title: "E-Commerce Development",
+      description: "Build powerful online stores with custom features, seamless checkout, and mobile optimization. We create e-commerce platforms that drive sales.",
+      icon: ShoppingCart,
+      bgImage: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&auto=format&fit=crop",
+      features: [
+        "Custom Store Design",
+        "Product Management",
+        "Payment Integration",
+        "Order Processing",
+        "Inventory Tracking"
+      ]
+    },
+    {
+      title: "Web Application Development",
+      description: "Build custom web applications tailored to your business needs. From simple web apps to complex enterprise solutions.",
       icon: Globe,
-      bgImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop",
-      features: [
-        "Bing Search Ads",
-        "LinkedIn Integration",
-        "Cross-Platform Reach",
-        "Lower Competition",
-        "Professional Audience"
-      ]
-    },
-    {
-      title: "PPC Strategy & Planning",
-      description: "Develop comprehensive PPC strategies aligned with your business goals. We analyze market opportunities and create data-driven plans.",
-      icon: Target,
-      bgImage: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format&fit=crop",
-      features: [
-        "Keyword Research",
-        "Competitor Analysis",
-        "Budget Allocation",
-        "Campaign Structure",
-        "Performance Forecasting"
-      ]
-    },
-    {
-      title: "Landing Page Optimization",
-      description: "Create high-converting landing pages that turn PPC traffic into customers. We optimize for conversion rate and user experience.",
-      icon: MousePointerClick,
-      bgImage: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&auto=format&fit=crop",
-      features: [
-        "Conversion Optimization",
-        "A/B Testing",
-        "Mobile Optimization",
-        "Fast Load Times",
-        "Clear CTAs"
-      ]
-    },
-    {
-      title: "PPC Analytics & Reporting",
-      description: "Track and analyze your PPC performance with detailed reports. Understand what's working and optimize for better results.",
-      icon: BarChart3,
       bgImage: "https://images.unsplash.com/photo-1556155092-490a1ba16284?w=800&auto=format&fit=crop",
       features: [
-        "Performance Dashboards",
-        "ROI Tracking",
-        "Conversion Attribution",
-        "Cost Analysis",
-        "Monthly Reports"
+        "Custom Applications",
+        "Progressive Web Apps",
+        "Real-time Features",
+        "API Integration",
+        "Cloud Deployment"
+      ]
+    },
+    {
+      title: "Maintenance & Support",
+      description: "Keep your website running smoothly with ongoing maintenance, updates, security patches, and technical support.",
+      icon: Shield,
+      bgImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop",
+      features: [
+        "Bug Fixes",
+        "Security Updates",
+        "Performance Optimization",
+        "Feature Updates",
+        "24/7 Support"
       ]
     }
   ];
@@ -114,62 +116,69 @@ const PayPerClickPPCServices = () => {
   const processSteps = [
     {
       number: "1",
-      title: "Audit & Strategy",
-      description: "We analyze your goals and create a custom PPC strategy."
+      title: "Planning & Analysis",
+      description: "We analyze your requirements and create a detailed development plan."
     },
     {
       number: "2",
-      title: "Campaign Setup",
-      description: "We set up and launch your PPC campaigns across platforms."
+      title: "Design & Development",
+      description: "We design and build your website with best practices."
     },
     {
       number: "3",
-      title: "Optimization",
-      description: "We continuously optimize campaigns for better performance."
+      title: "Testing & QA",
+      description: "We thoroughly test your website across devices and browsers."
     },
     {
       number: "4",
-      title: "Scale & Grow",
-      description: "We scale successful campaigns and expand reach."
+      title: "Launch & Support",
+      description: "We launch your site and provide ongoing maintenance."
     }
   ];
 
   const results = [
-    { percentage: "400%", title: "Average ROI", description: "Return on investment for our PPC campaigns" },
-    { percentage: "50%", title: "Lower Cost Per Click", description: "Average reduction in CPC through optimization" },
-    { percentage: "300%", title: "Increase in Conversions", description: "Average improvement in conversion rates" }
+    { percentage: "99.9%", title: "Uptime", description: "Average website availability and reliability" },
+    { percentage: "50%", title: "Faster Load Times", description: "Average improvement in page speed" },
+    { percentage: "200%", title: "Performance Boost", description: "Average increase in overall performance" }
   ];
 
   const benefits = [
-    { icon: DollarSign, title: "Cost-Effective", description: "Pay only when users click on your ads" },
-    { icon: Target, title: "Precise Targeting", description: "Reach exactly the right audience at the right time" },
-    { icon: Zap, title: "Fast Results", description: "See immediate traffic and leads from day one" }
+    { icon: Zap, title: "Fast Development", description: "Agile methodologies for quicker time-to-market" },
+    { icon: Shield, title: "Secure & Scalable", description: "Enterprise-grade security and scalability" },
+    { icon: CheckCircle, title: "Quality Code", description: "Clean, maintainable, and well-documented code" }
   ];
 
   return (
-    <div className="min-h-screen theme-bg-primary pt-10">
+    <>
+      <SEO 
+        title="Web Development Services | Expert Digital Solutions by aNquest Media"
+        description="aNquest offers expert web development services to build fast, secure, and responsive websites that enhance user experience and drive digital business growth."
+        keywords="aNquest web development, web development services India, custom website development, responsive web design, front-end & back-end development, web application development, website maintenance India, web dev consultancy"
+        canonicalUrl="https://anquestmedia.com/web-development-services"
+      />
+      <div className="min-h-screen theme-bg-primary pt-20">
       {/* Hero Section */}
       <section className="relative overflow-hidden sm:py-8">
         <CircleSquareBgAnimation/>
        
         
-        <div className="container mx-auto px-4 sm:px-6 pt-32 lg:px-8 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 pt-22 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
-              Pay Per Click (PPC) <span style={{ color: '#2d65bc' }}>Services</span>
+              Web Development <span style={{ color: '#2d65bc' }}>Services</span>
             </h1>
             <p className="text-xl sm:text-2xl theme-text-secondary mb-4 max-w-3xl mx-auto leading-relaxed">
-            Drive traffic and boost conversions with targeted PPC campaigns.
+            Develop modern, high-performance web apps that fuel business success.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <Link
-                to="/request-a-quote"
+                to={buildUrl('/web-development-services/request-a-quote')}
                 className="bg-[#2d65bc] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#1a4a8a] transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
               >
                 Get Started
               </Link>
               <Link
-                to="/contacts"
+                to={buildUrl('/web-development-services/contacts')}
                 className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white transition-all duration-300 text-base sm:text-lg hover:scale-105"
               >
                 Contact Us
@@ -196,7 +205,7 @@ const PayPerClickPPCServices = () => {
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center theme-text-primary mb-12 sm:mb-16">
-            Our PPC Services
+            Our Web Development Services
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {services.map((service, index) => {
@@ -211,7 +220,7 @@ const PayPerClickPPCServices = () => {
                     style={{ backgroundImage: `url(${service.bgImage})` }}
                   />
                   <div className="relative p-6 sm:p-8 flex flex-col items-center text-center flex-grow">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg" style={{ backgroundColor: '#2d65bc' }}>
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 theme-bg-tertiary rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg" style={{ backgroundColor: '#2d65bc' }}>
                       <IconComponent className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                     </div>
                     <h3 className="text-xl sm:text-2xl font-bold theme-text-primary mb-4">
@@ -250,7 +259,7 @@ const PayPerClickPPCServices = () => {
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center theme-text-primary mb-12 sm:mb-16">
-            Our PPC Process
+            Our Development Process
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {processSteps.map((step, index) => (
@@ -286,7 +295,7 @@ const PayPerClickPPCServices = () => {
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center theme-text-primary mb-12 sm:mb-16">
-            PPC Results You Can Expect
+            Web Development Results
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {results.map((result, index) => (
@@ -326,10 +335,10 @@ const PayPerClickPPCServices = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-4 sm:mb-6">
-              Why Choose Our PPC Services?
+              Why Choose Our Web Development Services?
             </h2>
             <p className="text-lg sm:text-xl theme-text-secondary max-w-2xl mx-auto leading-relaxed">
-              Expert PPC management that maximizes your ROI
+              Expert web development that delivers results
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
@@ -373,20 +382,20 @@ const PayPerClickPPCServices = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="max-w-4xl mx-auto">
             <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight ${getCTATextColor()}`}>
-              Ready to Drive More <span className="opacity-90">Traffic & Sales?</span>
+              Ready to Build Your <span className="opacity-90">Web Application?</span>
             </h2>
             <p className={`text-base sm:text-lg lg:text-xl mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed ${getCTATextColor()} opacity-90`}>
-              Let's create PPC campaigns that deliver immediate results. Get started with a free consultation today!
+              Let's turn your vision into reality. Get started with a free consultation today!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md sm:max-w-none mx-auto">
               <Link
-                to="/request-a-quote"
+                to={buildUrl('/web-development-services/request-a-quote')}
                 className="bg-white text-gray-800 font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-gray-100 transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
               >
-                Get Your Free PPC Audit
+                Get Your Free Consultation
               </Link>
               <Link
-                to="/contacts"
+                to={buildUrl('/web-development-services/contacts')}
                 className="border-2 border-white text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-white hover:text-gray-800 transition-all duration-300 text-base sm:text-lg hover:scale-105"
               >
                 Contact Our Team
@@ -395,9 +404,10 @@ const PayPerClickPPCServices = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 
-export default PayPerClickPPCServices;
+export default WebDevelopmentServices;
 

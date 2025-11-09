@@ -1,10 +1,12 @@
 import React from 'react';
-import { Smartphone, Code, Zap, Shield, BarChart3, Users, Globe, CheckCircle, Target, Layers, Palette, Database } from 'lucide-react';
+import { MapPin, TrendingUp, Star, Search, FileText, Building2, Globe, CheckCircle, Target, BarChart3, Users, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useTheme } from '../Context/ThemeContext';
-import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleSquareBgAnimation';
+import { useTheme } from '../../Context/ThemeContext';
+import CircleSquareBgAnimation from '../../Components/Bg-animation-template/CircleSquareBgAnimation';
+import SEO from '../../Components/SEO';
+import { buildUrl } from '../../utils/urlUtils';
 
-const MobileAppDevelopmentServices = () => {
+const LocalSEOServices = () => {
   const { theme } = useTheme();
 
   const getThemeColor = () => {
@@ -32,81 +34,81 @@ const MobileAppDevelopmentServices = () => {
   };
   const services = [
     {
-      title: "iOS App Development",
-      description: "Build stunning native iOS applications using Swift and SwiftUI. We create apps that deliver exceptional user experiences on iPhone and iPad.",
-      icon: Smartphone,
-      bgImage: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&auto=format&fit=crop",
+      title: "Google My Business Optimization",
+      description: "Optimize your Google Business Profile to improve local visibility and attract nearby customers. We ensure your business information is complete and accurate.",
+      icon: Building2,
+      bgImage: "https://images.unsplash.com/photo-1569025743873-ea3a9ade89f9?w=800&auto=format&fit=crop",
       features: [
-        "Swift & SwiftUI",
-        "UIKit Development",
-        "App Store Optimization",
-        "iOS Design Guidelines",
-        "Core Data Integration"
+        "Profile Optimization",
+        "Photo Optimization",
+        "Category Selection",
+        "Business Hours Setup",
+        "Service Area Configuration"
       ]
     },
     {
-      title: "Android App Development",
-      description: "Develop powerful Android applications using Kotlin and Jetpack Compose. We create apps that work seamlessly across all Android devices.",
-      icon: Code,
-      bgImage: "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?w=800&auto=format&fit=crop",
-      features: [
-        "Kotlin & Java",
-        "Jetpack Compose",
-        "Material Design",
-        "Google Play Optimization",
-        "Firebase Integration"
-      ]
-    },
-    {
-      title: "Cross-Platform Development",
-      description: "Build apps that work on both iOS and Android with a single codebase. Using React Native or Flutter for faster development and lower costs.",
+      title: "Local Citations",
+      description: "Build consistent business citations across major directories and platforms to improve local search rankings and online visibility.",
       icon: Globe,
-      bgImage: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&auto=format&fit=crop",
+      bgImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop",
       features: [
-        "React Native",
-        "Flutter Development",
-        "Code Reusability",
-        "Native Performance",
-        "Single Codebase"
+        "Directory Submissions",
+        "NAP Consistency",
+        "Industry-Specific Listings",
+        "Citation Cleanup",
+        "Local Schema Markup"
       ]
     },
     {
-      title: "App UI/UX Design",
-      description: "Design beautiful, intuitive mobile app interfaces that users love. We create designs that are both functional and visually appealing.",
-      icon: Palette,
-      bgImage: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&auto=format&fit=crop",
+      title: "Local Keyword Research",
+      description: "Identify high-value local keywords that your target audience uses to find businesses like yours in their area.",
+      icon: Search,
+      bgImage: "https://images.unsplash.com/photo-1432888622747-4eb9a8f2c293?w=800&auto=format&fit=crop",
       features: [
-        "User Research",
-        "Wireframing",
-        "Prototyping",
-        "Design Systems",
-        "Usability Testing"
+        "Local Keyword Analysis",
+        "Competitor Research",
+        "Long-tail Keywords",
+        "Geo-targeted Terms",
+        "Search Volume Analysis"
       ]
     },
     {
-      title: "Backend Development",
-      description: "Build robust backend systems to power your mobile apps. APIs, databases, cloud infrastructure, and server-side logic.",
-      icon: Database,
-      bgImage: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&fit=crop",
-      features: [
-        "RESTful APIs",
-        "GraphQL",
-        "Cloud Services",
-        "Database Design",
-        "Server Architecture"
-      ]
-    },
-    {
-      title: "App Maintenance & Support",
-      description: "Keep your mobile app running smoothly with ongoing maintenance, updates, bug fixes, and feature enhancements.",
-      icon: Shield,
+      title: "Review Management",
+      description: "Encourage positive reviews and manage your online reputation to build trust with potential customers.",
+      icon: Star,
       bgImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop",
       features: [
-        "Bug Fixes",
-        "Performance Optimization",
-        "OS Updates",
-        "Feature Updates",
-        "24/7 Support"
+        "Review Generation Strategies",
+        "Review Response Management",
+        "Review Monitoring",
+        "Review Analytics",
+        "Reputation Recovery"
+      ]
+    },
+    {
+      title: "Local Content Marketing",
+      description: "Create location-specific content that resonates with local customers and improves your local search presence.",
+      icon: FileText,
+      bgImage: "https://images.unsplash.com/photo-1542435503-956c469947f6?w=800&auto=format&fit=crop",
+      features: [
+        "Local Blog Posts",
+        "Location Pages",
+        "Community Content",
+        "Event Coverage",
+        "Local News Integration"
+      ]
+    },
+    {
+      title: "Local Link Building",
+      description: "Build quality local backlinks from reputable local websites, directories, and community organizations.",
+      icon: TrendingUp,
+      bgImage: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&auto=format&fit=crop",
+      features: [
+        "Local Directory Links",
+        "Chamber of Commerce",
+        "Local Partnerships",
+        "Sponsorships",
+        "Community Involvement"
       ]
     }
   ];
@@ -114,62 +116,70 @@ const MobileAppDevelopmentServices = () => {
   const processSteps = [
     {
       number: "1",
-      title: "Discovery & Planning",
-      description: "We analyze your requirements and create a detailed development plan."
+      title: "Local Audit",
+      description: "We analyze your current local SEO presence and identify opportunities."
     },
     {
       number: "2",
-      title: "Design & Prototype",
-      description: "We design the app interface and create interactive prototypes."
+      title: "Optimization",
+      description: "We optimize your Google Business Profile and online listings."
     },
     {
       number: "3",
-      title: "Development",
-      description: "We build your app using best practices and modern technologies."
+      title: "Content & Citations",
+      description: "We build citations and create local content to improve visibility."
     },
     {
       number: "4",
-      title: "Testing & Launch",
-      description: "We test thoroughly and help you launch on app stores."
+      title: "Ongoing Management",
+      description: "We monitor, optimize, and report on your local SEO performance."
     }
   ];
 
   const results = [
-    { percentage: "4.8★", title: "App Store Rating", description: "Average user rating across our developed apps" },
-    { percentage: "2M+", title: "Downloads", description: "Total downloads for apps we've developed" },
-    { percentage: "95%", title: "User Satisfaction", description: "Client satisfaction rate with our services" }
+    { percentage: "85%", title: "Increase in Local Visibility", description: "Average improvement in local search rankings" },
+    { percentage: "200%", title: "More Local Leads", description: "Increase in qualified local inquiries" },
+    { percentage: "4.8★", title: "Average Rating", description: "Improved review scores and customer satisfaction" }
   ];
 
   const benefits = [
-    { icon: Zap, title: "Fast Development", description: "Agile methodologies for faster time-to-market" },
-    { icon: Shield, title: "Secure & Scalable", description: "Enterprise-grade security and scalability" },
-    { icon: BarChart3, title: "Performance Optimized", description: "Apps that load fast and run smoothly" }
+    { icon: Target, title: "Targeted Traffic", description: "Attract customers who are ready to buy in your area" },
+    { icon: MapPin, title: "Local Dominance", description: "Rank higher in 'near me' searches and local maps" },
+    { icon: BarChart3, title: "Measurable ROI", description: "Track calls, directions, and website visits from local searches" }
   ];
 
   return (
-    <div className="min-h-screen theme-bg-primary pt-20">
+    <>
+      <SEO 
+        title="Local SEO Services - Boost Your Nearby Business Visibility"
+        description="Boost your online visibility with aNquest's Local SEO services. We help businesses rank higher, attract local customers, and grow through smart digital strategies."
+        keywords="aNquest local SEO services, local search engine optimization India, local SEO agency Ghaziabad, near me search optimization, Google My Business optimization, local business listing SEO, location-based SEO solutions"
+        canonicalUrl="https://anquestmedia.com/local-seo-services"
+      />
+      <div className="min-h-screen theme-bg-primary pt-20">
       {/* Hero Section */}
       <section className="relative overflow-hidden sm:py-8">
         <CircleSquareBgAnimation/>
-       
+        
         
         <div className="container mx-auto px-4 sm:px-6 pt-22 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
-              Mobile App Development <span style={{ color: '#2d65bc' }}>Services</span>
+              Local SEO <span style={{ color: '#2d65bc' }}>Services</span>
             </h1>
             <p className="text-xl sm:text-2xl theme-text-secondary mb-4 max-w-3xl mx-auto leading-relaxed">
-            Transform ideas into high-performing mobile apps for iOS & Android.
+              Dominate local search results and attract customers in your area. 
+              We help local businesses get found by customers searching for products and services nearby.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <Link
-                to="/request-a-quote"
+                to={buildUrl('/local-seo-services/request-a-quote')}
                 className="bg-[#2d65bc] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#1a4a8a] transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
               >
                 Get Started
               </Link>
               <Link
-                to="/contacts"
+                to={buildUrl('/local-seo-services/contacts')}
                 className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white transition-all duration-300 text-base sm:text-lg hover:scale-105"
               >
                 Contact Us
@@ -196,8 +206,9 @@ const MobileAppDevelopmentServices = () => {
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center theme-text-primary mb-12 sm:mb-16">
-            Our Mobile App Development Services
+            Our Local SEO Services
           </h2>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {services.map((service, index) => {
               const IconComponent = service.icon;
@@ -210,6 +221,7 @@ const MobileAppDevelopmentServices = () => {
                     className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-15 transition-opacity duration-500"
                     style={{ backgroundImage: `url(${service.bgImage})` }}
                   />
+                  
                   <div className="relative p-6 sm:p-8 flex flex-col items-center text-center flex-grow">
                     <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg" style={{ backgroundColor: '#2d65bc' }}>
                       <IconComponent className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
@@ -250,7 +262,7 @@ const MobileAppDevelopmentServices = () => {
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center theme-text-primary mb-12 sm:mb-16">
-            Our Development Process
+            Our Local SEO Process
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {processSteps.map((step, index) => (
@@ -286,7 +298,7 @@ const MobileAppDevelopmentServices = () => {
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center theme-text-primary mb-12 sm:mb-16">
-            Our Development Results
+            Local SEO Results
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {results.map((result, index) => (
@@ -326,10 +338,10 @@ const MobileAppDevelopmentServices = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-4 sm:mb-6">
-              Why Choose Our Mobile App Development?
+              Why Choose Our Local SEO Services?
             </h2>
             <p className="text-lg sm:text-xl theme-text-secondary max-w-2xl mx-auto leading-relaxed">
-              Expert mobile app development that delivers results
+              Get found by customers in your local area
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
@@ -373,20 +385,20 @@ const MobileAppDevelopmentServices = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="max-w-4xl mx-auto">
             <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight ${getCTATextColor()}`}>
-              Ready to Build Your <span className="opacity-90">Mobile App?</span>
+              Ready to Dominate Your <span className="opacity-90">Local Market?</span>
             </h2>
             <p className={`text-base sm:text-lg lg:text-xl mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed ${getCTATextColor()} opacity-90`}>
-              Let's turn your app idea into reality. Get started with a free consultation today!
+              Let's help your local business get found by customers searching for what you offer.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md sm:max-w-none mx-auto">
               <Link
-                to="/request-a-quote"
+                to={buildUrl('/local-seo-services/request-a-quote')}
                 className="bg-white text-gray-800 font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-gray-100 transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
               >
-                Get Your Free Consultation
+                Get Your Free Local SEO Audit
               </Link>
               <Link
-                to="/contacts"
+                to={buildUrl('/local-seo-services/contacts')}
                 className="border-2 border-white text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-white hover:text-gray-800 transition-all duration-300 text-base sm:text-lg hover:scale-105"
               >
                 Contact Our Team
@@ -395,9 +407,10 @@ const MobileAppDevelopmentServices = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 
-export default MobileAppDevelopmentServices;
+export default LocalSEOServices;
 

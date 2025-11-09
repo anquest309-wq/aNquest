@@ -1,10 +1,41 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../Context/ThemeContext';
 import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleSquareBgAnimation';
 import MinimalBigShapesAnimation from '../Components/Bg-animation-template/MinimalBigShapesAnimation';
+import SEO from '../Components/SEO';
+import emailjs from '@emailjs/browser';
+
+const resolveEnv = (key) => {
+  if (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env[key] !== undefined) {
+    return import.meta.env[key];
+  }
+  if (typeof globalThis !== 'undefined' && globalThis.process?.env && globalThis.process.env[key] !== undefined) {
+    return globalThis.process.env[key];
+  }
+  return undefined;
+};
+
+const DEFAULT_EMAILJS_SERVICE_ID = 'service_41sg0p7';
+const DEFAULT_EMAILJS_TEMPLATE_ID = 'template_urm06yv';
+const DEFAULT_EMAILJS_PUBLIC_KEY = 'c6yjlhrYVqaAq5W0w';
+
+const EMAILJS_SERVICE_ID =
+  resolveEnv('VITE_EMAILJS_SERVICE_ID') ||
+  resolveEnv('REACT_APP_EMAILJS_SERVICE_ID') ||
+  DEFAULT_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID =
+  resolveEnv('VITE_EMAILJS_TEMPLATE_ID') ||
+  resolveEnv('REACT_APP_EMAILJS_TEMPLATE_ID') ||
+  DEFAULT_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY =
+  resolveEnv('VITE_EMAILJS_PUBLIC_KEY') ||
+  resolveEnv('REACT_APP_EMAILJS_PUBLIC_KEY') ||
+  DEFAULT_EMAILJS_PUBLIC_KEY;
 
 const Contacts = () => {
   const { theme } = useTheme();
+  const navigate = useNavigate();
   
   // Get animation color based on theme (white for dark, theme color for light)
   const getAnimationColor = () => {
@@ -34,22 +65,128 @@ const Contacts = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formErrors, setFormErrors] = useState({});
+  const [status, setStatus] = useState({ type: null, message: '' });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+
+    if (name === 'phone') {
+      const numericValue = value.replace(/\D/g, '').slice(0, 12);
+      setFormData(prev => ({
+        ...prev,
+        [name]: numericValue
+      }));
+
+      setFormErrors(prev => ({
+        ...prev,
+        phone:
+          numericValue.length === 0
+            ? 'Phone number is required.'
+            : numericValue.length !== 12
+              ? 'Phone number must be exactly 12 digits.'
+              : ''
+      }));
+      return;
+    }
+
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
+
+    if (formErrors[name]) {
+      setFormErrors(prev => ({ ...prev, [name]: '' }));
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+      setStatus({
+        type: 'error',
+        message:
+          'Our contact form is currently unavailable. Please email us directly at info@anquest.com.'
+      });
+      return;
+    }
+
+    if (formData.phone && formData.phone.length !== 12) {
+      setFormErrors(prev => ({
+        ...prev,
+        phone: 'Enter a valid phone number.'
+      }));
+      setStatus({
+        type: 'error',
+        message: 'Please fix the errors in the form before submitting.'
+      });
+      return;
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const errors = {
+      name: formData.name.trim() ? '' : 'Full name is required.',
+      email: !formData.email.trim()
+        ? 'Email address is required.'
+        : emailPattern.test(formData.email)
+          ? ''
+          : 'Enter a valid email address.',
+      phone: !formData.phone
+        ? 'Phone number is required.'
+        : formData.phone.length !== 12
+          ? 'Phone number must be exactly 12 digits.'
+          : '',
+      message: formData.message.trim()
+        ? ''
+        : 'Please describe your project so we can help effectively.'
+    };
+
+    const hasErrors = Object.values(errors).some(Boolean);
+
+    if (hasErrors) {
+      setFormErrors(errors);
+      setStatus({
+        type: 'error',
+        message: 'Please fix the errors in the form before submitting.'
+      });
+      return;
+    }
+
+    setFormErrors({});
+
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      alert('Thank you for your message! We will get back to you soon.');
+    setStatus({ type: null, message: '' });
+
+    const formattedMessage = [
+      `Site: aNquest Media`,
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      formData.phone ? `Phone: ${formData.phone}` : null,
+      formData.service ? `Service: ${formData.service}` : 'Service: Not specified',
+      '',
+      formData.message
+    ]
+      .filter(Boolean)
+      .join('\n');
+
+    const templateParams = {
+      web_name: "aNquest Media",
+      message:`
+      Name: ${formData.name}
+      Email: ${formData.email} 
+      Phone: ${formData.phone} 
+      Service: ${formData.service}
+      Message: ${formData.message}
+      `,
+    };
+
+    try {
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY);
+      setStatus({
+        type: 'success',
+        message: 'Thank you for your message! Our team will reach out within one business day.'
+      });
+      setFormErrors({});
       setFormData({
         name: '',
         email: '',
@@ -57,10 +194,18 @@ const Contacts = () => {
         service: '',
         message: ''
       });
+      navigate('/thank-you');
+    } catch (error) {
+      console.error('EmailJS form submission failed:', error);
+      setStatus({
+        type: 'error',
+        message:
+          'Something went wrong while sending your message. Please try again or email us at info@anquest.com.'
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 2000);
+    }
   };
-
 
   const services = [
     "Web Development",
@@ -72,7 +217,14 @@ const Contacts = () => {
   ];
 
   return (
-    <div className="min-h-screen theme-bg-primary pt-20">
+    <>
+      <SEO 
+        title="Contact Us - aNquest | Get in Touch for IT & CRM Solutions"
+        description="Get in touch with aNquest for expert IT and CRM solutions. Our team is ready to assist you with digital strategy, branding, and technology-driven business growth."
+        keywords="aNquest contact, IT solutions queries, CRM development India, custom software partner, cloud & AI services, digital transformation enquiry"
+        canonicalUrl="https://anquestmedia.com/contacts"
+      />
+      <div className="min-h-screen theme-bg-primary pt-20">
       {/* Hero Section */}
       <section className="relative overflow-hidden sm:py-8 ">
         <CircleSquareBgAnimation/>
@@ -164,44 +316,77 @@ const Contacts = () => {
                     <h3 className="text-2xl sm:text-3xl font-bold theme-text-primary mb-2">Project Details</h3>
                     <p className="theme-text-secondary">Fill out the form below and we'll be in touch</p>
                   </div>
-                  
+                  {status.message && (
+                    <div
+                      className={`mb-6 rounded-2xl px-4 py-3 text-sm font-semibold ${
+                        status.type === 'success'
+                          ? 'bg-green-100 text-green-700'
+                          : 'bg-red-100 text-red-700'
+                      }`}
+                    >
+                      {status.message}
+                    </div>
+                  )}
               <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <label htmlFor="name" className="block text-sm font-semibold theme-text-primary">
-                      Full Name *
-                    </label>
+              <div className="space-y-2">
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-semibold theme-text-primary peer-focus:text-[#2d65bc] transition-colors"
+                >
+              Full Name *
+            </label>
                     <input
                       type="text"
                       id="name"
                       name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                          className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-accent-primary focus:border-transparent transition-all theme-bg-primary theme-text-primary"
-                          placeholder="Enter your full name"
-                    />
+              value={formData.name}
+              onChange={handleInputChange}
+              className={`peer w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all theme-bg-primary theme-text-primary ${
+                formErrors.name
+                  ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
+                  : 'theme-border-primary focus:ring-[#2d65bc] focus:border-[#2d65bc]'
+              }`}
+              aria-invalid={formErrors.name ? 'true' : 'false'}
+              placeholder="Enter your full name"
+            />
+            {formErrors.name && (
+              <p className="text-sm text-red-600">{formErrors.name}</p>
+            )}
                   </div>
                       <div className="space-y-2">
-                        <label htmlFor="email" className="block text-sm font-semibold theme-text-primary">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-semibold theme-text-primary peer-focus:text-[#2d65bc] transition-colors"
+                >
                       Email Address *
                     </label>
                     <input
                       type="email"
                       id="email"
                       name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                          className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-accent-primary focus:border-transparent transition-all theme-bg-primary theme-text-primary"
-                          placeholder="Enter your email address"
-                    />
+              value={formData.email}
+              onChange={handleInputChange}
+              className={`peer w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all theme-bg-primary theme-text-primary ${
+                formErrors.email
+                  ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
+                  : 'theme-border-primary focus:ring-[#2d65bc] focus:border-[#2d65bc]'
+              }`}
+              aria-invalid={formErrors.email ? 'true' : 'false'}
+              placeholder="Enter your email address"
+            />
+            {formErrors.email && (
+              <p className="text-sm text-red-600">{formErrors.email}</p>
+            )}
                   </div>
                 </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <label htmlFor="phone" className="block text-sm font-semibold theme-text-primary">
+                <label
+                  htmlFor="phone"
+                  className="block text-sm font-semibold theme-text-primary peer-focus:text-[#2d65bc] transition-colors"
+                >
                       Phone Number
                     </label>
                     <input
@@ -210,12 +395,23 @@ const Contacts = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                          className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-accent-primary focus:border-transparent transition-all theme-bg-primary theme-text-primary"
+                  className={`peer w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all theme-bg-primary theme-text-primary ${
+                    formErrors.phone
+                      ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
+                      : 'theme-border-primary focus:ring-[#2d65bc] focus:border-[#2d65bc]'
+                  }`}
                       placeholder="Enter your phone number"
+                  aria-invalid={formErrors.phone ? 'true' : 'false'}
                     />
+                    {formErrors.phone && (
+                      <p className="text-sm text-red-600">{formErrors.phone}</p>
+                    )}
                   </div>
                       <div className="space-y-2">
-                        <label htmlFor="service" className="block text-sm font-semibold theme-text-primary">
+                <label
+                  htmlFor="service"
+                  className="block text-sm font-semibold theme-text-primary peer-focus:text-[#2d65bc] transition-colors"
+                >
                           Service Type
                     </label>
                     <select
@@ -223,7 +419,7 @@ const Contacts = () => {
                       name="service"
                       value={formData.service}
                       onChange={handleInputChange}
-                          className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-accent-primary focus:border-transparent transition-all theme-bg-primary theme-text-primary"
+                  className="peer w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all theme-bg-primary theme-text-primary theme-border-primary focus:ring-[#2d65bc] focus:border-[#2d65bc]"
                     >
                           <option value="">Choose a service</option>
                       {services.map((service, index) => (
@@ -234,7 +430,10 @@ const Contacts = () => {
                 </div>
 
                     <div className="space-y-2">
-                      <label htmlFor="message" className="block text-sm font-semibold theme-text-primary">
+            <label
+              htmlFor="message"
+              className="block text-sm font-semibold theme-text-primary peer-focus:text-[#2d65bc] transition-colors"
+            >
                         Project Description *
                   </label>
                   <textarea
@@ -242,11 +441,18 @@ const Contacts = () => {
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
-                    required
-                    rows={6}
-                          className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-accent-primary focus:border-transparent transition-all theme-bg-primary theme-text-primary resize-none"
+                  rows={6}
+                  className={`peer w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all theme-bg-primary theme-text-primary resize-none ${
+                    formErrors.message
+                      ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
+                      : 'theme-border-primary focus:ring-[#2d65bc] focus:border-[#2d65bc]'
+                  }`}
+                  aria-invalid={formErrors.message ? 'true' : 'false'}
                         placeholder="Describe your project goals, timeline, budget, and any specific requirements..."
                   />
+            {formErrors.message && (
+              <p className="text-sm text-red-600">{formErrors.message}</p>
+            )}
                 </div>
 
                 <button
@@ -284,7 +490,7 @@ const Contacts = () => {
                   <div className="space-y-4">
                     <a href="tel:+12343923647" className="flex items-center gap-3 p-3 theme-bg-tertiary rounded-xl hover:theme-bg-secondary transition-colors">
                       <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#2d65bc' }}>
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                         </svg>
                       </div>
@@ -296,7 +502,7 @@ const Contacts = () => {
                     
                     <a href="tel:+919266140654" className="flex items-center gap-3 p-3 theme-bg-tertiary rounded-xl hover:theme-bg-secondary transition-colors">
                       <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#2d65bc' }}>
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                         </svg>
                       </div>
@@ -308,7 +514,7 @@ const Contacts = () => {
                     
                     <a href="mailto:info@anquest.com" className="flex items-center gap-3 p-3 theme-bg-tertiary rounded-xl hover:theme-bg-secondary transition-colors">
                       <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#2d65bc' }}>
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                         </svg>
                       </div>
@@ -320,7 +526,7 @@ const Contacts = () => {
                     
                     <a href="https://maps.google.com" className="flex items-center gap-3 p-3 theme-bg-tertiary rounded-xl hover:theme-bg-secondary transition-colors">
                       <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#2d65bc' }}>
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
@@ -586,7 +792,8 @@ const Contacts = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 
