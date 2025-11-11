@@ -1,166 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-  
-  <!-- Home Page -->
-  <url>
-    <loc>https://anquest.com/</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  
-  <!-- Main Pages -->
-  <url>
-    <loc>https://anquest.com/about</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <url>
-    <loc>https://anquest.com/contacts</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <url>
-    <loc>https://anquest.com/technologies</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://anquest.com/request-a-quote</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://anquest.com/blogs</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <!-- Service Pages - High Priority -->
-  <url>
-    <loc>https://anquest.com/web-development-services</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <url>
-    <loc>https://anquest.com/web-design-services</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <url>
-    <loc>https://anquest.com/search-engine-optimization-services</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <url>
-    <loc>https://anquest.com/crm-services</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <url>
-    <loc>https://anquest.com/mobile-app-development-services</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <url>
-    <loc>https://anquest.com/email-marketing-services</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://anquest.com/local-seo-services</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://anquest.com/online-reputation-management-services</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://anquest.com/pay-per-click-ppc-services</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://anquest.com/social-media-optimization-services</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <!-- Additional Service Pages -->
-  <url>
-    <loc>https://anquest.com/web-development</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://anquest.com/app-development</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://anquest.com/seo-services</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://anquest.com/digital-marketing</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://anquest.com/ui-ux-design</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://anquest.com/e-commerce-solutions</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-</urlset>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
+<url>
+  <loc>https://anquestmedia.com/</loc>
+  <priority>1.0</priority>
+</url>
+<url>
+  <loc>https://anquestmedia.com/about</loc>
+  <priority>8.0</priority>
+</url>
+<url>
+  <loc>https://anquestmedia.com/crm-services</loc>
+  <priority>8.0</priority>
+</url>
+<url>
+  <loc>https://anquestmedia.com/email-marketing-services</loc>
+  <priority>8.0</priority>
+</url>
+<url>
+  <loc>https://anquestmedia.com/local-seo-services</loc>
+  <priority>8.0</priority>
+</url>
+<url>
+  <loc>https://anquestmedia.com/mobile-app-development-services</loc>
+  <priority>8.0</priority>
+</url>
+<url>
+  <loc>https://anquestmedia.com/online-reputation-management-services</loc>
+  <priority>8.0</priority>
+</url>
+<url>
+  <loc>https://anquestmedia.com/pay-per-click-ppc-services</loc>
+  <priority>8.0</priority>
+</url>
+<url>
+  <loc>https://anquestmedia.com/search-engine-optimization-services</loc>
+  <priority>8.0</priority>
+</url>
+<url>
+  <loc>https://anquestmedia.com/social-media-optimization-services</loc>
+  <priority>8.0</priority>
+</url>
+<url>
+  <loc>https://anquestmedia.com/web-design-services</loc>
+  <priority>8.0</priority>
+</url>
+<url>
+  <loc>https://anquestmedia.com/web-development-services</loc>
+  <priority>8.0</priority>
+</url>
+<url>
+  <loc>https://anquestmedia.com/technologies</loc>
+  <priority>7.0</priority>
+</url>
+<url>
+  <loc>https://anquestmedia.com/blogs</loc>
+  <priority>7.0</priority>
+</url>
+<url>
+  <loc>https://anquestmedia.com/contacts</loc>
+  <priority>6.0</priority>
+</url>
+</urlset>

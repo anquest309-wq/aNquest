@@ -77,7 +77,7 @@ const Footer = () => {
                 title="Facebook"
                 className="w-10 h-10 theme-footer-icon-bg text-white rounded-lg flex items-center justify-center transition-colors duration-300 hover:opacity-80"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
               >
                 <Facebook className="w-5 h-5" />
               </a>
@@ -87,7 +87,7 @@ const Footer = () => {
                 title="X (Twitter)"
                 className="w-10 h-10 theme-footer-icon-bg text-white rounded-lg flex items-center justify-center transition-colors duration-300 hover:opacity-80"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
               >
                 <Twitter className="w-5 h-5" />
               </a>
@@ -97,7 +97,7 @@ const Footer = () => {
                 title="YouTube"
                 className="w-10 h-10 theme-footer-icon-bg text-white rounded-lg flex items-center justify-center transition-colors duration-300 hover:opacity-80"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
               >
                 <Youtube className="w-5 h-5" />
               </a>
@@ -107,7 +107,7 @@ const Footer = () => {
                 title="Instagram"
                 className="w-10 h-10 theme-footer-icon-bg text-white rounded-lg flex items-center justify-center transition-colors duration-300 hover:opacity-80"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
               >
                 <Instagram className="w-5 h-5" />
               </a>
@@ -143,6 +143,11 @@ const Footer = () => {
                   Email Marketing
                 </Link>
               </li>
+              <li>
+                <Link to={buildUrl('/support')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
+                  Support
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -172,8 +177,13 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to={buildUrl('/support')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
-                  Support
+                <Link to={buildUrl('/contacts')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link to={buildUrl('/request-a-quote')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
+                  Request a Quote
                 </Link>
               </li>
             </ul>

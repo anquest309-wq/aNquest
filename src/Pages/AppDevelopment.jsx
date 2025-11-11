@@ -1,5 +1,6 @@
 import React from 'react';
 import { Apple, Smartphone, Code2, Layers, Monitor, Settings } from 'lucide-react';
+import SEO from '../Components/SEO';
 
 const AppDevelopment = () => {
   const services = [
@@ -107,7 +108,13 @@ const AppDevelopment = () => {
   ];
 
   return (
-    <div className="min-h-screen theme-bg-primary">
+    <>
+      <SEO
+        title="App Development Services | aNquest Media"
+        description="Build high-performing iOS and Android applications with aNquest Media's custom app development team."
+        canonicalUrl="https://anquestmedia.com/app-development"
+      />
+      <div className="min-h-screen theme-bg-primary">
       {/* Hero Section */}
       <section className="py-20 sm:py-32 md:py-40 theme-gradient-primary relative overflow-hidden">
         {/* Background Animation Elements */}
@@ -337,6 +344,7 @@ const AppDevelopment = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

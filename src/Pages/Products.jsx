@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTheme } from '../Context/ThemeContext';
+import SEO from '../Components/SEO';
 
 const Products = () => {
   const { theme } = useTheme();
@@ -68,7 +69,13 @@ const Products = () => {
   ];
 
   return (
-    <div className="min-h-screen theme-bg-primary">
+    <>
+      <SEO
+        title="Products | aNquest Media Digital Solutions"
+        description="Explore aNquest Media's portfolio of digital products including custom web applications, mobile app solutions, e-commerce platforms, and automation tools."
+        canonicalUrl="https://anquestmedia.com/products"
+      />
+      <div className="min-h-screen theme-bg-primary">
       <style>{`
         @keyframes floatSlow {
           0%, 100% { transform: translateY(0px); }
@@ -338,7 +345,8 @@ const Products = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 

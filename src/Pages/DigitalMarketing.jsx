@@ -1,6 +1,7 @@
 import React from 'react';
 import { Target, TrendingUp, Users, BarChart3, Smartphone, Globe, Mail, Share2, Eye, MousePointer, Zap, Award } from 'lucide-react';
 import { buildUrl } from '../utils/urlUtils';
+import SEO from '../Components/SEO';
 
 const DigitalMarketing = () => {
   const services = [
@@ -81,7 +82,13 @@ const DigitalMarketing = () => {
   ];
 
   return (
-    <div className="min-h-screen theme-bg-primary">
+    <>
+      <SEO
+        title="Digital Marketing Services | aNquest Media"
+        description="Grow your business with aNquest Media's digital marketing services, including social media, SEO, paid ads, content marketing, and analytics."
+        canonicalUrl="https://anquestmedia.com/digital-marketing"
+      />
+      <div className="min-h-screen theme-bg-primary">
       {/* Hero Section */}
       <section className="theme-gradient-primary  py-20 md:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -294,6 +301,7 @@ const DigitalMarketing = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

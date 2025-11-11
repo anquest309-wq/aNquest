@@ -1,5 +1,6 @@
 import React from 'react';
 import { BarChart3, Search, FileText, Link2, MapPin, PenTool, TrendingUp, Target, Zap } from 'lucide-react';
+import SEO from '../Components/SEO';
 
 const SEOServices = () => {
   const services = [
@@ -113,7 +114,13 @@ const SEOServices = () => {
   ];
 
   return (
-    <div className="min-h-screen theme-bg-primary">
+    <>
+      <SEO
+        title="SEO Services | aNquest Media"
+        description="Optimize your website for search engines with aNquest Media's comprehensive SEO services, from audits to local search strategy."
+        canonicalUrl="https://anquestmedia.com/seo-services"
+      />
+      <div className="min-h-screen theme-bg-primary">
       {/* Hero Section */}
       <section className="py-20 sm:py-32 md:py-40 theme-gradient-primary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -307,6 +314,7 @@ const SEOServices = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

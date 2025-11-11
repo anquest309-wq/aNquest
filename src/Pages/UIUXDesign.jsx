@@ -1,5 +1,6 @@
 import React from 'react';
 import { Palette, Smartphone, Monitor, Users, Eye, MousePointer, Zap, Award, Layers, PenTool, Image, Brush } from 'lucide-react';
+import SEO from '../Components/SEO';
 
 const UIUXDesign = () => {
   const services = [
@@ -113,7 +114,13 @@ const UIUXDesign = () => {
   ];
 
   return (
-    <div className="min-h-screen theme-bg-primary">
+    <>
+      <SEO
+        title="UI/UX Design Services | aNquest Media"
+        description="Deliver standout digital experiences with aNquest Media's UI/UX design services, from research and prototyping to interaction design."
+        canonicalUrl="https://anquestmedia.com/ui-ux-design"
+      />
+      <div className="min-h-screen theme-bg-primary">
       {/* Hero Section */}
       <section className="theme-gradient-primary  py-20 md:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -365,6 +372,7 @@ const UIUXDesign = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

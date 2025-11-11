@@ -87,8 +87,8 @@ const Contacts = () => {
         phone:
           numericValue.length === 0
             ? 'Phone number is required.'
-            : numericValue.length !== 12
-              ? 'Phone number must be exactly 12 digits.'
+            : numericValue.length < 10
+              ? 'Phone number must be at least 10 digits.'
               : ''
       }));
       return;
@@ -115,10 +115,10 @@ const Contacts = () => {
       return;
     }
 
-    if (formData.phone && formData.phone.length !== 12) {
+    if (formData.phone && (formData.phone.length < 10 || formData.phone.length > 12)) {
       setFormErrors(prev => ({
         ...prev,
-        phone: 'Enter a valid phone number.'
+        phone: 'Phone number must be between 10 and 12 digits.'
       }));
       setStatus({
         type: 'error',
@@ -137,8 +137,10 @@ const Contacts = () => {
           : 'Enter a valid email address.',
       phone: !formData.phone
         ? 'Phone number is required.'
-        : formData.phone.length !== 12
-          ? 'Phone number must be exactly 12 digits.'
+        : formData.phone.length < 10
+          ? 'Phone number must be at least 10 digits.'
+          : formData.phone.length > 12
+            ? 'Phone number must be no more than 12 digits.'
           : '',
       message: formData.message.trim()
         ? ''
@@ -399,6 +401,10 @@ const Contacts = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
+                      inputMode="numeric"
+                      minLength={10}
+                      maxLength={12}
+                      pattern="[0-9]{10,12}"
                   className={`peer w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all theme-bg-primary theme-text-primary ${
                     formErrors.phone
                       ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
@@ -788,9 +794,9 @@ const Contacts = () => {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto text-center">
              
-              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-6 theme-text-primary">
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-6 theme-text-primary">
                 Ready to <span style={{ color: '#2d65bc' }}>Transform</span> Your Ideas?
-          </h1>
+          </h2>
               <p className="text-xl sm:text-2xl theme-text-secondary mb-8 max-w-3xl mx-auto leading-relaxed">
                 We're here to turn your vision into reality. Get in touch and let's create something amazing together.
               </p>

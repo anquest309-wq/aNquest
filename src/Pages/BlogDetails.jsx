@@ -5,6 +5,7 @@ import { ArrowLeft, Calendar, Clock, User, Share2, BookOpen } from 'lucide-react
 import blogPosts, { findBlogBySlug } from '../data/blogPosts';
 import { buildUrl } from '../utils/urlUtils';
 import MinimalBigShapesAnimation from '../Components/Bg-animation-template/MinimalBigShapesAnimation';
+import SEO from '../Components/SEO';
 
 const BlogDetails = () => {
   const { slug } = useParams();
@@ -278,9 +279,18 @@ const BlogDetails = () => {
     }
   };
 
+  const canonicalUrl = useMemo(() => `https://anquestmedia.com/blog/${slug}`, [slug]);
+  const pageTitle = blog ? `${blog.title} | aNquest Media` : 'Blog Not Found | aNquest Media';
+  const pageDescription = blog?.excerpt || 'Read the latest insights and updates from aNquest Media on digital strategy, technology, and marketing.';
+
   if (!blog) {
     return (
       <div className="min-h-screen theme-bg-primary flex items-center justify-center">
+        <SEO
+          title={pageTitle}
+          description={pageDescription}
+          canonicalUrl={canonicalUrl}
+        />
         <div className="text-center">
           <h1 className="text-4xl font-bold theme-text-primary mb-4">Blog Not Found</h1>
           <p className="theme-text-secondary mb-8">The blog post you're looking for doesn't exist.</p>
@@ -299,6 +309,11 @@ const BlogDetails = () => {
 
   return (
     <div className="min-h-screen theme-bg-primary">
+      <SEO
+        title={pageTitle}
+        description={pageDescription}
+        canonicalUrl={canonicalUrl}
+      />
       {/* Floating Back Button */}
       <button
         type="button"
