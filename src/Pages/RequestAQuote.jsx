@@ -6,6 +6,7 @@ import SectionsBgAnimation from '../Components/Bg-animation-template/SectionsBgA
 import MinimalBgAnimation from '../Components/Bg-animation-template/MinimalBgAnimation';
 import GeometricBgAnimation from '../Components/Bg-animation-template/GeometricBgAnimation';
 import MinimalBigShapesAnimation from '../Components/Bg-animation-template/MinimalBigShapesAnimation';
+import SEO from '../Components/SEO';
 
 const resolveEnv = (key) => {
   if (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env[key] !== undefined) {
@@ -201,7 +202,13 @@ const RequestAQuote = () => {
   ];
 
   return (
-    <div className="min-h-screen theme-bg-primary pt-20">
+    <>
+      <SEO
+        title="Request a Quote | aNquest Media"
+        description="Share your project requirements with aNquest Media and receive a customized quote for development, marketing, and digital transformation services."
+        canonicalUrl="https://anquestmedia.com/request-a-quote"
+      />
+      <div className="min-h-screen theme-bg-primary pt-20">
       {/* Hero Section */}
       <section className="relative overflow-hidden sm:py-8">
         <CircleSquareBgAnimation/>
@@ -544,6 +551,7 @@ const RequestAQuote = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

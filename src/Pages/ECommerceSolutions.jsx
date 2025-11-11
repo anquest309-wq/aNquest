@@ -1,5 +1,6 @@
 import React from 'react';
 import { ShoppingCart, CreditCard, Truck, Shield, BarChart3, Users, Smartphone, Globe, Package, Headphones, Zap, Award, CircleDot, PackageIcon, Plane, Mail, TrendingUp, Facebook, MessageCircle, FolderTree, Cloud } from 'lucide-react';
+import SEO from '../Components/SEO';
 
 const ECommerceSolutions = () => {
   const services = [
@@ -111,7 +112,13 @@ const ECommerceSolutions = () => {
   ];
 
   return (
-    <div className="min-h-screen theme-bg-primary">
+    <>
+      <SEO
+        title="E-Commerce Solutions | aNquest Media"
+        description="Launch and scale your online store with aNquest Media's end-to-end e-commerce development, marketing, and operations support."
+        canonicalUrl="https://anquestmedia.com/e-commerce-solutions"
+      />
+      <div className="min-h-screen theme-bg-primary">
       {/* Hero Section */}
       <section className="theme-gradient-primary py-20 md:py-32 relative overflow-hidden">
         {/* Background Animation Elements */}
@@ -422,6 +429,7 @@ const ECommerceSolutions = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

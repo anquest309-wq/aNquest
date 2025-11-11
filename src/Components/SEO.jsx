@@ -6,7 +6,8 @@ const SEO = ({
   keywords = 'web development, mobile app development, digital marketing, SEO, CRM services, aNquest',
   ogImage = 'https://ik.imagekit.io/y7b5pqyxj/anquest%20(2).png?updatedAt=1761570757778',
   ogType = 'website',
-  canonicalUrl = ''
+  canonicalUrl = '',
+  robots = 'INDEX, FOLLOW, MAX-IMAGE-PREVIEW:LARGE, MAX-SNIPPET:-1, MAX-VIDEO-PREVIEW:-1'
 }) => {
   useEffect(() => {
     // Set document title
@@ -26,6 +27,7 @@ const SEO = ({
     // Basic meta tags
     updateMetaTag('description', description);
     updateMetaTag('keywords', keywords);
+    updateMetaTag('robots', robots);
     
     // Open Graph tags
     updateMetaTag('og:title', title, 'property');
@@ -54,7 +56,7 @@ const SEO = ({
     return () => {
       // Optionally reset to default on unmount
     };
-  }, [title, description, keywords, ogImage, ogType, canonicalUrl]);
+  }, [title, description, keywords, ogImage, ogType, canonicalUrl, robots]);
 
   return null;
 };

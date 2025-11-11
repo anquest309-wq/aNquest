@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useTheme } from '../Context/ThemeContext';
 import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleSquareBgAnimation';
 import { buildUrl } from '../utils/urlUtils';
+import SEO from '../Components/SEO';
 
 const WebDevelopment = () => {
   const { theme } = useTheme();
@@ -98,6 +99,12 @@ const WebDevelopment = () => {
   ];
 
   return (
+    <>
+      <SEO
+        title="Web Development Services | aNquest Media"
+        description="Partner with aNquest Media for full-stack web development services that deliver fast, secure, and scalable digital experiences."
+        canonicalUrl="https://anquestmedia.com/web-development"
+      />
     <div className="min-h-screen theme-bg-primary pt-20">
       {/* Hero Section */}
       <section className="relative overflow-hidden sm:py-8">
@@ -260,6 +267,7 @@ const WebDevelopment = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

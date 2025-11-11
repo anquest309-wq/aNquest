@@ -115,11 +115,11 @@ export default function About() {
           {/* Section Header */}
           <div className="text-center mb-20">
           <div className="inline-block text-center px-4 sm:px-6 lg:px-8">
-  <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-tight theme-text-primary mb-6">
+  <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-tight theme-text-primary mb-6">
     Transforming businesses with{" "}
     <span style={{ color: '#2d65bc' }}>innovative IT solutions</span>{" "}
     and exceptional service.
-  </h1>
+  </h2>
 </div>
 
 
