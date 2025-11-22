@@ -379,13 +379,13 @@ const Blogs = () => {
       </section>
 
       {/* Blog Posts Section */}
-      <section className="py-6 md:py-10 lg:py-2 theme-bg-primary relative overflow-hidden ">
+      <section className="py-6 md:py-10 lg:py-2 theme-bg-primary relative overflow-hidden py-20"> 
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-48 h-48 rounded-full opacity-10 animate-float-slow" style={{ backgroundColor: getThemeColor() }}></div>
           <div className="absolute top-40 right-20 w-40 h-40 rounded-full opacity-8 animate-float-medium" style={{ backgroundColor: getThemeColor() }}></div>
           <div className="absolute bottom-40 left-20 w-52 h-52 rounded-full opacity-10 animate-float-fast" style={{ backgroundColor: getThemeColor() }}></div>
         </div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-10 md:py-20">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {currentBlogs.map((post) => (
