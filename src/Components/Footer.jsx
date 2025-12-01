@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { MapPin, Mail, Phone, Facebook, Twitter, Youtube, Send, Instagram } from "lucide-react";
+import { MapPin, Mail, Phone,Linkedin, Facebook, X, Youtube, Send, Instagram } from "lucide-react";
 import { useTheme } from '../Context/ThemeContext';
 import { buildUrl } from '../utils/urlUtils';
 
@@ -89,7 +89,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer nofollow"
               >
-                <Twitter className="w-5 h-5" />
+                <X className="w-5 h-5" />
               </a>
               <a
                 href="https://www.youtube.com/@anquestmedia"
@@ -110,6 +110,16 @@ const Footer = () => {
                 rel="noopener noreferrer nofollow"
               >
                 <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/anquest-media/posts/?feedView=all"
+                aria-label="Visit aNquest on LinkedIn"
+                title="LinkedIn"
+                className="w-10 h-10 theme-footer-icon-bg text-white rounded-lg flex items-center justify-center transition-colors duration-300 hover:opacity-80"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+              >
+                <Linkedin className="w-5 h-5" />
               </a>
             </div>
           </div>
