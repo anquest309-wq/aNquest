@@ -5,6 +5,7 @@ import { useTheme } from '../../Context/ThemeContext';
 import CircleSquareBgAnimation from '../../Components/Bg-animation-template/CircleSquareBgAnimation';
 import SEO from '../../Components/SEO';
 import { buildUrl } from '../../utils/urlUtils';
+import HomeHeroBg from '../../Components/Bg-animation-template/HomeHeroBg';
 
 const MobileAppDevelopmentServices = () => {
   const { theme } = useTheme();
@@ -156,13 +157,12 @@ const MobileAppDevelopmentServices = () => {
         keywords="aNquest mobile app development, mobile application services India, iOS app development, Android app development, cross-platform mobile apps, Flutter app development India, React Native app services, enterprise mobile apps India"
         canonicalUrl="https://anquestmedia.com/mobile-app-development-services"
       />
-      <div className="min-h-screen theme-bg-primary pt-20">
+      <div className="min-h-screen theme-bg-primary ">
       {/* Hero Section */}
-      <section className="relative overflow-hidden sm:py-8">
-        <CircleSquareBgAnimation/>
-       
+      <section className="relative overflow-hidden sm:py-8 ">
+       <HomeHeroBg/>       
         
-        <div className="container mx-auto px-4 sm:px-6 pt-22 lg:px-8 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 flex items-center justify-center h-[550px] lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
               Mobile App Development <span style={{ color: '#2d65bc' }}>Services</span>
@@ -188,7 +188,7 @@ const MobileAppDevelopmentServices = () => {
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary relative overflow-hidden">
+      <section className="  theme-bg-primary relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
           <div className="absolute top-20 left-10 w-64 h-64 rounded-full opacity-8 animate-float-slow" style={{ backgroundColor: getThemeColor() }}></div>
           <div className="absolute top-40 right-20 w-56 h-56 rounded-full opacity-7 animate-float-medium" style={{ backgroundColor: getThemeColor() }}></div>

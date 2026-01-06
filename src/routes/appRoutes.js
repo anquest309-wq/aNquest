@@ -9,7 +9,6 @@ import SEOServices from '../Pages/SEOServices';
 import DigitalMarketing from '../Pages/DigitalMarketing';
 import UIUXDesign from '../Pages/UIUXDesign';
 import ECommerceSolutions from '../Pages/ECommerceSolutions';
-import Technologies from '../Pages/Technologies';
 import Contacts from '../Pages/Contacts';
 import EmailMarketingServices from '../Pages/Services/EmailMarketingServices';
 import LocalSEOServices from '../Pages/Services/LocalSEOServices';
@@ -27,6 +26,8 @@ import Support from '../Pages/Support';
 import PrivacyPolicy from '../Pages/PrivacyPolicy';
 import ThankYou from '../Pages/ThankYou';
 import NotFound from '../Pages/NotFound';
+import RealEstateCRM from '../Pages/Services/RealEstateCRM';
+// import RealEstateCRM from '../Pages/Services/RealEstateCRM';
 
 const routeGroups = [
   {
@@ -82,6 +83,10 @@ const routeGroups = [
       { path: '/social-media-optimization-services', label: 'Social Media Optimization', component: SocialMediaOptimizationServices },
       { path: '/social-media-optimization-services/request-a-quote', label: 'Social Media Optimization Quote', component: RequestAQuote },
       { path: '/social-media-optimization-services/contacts', label: 'Social Media Optimization Contact', component: Contacts }
+
+
+       ,{ path: '/services/crm-services/real-state-crm', label: '', component: RealEstateCRM },
+
     ]
   },
   {
@@ -102,7 +107,7 @@ const routeGroups = [
     title: 'Resources & Utilities',
     description: 'Supporting experiences and fallbacks that keep the UX smooth.',
     routes: [
-      { path: '/technologies', label: 'Technologies', component: Technologies },
+      // { path: '/technologies', label: 'Technologies', component: Technologies },
       { path: '*', label: '404 - Not Found', component: NotFound }
     ]
   }

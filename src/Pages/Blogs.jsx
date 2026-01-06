@@ -1,15 +1,14 @@
 import React, { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../Context/ThemeContext';
-import DenseBgAnimation from '../Components/Bg-animation-template/DenseBgAnimation';
-// import LargeShapesBgAnimation from '../Components/Bg-animation-template/LargeShapesBgAnimation';
-import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleSquareBgAnimation';
-import { MinimalBigShapesAnimation } from '../Components/Bg-animation-template';
-// import GridStructureBgAnimation from '../Components/Bg-animation-template/GridStructureBgAnimation';
 import CTABgAnimation from "../Components/Bg-animation-template/CTABgAnimation"
 import SEO from '../Components/SEO';
 import blogPostsData from '../data/blogPosts';
 import { buildUrl } from '../utils/urlUtils';
+import HomeHeroBg from '../Components/Bg-animation-template/HomeHeroBg';
+import { ArrowRight } from 'react-feather';
+
+
 
 const Blogs = () => {
   const { theme } = useTheme();
@@ -47,280 +46,7 @@ const Blogs = () => {
     return 'text-white';
   };
 
-  /* Legacy static blog data (kept for reference)
-  const blogPosts = [
-    {
-      id: 1,
-      title: "The Future of Web Development in 2024",
-      excerpt: "Explore the latest trends and technologies shaping the future of web development.",
-      author: "aNquest Team",
-      date: "March 15, 2024",
-      category: "Web Development",
-      readTime: "5 min read",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=600&fit=crop"
-    },
-    {
-      id: 2,
-      title: "SEO Best Practices for Modern Websites",
-      excerpt: "Learn effective SEO strategies to boost your website's visibility and ranking.",
-      author: "aNquest Team",
-      date: "March 12, 2024",
-      category: "SEO",
-      readTime: "7 min read",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&q=80"
-    },
-    {
-      id: 3,
-      title: "Mobile App Development Trends",
-      excerpt: "Discover the latest trends in mobile app development and user experience.",
-      author: "aNquest Team",
-      date: "March 10, 2024",
-      category: "Mobile Development",
-      readTime: "6 min read",
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop"
-    },
-    {
-      id: 4,
-      title: "React 19: What's New and Exciting",
-      excerpt: "Dive into the latest features and improvements in React 19 that every developer should know.",
-      author: "aNquest Team",
-      date: "March 8, 2024",
-      category: "Web Development",
-      readTime: "8 min read",
-      image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=600&fit=crop"
-    },
-    {
-      id: 5,
-      title: "Building Scalable Backend Systems",
-      excerpt: "Learn how to design and implement backend systems that can handle millions of requests.",
-      author: "aNquest Team",
-      date: "March 5, 2024",
-      category: "Backend Development",
-      readTime: "10 min read",
-      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop"
-    },
-    {
-      id: 6,
-      title: "UI/UX Design Principles for 2024",
-      excerpt: "Master the essential UI/UX design principles that create engaging and intuitive user experiences.",
-      author: "aNquest Team",
-      date: "March 3, 2024",
-      category: "Design",
-      readTime: "6 min read",
-      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop"
-    },
-    {
-      id: 7,
-      title: "Cloud Computing: A Complete Guide",
-      excerpt: "Everything you need to know about cloud computing, from basics to advanced strategies.",
-      author: "aNquest Team",
-      date: "February 28, 2024",
-      category: "Cloud Computing",
-      readTime: "12 min read",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop"
-    },
-    {
-      id: 8,
-      title: "API Security Best Practices",
-      excerpt: "Protect your APIs with these essential security practices and avoid common vulnerabilities.",
-      author: "aNquest Team",
-      date: "February 25, 2024",
-      category: "Security",
-      readTime: "9 min read",
-      image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop"
-    },
-    {
-      id: 9,
-      title: "The Rise of AI in Software Development",
-      excerpt: "How artificial intelligence is transforming the way we write, test, and deploy code.",
-      author: "aNquest Team",
-      date: "February 22, 2024",
-      category: "AI & Machine Learning",
-      readTime: "7 min read",
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop"
-    },
-    {
-      id: 10,
-      title: "Database Optimization Techniques",
-      excerpt: "Improve your application's performance with these proven database optimization strategies.",
-      author: "aNquest Team",
-      date: "February 20, 2024",
-      category: "Database",
-      readTime: "8 min read",
-      image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&h=600&fit=crop"
-    },
-    {
-      id: 11,
-      title: "Progressive Web Apps: The Future of Mobile",
-      excerpt: "Why PWAs are becoming the preferred choice for mobile applications and how to build them.",
-      author: "aNquest Team",
-      date: "February 18, 2024",
-      category: "Mobile Development",
-      readTime: "6 min read",
-      image: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=800&h=600&fit=crop"
-    },
-    {
-      id: 12,
-      title: "Docker and Containerization Explained",
-      excerpt: "Learn how Docker containers revolutionize application deployment and development workflows.",
-      author: "aNquest Team",
-      date: "February 15, 2024",
-      category: "DevOps",
-      readTime: "9 min read",
-      image: "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&h=600&fit=crop"
-    },
-    {
-      id: 13,
-      title: "GraphQL vs REST: Which Should You Choose?",
-      excerpt: "A comprehensive comparison of GraphQL and REST APIs to help you make the right choice.",
-      author: "aNquest Team",
-      date: "February 12, 2024",
-      category: "Web Development",
-      readTime: "7 min read",
-      image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop"
-    },
-    {
-      id: 14,
-      title: "Cybersecurity Fundamentals for Developers",
-      excerpt: "Essential cybersecurity practices every developer must know to build secure applications.",
-      author: "aNquest Team",
-      date: "February 10, 2024",
-      category: "Security",
-      readTime: "11 min read",
-      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop"
-    },
-    {
-      id: 15,
-      title: "Microservices Architecture Patterns",
-      excerpt: "Design scalable and maintainable systems using microservices architecture patterns.",
-      author: "aNquest Team",
-      date: "February 8, 2024",
-      category: "Backend Development",
-      readTime: "10 min read",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop"
-    },
-    {
-      id: 16,
-      title: "Modern CSS Techniques and Tricks",
-      excerpt: "Discover advanced CSS techniques that will take your styling skills to the next level.",
-      author: "aNquest Team",
-      date: "February 5, 2024",
-      category: "Web Development",
-      readTime: "6 min read",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop"
-    },
-    {
-      id: 17,
-      title: "Building Real-Time Applications with WebSockets",
-      excerpt: "Create responsive real-time applications using WebSocket technology for instant communication.",
-      author: "aNquest Team",
-      date: "February 3, 2024",
-      category: "Web Development",
-      readTime: "8 min read",
-      image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop"
-    },
-    {
-      id: 18,
-      title: "TypeScript: Advanced Type System Features",
-      excerpt: "Unlock the full potential of TypeScript's type system with these advanced features and patterns.",
-      author: "aNquest Team",
-      date: "February 1, 2024",
-      category: "Web Development",
-      readTime: "7 min read",
-      image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&h=600&fit=crop"
-    },
-    {
-      id: 19,
-      title: "Getting Started with Kubernetes",
-      excerpt: "A beginner's guide to Kubernetes and container orchestration for modern applications.",
-      author: "aNquest Team",
-      date: "January 29, 2024",
-      category: "DevOps",
-      readTime: "12 min read",
-      image: "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&h=600&fit=crop"
-    },
-    {
-      id: 20,
-      title: "JavaScript Performance Optimization",
-      excerpt: "Learn how to optimize JavaScript code for better performance and faster load times.",
-      author: "aNquest Team",
-      date: "January 27, 2024",
-      category: "Web Development",
-      readTime: "9 min read",
-      image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop"
-    },
-    {
-      id: 21,
-      title: "Serverless Architecture: Pros and Cons",
-      excerpt: "Evaluate whether serverless architecture is the right choice for your next project.",
-      author: "aNquest Team",
-      date: "January 25, 2024",
-      category: "Cloud Computing",
-      readTime: "8 min read",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop"
-    },
-    {
-      id: 22,
-      title: "Design Patterns Every Developer Should Know",
-      excerpt: "Master the most important design patterns to write cleaner and more maintainable code.",
-      author: "aNquest Team",
-      date: "January 23, 2024",
-      category: "Programming",
-      readTime: "11 min read",
-      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop"
-    },
-    {
-      id: 23,
-      title: "Testing Strategies for Modern Applications",
-      excerpt: "Comprehensive testing strategies including unit, integration, and end-to-end testing.",
-      author: "aNquest Team",
-      date: "January 21, 2024",
-      category: "Testing",
-      readTime: "7 min read",
-      image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&h=600&fit=crop"
-    },
-    {
-      id: 24,
-      title: "Version Control Best Practices with Git",
-      excerpt: "Essential Git workflows and best practices for effective version control in team environments.",
-      author: "aNquest Team",
-      date: "January 19, 2024",
-      category: "Development Tools",
-      readTime: "6 min read",
-      image: "https://images.unsplash.com/photo-1618401479427-c8ef9465fbe1?w=800&h=600&fit=crop"
-    },
-    {
-      id: 25,
-      title: "Building Accessible Web Applications",
-      excerpt: "Create inclusive web applications that are accessible to all users, following WCAG guidelines.",
-      author: "aNquest Team",
-      date: "January 17, 2024",
-      category: "Web Development",
-      readTime: "9 min read",
-      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop"
-    },
-    {
-      id: 26,
-      title: "CI/CD Pipeline: Setup and Best Practices",
-      excerpt: "Streamline your development workflow with continuous integration and deployment pipelines.",
-      author: "aNquest Team",
-      date: "January 15, 2024",
-      category: "DevOps",
-      readTime: "10 min read",
-      image: "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=800&h=600&fit=crop"
-    },
-    {
-      id: 27,
-      title: "Node.js Performance Optimization Tips",
-      excerpt: "Boost your Node.js application performance with these proven optimization techniques.",
-      author: "aNquest Team",
-      date: "January 13, 2024",
-      category: "Backend Development",
-      readTime: "8 min read",
-      image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop"
-    }
-  ];
-  */
+ 
 
   // Calculate pagination
   const totalPages = Math.ceil(blogPosts.length / blogsPerPage);
@@ -359,11 +85,10 @@ const Blogs = () => {
         keywords="aNquest blogs, digital marketing insights, technology trends, social media tips, SEO strategies, branding ideas, content marketing, digital platforms"
         canonicalUrl="https://anquestmedia.com/blogs"
       />
-      <div className="min-h-screen theme-bg-primary pt-20">
+      <div className="min-h-screen theme-bg-primary ">
       {/* Hero Section */}
-      <section className="relative overflow-hidden     sm:py-8 ">
-        <CircleSquareBgAnimation/>
-       
+      <section className="relative overflow-hidden h-[550px] min-h-screen    sm:py-8 ">
+       <HomeHeroBg/>       
         
         <div className="container mx-auto px-4 sm:px-6 pt-32 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
@@ -374,6 +99,15 @@ const Blogs = () => {
             <p className="text-xl sm:text-2xl theme-text-secondary mb-4 max-w-3xl mx-auto leading-relaxed">
               Stay updated with the latest trends, insights, and expert tips in technology and digital solutions.
             </p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a href="#stack" className="group text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center gap-2 hover:bg-[#1a4a8a]" style={{ backgroundColor: '#2d65bc' }}>
+              Explore Stack
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a href="#benefits" className="text-[#2d65bc] bg-white px-8 py-4 rounded-full font-semibold hover:bg-[#2d65bc] hover:text-white transition-all duration-300 border-2 border-[#2d65bc]">
+              Learn More
+            </a>
           </div>
         </div>
       </section>

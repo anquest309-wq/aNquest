@@ -5,6 +5,7 @@ import { useTheme } from '../../Context/ThemeContext';
 import CircleSquareBgAnimation from '../../Components/Bg-animation-template/CircleSquareBgAnimation';
 import SEO from '../../Components/SEO';
 import { buildUrl } from '../../utils/urlUtils';
+import HomeHeroBg from '../../Components/Bg-animation-template/HomeHeroBg';
 
 const WebDevelopmentServices = () => {
   const { theme } = useTheme();
@@ -156,13 +157,12 @@ const WebDevelopmentServices = () => {
         keywords="aNquest web development, web development services India, custom website development, responsive web design, front-end & back-end development, web application development, website maintenance India, web dev consultancy"
         canonicalUrl="https://anquestmedia.com/web-development-services"
       />
-      <div className="min-h-screen theme-bg-primary pt-20">
+      <div className="min-h-screen theme-bg-primary ">
       {/* Hero Section */}
       <section className="relative overflow-hidden sm:py-8">
-        <CircleSquareBgAnimation/>
-       
+         <HomeHeroBg/>       
         
-        <div className="container mx-auto px-4 sm:px-6 pt-22 lg:px-8 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 h-[550px] flex items-center justify-center lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
               Web Development <span style={{ color: '#2d65bc' }}>Services</span>

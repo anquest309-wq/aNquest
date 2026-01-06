@@ -1,17 +1,15 @@
 import React from 'react';
 import { useTheme } from '../Context/ThemeContext';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
-// import { MinimalBgAnimation } from '../Components/Bg-animation-template';
-import DenseBgAnimation from '../Components/Bg-animation-template/DenseBgAnimation';import LargeShapesBgAnimation from '../Components/Bg-animation-template/LargeShapesBgAnimation';
-import CornerStructureBgAnimation from '../Components/Bg-animation-template/CornerStructureBgAnimation';
-import GridStructureBgAnimation from '../Components/Bg-animation-template/GridStructureBgAnimation';
-import MinimalBigShapesAnimation from '../Components/Bg-animation-template/MinimalBigShapesAnimation';
+import DenseBgAnimation from '../Components/Bg-animation-template/DenseBgAnimation';
 import CTABgAnimation from '../Components/Bg-animation-template/CTABgAnimation';
 import SectionsBgAnimation from '../Components/Bg-animation-template/SectionsBgAnimation';
 import SEO from '../Components/SEO';
+import { Link } from 'react-router-dom';
+import { buildUrl } from '../utils/urlUtils';
+import HomeHeroBg from '../Components/Bg-animation-template/HomeHeroBg';
+import ServicesDashboard from './about/ServicesDashboard';
 const About = () => {
   const { theme } = useTheme();
 
@@ -126,64 +124,42 @@ const About = () => {
         keywords="aNquest, about aNquest, digital creative agency, CRM Software Agency, web & mobile development, digital marketing services, business automation solutions"
         canonicalUrl="https://anquestmedia.com/about"
       />
-      <div className="min-h-screen theme-bg-primary ">
+      <div className="min-h-screen theme-bg-primary    ">
       {/* Hero Section */}
-      <section className="relative overflow-hidden  h-screen min-h-[600px] flex items-center justify-center">
-        {/* Background Image Carousel */}
-        <div className="absolute inset-0 z-0">
-          <Swiper
-            modules={[Autoplay, EffectFade]}
-            effect="fade"
-            autoplay={{
-              delay: 4000,
-              disableOnInteraction: false,
-            }}
-            loop={true}
-            speed={1500}
-            className="w-full h-full"
-          >
-            {heroImages.map((image, index) => (
-              <SwiperSlide key={index} className="w-full h-full">
-                <div 
-                  className="w-full h-full bg-cover bg-center bg-no-repeat"
-                  style={{ backgroundImage: `url(${image})` }}
-                >
-                  {/* Dark overlay for better text readability */}
-                  <div className="absolute inset-0 bg-black/40"></div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-
-        {/* Background Animation Shapes */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none z-[1]">
-          <div className="absolute top-20 left-10 w-48 h-48 rounded-full opacity-10 animate-float-slow" style={{ backgroundColor: '#2d65bc' }}></div>
-          <div className="absolute top-40 right-20 w-40 h-40 rounded-full opacity-8 animate-float-medium" style={{ backgroundColor: '#2d65bc' }}></div>
-          <div className="absolute bottom-40 left-20 w-52 h-52 rounded-full opacity-10 animate-float-fast" style={{ backgroundColor: '#2d65bc' }}></div>
-        </div>
+         <HomeHeroBg/>
+      <section className="relative overflow-hidden flex pt-20  h-[550px]  items-center justify-center ">
         
         {/* Content - Centered */}
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 text-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8  relative z-10">
+          <div className="max-w-4xl mx-auto text-center pt-6">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
               Building Digital <span style={{ color: '#2d65bc' }}>Excellence</span>
             </h1>
-            <p className="text-xl sm:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-              We are a forward-thinking digital solutions company dedicated to transforming your ideas into reality.
+            <p className="text-xl sm:text-2xl theme-text-primary mb-8 max-w-3xl mx-auto leading-relaxed">
+              We are a forward-thinking digital solutions company turning ideas into reality.
             </p>
           </div>
+           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+              <Link
+                to={buildUrl('/request-a-quote')}
+                className="bg-[#2d65bc] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#1a4a8a] transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
+              >
+                Get Started
+              </Link>
+              <Link
+                to={buildUrl('/contacts')}
+                className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white transition-all duration-300 text-base sm:text-lg hover:scale-105"
+              >
+                Contact Us
+              </Link>
+            </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-24 theme-bg-primary relative overflow-hidden">
-        {/* Background Animation */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-32 h-32 sm:w-48 sm:h-48 rounded-full opacity-10 animate-float-slow" style={{ backgroundColor: '#2d65bc' }}></div>
-          <div className="absolute bottom-40 right-20 w-28 h-28 sm:w-40 sm:h-40 rounded-full opacity-8 animate-float-medium" style={{ backgroundColor: '#2d65bc' }}></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-36 h-36 sm:w-52 sm:h-52 rounded-full opacity-5 animate-float-fast" style={{ backgroundColor: '#2d65bc' }}></div>
-        </div>
+      <section className="py-12 sm:py-16 md:py-20 lg:py-10 theme-bg-primary relative overflow-hidden">
+       
+        
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
@@ -254,11 +230,7 @@ const About = () => {
                 </p>
               </div>
               <div className="rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=800" 
-                  alt="Our Team" 
-                  className="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover rounded-xl sm:rounded-2xl animate-image-float" 
-                />
+                 <ServicesDashboard/>
               </div>
             </div>
 

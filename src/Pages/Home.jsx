@@ -15,11 +15,11 @@ import 'swiper/css/pagination'
 import About from './Home/About'
 import Projects from './Home/Projects'
 import Services from './Home/Services'
-import Pricing from './Home/Pricing'
 import Testimonial from './Home/Testimonial'
-import Footer from '../Components/Footer'
 import GifCarousel from '../Components/GifCarousel'
 import TypingAnimation from '../Components/TypingAnimation'
+import HomeHeroBg from '../Components/Bg-animation-template/HomeHeroBg'
+import HomeHero from './Home/HomeHero'
 
 
 
@@ -27,15 +27,6 @@ import TypingAnimation from '../Components/TypingAnimation'
 export default function Home() {
   const { theme } = useTheme();
 
-  // Get shape color based on theme
-  const getShapeColor = () => {
-    if (theme === 'light') {
-      return '#2d65bc';
-    } else if (theme === 'dark') {
-      return '#ffffff';
-    }
-    return '#2d65bc';
-  };
 
   // Generate CTA background style based on theme
   const getCtaStyle = () => {
@@ -128,14 +119,14 @@ export default function Home() {
     const smoothScroll = () => {
       const now = Date.now();
       if (now - lastScrollTime < 16) return; // 60fps throttling
-      
+
       lastScrollTime = now;
-      
+
       if (isScrolling) return;
-      
+
       isScrolling = true;
       clearTimeout(scrollTimeout);
-      
+
       scrollTimeout = setTimeout(() => {
         isScrolling = false;
       }, 100);
@@ -143,19 +134,19 @@ export default function Home() {
 
     // Add scroll event listener with passive for better performance
     window.addEventListener('scroll', smoothScroll, { passive: true });
-    
+
     // Add wheel event listener for smoother scrolling
     window.addEventListener('wheel', smoothScroll, { passive: true });
-    
+
     // Enhanced scroll snap behavior
     const handleScrollSnap = () => {
       const sections = document.querySelectorAll('.scroll-snap-section');
       const scrollPosition = window.scrollY;
-      
+
       sections.forEach((section) => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.offsetHeight;
-        
+
         if (scrollPosition >= sectionTop - 100 && scrollPosition < sectionTop + sectionHeight - 100) {
           section.classList.add('active-section');
         } else {
@@ -176,195 +167,100 @@ export default function Home() {
     };
   }, []);
 
-  
+
 
   return (
     <>
-      <SEO 
+      <SEO
         title="aNquest Media | Digital & Brand Strategy - CRM Software Agency"
         description="aNquest Media is a top digital and brand strategy agency offering powerful CRM software solutions to enhance customer engagement and accelerate business growth."
         keywords="digital marketing agency, social media marketing, content creation services, web design and development, digital advertising, aNquest, CRM Software Agency"
         canonicalUrl="https://anquestmedia.com/"
       />
-      <div className="relative min-h-screen overflow-hidden smooth-scroll momentum-scroll theme-transition">
+      <div className="relative min-h-screen  overflow-hidden smooth-scroll momentum-scroll theme-transition">
 
-      {/* Hero Section with Animation */}
-        <section className="relative h-screen w-full scroll-snap-section theme-hero overflow-hidden">
-          {/* Animated Background Shapes */}
-          <div className="absolute inset-0 overflow-hidden">
-            {/* Floating Circles */}
-            <div className="absolute top-20 left-10 w-20 h-20 rounded-full opacity-20 animate-float-slow" style={{ backgroundColor: getShapeColor() }}></div>
-            <div className="absolute top-40 right-20 w-16 h-16 rounded-full opacity-15 animate-float-medium" style={{ backgroundColor: getShapeColor() }}></div>
-            <div className="absolute bottom-40 left-20 w-24 h-24 rounded-full opacity-10 animate-float-fast" style={{ backgroundColor: getShapeColor() }}></div>
-            <div className="absolute bottom-20 right-10 w-12 h-12 rounded-full opacity-25 animate-float-slow" style={{ backgroundColor: getShapeColor() }}></div>
-            
-            {/* Floating Squares */}
-            <div className="absolute top-60 left-1/4 w-8 h-8 opacity-20 animate-rotate-slow" style={{ backgroundColor: getShapeColor(), transform: 'rotate(45deg)' }}></div>
-            <div className="absolute top-80 right-1/3 w-6 h-6 opacity-15 animate-rotate-medium" style={{ backgroundColor: getShapeColor(), transform: 'rotate(45deg)' }}></div>
-            <div className="absolute bottom-60 left-1/3 w-10 h-10 opacity-10 animate-rotate-fast" style={{ backgroundColor: getShapeColor(), transform: 'rotate(45deg)' }}></div>
-            
-            {/* Floating Triangles */}
-            <div className="absolute top-32 right-1/4 w-0 h-0 opacity-20 animate-bounce-slow" style={{ 
-              borderLeft: '15px solid transparent',
-              borderRight: '15px solid transparent',
-              borderBottom: `26px solid ${getShapeColor()}`
-            }}></div>
-            <div className="absolute bottom-32 left-1/4 w-0 h-0 opacity-15 animate-bounce-medium" style={{ 
-              borderLeft: '12px solid transparent',
-              borderRight: '12px solid transparent',
-              borderBottom: `20px solid ${getShapeColor()}`
-            }}></div>
-            
-            {/* Organic Blob Shapes */}
-            <div className="absolute top-1/4 left-1/2 w-32 h-32 opacity-5 animate-blob-slow" style={{ 
-              backgroundColor: getShapeColor(),
-              borderRadius: '60% 40% 70% 30% / 40% 60% 30% 70%'
-            }}></div>
-            <div className="absolute bottom-1/4 right-1/2 w-40 h-40 opacity-8 animate-blob-medium" style={{ 
-              backgroundColor: getShapeColor(),
-              borderRadius: '30% 70% 50% 50% / 60% 40% 60% 40%'
-            }}></div>
-            
-            {/* Gradient Orbs */}
-            <div className="absolute top-1/2 left-1/4 w-16 h-16 rounded-full opacity-20 animate-pulse-slow" style={{ 
-              background: `radial-gradient(circle, ${getShapeColor()}, transparent)`
-            }}></div>
-            <div className="absolute bottom-1/3 right-1/4 w-20 h-20 rounded-full opacity-15 animate-pulse-medium" style={{ 
-              background: `radial-gradient(circle, ${getShapeColor()}, transparent)`
-            }}></div>
-          </div>
-          
-          <div className="container mx-auto px-4 sm:px-6 lg:px-18 h-full relative z-10">
-            <div className="flex flex-col lg:flex-row items-center h-full gap-8 lg:gap-12 py-8 lg:py-0">
-              {/* Right Side - GIF Carousel (Top on mobile/tablet, Right on desktop) */}
-              <div className="w-full lg:w-1/2 flex items-center justify-center order-1 lg:order-2">
-                <GifCarousel />
-              </div>
-            
-              {/* Left Side - Text Content (Bottom on mobile/tablet, Left on desktop) */}
-              <div className="w-full lg:w-1/2 flex items-center justify-center lg:justify-start order-2 lg:order-1">
-                <div className="max-w-2xl">
-                  {/* Animated Headline */}
-                  <TypingAnimation />
-                  
-                  {/* Description */}
-                  <p className="text-lg sm:text-xl theme-text-secondary leading-relaxed mb-8 animate-fade-in-up" style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>
-                    aNquest specializes in creating cutting-edge digital solutions across web development, mobile applications, digital marketing, and business automation. We deliver scalable, high-performance solutions that drive your business forward.
+        {/* Hero Section with Animation */}
+        <HomeHero />
+
+
+
+
+
+
+        {/* About Section */}
+        <section className="scroll-snap-section theme-section">
+          <About />
+        </section>
+
+        {/* Services Section */}
+        <section id="services" className="scroll-snap-section theme-section-alt">
+          <Services />
+        </section>
+
+        {/* Projects Section */}
+        <section className="scroll-snap-section theme-section">
+          <Projects />
+        </section>
+
+
+
+        {/* Testimonial Section */}
+        <section className="scroll-snap-section ">
+          <Testimonial />
+        </section>
+
+
+
+
+
+
+
+
+        {/* CTA Section */}
+        <section className="  animate-fade-in py-16 lg:py-2">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto">
+              <div className="text-center rounded-3xl py-5 sm:py-4 lg:py-5 px-8 lg:px-12 relative overflow-hidden animate-fade-in shadow-2xl" style={getCtaStyle()}>
+                {/* Background decoration */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                  <div className="absolute top-4 right-8 w-16 h-16 bg-white/10 rounded-full animate-float"></div>
+                  <div className="absolute bottom-6 left-12 w-12 h-12 bg-white/15 rounded-full animate-float-delayed"></div>
+                  <div className="absolute top-1/2 left-8 w-8 h-8 bg-white/20 rounded-full animate-float-slow"></div>
+                  <div className="absolute bottom-8 right-16 w-10 h-10 bg-white/10 rounded-full animate-float"></div>
+                </div>
+                <div className="relative z-10">
+                  <h3 className={`text-3xl sm:text-4xl font-bold mb-6 ${getCTATextColor()}`}>
+                    Ready to Transform Your Business?
+                  </h3>
+                  <p className={`text-lg mb-8 max-w-2xl mx-auto ${theme === 'dark' ? 'text-[black]' : 'text-gray-800'
+                    } opacity-90`}>
+                    Let's discuss how our innovative IT solutions can help your business achieve its goals and stay ahead of the competition.
                   </p>
-                  
-                  {/* Call to Action Buttons */}
-                  <div className="flex flex-col sm:flex-row gap-10 animate-fade-in-up" style={{ animationDelay: '0.8s', animationFillMode: 'both' }}>
-                    {/* Our Services Button */}
-                    <a 
-                      href="#services"
-                      className="hero-button-primary font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl active:scale-95 text-center text-white"
-                      style={{
-                        backgroundColor: '#2d65bc',
-                        border: '2px solid #2d65bc'
-                      }}
-                    >
-                      <span className="relative z-10 flex items-center justify-center">
-                        Our Services
-                      </span>
-                    </a>
-                    
-                    {/* Contact Us Button */}
-                    <Link 
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Link
                       to={buildUrl('/contacts')}
-                      className="border-2 font-bold py-4 text-[rgb(31,103,218)] hover:text-white hover:bg-[#2d65bc] px-8 rounded-lg transition-all duration-300 transform hover:scale-105 border-[#2d65bc] text-center"
+                      className="bg-[#2d65bc] text-white font-bold py-4 px-8 rounded-xl
+                     hover:bg-[#2d65bc]/90 hover:shadow-lg transition-all duration-300 text-sm sm:text-base transform hover:scale-105 active:scale-95"
                     >
-                      <span className="relative z-10 flex items-center justify-center">
-                        Contact Us
-                      </span>
+                      Get Started Today
                     </Link>
+                    <a
+                      href="#services"
+                      className={`border-2 border-[#2d65bc] font-bold py-4 px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white hover:shadow-lg transition-all duration-300 text-sm sm:text-base transform hover:scale-105 active:scale-95 ${theme === 'dark' ? 'bg-white/10 text-[#2d65bc]' : 'bg-white/80 text-gray-800'
+                        }`}
+                    >
+                      Learn More
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-      </section>
+        </section>
 
 
-
-
-
-
-{/* About Section */}
-<section className="scroll-snap-section theme-section">
-  <About/>
-</section>
-
-{/* Services Section */}
-<section id="services" className="scroll-snap-section theme-section-alt">
-  <Services/>
-</section>
-
-{/* Projects Section */}
-<section className="scroll-snap-section theme-section">
-  <Projects/>
-</section>
-
-
-
-{/* Testimonial Section */}
-<section className="scroll-snap-section ">
-  <Testimonial/>
-</section>
-
-
-
-
-
-
-
-
-  {/* CTA Section */}
-  <section className="  animate-fade-in py-16 lg:py-2">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center rounded-3xl py-5 sm:py-4 lg:py-5 px-8 lg:px-12 relative overflow-hidden animate-fade-in shadow-2xl" style={getCtaStyle()}>
-              {/* Background decoration */}
-              <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-4 right-8 w-16 h-16 bg-white/10 rounded-full animate-float"></div>
-                <div className="absolute bottom-6 left-12 w-12 h-12 bg-white/15 rounded-full animate-float-delayed"></div>
-                <div className="absolute top-1/2 left-8 w-8 h-8 bg-white/20 rounded-full animate-float-slow"></div>
-                <div className="absolute bottom-8 right-16 w-10 h-10 bg-white/10 rounded-full animate-float"></div>
-              </div>
-              <div className="relative z-10">
-                <h3 className={`text-3xl sm:text-4xl font-bold mb-6 ${getCTATextColor()}`}>
-                  Ready to Transform Your Business?
-                </h3>
-                <p className={`text-lg mb-8 max-w-2xl mx-auto ${
-                      theme === 'dark' ? 'text-[black]' : 'text-gray-800'
-                    } opacity-90`}>
-                  Let's discuss how our innovative IT solutions can help your business achieve its goals and stay ahead of the competition.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link 
-                    to={buildUrl('/contacts')}
-                    className="bg-[#2d65bc] text-white font-bold py-4 px-8 rounded-xl
-                     hover:bg-[#2d65bc]/90 hover:shadow-lg transition-all duration-300 text-sm sm:text-base transform hover:scale-105 active:scale-95"
-                  >
-                    Get Started Today
-                  </Link>
-                  <a 
-                    href="#services"
-                    className={`border-2 border-[#2d65bc] font-bold py-4 px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white hover:shadow-lg transition-all duration-300 text-sm sm:text-base transform hover:scale-105 active:scale-95 ${
-                      theme === 'dark' ? 'bg-white/10 text-[#2d65bc]' : 'bg-white/80 text-gray-800'
-                    }`}
-                  >
-                    Learn More
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      {/* Custom Swiper Styles */}
-      <style >{`
+        {/* Custom Swiper Styles */}
+        <style >{`
         .swiper-pagination-bullet-custom {
           width: 32px;
           height: 4px;

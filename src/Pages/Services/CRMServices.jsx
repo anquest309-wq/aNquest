@@ -5,6 +5,8 @@ import { useTheme } from '../../Context/ThemeContext';
 import CircleSquareBgAnimation from '../../Components/Bg-animation-template/CircleSquareBgAnimation';
 import SEO from '../../Components/SEO';
 import { buildUrl } from '../../utils/urlUtils';
+import Home from '../Home';
+import HomeHeroBg from '../../Components/Bg-animation-template/HomeHeroBg';
 
 const CRMServices = () => {
   const { theme } = useTheme();
@@ -157,31 +159,29 @@ const CRMServices = () => {
         keywords="aNquest CRM services, CRM solutions India, customer relationship management, CRM software implementation, CRM integration, sales & marketing automation, CRM for businesses India, aNquest CRM consultancy"
         canonicalUrl="https://anquestmedia.com/crm-services"
       />
-      <div className="min-h-screen theme-bg-primary pt-20">
+      <div className="min-h-screen theme-bg-primary ">
       {/* Hero Section */}
-      <section className="relative overflow-hidden sm:py-8">
-        <CircleSquareBgAnimation/>
+      <section className="relative overflow-hidden sm:py-8   h-[550px]">
         
-        
-        <div className="container mx-auto px-4 sm:px-6 pt-22 lg:px-8 relative z-10">
+        <HomeHeroBg/>
+        <div className="container mx-auto px-4 sm:px-6   h-[550px] flex items-center justify-centerlg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
               CRM <span style={{ color: '#2d65bc' }}>Services</span>
             </h1>
             <p className="text-xl sm:text-2xl theme-text-secondary mb-4 max-w-3xl mx-auto leading-relaxed">
-              Transform your customer relationships with comprehensive CRM solutions. 
-              We help you manage contacts, automate sales processes, and grow your business with intelligent CRM systems.
+              Transform your customer relationships with smart CRM solutions. Manage contacts, automate sales, and grow your business effortlessly.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <Link
                 to={buildUrl('/crm-services/request-a-quote')}
-                className="bg-[#2d65bc] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#1a4a8a] transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
+                className="bg-[#2d65bc] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full hover:bg-[#1a4a8a] transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
               >
                 Get Started
               </Link>
               <Link
                 to={buildUrl('/crm-services/contacts')}
-                className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white transition-all duration-300 text-base sm:text-lg hover:scale-105"
+                className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full hover:bg-[#2d65bc] hover:text-white transition-all duration-300 text-base sm:text-lg hover:scale-105"
               >
                 Contact Us
               </Link>

@@ -10,8 +10,9 @@ import 'swiper/css/effect-coverflow';
 import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleSquareBgAnimation';
 import SEO from '../Components/SEO';
 import DenseBgAnimation from '../Components/Bg-animation-template/DenseBgAnimation';
-import  CTABgAnimation from '../Components/Bg-animation-template/CTABgAnimation'
+import CTABgAnimation from '../Components/Bg-animation-template/CTABgAnimation'
 import 'swiper/css/navigation';
+import HomeHeroBg from '../Components/Bg-animation-template/HomeHeroBg';
 
 // Gradient Background Component
 const GradientBg = () => (
@@ -49,60 +50,42 @@ const AnimatedBg = ({ theme }) => {
 // Hero Section
 const HeroSection = () => {
   return (
-    <section className="relative py-10 pt-38 flex items-center justify-center theme-gradient-primary overflow-hidden">
-    <CircleSquareBgAnimation/>
-    
-    {/* Floating Elements */}
-    <div className="absolute inset-0 opacity-20">
-      {[...Array(20)].map((_, i) => (
-        <div
-          key={i}
-          className="absolute w-2 h-2 bg-white rounded-full"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            animation: `float ${3 + Math.random() * 4}s ease-in-out infinite`,
-            animationDelay: `${Math.random() * 2}s`
-          }}
-        ></div>
-      ))}
-    </div>
+    <section className="relative  h-[550px] min-h-screen  flex items-center justify-center  overflow-hidden">
+      <HomeHeroBg />
 
-    <div className="container mx-auto px-4 relative z-10">
-      <div className="max-w-5xl mx-auto text-center">
-       
-        
-      <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold theme-text-primary mb-6 leading-tight">
-  Technology{" "}
-  <span className="inline" style={{ color: '#2d65bc' }}>
-    Excellence
-  </span>
-</h1>
+      
 
-        
-        <p className="text-xl md:text-2xl theme-text-secondary mb-5 max-w-3xl mx-auto leading-relaxed">
-          Building tomorrow's digital experiences with cutting-edge technology stacks that scale
-        </p>
-        
-        <div className="flex flex-wrap justify-center gap-4">
-          <a href="#stack" className="group text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center gap-2 hover:bg-[#1a4a8a]" style={{ backgroundColor: '#2d65bc' }}>
-            Explore Stack
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </a>
-          <a href="#benefits" className="text-[#2d65bc] bg-white px-8 py-4 rounded-full font-semibold hover:bg-[#2d65bc] hover:text-white transition-all duration-300 border-2 border-[#2d65bc]">
-            Learn More
-          </a>
+
+      <div className="container mx-auto px-4 relative z-10 ">
+        <div className="max-w-5xl mx-auto text-center">
+
+
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold theme-text-primary mb-6 leading-tight">
+            Technology{" "}
+            <span className="inline" style={{ color: '#2d65bc' }}>
+              Excellence
+            </span>
+          </h1>
+
+
+          <p className="text-xl md:text-2xl theme-text-secondary mb-5 max-w-3xl mx-auto leading-relaxed">
+            Building tomorrow's digital experiences with cutting-edge technology stacks that scale
+          </p>
+
+          <div className="flex flex-wrap justify-center gap-4">
+            <a href="#stack" className="group text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center gap-2 hover:bg-[#1a4a8a]" style={{ backgroundColor: '#2d65bc' }}>
+              Explore Stack
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a href="#benefits" className="text-[#2d65bc] bg-white px-8 py-4 rounded-full font-semibold hover:bg-[#2d65bc] hover:text-white transition-all duration-300 border-2 border-[#2d65bc]">
+              Learn More
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-    
-    <style jsx>{`
-      @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-20px); }
-      }
-    `}</style>
-  </section>
+
+      
+    </section>
   );
 };
 
@@ -192,7 +175,7 @@ const CategoryShowcase = ({ onSelectCategory }) => {
                     className="group relative theme-card rounded-3xl theme-shadow-primary p-8 hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden flex-shrink-0 w-80 md:w-80 flex flex-col items-center justify-center text-center mx-auto"
                     style={{
                       border: `2px solid ${theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(45, 101, 188, 0.1)'}`,
-                      background: theme === 'dark' 
+                      background: theme === 'dark'
                         ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)'
                         : 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%)'
                     }}
@@ -200,71 +183,71 @@ const CategoryShowcase = ({ onSelectCategory }) => {
                     onMouseLeave={() => setHoveredIndex(null)}
                     onClick={() => onSelectCategory(category.name)}
                   >
-                  {/* Decorative Background Gradient */}
-                  <div 
-                    className="absolute top-0 right-0 w-40 h-40 rounded-full opacity-0 group-hover:opacity-15 transition-opacity duration-500 blur-3xl"
-                    style={{ 
-                      background: `radial-gradient(circle, ${themeColor} 0%, transparent 70%)`
-                    }}
-                  ></div>
-                  
-                  {/* Hover Background Overlay */}
-                  <div 
-                    className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-500"
-                    style={{ backgroundColor: themeColor }}
-                  ></div>
-                  
-                  {/* Icon Container with Enhanced Styling */}
-                  <div className="relative z-10 mb-6 flex justify-center">
-                    <div 
-                      className="w-20 h-20 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg"
-                      style={{ 
-                        background: `linear-gradient(135deg, ${themeColor} 0%, #1e4a8e 100%)`,
-                        boxShadow: `0 10px 30px ${themeColor}40`
-                      }}
-                    >
-                      <Icon className="w-10 h-10 text-white transition-transform duration-300 group-hover:scale-110" />
-                    </div>
-                    
-                    {/* Icon Glow Effect */}
-                    <div 
-                      className="absolute inset-0 w-20 h-20 rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"
-                      style={{ 
+                    {/* Decorative Background Gradient */}
+                    <div
+                      className="absolute top-0 right-0 w-40 h-40 rounded-full opacity-0 group-hover:opacity-15 transition-opacity duration-500 blur-3xl"
+                      style={{
                         background: `radial-gradient(circle, ${themeColor} 0%, transparent 70%)`
                       }}
                     ></div>
-                  </div>
-                  
-                  {/* Content */}
-                  <div className="relative z-10 flex flex-col items-center text-center">
-                    <h3 className="text-2xl md:text-3xl font-bold theme-text-primary mb-3 group-hover:text-[#2d65bc] transition-colors duration-300">
-                      {category.name}
-                    </h3>
-                    <p className="theme-text-secondary mb-6 text-base md:text-lg leading-relaxed">
-                      {category.description}
-                    </p>
-                    
-                    {/* Explore Button */}
-                    <div className="flex items-center justify-center font-semibold group-hover:gap-3 transition-all duration-300" style={{ color: themeColor }}>
-                      <span className="text-base md:text-lg">Explore</span>
-                      <ChevronRight className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-2 transition-transform duration-300" />
+
+                    {/* Hover Background Overlay */}
+                    <div
+                      className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-500"
+                      style={{ backgroundColor: themeColor }}
+                    ></div>
+
+                    {/* Icon Container with Enhanced Styling */}
+                    <div className="relative z-10 mb-6 flex justify-center">
+                      <div
+                        className="w-20 h-20 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg"
+                        style={{
+                          background: `linear-gradient(135deg, ${themeColor} 0%, #1e4a8e 100%)`,
+                          boxShadow: `0 10px 30px ${themeColor}40`
+                        }}
+                      >
+                        <Icon className="w-10 h-10 text-white transition-transform duration-300 group-hover:scale-110" />
+                      </div>
+
+                      {/* Icon Glow Effect */}
+                      <div
+                        className="absolute inset-0 w-20 h-20 rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"
+                        style={{
+                          background: `radial-gradient(circle, ${themeColor} 0%, transparent 70%)`
+                        }}
+                      ></div>
                     </div>
-                  </div>
-                  
-                  {/* Hover Border Effect */}
-                  <div 
-                    className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                    style={{
-                      border: `2px solid ${themeColor}`,
-                      boxShadow: `0 0 40px ${themeColor}50, inset 0 0 40px ${themeColor}20`
-                    }}
-                  ></div>
-                  
-                  {/* Bottom Accent Line */}
-                  <div 
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1.5 rounded-full transition-all duration-500 group-hover:w-24"
-                    style={{ backgroundColor: themeColor }}
-                  ></div>
+
+                    {/* Content */}
+                    <div className="relative z-10 flex flex-col items-center text-center">
+                      <h3 className="text-2xl md:text-3xl font-bold theme-text-primary mb-3 group-hover:text-[#2d65bc] transition-colors duration-300">
+                        {category.name}
+                      </h3>
+                      <p className="theme-text-secondary mb-6 text-base md:text-lg leading-relaxed">
+                        {category.description}
+                      </p>
+
+                      {/* Explore Button */}
+                      <div className="flex items-center justify-center font-semibold group-hover:gap-3 transition-all duration-300" style={{ color: themeColor }}>
+                        <span className="text-base md:text-lg">Explore</span>
+                        <ChevronRight className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-2 transition-transform duration-300" />
+                      </div>
+                    </div>
+
+                    {/* Hover Border Effect */}
+                    <div
+                      className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                      style={{
+                        border: `2px solid ${themeColor}`,
+                        boxShadow: `0 0 40px ${themeColor}50, inset 0 0 40px ${themeColor}20`
+                      }}
+                    ></div>
+
+                    {/* Bottom Accent Line */}
+                    <div
+                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1.5 rounded-full transition-all duration-500 group-hover:w-24"
+                      style={{ backgroundColor: themeColor }}
+                    ></div>
                   </div>
                 </SwiperSlide>
               );
@@ -272,7 +255,7 @@ const CategoryShowcase = ({ onSelectCategory }) => {
           </Swiper>
         </div>
       </div>
-      
+
       {/* Custom Swiper Styles */}
       <style>{`
         .categorySwiper {
@@ -299,8 +282,8 @@ const CategoryShowcase = ({ onSelectCategory }) => {
 const HorizontalTechStack = ({ technologies, activeCategory }) => {
   const { theme } = useTheme();
 
-  const filteredTechs = activeCategory === 'All' 
-    ? technologies 
+  const filteredTechs = activeCategory === 'All'
+    ? technologies
     : technologies.filter(tech => tech.category === activeCategory);
 
   // Get theme-based colors - always use blue for icons and buttons
@@ -348,7 +331,7 @@ const HorizontalTechStack = ({ technologies, activeCategory }) => {
       'Swiper': 'https://cdn.simpleicons.org/swiper/6332F6',
       'Chart.js': 'https://cdn.simpleicons.org/chartdotjs/FF6384'
     };
-    
+
     return logoMap[techName] || 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg';
   };
 
@@ -403,21 +386,21 @@ const HorizontalTechStack = ({ technologies, activeCategory }) => {
               {filteredTechs.map((tech, index) => {
                 const techLogo = getTechLogo(tech.name);
                 const themeColor = getThemeColor();
-                
+
                 return (
                   <SwiperSlide key={index}>
                     <div className="group relative w-80 theme-card rounded-2xl p-6 theme-shadow-primary hover:shadow-xl transition-all duration-500 hover:scale-105 flex-shrink-0 border theme-border-primary mx-auto">
-                      <div 
+                      <div
                         className="absolute inset-0 opacity-0 group-hover:opacity-5 rounded-2xl transition-all duration-500"
                         style={{ backgroundColor: themeColor }}
                       ></div>
-                      
+
                       <div className="relative text-center">
-                        <div 
+                        <div
                           className="w-16 h-16 rounded-xl shadow-md flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 mx-auto bg-white p-2"
                         >
-                          <img 
-                            src={techLogo} 
+                          <img
+                            src={techLogo}
                             alt={tech.name}
                             className="w-full h-full object-contain"
                             loading="lazy"
@@ -432,12 +415,12 @@ const HorizontalTechStack = ({ technologies, activeCategory }) => {
                             }}
                           />
                         </div>
-                        
+
                         <h4 className="text-xl font-bold theme-text-primary mb-3">{tech.name}</h4>
                         <p className="theme-text-secondary text-sm leading-relaxed mb-6 px-2">{tech.description}</p>
-                        
+
                         <div className="flex items-center justify-center">
-                          <span 
+                          <span
                             className="text-xs font-semibold text-white px-4 py-2 rounded-full inline-flex items-center gap-2"
                             style={{ backgroundColor: themeColor }}
                           >
@@ -454,7 +437,7 @@ const HorizontalTechStack = ({ technologies, activeCategory }) => {
           </div>
         </div>
       </div>
-      
+
       <style>{`
         .techStackSwiper {
           padding: 10px 0 30px 0;
@@ -480,7 +463,7 @@ const HorizontalTechStack = ({ technologies, activeCategory }) => {
 // Benefits Section
 const BenefitsSection = () => {
   const { theme } = useTheme();
-  
+
   // Always use blue for icon backgrounds
   const getThemeColor = () => {
     return '#2d65bc';
@@ -527,13 +510,13 @@ const BenefitsSection = () => {
                 key={index}
                 className="group theme-card rounded-3xl theme-shadow-primary p-8 border theme-border-primary hover:shadow-xl transition-all duration-500 hover:scale-105"
               >
-                <div 
+                <div
                   className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500"
                   style={{ backgroundColor: themeColor }}
                 >
                   <Icon className="w-8 h-8 text-white" />
                 </div>
-                
+
                 <h3 className="text-2xl font-bold theme-text-primary mb-4">{benefit.title}</h3>
                 <p className="theme-text-secondary leading-relaxed">{benefit.description}</p>
               </div>
@@ -549,11 +532,11 @@ const BenefitsSection = () => {
 const CTASection = () => {
   return (
     <section className="py-3 sm:py-3 md:py-3 lg:py-4 theme-gradient-accent relative overflow-hidden">
-     
+
       {/* Floating Elements */}
-      <CTABgAnimation/>
-      
-      
+      <CTABgAnimation />
+
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 md:mb-8 leading-tight">
@@ -563,12 +546,12 @@ const CTASection = () => {
           <p className="text-base sm:text-lg md:text-xl text-white/90 mb-8 sm:mb-10 md:mb-12 max-w-2xl mx-auto leading-relaxed px-2">
             Let's leverage our technology expertise to transform your vision into reality
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 sm:px-0">
             <a
               href="/contacts"
               className="group text-black bg-white px-6 py-3 sm:px-8 sm:py-3 md:px-7 md:py-4 rounded-full font-bold hover:scale-105 transition-all duration-300 shadow-2xl flex items-center justify-center gap-2 text-sm sm:text-base md:text-lg w-full sm:w-auto hover:bg-[#f3f4f7]"
-              
+
             >
               Start Your Project
               <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
@@ -597,35 +580,35 @@ const Technologies = () => {
     { name: "Angular", description: "Platform for building web applications", category: "Frontend" },
     { name: "TypeScript", description: "Typed superset of JavaScript", category: "Frontend" },
     { name: "Tailwind CSS", description: "Utility-first CSS framework", category: "Frontend" },
-    
+
     { name: "Node.js", description: "JavaScript runtime for server-side", category: "Backend" },
     { name: "Express.js", description: "Fast web framework for Node.js", category: "Backend" },
     { name: "Python", description: "Versatile programming language", category: "Backend" },
     { name: "Django", description: "High-level Python web framework", category: "Backend" },
     { name: "FastAPI", description: "Modern fast web framework", category: "Backend" },
     { name: "PHP", description: "Server-side scripting language", category: "Backend" },
-    
+
     { name: "MongoDB", description: "NoSQL document database", category: "Database" },
     { name: "PostgreSQL", description: "Advanced relational database", category: "Database" },
     { name: "MySQL", description: "Popular relational database", category: "Database" },
     { name: "Redis", description: "In-memory data structure store", category: "Database" },
     { name: "Firebase", description: "Google's mobile platform", category: "Database" },
     { name: "Supabase", description: "Open source Firebase alternative", category: "Database" },
-    
+
     { name: "React Native", description: "Cross-platform mobile development", category: "Mobile" },
     { name: "Flutter", description: "Google's UI toolkit", category: "Mobile" },
     { name: "Ionic", description: "Cross-platform framework", category: "Mobile" },
     { name: "Expo", description: "Platform for universal React apps", category: "Mobile" },
     { name: "Swift", description: "Apple's iOS programming language", category: "Mobile" },
     { name: "Kotlin", description: "Modern Android language", category: "Mobile" },
-    
+
     { name: "AWS", description: "Amazon Web Services platform", category: "Cloud" },
     { name: "Vercel", description: "Platform for frontend developers", category: "Cloud" },
     { name: "Netlify", description: "Platform for web developers", category: "Cloud" },
     { name: "Docker", description: "Containerization platform", category: "Cloud" },
     { name: "GitHub Actions", description: "CI/CD automation platform", category: "Cloud" },
     { name: "Heroku", description: "Cloud deployment platform", category: "Cloud" },
-    
+
     { name: "Git", description: "Version control system", category: "Tools" },
     { name: "Webpack", description: "Module bundler for JavaScript", category: "Tools" },
     { name: "GSAP", description: "Professional animation library", category: "Tools" },
@@ -636,23 +619,23 @@ const Technologies = () => {
 
   return (
     <>
-      <SEO 
+      <SEO
         title="aNquest Media | Technologies - Cutting-Edge IT & Digital Platforms"
         description="Explore aNquest Technologies for innovative IT and digital platforms. We deliver cutting-edge solutions to enhance performance, scalability, and business success."
         keywords="aNquest technologies, IT platforms India, digital transformation solutions, cloud & AI services, enterprise software technologies, CRM & ERP technology, custom software development India"
         canonicalUrl="https://anquestmedia.com/technologies"
       />
       <div className="min-h-screen theme-bg-primary">
-      <HeroSection />
-      <CategoryShowcase 
-        onSelectCategory={setActiveCategory}
-      />
-      <HorizontalTechStack 
-        technologies={technologies}
-        activeCategory={activeCategory}
-      />
-      <BenefitsSection />
-      <CTASection       />
+        <HeroSection />
+        <CategoryShowcase
+          onSelectCategory={setActiveCategory}
+        />
+        <HorizontalTechStack
+          technologies={technologies}
+          activeCategory={activeCategory}
+        />
+        <BenefitsSection />
+        <CTASection />
       </div>
     </>
   );

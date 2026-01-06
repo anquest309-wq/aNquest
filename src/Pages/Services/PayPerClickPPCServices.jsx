@@ -1,10 +1,10 @@
 import React from 'react';
-import { DollarSign, Target, TrendingUp, BarChart3, Search, MousePointerClick, Zap, CheckCircle, Users, Filter, Globe, Sparkles } from 'lucide-react';
+import { DollarSign, Target, BarChart3, Search, MousePointerClick, Zap,  Users,  Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../../Context/ThemeContext';
-import CircleSquareBgAnimation from '../../Components/Bg-animation-template/CircleSquareBgAnimation';
 import SEO from '../../Components/SEO';
 import { buildUrl } from '../../utils/urlUtils';
+import HomeHeroBg from '../../Components/Bg-animation-template/HomeHeroBg';
 
 const PayPerClickPPCServices = () => {
   const { theme } = useTheme();
@@ -156,13 +156,12 @@ const PayPerClickPPCServices = () => {
         keywords="aNquest PPC services, pay-per-click advertising India, Google Ads management, PPC campaign optimisation, paid search marketing, digital advertising services India, PPC lead generation, PPC agency Uttar Pradesh"
         canonicalUrl="https://anquestmedia.com/pay-per-click-ppc-services"
       />
-      <div className="min-h-screen theme-bg-primary pt-10">
+      <div className=" theme-bg-primary ">
       {/* Hero Section */}
-      <section className="relative overflow-hidden sm:py-8">
-        <CircleSquareBgAnimation/>
-       
+      <section className="relative overflow-hidden sm:py-8 h-[550px] ">
+       <HomeHeroBg/>
         
-        <div className="container mx-auto px-4 sm:px-6 pt-32 lg:px-8 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 h-[550px]   flex items-center justify-center lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
               Pay Per Click (PPC) <span style={{ color: '#2d65bc' }}>Services</span>
@@ -173,13 +172,13 @@ const PayPerClickPPCServices = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <Link
                 to={buildUrl('/pay-per-click-ppc-services/request-a-quote')}
-                className="bg-[#2d65bc] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#1a4a8a] transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
+                className="bg-[#2d65bc] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full hover:bg-[#1a4a8a] transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
               >
                 Get Started
               </Link>
               <Link
                 to={buildUrl('/pay-per-click-ppc-services/contacts')}
-                className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white transition-all duration-300 text-base sm:text-lg hover:scale-105"
+                className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full hover:bg-[#2d65bc] hover:text-white transition-all duration-300 text-base sm:text-lg hover:scale-105"
               >
                 Contact Us
               </Link>

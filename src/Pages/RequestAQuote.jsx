@@ -3,10 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleSquareBgAnimation';
 import SectionsBgAnimation from '../Components/Bg-animation-template/SectionsBgAnimation';
-import MinimalBgAnimation from '../Components/Bg-animation-template/MinimalBgAnimation';
 import GeometricBgAnimation from '../Components/Bg-animation-template/GeometricBgAnimation';
 import MinimalBigShapesAnimation from '../Components/Bg-animation-template/MinimalBigShapesAnimation';
 import SEO from '../Components/SEO';
+import HomeHeroBg from '../Components/Bg-animation-template/HomeHeroBg';
+import { ArrowRight } from 'react-feather';
 
 const resolveEnv = (key) => {
   if (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env[key] !== undefined) {
@@ -208,13 +209,12 @@ const RequestAQuote = () => {
         description="Share your project requirements with aNquest Media and receive a customized quote for development, marketing, and digital transformation services."
         canonicalUrl="https://anquestmedia.com/request-a-quote"
       />
-      <div className="min-h-screen theme-bg-primary pt-20">
+      <div className=" theme-bg-primary  ">
       {/* Hero Section */}
-      <section className="relative overflow-hidden sm:py-8">
-        <CircleSquareBgAnimation/>
+      <section className="relative overflow-hidden sm:py-8 min-h-screen   ">
        
-        
-        <div className="container mx-auto px-4 sm:px-6 pt-32 lg:px-8 relative z-10">
+        <HomeHeroBg/>
+        <div className="container  mx-auto px-4 sm:px-6 h-[550px] pt-32 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
               Request A <span style={{ color: '#2d65bc' }}>Quote</span>
@@ -222,6 +222,15 @@ const RequestAQuote = () => {
             <p className="text-xl sm:text-2xl theme-text-secondary mb-4 max-w-3xl mx-auto leading-relaxed">
               Tell us about your project and we'll provide you with a detailed quote within 24 hours.
             </p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a href="#stack" className="group text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center gap-2 hover:bg-[#1a4a8a]" style={{ backgroundColor: '#2d65bc' }}>
+              Explore Stack
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a href="#benefits" className="text-[#2d65bc] bg-white px-8 py-4 rounded-full font-semibold hover:bg-[#2d65bc] hover:text-white transition-all duration-300 border-2 border-[#2d65bc]">
+              Learn More
+            </a>
           </div>
         </div>
       </section>
