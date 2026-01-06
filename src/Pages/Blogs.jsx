@@ -93,10 +93,10 @@ const Blogs = () => {
         <div className="container mx-auto px-4 sm:px-6 pt-32 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 theme-text-primary">
               Our <span style={{ color: '#2d65bc' }}>Blog</span>
             </h1>
-            <p className="text-xl sm:text-2xl theme-text-secondary mb-4 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-md sm:text-lg theme-text-secondary mb-4 max-w-3xl mx-auto leading-relaxed">
               Stay updated with the latest trends, insights, and expert tips in technology and digital solutions.
             </p>
           </div>

@@ -3,8 +3,6 @@ import About from '../Pages/About';
 import RequestAQuote from '../Pages/RequestAQuote';
 import Blogs from '../Pages/Blogs';
 import BlogDetails from '../Pages/BlogDetails';
-import WebDevelopment from '../Pages/WebDevelopment';
-import AppDevelopment from '../Pages/AppDevelopment';
 import SEOServices from '../Pages/SEOServices';
 import DigitalMarketing from '../Pages/DigitalMarketing';
 import UIUXDesign from '../Pages/UIUXDesign';
@@ -12,13 +10,11 @@ import ECommerceSolutions from '../Pages/ECommerceSolutions';
 import Contacts from '../Pages/Contacts';
 import EmailMarketingServices from '../Pages/Services/EmailMarketingServices';
 import LocalSEOServices from '../Pages/Services/LocalSEOServices';
-import MobileAppDevelopmentServices from '../Pages/Services/MobileAppDevelopmentServices';
 import OnlineReputationManagementServices from '../Pages/Services/OnlineReputationManagementServices';
 import PayPerClickPPCServices from '../Pages/Services/PayPerClickPPCServices';
 import SearchEngineOptimizationServices from '../Pages/Services/SearchEngineOptimizationServices';
 import SocialMediaOptimizationServices from '../Pages/Services/SocialMediaOptimizationServices';
 import WebDesignServices from '../Pages/Services/WebDesignServices';
-import WebDevelopmentServices from '../Pages/Services/WebDevelopmentServices';
 import CRMServices from '../Pages/Services/CRMServices';
 import Products from '../Pages/Products';
 import HelpFaqs from '../Pages/HelpFaqs';
@@ -27,6 +23,9 @@ import PrivacyPolicy from '../Pages/PrivacyPolicy';
 import ThankYou from '../Pages/ThankYou';
 import NotFound from '../Pages/NotFound';
 import RealEstateCRM from '../Pages/Services/RealEstateCRM';
+import HospitalCRM from '../Pages/Services/HospitalCRM';
+import AppDevelopment from '../Pages/Services/AppDevelopment';
+import WebDevelopment from '../Pages/Services/WebDevelopment';
 // import RealEstateCRM from '../Pages/Services/RealEstateCRM';
 
 const routeGroups = [
@@ -59,7 +58,6 @@ const routeGroups = [
       { path: '/web-design-services', label: 'Web Design Services', component: WebDesignServices },
       { path: '/web-design-services/request-a-quote', label: 'Web Design Services Quote', component: RequestAQuote },
       { path: '/web-design-services/contacts', label: 'Web Design Services Contact', component: Contacts },
-      { path: '/web-development-services', label: 'Web Development Services', component: WebDevelopmentServices },
       { path: '/web-development-services/request-a-quote', label: 'Web Development Services Quote', component: RequestAQuote },
       { path: '/web-development-services/contacts', label: 'Web Development Services Contact', component: Contacts },
       { path: '/search-engine-optimization-services', label: 'SEO Services', component: SearchEngineOptimizationServices },
@@ -71,7 +69,7 @@ const routeGroups = [
       { path: '/local-seo-services', label: 'Local SEO Services', component: LocalSEOServices },
       { path: '/local-seo-services/request-a-quote', label: 'Local SEO Services Quote', component: RequestAQuote },
       { path: '/local-seo-services/contacts', label: 'Local SEO Services Contact', component: Contacts },
-      { path: '/mobile-app-development-services', label: 'Mobile App Development', component: MobileAppDevelopmentServices },
+      
       { path: '/mobile-app-development-services/request-a-quote', label: 'Mobile App Development Quote', component: RequestAQuote },
       { path: '/mobile-app-development-services/contacts', label: 'Mobile App Development Contact', component: Contacts },
       { path: '/online-reputation-management-services', label: 'Online Reputation Management', component: OnlineReputationManagementServices },
@@ -85,7 +83,9 @@ const routeGroups = [
       { path: '/social-media-optimization-services/contacts', label: 'Social Media Optimization Contact', component: Contacts }
 
 
-       ,{ path: '/services/crm-services/real-state-crm', label: '', component: RealEstateCRM },
+       ,{ path: '/services/crm-services/real-state-crm', label: 'Real State CRM ', component: RealEstateCRM },
+       {path: '/services/crm-services/hospital-crm',label:'Hospital CRM ',component:HospitalCRM}
+       ,{path:'/services/software-services/app-development',label:'App Development',component:AppDevelopment}
 
     ]
   },
@@ -94,8 +94,8 @@ const routeGroups = [
     title: 'Legacy / Campaign Pages',
     description: 'Supporting pages from previous campaigns retained for continuity and internal linking.',
     routes: [
-      { path: '/web-development', label: 'Web Development (Legacy)', component: WebDevelopment },
-      { path: '/app-development', label: 'App Development (Legacy)', component: AppDevelopment },
+      { path: '/services/software-services/web-development', label: 'Web Development (Legacy)', component: WebDevelopment },
+      // { path: '/app-development', label: 'App Development (Legacy)', component: AppDevelopment },
       { path: '/seo-services', label: 'SEO Services (Legacy)', component: SEOServices },
       { path: '/digital-marketing', label: 'Digital Marketing (Legacy)', component: DigitalMarketing },
       { path: '/ui-ux-design', label: 'UI/UX Design (Legacy)', component: UIUXDesign },

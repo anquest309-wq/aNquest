@@ -118,270 +118,243 @@ const About = () => {
 
   return (
     <>
-      <SEO 
+      <SEO
         title="About aNquest Media | Digital & CRM Software Agency Empowering Brands"
         description="Learn about aNquest, a leading digital and software agency delivering innovative strategies, creative design, and CRM solutions to help brands grow effectively."
         keywords="aNquest, about aNquest, digital creative agency, CRM Software Agency, web & mobile development, digital marketing services, business automation solutions"
         canonicalUrl="https://anquestmedia.com/about"
       />
       <div className="min-h-screen theme-bg-primary    ">
-      {/* Hero Section */}
-         <HomeHeroBg/>
-      <section className="relative overflow-hidden flex pt-20  h-[550px]  items-center justify-center ">
-        
-        {/* Content - Centered */}
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8  relative z-10">
-          <div className="max-w-4xl mx-auto text-center pt-6">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
-              Building Digital <span style={{ color: '#2d65bc' }}>Excellence</span>
-            </h1>
-            <p className="text-xl sm:text-2xl theme-text-primary mb-8 max-w-3xl mx-auto leading-relaxed">
-              We are a forward-thinking digital solutions company turning ideas into reality.
-            </p>
-          </div>
-           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-              <Link
-                to={buildUrl('/request-a-quote')}
-                className="bg-[#2d65bc] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#1a4a8a] transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
-              >
-                Get Started
-              </Link>
-              <Link
-                to={buildUrl('/contacts')}
-                className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white transition-all duration-300 text-base sm:text-lg hover:scale-105"
-              >
-                Contact Us
-              </Link>
-            </div>
-        </div>
-      </section>
+        {/* Hero Section */}
 
-      {/* Stats Section */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-10 theme-bg-primary relative overflow-hidden">
-       
-        
-        
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-            {stats.map((stat, index) => (
-              <div 
-                key={index} 
-                className="group relative"
-              >
-                <div className="theme-card rounded-xl sm:rounded-2xl theme-shadow-primary p-4 sm:p-6 lg:p-8 text-center h-full transition-all duration-300 hover:scale-105 hover:shadow-xl"
-                  style={{
-                    border: `2px solid ${theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(45, 101, 188, 0.1)'}`,
-                    background: theme === 'dark' 
-                      ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)'
-                      : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%)'
-                  }}
+
+        {/* Stats Section */}
+        <section
+          className="relative overflow-hidden flex items-center justify-center theme-bg-primary"
+          style={{ minHeight: "calc(100vh - 80px)", paddingTop: "80px" }}
+        >
+          {/* Background */}
+             <HomeHeroBg/>
+          {/* Content */}
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-4xl mx-auto text-center">
+
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 theme-text-primary leading-tight">
+                We Build Powerful{" "}
+                <span className="text-transparent bg-clip-text bg-[#2d65bc]">
+                  Mobile Apps
+                </span>
+              </h1>
+
+              <div className="flex items-center justify-center gap-2 text-xl sm:text-2xl lg:text-3xl font-semibold mb-4">
+                <span className="theme-text-secondary">For</span>
+                <span className="font-bold min-w-[200px] text-transparent bg-clip-text bg-[#2d65bc]">
+                  {/* {typingText} */}
+                  <span className="animate-blink">|</span>
+                </span>
+              </div>
+
+              <p className="text-lg sm:text-xl theme-text-secondary mb-8 max-w-3xl mx-auto leading-relaxed">
+                Expert mobile app development using modern technologies. From native
+                iOS & Android to cross-platform solutions, we deliver scalable,
+                high-performance mobile experiences.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  to={buildUrl("/request-a-quote")}
+                  className="bg-[#2d65bc] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#1a4a8a] transition-all duration-300 hover:scale-105 hover:shadow-2xl"
                 >
-                  {/* Decorative Icon Background */}
-                  <div 
-                    className="absolute top-2 right-2 sm:top-4 sm:right-4 w-12 h-12 sm:w-16 sm:h-16 rounded-full opacity-10 group-hover:opacity-20 transition-opacity duration-300"
-                    style={{ backgroundColor: getStatsColor() }}
-                  ></div>
-                  
-                  {/* Number */}
-                  <div 
-                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-3 relative z-10 transition-all duration-300 group-hover:scale-110" 
-                    style={{ color: getStatsColor() }}
-                  >
-                    {stat.number}
-                  </div>
-                  
-                  {/* Label */}
-                  <div className="text-sm sm:text-base md:text-lg theme-text-secondary font-medium relative z-10 group-hover:theme-text-primary transition-colors duration-300 leading-tight">
-                    {stat.label}
-                  </div>
-                  
-                  {/* Hover Border Effect */}
-                  <div 
-                    className="absolute inset-0 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{
-                      border: `2px solid ${getStatsColor()}`,
-                      boxShadow: `0 0 20px ${getStatsColor()}40`
-                    }}
-                  ></div>
+                  Start a Project
+                </Link>
+
+                <button
+                  onClick={() =>
+                    document
+                      .getElementById("case-studies")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
+                  className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white transition-all duration-300 hover:scale-105"
+                >
+                  See Case Studies
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* About Content Section */}
+        <section className="py-12 sm:py-16 md:py-20 lg:py-24 theme-bg-primary relative overflow-hidden">
+          {/* Background Animation */}
+          <DenseBgAnimation />
+
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center mb-8 sm:mb-12 lg:mb-16">
+                <div>
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold theme-text-primary mb-4 sm:mb-6">
+                    Who We <span style={{ color: '#2d65bc' }}>Are</span>
+                  </h2>
+                  <p className="text-base sm:text-lg theme-text-secondary mb-3 sm:mb-4 leading-relaxed">
+                    At aNquest, we specialize in creating cutting-edge digital solutions across web development, mobile applications, digital marketing, and business automation.
+                  </p>
+                  <p className="text-base sm:text-lg theme-text-secondary leading-relaxed">
+                    With over 15 years of experience, we deliver scalable, high-performance solutions that drive your business forward.
+                  </p>
+                </div>
+                <div className="rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 relative">
+                  <ServicesDashboard />
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* About Content Section */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-24 theme-bg-primary relative overflow-hidden">
-        {/* Background Animation */}
-        <DenseBgAnimation />
-        
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center mb-8 sm:mb-12 lg:mb-16">
-              <div>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold theme-text-primary mb-4 sm:mb-6">
-                  Who We <span style={{ color: '#2d65bc' }}>Are</span>
-                </h2>
-                <p className="text-base sm:text-lg theme-text-secondary mb-3 sm:mb-4 leading-relaxed">
-                  At aNquest, we specialize in creating cutting-edge digital solutions across web development, mobile applications, digital marketing, and business automation.
-                </p>
-                <p className="text-base sm:text-lg theme-text-secondary leading-relaxed">
-                  With over 15 years of experience, we deliver scalable, high-performance solutions that drive your business forward.
-                </p>
-              </div>
-              <div className="rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 relative">
-                 <ServicesDashboard/>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
-              <div className="rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 order-2 lg:order-1 relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800" 
-                  alt="Our Mission" 
-                  className="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover rounded-xl sm:rounded-2xl animate-image-float-delayed" 
-                />
-              </div>
-              <div className="order-1 lg:order-2">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold theme-text-primary mb-4 sm:mb-6">
-                  Our <span style={{ color: '#2d65bc' }}>Mission</span>
-                </h2>
-                <p className="text-base sm:text-lg theme-text-secondary mb-3 sm:mb-4 leading-relaxed">
-                  Our mission is to empower businesses with innovative digital solutions that drive growth and success.
-                </p>
-                <p className="text-base sm:text-lg theme-text-secondary leading-relaxed">
-                  We believe in building long-term partnerships and delivering value that goes beyond just code.
-                </p>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
+                <div className="rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 order-2 lg:order-1 relative">
+                  <img
+                    src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800"
+                    alt="Our Mission"
+                    className="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover rounded-xl sm:rounded-2xl animate-image-float-delayed"
+                  />
+                </div>
+                <div className="order-1 lg:order-2">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold theme-text-primary mb-4 sm:mb-6">
+                    Our <span style={{ color: '#2d65bc' }}>Mission</span>
+                  </h2>
+                  <p className="text-base sm:text-lg theme-text-secondary mb-3 sm:mb-4 leading-relaxed">
+                    Our mission is to empower businesses with innovative digital solutions that drive growth and success.
+                  </p>
+                  <p className="text-base sm:text-lg theme-text-secondary leading-relaxed">
+                    We believe in building long-term partnerships and delivering value that goes beyond just code.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Values Section */}
-      <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary relative overflow-hidden">
-        {/* Enhanced Background Animation */}
-        <SectionsBgAnimation />
+        {/* Values Section */}
+        <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary relative overflow-hidden">
+          {/* Enhanced Background Animation */}
+          <SectionsBgAnimation />
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-4">
-              Our <span style={{ color: '#2d65bc' }}>Values</span>
-            </h2>
-            <p className="text-lg sm:text-xl theme-text-secondary max-w-3xl mx-auto">
-              The principles that guide everything we do
-            </p>
-          </div>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-4">
+                Our <span style={{ color: '#2d65bc' }}>Values</span>
+              </h2>
+              <p className="text-lg sm:text-xl theme-text-secondary max-w-3xl mx-auto">
+                The principles that guide everything we do
+              </p>
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-7xl mx-auto">
-            {values.map((value, index) => (
-              <div 
-                key={index} 
-                className="group relative"
-              >
-                <div 
-                  className="theme-card rounded-2xl theme-shadow-primary p-6 sm:p-8 text-center h-full transition-all duration-300 hover:scale-105 hover:shadow-2xl relative overflow-hidden"
-                  style={{
-                    border: `2px solid ${theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(45, 101, 188, 0.1)'}`,
-                    background: theme === 'dark' 
-                      ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)'
-                      : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%)'
-                  }}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-7xl mx-auto">
+              {values.map((value, index) => (
+                <div
+                  key={index}
+                  className="group relative"
                 >
-                  {/* Decorative Background Gradient */}
-                  <div 
-                    className="absolute top-0 right-0 w-32 h-32 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-3xl"
-                    style={{ 
-                      background: `radial-gradient(circle, #2d65bc 0%, transparent 70%)`
+                  <div
+                    className="theme-card rounded-2xl theme-shadow-primary p-6 sm:p-8 text-center h-full transition-all duration-300 hover:scale-105 hover:shadow-2xl relative overflow-hidden"
+                    style={{
+                      border: `2px solid ${theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(45, 101, 188, 0.1)'}`,
+                      background: theme === 'dark'
+                        ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)'
+                        : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%)'
                     }}
-                  ></div>
-                  
-                  {/* Icon Container with Enhanced Styling */}
-                  <div className="relative z-10 mb-6">
-                    <div 
-                      className="w-20 h-20 rounded-full flex items-center justify-center mx-auto transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 shadow-lg"
-                      style={{ 
-                        background: `linear-gradient(135deg, #2d65bc 0%, #1e4a8e 100%)`,
-                        boxShadow: theme === 'dark' 
-                          ? '0 10px 30px rgba(45, 101, 188, 0.3)' 
-                          : '0 10px 30px rgba(45, 101, 188, 0.2)'
-                      }}
-                    >
-                      <div className="text-white transition-transform duration-300 group-hover:scale-110">
-                        {value.icon}
-                      </div>
-                    </div>
-                    
-                    {/* Icon Glow Effect */}
-                    <div 
-                      className="absolute inset-0 w-20 h-20 rounded-full mx-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"
-                      style={{ 
+                  >
+                    {/* Decorative Background Gradient */}
+                    <div
+                      className="absolute top-0 right-0 w-32 h-32 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-3xl"
+                      style={{
                         background: `radial-gradient(circle, #2d65bc 0%, transparent 70%)`
                       }}
                     ></div>
-                  </div>
-                  
-                  {/* Title */}
-                  <h3 className="text-xl sm:text-2xl font-bold theme-text-primary mb-3 relative z-10 transition-colors duration-300 group-hover:text-[#2d65bc]">
-                    {value.title}
-                  </h3>
-                  
-                  {/* Description */}
-                  <p className="theme-text-secondary text-sm sm:text-base leading-relaxed relative z-10 transition-colors duration-300">
-                    {value.description}
-                  </p>
-                  
-                  {/* Hover Border Effect */}
-                  <div 
-                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                    style={{
-                      border: `2px solid #2d65bc`,
-                      boxShadow: `0 0 30px rgba(45, 101, 188, 0.4), inset 0 0 30px rgba(45, 101, 188, 0.1)`
-                    }}
-                  ></div>
-                  
-                  {/* Bottom Accent Line */}
-                  <div 
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1 rounded-full transition-all duration-500 group-hover:w-20"
-                    style={{ backgroundColor: '#2d65bc' }}
-                  ></div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* CTA Section */}
-      <section className="py-5 sm:py-4 lg:py-5 relative overflow-hidden" style={{ background: getCTABackground() }}>
-      <CTABgAnimation/>
-        
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 ${getCTATextColor()}`}>
-              Ready to Work <span className="opacity-90">Together?</span>
-            </h2>
-            <p className={`text-lg sm:text-xl mb-8 max-w-2xl mx-auto ${getCTATextColor()} opacity-90`}>
-              Let's discuss how we can bring your vision to life with our innovative solutions.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/contacts" className="bg-white text-gray-800 font-bold py-4 px-8 rounded-xl hover:bg-gray-100 transition-all duration-200 text-lg hover:scale-105">
-                Get In Touch
-              </a>
-              <a 
-                href="/#services" 
-                className={`border-2 ${getCTABorderColor()} ${getCTATextColor()} font-bold py-4 px-8 rounded-xl hover:bg-white hover:text-gray-800 transition-all duration-200 text-lg hover:scale-105 services-hover-text`}
-                style={{ ['--hover-color']: getHoverTextColor() }}
-              >
-                Our Services
-              </a>
+                    {/* Icon Container with Enhanced Styling */}
+                    <div className="relative z-10 mb-6">
+                      <div
+                        className="w-20 h-20 rounded-full flex items-center justify-center mx-auto transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 shadow-lg"
+                        style={{
+                          background: `linear-gradient(135deg, #2d65bc 0%, #1e4a8e 100%)`,
+                          boxShadow: theme === 'dark'
+                            ? '0 10px 30px rgba(45, 101, 188, 0.3)'
+                            : '0 10px 30px rgba(45, 101, 188, 0.2)'
+                        }}
+                      >
+                        <div className="text-white transition-transform duration-300 group-hover:scale-110">
+                          {value.icon}
+                        </div>
+                      </div>
+
+                      {/* Icon Glow Effect */}
+                      <div
+                        className="absolute inset-0 w-20 h-20 rounded-full mx-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"
+                        style={{
+                          background: `radial-gradient(circle, #2d65bc 0%, transparent 70%)`
+                        }}
+                      ></div>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-xl sm:text-2xl font-bold theme-text-primary mb-3 relative z-10 transition-colors duration-300 group-hover:text-[#2d65bc]">
+                      {value.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="theme-text-secondary text-sm sm:text-base leading-relaxed relative z-10 transition-colors duration-300">
+                      {value.description}
+                    </p>
+
+                    {/* Hover Border Effect */}
+                    <div
+                      className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                      style={{
+                        border: `2px solid #2d65bc`,
+                        boxShadow: `0 0 30px rgba(45, 101, 188, 0.4), inset 0 0 30px rgba(45, 101, 188, 0.1)`
+                      }}
+                    ></div>
+
+                    {/* Bottom Accent Line */}
+                    <div
+                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1 rounded-full transition-all duration-500 group-hover:w-20"
+                      style={{ backgroundColor: '#2d65bc' }}
+                    ></div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Custom styles for hover effect and image animations */}
-      <style>{`
+        {/* CTA Section */}
+        <section className="py-5 sm:py-4 lg:py-5 relative overflow-hidden" style={{ background: getCTABackground() }}>
+          <CTABgAnimation />
+
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div className="max-w-4xl mx-auto">
+              <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 ${getCTATextColor()}`}>
+                Ready to Work <span className="opacity-90">Together?</span>
+              </h2>
+              <p className={`text-lg sm:text-xl mb-8 max-w-2xl mx-auto ${getCTATextColor()} opacity-90`}>
+                Let's discuss how we can bring your vision to life with our innovative solutions.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/contacts" className="bg-white text-gray-800 font-bold py-4 px-8 rounded-xl hover:bg-gray-100 transition-all duration-200 text-lg hover:scale-105">
+                  Get In Touch
+                </a>
+                <a
+                  href="/#services"
+                  className={`border-2 ${getCTABorderColor()} ${getCTATextColor()} font-bold py-4 px-8 rounded-xl hover:bg-white hover:text-gray-800 transition-all duration-200 text-lg hover:scale-105 services-hover-text`}
+                  style={{ ['--hover-color']: getHoverTextColor() }}
+                >
+                  Our Services
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Custom styles for hover effect and image animations */}
+        <style>{`
         .services-hover-text:hover {
           color: var(--hover-color) !important;
         }

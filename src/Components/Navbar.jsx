@@ -227,7 +227,7 @@ export default function Navbar() {
                           <Link to={buildUrl('/services/crm-services/real-state-crm')} className=" px-4 py-2 flex items-center   hover:bg-[#2d65bc]/10">
                             <Settings size={16} className="mr-2 text-[#2d65bc]" /> Real Estate CRM
                           </Link>
-                          <Link to={buildUrl('/cms/headless-cms')} className=" px-4 py-2 flex items-center hover:bg-[#2d65bc]/10">
+                          <Link to={buildUrl('/services/crm-services/hospital-crm')} className=" px-4 py-2 flex items-center hover:bg-[#2d65bc]/10">
                             <Cloud size={16} className="mr-2 text-[#2d65bc]" />
                             Hospital CRM
                           </Link>
@@ -262,39 +262,19 @@ export default function Navbar() {
                         <div className={`absolute top-0 left-full ml-1 w-64 rounded-lg shadow-xl z-50 ${dropdownBg}`}>
 
                           <Link
-                            to={buildUrl('/software/app-development')}
+                            to={buildUrl('/services/software-services/app-development')}
                             className="flex items-center px-4 py-2 hover:bg-[#2d65bc]/10"
                           >
                             <Smartphone size={15} className="mr-2 text-[#2d65bc]" />
                             App Development
                           </Link>
 
-                          <Link
-                            to={buildUrl('/software/saas-development')}
-                            className="flex items-center px-4 py-2 hover:bg-[#2d65bc]/10"
-                          >
-                            <CloudCog size={15} className="mr-2 text-[#2d65bc]" />
-                            SaaS Development
-                          </Link>
+                         
+
+                         
 
                           <Link
-                            to={buildUrl('/software/erp-systems')}
-                            className="flex items-center px-4 py-2 hover:bg-[#2d65bc]/10"
-                          >
-                            <Database size={15} className="mr-2 text-[#2d65bc]" />
-                            ERP Systems
-                          </Link>
-
-                          <Link
-                            to={buildUrl('/software/cloud-solutions')}
-                            className="flex items-center px-4 py-2 hover:bg-[#2d65bc]/10"
-                          >
-                            <Cloud size={15} className="mr-2 text-[#2d65bc]" />
-                            Cloud Solutions
-                          </Link>
-
-                          <Link
-                            to={buildUrl('/software/web-development')}
+                            to={buildUrl('/services/software-services/web-development')}
                             className="flex items-center px-4 py-2 hover:bg-[#2d65bc]/10"
                           >
                             <Globe size={15} className="mr-2 text-[#2d65bc]" />
@@ -323,7 +303,7 @@ export default function Navbar() {
                           <svg className="w-4 h-4 mr-3 text-[#2d65bc]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                           </svg>
-                          Search Engine Optimization
+                          Digital Marketing
                         </span>
 
                         <svg className="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -340,7 +320,7 @@ export default function Navbar() {
                             className="flex items-center px-4 py-2 hover:bg-[#2d65bc]/10 transition-colors"
                           >
                             <FileSearch size={15} className="mr-2 text-[#2d65bc]" />
-                            On-Page SEO
+                            SEO (Search Engine Opt)
                           </Link>
 
                           <Link
@@ -348,18 +328,12 @@ export default function Navbar() {
                             className="flex items-center px-4 py-2 hover:bg-[#2d65bc]/10 transition-colors"
                           >
                             <Link2 size={15} className="mr-2 text-[#2d65bc]" />
-                            Off-Page SEO
+                            Social Media Marketing
                           </Link>
 
 
 
-                          <Link
-                            to={buildUrl('/seo/ecommerce-seo')}
-                            className="flex items-center px-4 py-2 hover:bg-[#2d65bc]/10 transition-colors"
-                          >
-                            <ShoppingCart size={15} className="mr-2 text-[#2d65bc]" />
-                            E-commerce SEO
-                          </Link>
+                         
 
                         </div>
                       )}
