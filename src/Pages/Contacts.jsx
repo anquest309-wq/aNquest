@@ -234,7 +234,7 @@ const Contacts = () => {
       />
       <div className=" theme-bg-primary border  ">
       {/* Hero Section */}
-      <section className="relative overflow-hidden sm:py-8 h-[550px] min-h-screen "> 
+      <section className="relative overflow-hidden sm:py-8 h-[550px] "> 
         <HomeHeroBg/>
         
         <div className="container mx-auto px-4 sm:px-6 pt-32 lg:px-8 relative z-10">

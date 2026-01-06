@@ -10,10 +10,8 @@ import ECommerceSolutions from '../Pages/ECommerceSolutions';
 import Contacts from '../Pages/Contacts';
 import EmailMarketingServices from '../Pages/Services/EmailMarketingServices';
 import LocalSEOServices from '../Pages/Services/LocalSEOServices';
-import OnlineReputationManagementServices from '../Pages/Services/OnlineReputationManagementServices';
 import PayPerClickPPCServices from '../Pages/Services/PayPerClickPPCServices';
 import SearchEngineOptimizationServices from '../Pages/Services/SearchEngineOptimizationServices';
-import SocialMediaOptimizationServices from '../Pages/Services/SocialMediaOptimizationServices';
 import WebDesignServices from '../Pages/Services/WebDesignServices';
 import CRMServices from '../Pages/Services/CRMServices';
 import Products from '../Pages/Products';
@@ -26,7 +24,9 @@ import RealEstateCRM from '../Pages/Services/RealEstateCRM';
 import HospitalCRM from '../Pages/Services/HospitalCRM';
 import AppDevelopment from '../Pages/Services/AppDevelopment';
 import WebDevelopment from '../Pages/Services/WebDevelopment';
+import SocialMediaOptimizationServices from "../Pages/Services/SocialMediaOptimizationServices"
 // import RealEstateCRM from '../Pages/Services/RealEstateCRM';
+
 
 const routeGroups = [
   {
@@ -60,7 +60,8 @@ const routeGroups = [
       { path: '/web-design-services/contacts', label: 'Web Design Services Contact', component: Contacts },
       { path: '/web-development-services/request-a-quote', label: 'Web Development Services Quote', component: RequestAQuote },
       { path: '/web-development-services/contacts', label: 'Web Development Services Contact', component: Contacts },
-      { path: '/search-engine-optimization-services', label: 'SEO Services', component: SearchEngineOptimizationServices },
+      { path: '/services/digital-marketing/seo', label: 'SEO Services', component: SearchEngineOptimizationServices },
+      { path: '/services/digital-marketing/social-media-optimization', label: 'SEO Services', component: SocialMediaOptimizationServices },
       { path: '/search-engine-optimization-services/request-a-quote', label: 'SEO Services Quote', component: RequestAQuote },
       { path: '/search-engine-optimization-services/contacts', label: 'SEO Services Contact', component: Contacts },
       { path: '/email-marketing-services', label: 'Email Marketing Services', component: EmailMarketingServices },
@@ -70,15 +71,15 @@ const routeGroups = [
       { path: '/local-seo-services/request-a-quote', label: 'Local SEO Services Quote', component: RequestAQuote },
       { path: '/local-seo-services/contacts', label: 'Local SEO Services Contact', component: Contacts },
       
-      { path: '/mobile-app-development-services/request-a-quote', label: 'Mobile App Development Quote', component: RequestAQuote },
+      { path: '/mobile-app-development-services/request-a-quote',label: 'Mobile App Development Quote', component: RequestAQuote },
       { path: '/mobile-app-development-services/contacts', label: 'Mobile App Development Contact', component: Contacts },
-      { path: '/online-reputation-management-services', label: 'Online Reputation Management', component: OnlineReputationManagementServices },
+      
       { path: '/online-reputation-management-services/request-a-quote', label: 'Online Reputation Management Quote', component: RequestAQuote },
       { path: '/online-reputation-management-services/contacts', label: 'Online Reputation Management Contact', component: Contacts },
       { path: '/pay-per-click-ppc-services', label: 'Pay Per Click (PPC)', component: PayPerClickPPCServices },
       { path: '/pay-per-click-ppc-services/request-a-quote', label: 'Pay Per Click Quote', component: RequestAQuote },
       { path: '/pay-per-click-ppc-services/contacts', label: 'Pay Per Click Contact', component: Contacts },
-      { path: '/social-media-optimization-services', label: 'Social Media Optimization', component: SocialMediaOptimizationServices },
+      
       { path: '/social-media-optimization-services/request-a-quote', label: 'Social Media Optimization Quote', component: RequestAQuote },
       { path: '/social-media-optimization-services/contacts', label: 'Social Media Optimization Contact', component: Contacts }
 
@@ -86,6 +87,7 @@ const routeGroups = [
        ,{ path: '/services/crm-services/real-state-crm', label: 'Real State CRM ', component: RealEstateCRM },
        {path: '/services/crm-services/hospital-crm',label:'Hospital CRM ',component:HospitalCRM}
        ,{path:'/services/software-services/app-development',label:'App Development',component:AppDevelopment}
+       
 
     ]
   },

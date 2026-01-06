@@ -517,8 +517,8 @@ const AppDevelopment = () => {
                 description="Build high-performing iOS and Android applications with aNquest Media's custom app development team. Native and cross-platform solutions."
                 canonicalUrl="https://anquestmedia.com/app-development"
             />
-            <div className="min-h-screen relative overflow-hidden">
-                <div className="min-h-screen theme-bg-primary relative z-10">
+            <div className="min-h-screen relative overflow-hidden  ">
+                <div className="theme-bg-primary relative z-10  ">
 
                     {/* === HERO SECTION START (Updated) === */}
                     <section
@@ -529,7 +529,7 @@ const AppDevelopment = () => {
                         <HomeHeroBg theme={theme} />
 
                         {/* Content */}
-                        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex h-[550px]   items-center justify-center  ">
                             <div className="max-w-4xl mx-auto text-center">
 
                                 <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 theme-text-primary leading-tight">

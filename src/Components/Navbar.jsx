@@ -316,7 +316,7 @@ export default function Navbar() {
                         <div className={`absolute top-0 left-full ml-1 w-64 rounded-lg shadow-xl z-50 ${dropdownBg}`}>
 
                           <Link
-                            to={buildUrl('/seo/on-page-seo')}
+                            to={buildUrl('/services/digital-marketing/seo')}
                             className="flex items-center px-4 py-2 hover:bg-[#2d65bc]/10 transition-colors"
                           >
                             <FileSearch size={15} className="mr-2 text-[#2d65bc]" />
@@ -324,7 +324,7 @@ export default function Navbar() {
                           </Link>
 
                           <Link
-                            to={buildUrl('/seo/off-page-seo')}
+                            to={buildUrl('/services/digital-marketing/social-media-optimization')}
                             className="flex items-center px-4 py-2 hover:bg-[#2d65bc]/10 transition-colors"
                           >
                             <Link2 size={15} className="mr-2 text-[#2d65bc]" />
