@@ -5,15 +5,12 @@ import { useTheme } from "../Context/ThemeContext";
 import { buildUrl } from '../utils/urlUtils';
 import {
   Settings, Cloud, Smartphone,
-  CloudCog,
-  Database,
   Globe
 } from "lucide-react";
 import {
   FileSearch,
   Link2,
-  MapPin,
-  ShoppingCart,
+  
 } from "lucide-react";
 
 
