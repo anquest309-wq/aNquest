@@ -81,7 +81,7 @@ const HospitalCRM = () => {
             icon: Stethoscope,
             title: 'Clinic CRM',
             description: 'Efficient CRM for small to medium clinics with appointment booking, patient records, and billing.',
-            gradient: 'from-teal-500 to-green-500',
+            gradient: 'from-[#2d65bc] to-green-500',
             features: ['Queue Management', 'Digital Prescriptions', 'Follow-up Reminders', 'Report Integration']
         },
         {
@@ -109,7 +109,7 @@ const HospitalCRM = () => {
             icon: Eye,
             title: 'Eye Care CRM',
             description: 'Ophthalmology CRM with vision testing, prescription management, and surgical procedure tracking.',
-            gradient: 'from-cyan-500 to-teal-500',
+            gradient: 'from-cyan-500 to-[#2d65bc]',
             features: ['Vision Records', 'Prescription History', 'Surgery Scheduling', 'Optical Integration']
         },
         {
@@ -272,43 +272,13 @@ const HospitalCRM = () => {
         }
     };
 
-    const handlePrevTestimonial = () => {
-        if (testimonialScrollRef.current) {
-            const cardWidth = testimonialScrollRef.current.children[0]?.offsetWidth || 0;
-            const gap = 32;
-            const scrollAmount = cardWidth + gap;
-
-            if (currentTestimonialIndex > 0) {
-                testimonialScrollRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-                setCurrentTestimonialIndex(prev => prev - 1);
-            } else {
-                const maxScroll = testimonialScrollRef.current.scrollWidth - testimonialScrollRef.current.clientWidth;
-                testimonialScrollRef.current.scrollTo({ left: maxScroll, behavior: 'smooth' });
-                setCurrentTestimonialIndex(testimonials.length - 1);
-            }
-        }
-    };
-
-    const handleTestimonialDotClick = (index) => {
-        if (testimonialScrollRef.current) {
-            const cardWidth = testimonialScrollRef.current.children[0]?.offsetWidth || 0;
-            const gap = 32;
-            const scrollAmount = (cardWidth + gap) * index;
-
-            testimonialScrollRef.current.scrollTo({ left: scrollAmount, behavior: 'smooth' });
-            setCurrentTestimonialIndex(index);
-            setIsAutoPlaying(false);
-
-            setTimeout(() => setIsAutoPlaying(true), 10000);
-        }
-    };
 
     // Dashboard Preview Components
     const SidebarItem = ({ icon: Icon, active, onClick }) => (
         <button
             onClick={onClick}
             className={`p-3 rounded-xl transition-all duration-300 group relative ${active
-                ? 'bg-teal-500 text-white shadow-lg shadow-teal-500/30'
+                ? 'bg-[#2d65bc] text-white shadow-lg shadow-[#2d65bc]/30'
                 : `text-gray-400 hover:bg-gray-100 ${theme === 'dark' ? 'hover:bg-slate-800' : ''}`}`}
         >
             <Icon size={20} strokeWidth={active ? 2.5 : 2} />
@@ -318,7 +288,7 @@ const HospitalCRM = () => {
 
     const DashboardStatsView = ({ themeTextPrimary, themeTextSecondary }) => {
         const stats = [
-            { icon: Users, label: 'New Patients', value: '47', color: 'from-teal-500 to-cyan-500' },
+            { icon: Users, label: 'New Patients', value: '47', color: 'from-[#2d65bc] to-cyan-500' },
             { icon: Calendar, label: 'Appointments', value: '124', color: 'from-blue-500 to-indigo-500' },
             { icon: Activity, label: 'OPD Active', value: '38', color: 'from-green-500 to-emerald-500' },
             { icon: FileText, label: 'Lab Reports', value: '52', color: 'from-purple-500 to-pink-500' }
@@ -346,7 +316,7 @@ const HospitalCRM = () => {
                     <h4 className={`text-xs sm:text-sm font-bold ${themeTextPrimary} mb-2 sm:mb-3 px-1`}>Recent Activity</h4>
                     <div className="space-y-1.5 sm:space-y-2">
                         {[
-                            { user: 'Dr. Sharma', action: 'Completed consultation', time: '5m ago', icon: Stethoscope, color: 'text-teal-500 bg-teal-50' },
+                            { user: 'Dr. Sharma', action: 'Completed consultation', time: '5m ago', icon: Stethoscope, color: 'text-[#2d65bc] bg-teal-50' },
                             { user: 'Reception', action: 'New appointment booked', time: '12m ago', icon: Calendar, color: 'text-blue-500 bg-blue-50' },
                             { user: 'Lab', action: 'Report generated', time: '20m ago', icon: FileText, color: 'text-green-500 bg-green-50' },
                         ].map((item, idx) => (
@@ -387,7 +357,7 @@ const HospitalCRM = () => {
                         <thead>
                             <tr>
                                 {['Patient', 'Status', 'Action'].map((h) => (
-                                    <th key={h} className={`py-2 sm:py-3 px-2 sm:px-4 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider ${headerColor} border-b-2 border-teal-500`}>
+                                    <th key={h} className={`py-2 sm:py-3 px-2 sm:px-4 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider ${headerColor} border-b-2 border-[#2d65bc]`}>
                                         {h}
                                     </th>
                                 ))}
@@ -416,7 +386,7 @@ const HospitalCRM = () => {
                                         </span>
                                     </td>
                                     <td className="py-2 sm:py-3 px-2 sm:px-4">
-                                        <MoreHorizontal size={14} className="text-gray-400 cursor-pointer hover:text-teal-500" />
+                                        <MoreHorizontal size={14} className="text-gray-400 cursor-pointer hover:text-[#2d65bc]" />
                                     </td>
                                 </tr>
                             ))}
@@ -436,12 +406,12 @@ const HospitalCRM = () => {
             ].map((apt, i) => (
                 <div key={i} className={`flex gap-2 sm:gap-3 p-2 rounded-lg sm:rounded-xl border ${theme === 'light' ? 'bg-white border-gray-100 hover:border-teal-200' : 'bg-slate-800 border-slate-700 hover:border-teal-700'} transition-all cursor-pointer group`}>
                     <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-lg flex flex-col items-center justify-center ${theme === 'light' ? 'bg-teal-50' : 'bg-teal-900/30'}`}>
-                        <Clock size={14} className="text-teal-500 sm:w-4 sm:h-4 mb-0.5" />
+                        <Clock size={14} className="text-[#2d65bc] sm:w-4 sm:h-4 mb-0.5" />
                         <span className="text-[9px] sm:text-[10px] font-bold text-teal-600">{apt.time}</span>
                     </div>
                     <div className="flex-1 min-w-0 flex flex-col justify-center">
                         <div className="flex justify-between items-start">
-                            <h4 className={`text-xs sm:text-sm font-bold ${themeTextPrimary} truncate group-hover:text-teal-500 transition-colors`}>{apt.patient}</h4>
+                            <h4 className={`text-xs sm:text-sm font-bold ${themeTextPrimary} truncate group-hover:text-[#2d65bc] transition-colors`}>{apt.patient}</h4>
                         </div>
                         <div className="flex items-center gap-1 mt-0.5 text-gray-400">
                             <Stethoscope size={8} className="sm:w-2.5 sm:h-2.5" />
@@ -526,7 +496,7 @@ const HospitalCRM = () => {
                 {/* Metrics Grid */}
                 <div className="grid grid-cols-2 gap-2 sm:gap-3">
                     {[
-                        { label: 'Total Patients', value: '247', icon: Users, color: 'from-teal-500 to-cyan-500' },
+                        { label: 'Total Patients', value: '247', icon: Users, color: 'from-[#2d65bc] to-cyan-500' },
                         { label: "Today's Visits", value: '89', icon: Calendar, color: 'from-blue-500 to-indigo-500' },
                         { label: 'Bed Occupancy', value: '78%', icon: Activity, color: 'from-green-500 to-emerald-500' },
                         { label: 'Prescriptions', value: '156', icon: Pill, color: 'from-purple-500 to-pink-500' }
@@ -577,17 +547,8 @@ const HospitalCRM = () => {
             >
                 {/* Top Bar */}
                 <div className={`h-12 sm:h-16 px-3 sm:px-6 flex items-center justify-between border-b ${theme === 'light' ? 'bg-white/80 border-gray-200' : 'bg-slate-900/80 border-slate-800'} backdrop-blur-sm z-10`}>
-                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full overflow-hidden border-2 border-white shadow-sm bg-white">
-                        <img src="/logo-anquest+.png" alt="Profile" className="w-full h-full object-contain" />
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-400 bg-gray-100/50 p-1.5 sm:p-2 rounded-lg w-28 sm:w-40">
-                        <Search size={12} className="sm:w-3.5 sm:h-3.5" />
-                        <span className="text-[10px] sm:text-xs">Search...</span>
-                    </div>
-                    <div className="flex items-center gap-2 sm:gap-3">
-                        <Bell size={14} className="text-gray-400 sm:w-4 sm:h-4" />
-
-                    </div>
+                    
+                    
                 </div>
 
                 {/* Main Layout */}
@@ -609,7 +570,7 @@ const HospitalCRM = () => {
                             <h2 className={`text-base sm:text-xl font-bold ${themeTextPrimary} capitalize`}>
                                 {activeTab === 'dashboard' ? 'Overview' : activeTab === 'analytics' ? 'Analytics' : activeTab}
                             </h2>
-                            <button className="text-[9px] sm:text-[10px] font-bold text-teal-500 bg-teal-50 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md">
+                            <button className="text-[9px] sm:text-[10px] font-bold text-[#2d65bc] bg-teal-50 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md">
                                 + Add New
                             </button>
                         </div>
@@ -708,7 +669,7 @@ const HospitalCRM = () => {
 
                 <div className="theme-bg-primary relative z-10">
 
-                    {/* 1️⃣ Hero Section */}
+                    {/*  Hero Section */}
                     <section className="relative overflow-hidden h-[550px] flex items-center justify-center pt-20">
                         {/* Background Animation */}
                         <HomeHeroBg theme={theme} />
@@ -722,7 +683,7 @@ const HospitalCRM = () => {
                                 {/* Heading */}
                                 <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 theme-text-primary leading-tight">
                                     Advanced Hospital CRM Solutions for{" "}
-                                    <span className="text-teal-500">Patient-Centric Healthcare</span>
+                                    <span className="text-[#2d65bc]">Patient-Centric Healthcare</span>
                                 </h1>
 
                                 {/* Subtitle */}
@@ -736,14 +697,14 @@ const HospitalCRM = () => {
                             {/* CTA BUTTONS */}
                             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
                                 <Link
-                                    to={buildUrl("/request-a-quote")}
+                                    to={buildUrl("/services/crm-services/hospital-crm/request-a-quote")}
                                     className="bg-[#2d65bc] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#1a4a8a] transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
                                 >
                                     Book Demo
                                 </Link>
 
                                 <Link
-                                    to={buildUrl("/contacts-us")}
+                                    to={buildUrl("/services/crm-services/hospital-crm/contact-us")}
                                     className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white transition-all duration-300 text-base sm:text-lg hover:scale-105"
                                 >
                                     Talk to Specialist
@@ -758,7 +719,7 @@ const HospitalCRM = () => {
 
 
 
-                    {/* 1️⃣ Dashboard Section */}
+                    {/*  Dashboard Section */}
                     <section className="relative overflow-hidden py-10 h-[550px] flex items-center justify-center lg:py-16 md:py-24">
                         <HomeHeroBg theme={theme} />
 
@@ -769,7 +730,7 @@ const HospitalCRM = () => {
                                 <div className="space-y-8">
                                     <h1 className="text-3xl md:text-4xl font-bold theme-text-primary leading-tight">
                                         Advanced Hospital CRM Solutions for{" "}
-                                        <span className="text-teal-500">Patient-Centric Healthcare</span>
+                                        <span className="text-[#2d65bc]">Patient-Centric Healthcare</span>
                                     </h1>
 
                                     <p className="text-xl theme-text-secondary leading-relaxed">
@@ -785,7 +746,7 @@ const HospitalCRM = () => {
                                             "Real-time hospital analytics dashboard",
                                         ].map((item, i) => (
                                             <li key={i} className="flex items-start gap-3">
-                                                <CheckCircle className="w-5 h-5 text-teal-500 mt-1" />
+                                                <CheckCircle className="w-5 h-5 text-[#2d65bc] mt-1" />
                                                 <span className="theme-text-primary font-medium">{item}</span>
                                             </li>
                                         ))}
@@ -814,7 +775,7 @@ const HospitalCRM = () => {
                             <div className="text-center  mx-auto mb-16">
 
                                 <h2 className="text-3xl md:text-4xl  font-bold theme-text-primary mb-4">
-                                    Comprehensive <span className="text-teal-500">Hospital Management</span>
+                                    Comprehensive <span className="text-[#2d65bc]">Hospital Management</span>
                                 </h2>
                                 <p className="text-xl theme-text-secondary">
                                     Everything you need to manage patients, staff, appointments, billing, and analytics in one platform
@@ -833,7 +794,7 @@ const HospitalCRM = () => {
                                             transitionDelay: `${idx * 50}ms`
                                         }}
                                     >
-                                        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center mb-4 micro-bounce">
+                                        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#2d65bc] to-cyan-500 flex items-center justify-center mb-4 micro-bounce">
                                             <feature.icon className="text-white" size={28} />
                                         </div>
                                         <h3 className="text-xl font-bold theme-text-primary mb-2">{feature.title}</h3>
@@ -852,7 +813,7 @@ const HospitalCRM = () => {
                             <div className="text-center  mx-auto mb-16">
 
                                 <h2 className="text-3xl md:text-4xl   font-bold theme-text-primary mb-4">
-                                    <span className="text-teal-500">Hospital CRM</span> for Every Healthcare Provider
+                                    <span className="text-[#2d65bc]">Hospital CRM</span> for Every Healthcare Provider
                                 </h2>
                                 <p className="text-xl theme-text-secondary">
                                     Specialized CRM solutions tailored for different healthcare facilities and departments
@@ -876,7 +837,7 @@ const HospitalCRM = () => {
                                         <ul className="space-y-2">
                                             {category.features.map((feat, i) => (
                                                 <li key={i} className="flex items-start gap-2 text-sm theme-text-secondary">
-                                                    <CheckCircle className="w-4 h-4 text-teal-500 flex-shrink-0 mt-0.5" />
+                                                    <CheckCircle className="w-4 h-4 text-[#2d65bc] flex-shrink-0 mt-0.5" />
                                                     <span>{feat}</span>
                                                 </li>
                                             ))}
@@ -895,7 +856,7 @@ const HospitalCRM = () => {
                             <div className="text-center  mx-auto mb-16">
 
                                 <h2 className="text-3xl md:text-4xl   font-bold theme-text-primary mb-4">
-                                    Transform Healthcare <span className="text-teal-500">Operations</span>
+                                    Transform Healthcare <span className="text-[#2d65bc]">Operations</span>
                                 </h2>
                                 <p className="text-xl theme-text-secondary">
                                     Common hospital management problems solved with intelligent automation
@@ -910,7 +871,7 @@ const HospitalCRM = () => {
                                         style={{ animationDelay: `${idx * 200}ms` }}
                                     >
                                         <div className="flex items-start gap-4">
-                                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center flex-shrink-0">
+                                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#2d65bc] to-cyan-500 flex items-center justify-center flex-shrink-0">
                                                 <CheckCircle className="text-white" size={24} />
                                             </div>
                                             <div>
@@ -931,7 +892,7 @@ const HospitalCRM = () => {
                             <div className="text-center  mx-auto mb-16">
 
                                 <h2 className="text-3xl md:text-4xl   font-bold theme-text-primary mb-4">
-                                    Our <span className="text-teal-500">CRM Implementation</span> Process
+                                    Our <span className="text-[#2d65bc]">CRM Implementation</span> Process
                                 </h2>
                                 <p className="text-xl theme-text-secondary">
                                     Seamless onboarding with expert guidance every step of the way
@@ -945,8 +906,8 @@ const HospitalCRM = () => {
                                         className="glass-tile rounded-2xl p-3  float-3d text-center"
                                         style={{ animationDelay: `${idx * 200}ms` }}
                                     >
-                                        <div className="text-6xl font-black text-teal-500/20 mb-4">{step.number}</div>
-                                        <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center mx-auto mb-4 micro-bounce">
+                                        <div className="text-6xl font-black text-[#2d65bc]/20 mb-4">{step.number}</div>
+                                        <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#2d65bc] to-cyan-500 flex items-center justify-center mx-auto mb-4 micro-bounce">
                                             <step.icon className="text-white" size={32} />
                                         </div>
                                         <h3 className="text-xl font-bold theme-text-primary mb-3">{step.title}</h3>
@@ -963,12 +924,9 @@ const HospitalCRM = () => {
 
                         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                             <div className="text-center  mx-auto mb-16">
-                                {/* <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-hero neon-edge mb-4">
-                <Award className="w-4 h-4 text-teal-500" />
-                <span className="text-sm font-semibold theme-text-primary">Benefits</span>
-              </div> */}
+                                
                                 <h2 className="text-3xl md:text-4xl   font-bold theme-text-primary mb-4">
-                                    Why Choose <span className="text-teal-500">Our Hospital CRM?</span>
+                                    Why Choose <span className="text-[#2d65bc]">Our Hospital CRM?</span>
                                 </h2>
                                 <p className="text-xl theme-text-secondary">
                                     Proven results that transform healthcare operations and patient experience
@@ -982,7 +940,7 @@ const HospitalCRM = () => {
                                         className="glass-tile rounded-2xl p-3 lg:p-6 float-reverse-3d"
                                         style={{ animationDelay: `${idx * 150}ms` }}
                                     >
-                                        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center mb-4 micro-bounce">
+                                        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#2d65bc] to-cyan-500 flex items-center justify-center mb-4 micro-bounce">
                                             <benefit.icon className="text-white" size={28} />
                                         </div>
                                         <h3 className="text-xl font-bold theme-text-primary mb-2">{benefit.title}</h3>
@@ -1005,7 +963,7 @@ const HospitalCRM = () => {
                                 <div className="rounded-3xl p-3 sm:p-4 py-4 sm:py-8 lg:py-12 lg:p-4 theme-shadow-primary relative overflow-hidden">
                                     <div className="relative z-10">
                                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold theme-text-primary mb-6">
-                                            Ready to Transform Your <span style={{ color: '#14b8a6' }}>Healthcare Operations?</span>
+                                            Ready to Transform Your <span style={{ color: '#2d65bc' }}>Healthcare Operations?</span>
                                         </h2>
 
                                         <p className="text-lg sm:text-xl theme-text-secondary mb-8 max-w-2xl mx-auto leading-relaxed">

@@ -328,7 +328,7 @@ const SocialMediaOptimizationServices = () => {
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link
-                    to={buildUrl("/request-a-quote")}
+                    to={buildUrl("/services/digital-marketing/social-media-optimization/request-a-quote")}
                     className="bg-[#2d65bc] text-white font-bold
                      py-3 sm:py-4 px-6 sm:px-8
                      rounded-xl transition-all duration-300
@@ -338,20 +338,22 @@ const SocialMediaOptimizationServices = () => {
                     Start a Project
                   </Link>
 
+                 <Link to={buildUrl('/services/digital-marketing/social-media-optimization/contact-us')}>
                   <button
                     onClick={() =>
                       document
-                        .getElementById("case-studies")
-                        ?.scrollIntoView({ behavior: "smooth" })
+                      .getElementById("case-studies")
+                      ?.scrollIntoView({ behavior: "smooth" })
                     }
                     className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold
-                     py-3 sm:py-4 px-6 sm:px-8
-                     rounded-xl transition-all duration-300
-                     hover:bg-[#2d65bc] hover:text-white
-                     hover:scale-105"
-                  >
-                    See Case Studies
+                    py-3 sm:py-4 px-6 sm:px-8
+                    rounded-xl transition-all duration-300
+                    hover:bg-[#2d65bc] hover:text-white
+                    hover:scale-105"
+                    >
+                     Talk to Specialist
                   </button>
+                    </Link>
                 </div>
 
               </div>

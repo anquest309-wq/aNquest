@@ -690,7 +690,7 @@ const RealEstateCRM = () => {
                                     </Link>
 
                                     <Link
-                                        to={buildUrl("/contacts-us")}
+                                        to={buildUrl("/services/crm-services/real-state-crm/contact-us")}
                                         className="px-8 py-4 rounded-xl font-bold text-lg border-2 border-[#2d65bc] text-[#2d65bc] hover:bg-[#2d65bc] hover:text-white transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
                                     >
                                         Contact Us
@@ -743,24 +743,7 @@ const RealEstateCRM = () => {
                                         ))}
                                     </ul>
 
-                                    <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                                        <Link
-                                            to={buildUrl("/request-a-quote")}
-                                            className="px-6 py-4 rounded-xl font-bold text-white transition-all duration-300 hover:scale-105 hover:shadow-xl flex items-center justify-center gap-2"
-                                            style={{ background: "linear-gradient(135deg, #2d65bc, #1e88e5)" }}
-                                        >
-                                            Request Demo
-                                            <ArrowRight className="w-5 h-5" />
-                                        </Link>
-
-                                        <Link
-                                            to={buildUrl("/contacts-us")}
-                                            className="px-6 py-4 rounded-xl font-bold border-2 border-[#2d65bc] text-[#2d65bc] hover:bg-[#2d65bc] hover:text-white transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
-                                        >
-                                            Talk to Expert
-                                            <Phone className="w-5 h-5" />
-                                        </Link>
-                                    </div>
+                                  
                                 </div>
 
                                 {/* RIGHT SIDE — 3D DASHBOARD */}

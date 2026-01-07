@@ -17,6 +17,7 @@ import NotFound from '../Pages/NotFound';
 import RealEstateCRM from '../Pages/Services/RealEstateCRM';
 import HospitalCRM from '../Pages/Services/HospitalCRM';
 import AppDevelopment from '../Pages/Services/AppDevelopment';
+import WebDevelopment from '../Pages/Services/WebDevelopment';
 import SocialMediaOptimizationServices from "../Pages/Services/SocialMediaOptimizationServices"
 // import RealEstateCRM from '../Pages/Services/RealEstateCRM';
 
@@ -55,32 +56,49 @@ const routeGroups = [
       { path: '/services/digital-marketing/seo', label: 'SEO Services', component: SearchEngineOptimizationServices },
       { path: '/services/digital-marketing/social-media-optimization', label: 'SEO Services', component: SocialMediaOptimizationServices },
       { path: '/search-engine-optimization-services/request-a-quote', label: 'SEO Services Quote', component: RequestAQuote },
+      { path: '/services/crm-services/hospital-crm/request-a-quote', label: 'hostpital to Request a Quote', component: RequestAQuote },
+      { path: '/services/software-services/app-development/request-a-quote', label: 'hostpital to Request a Quote', component: RequestAQuote },
+      { path: '/services/digital-marketing/seo/request-a-quote', label: 'hostpital to Request a Quote', component: RequestAQuote },
+      { path: '/services/digital-marketing/social-media-optimization/request-a-quote', label: 'hostpital to Request a Quote', component: RequestAQuote },
+
+
+
+
+      { path: '/services/crm-services/hospital-crm/contact-us', label: 'SEO Services Contact', component: Contacts },
       { path: '/search-engine-optimization-services/contact-us', label: 'SEO Services Contact', component: Contacts },
-     
+      { path: '/services/software-services/app-development/contact-us', label: 'SEO Services Contact', component: Contacts },
+      { path: '/services/digital-marketing/seo/contact-us', label: 'SEO Services Contact', component: Contacts },
+       { path: '/services/digital-marketing/social-media-optimization/contact-us', label: 'SEO Services Contact', component: Contacts },
+
       
-     
-       { path: '/about/blogs', label: 'About page to blogs ', component: Blogs },
-      
-      { path: '/mobile-app-development-services/request-a-quote',label: 'Mobile App Development Quote', component: RequestAQuote },
+
+
+      { path: '/services/crm-services/real-state-crm/contact-us', label: 'SEO Services Contact', component: Contacts },
+
+
+      { path: '/about/blogs', label: 'About page to blogs ', component: Blogs },
+
+      { path: '/mobile-app-development-services/request-a-quote', label: 'Mobile App Development Quote', component: RequestAQuote },
       { path: '/mobile-app-development-services/contact-us', label: 'Mobile App Development Contact', component: Contacts },
-      
+
       { path: '/online-reputation-management-services/request-a-quote', label: 'Online Reputation Management Quote', component: RequestAQuote },
       { path: '/online-reputation-management-services/contact-us', label: 'Online Reputation Management Contact', component: Contacts },
-     
-     
-      
+
+
+
       { path: '/social-media-optimization-services/request-a-quote', label: 'Social Media Optimization Quote', component: RequestAQuote },
       { path: '/social-media-optimization-services/contact-us', label: 'Social Media Optimization Contact', component: Contacts }
 
 
-       ,{ path: '/services/crm-services/real-state-crm', label: 'Real State CRM ', component: RealEstateCRM },
-       {path: '/services/crm-services/hospital-crm',label:'Hospital CRM ',component:HospitalCRM}
-       ,{path:'/services/software-services/app-development',label:'App Development',component:AppDevelopment}
-       
+      , { path: '/services/crm-services/real-state-crm', label: 'Real State CRM ', component: RealEstateCRM },
+      { path: '/services/crm-services/hospital-crm', label: 'Hospital CRM ', component: HospitalCRM }
+      , { path: '/services/software-services/app-development', label: 'App Development', component: AppDevelopment },
+      { path: '/services/software-services/web-development', label: 'Web Development', component: WebDevelopment}
+
 
     ]
   },
- 
+
   {
     id: 'resources',
     title: 'Resources & Utilities',

@@ -32,9 +32,13 @@ export default function Navbar() {
   const [isCmsOpen, setIsCmsOpen] = useState(false); // desktop CMS dropdown
 
   const [isSoftwareOpen, setIsSoftwareOpen] = useState(false); // desktop
-  const [isMobileSoftwareOpen, setIsMobileSoftwareOpen] = useState(false); // mobile
   const [isSeoOpen, setIsSeoOpen] = useState(false);        // desktop
-  const [isMobileSeoOpen, setIsMobileSeoOpen] = useState(false); // mobile
+
+
+  const [isMobileCmsOpen, setIsMobileCmsOpen] = useState(false);
+  const [isMobileSoftwareOpen, setIsMobileSoftwareOpen] = useState(false);
+  const [isMobileSeoOpen, setIsMobileSeoOpen] = useState(false);
+
 
 
 
@@ -54,10 +58,7 @@ export default function Navbar() {
     }
   };
 
-  const handleDropdownItemSelect = () => {
-    setClickedDropdown(null);
-    setActiveDropdown(null);
-  };
+
 
   const handleDropdownHover = (name) => {
     if (!clickedDropdown) {
@@ -269,9 +270,9 @@ export default function Navbar() {
                             App Development
                           </Link>
 
-                         
 
-                         
+
+
 
                           <Link
                             to={buildUrl('/services/software-services/web-development')}
@@ -334,7 +335,7 @@ export default function Navbar() {
 
 
 
-                         
+
 
                         </div>
                       )}
@@ -476,89 +477,108 @@ export default function Navbar() {
                   </button>
 
                   {/* Services Submenu */}
+
+
                   {isServicesOpen && (
-                    <div className="bg-[#f4f4f5] text-black space-y-1 py-2">
-                      <Link
-                        to={buildUrl('/crm-services')}
-                        onClick={toggleMenu}
-                        className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
+                    <div className="bg-[#f4f4f5] text-black py-2">
+
+                      {/* ===== CMS SERVICES ===== */}
+                      <button
+                        onClick={() => setIsMobileCmsOpen(!isMobileCmsOpen)}
+                        className="w-full flex justify-between items-center px-6 py-2 font-semibold text-[#2d65bc]"
                       >
-                        CRM Services
-                      </Link>
-                      <Link
-                        to={buildUrl('/email-marketing-services')}
-                        onClick={toggleMenu}
-                        className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
+                        CMS Services
+                        <span>{isMobileCmsOpen ? "−" : "+"}</span>
+                      </button>
+                       {isMobileCmsOpen && (
+                        <div className="ml-6 bg-white rounded-md overflow-hidden">
+                          <Link
+                            to={buildUrl('/services/crm-services/real-state-crm')}
+                            onClick={toggleMenu}
+                            className="block px-4 py-2 text-sm hover:bg-[#2d65bc]/10"
+                          >
+                            Real Estate CRM
+                          </Link>
+                          <Link
+                            to={buildUrl('/services/crm-services/hospital-crm')}
+                            onClick={toggleMenu}
+                            className="block px-4 py-2 text-sm hover:bg-[#2d65bc]/10"
+                          >
+                            Hospital CRM
+                          </Link>
+                        </div>
+                      )}
+
+                    
+
+                      {/* /* ===== DIGITAL MARKETING  */}
+                      <button
+                        onClick={() => setIsMobileSeoOpen(!isMobileSeoOpen)}
+                        className="w-full flex justify-between items-center px-6 py-2 font-semibold text-[#2d65bc]"
                       >
-                        Email Marketing Services
-                      </Link>
-                      <Link
-                        to={buildUrl('/local-seo-services')}
-                        onClick={toggleMenu}
-                        className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
+                        Digital Marketing
+                        <span>{isMobileSeoOpen ? "−" : "+"}</span>
+                      </button>
+
+                      {isMobileSeoOpen && (
+                        <div className="ml-6 bg-white rounded-md overflow-hidden">
+                          <Link
+                            to={buildUrl('/services/digital-marketing/seo')}
+                            onClick={toggleMenu}
+                            className="block px-4 py-2 text-sm hover:bg-[#2d65bc]/10"
+                          >
+                            SEO
+                          </Link>
+                          <Link
+                            to={buildUrl('/services/digital-marketing/social-media-optimization')}
+                            onClick={toggleMenu}
+                            className="block px-4 py-2 text-sm hover:bg-[#2d65bc]/10"
+                          >
+                            Social Media Marketing
+                          </Link>
+                        </div>
+                      )}
+
+
+
+                     {/* /*= SOFTWARE SERVICES ===== */} 
+                      <button
+                        onClick={() => setIsMobileSoftwareOpen(!isMobileSoftwareOpen)}
+                        className="w-full flex justify-between items-center px-6 py-2 font-semibold text-[#2d65bc]"
                       >
-                        Local SEO Services
-                      </Link>
-                      <Link
-                        to={buildUrl('/mobile-app-development-services')}
-                        onClick={toggleMenu}
-                        className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
-                      >
-                        Mobile App Development Services
-                      </Link>
-                      <Link
-                        to={buildUrl('/online-reputation-management-services')}
-                        onClick={toggleMenu}
-                        className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
-                      >
-                        Online Reputation Management Services
-                      </Link>
-                      <Link
-                        to={buildUrl('/pay-per-click-ppc-services')}
-                        onClick={toggleMenu}
-                        className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
-                      >
-                        Pay Per Click (PPC) Services
-                      </Link>
-                      <Link
-                        to={buildUrl('/search-engine-optimization-services')}
-                        onClick={toggleMenu}
-                        className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
-                      >
-                        Search Engine Optimization Services
-                      </Link>
-                      <Link
-                        to={buildUrl('/social-media-optimization-services')}
-                        onClick={toggleMenu}
-                        className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
-                      >
-                        Social Media Optimization Services
-                      </Link>
-                      <Link
-                        to={buildUrl('/web-design-services')}
-                        onClick={toggleMenu}
-                        className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
-                      >
-                        Web Design Services
-                      </Link>
-                      <Link
-                        to={buildUrl('/web-development-services')}
-                        onClick={toggleMenu}
-                        className="block px-6 py-2  hover:text-white hover:bg-[#5a5ab8] transition-colors text-sm"
-                      >
-                        Web Development Services
-                      </Link>
+                        Software Services
+                        <span>{isMobileSoftwareOpen ? "−" : "+"}</span>
+                      </button>
+
+                      {isMobileSoftwareOpen && (
+                        <div className="ml-6 bg-white rounded-md overflow-hidden">
+                          <Link
+                            to={buildUrl('/services/software-services/app-development')}
+                            onClick={toggleMenu}
+                            className="block px-4 py-2 text-sm hover:bg-[#2d65bc]/10"
+                          >
+                            App Development
+                          </Link>
+                          <Link
+                            to={buildUrl('/services/software-services/web-development')}
+                            onClick={toggleMenu}
+                            className="block px-4 py-2 text-sm hover:bg-[#2d65bc]/10"
+                          >
+                            Web Development
+                          </Link>
+                        </div>
+                      )}
+
+
+
+                     
+
                     </div>
                   )}
+
                 </div>
 
-                <Link
-                  to={buildUrl('/technologies')}
-                  onClick={toggleMenu}
-                  className="block px-4 py-3 text-gray-800 font-semibold hover:bg-gray-50 hover:text-[#2d65bc] transition-colors border-b border-gray-200"
-                >
-                  Technologies
-                </Link>
+
 
                 <Link
                   to={buildUrl('/blogs')}

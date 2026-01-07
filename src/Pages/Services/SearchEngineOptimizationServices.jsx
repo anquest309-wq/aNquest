@@ -78,8 +78,8 @@ const SEOHeroDashboard = () => {
               key={tab.id}
               onClick={(e) => { e.stopPropagation(); handleTabClick(index); }}
               className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 relative group ${activeTab === index
-                  ? `${themeStyles[tab.theme].primary} text-white shadow-lg scale-105`
-                  : `text-gray-400 ${isLight ? 'hover:bg-gray-200/50' : 'hover:bg-slate-800/50'}`
+                ? `${themeStyles[tab.theme].primary} text-white shadow-lg scale-105`
+                : `text-gray-400 ${isLight ? 'hover:bg-gray-200/50' : 'hover:bg-slate-800/50'}`
                 }`}
             >
               <tab.icon size={18} />
@@ -462,10 +462,10 @@ const SearchEngineOptimizationServices = () => {
     return () => clearInterval(interval);
   }, [currentTestimonialIndex, isTestimonialAutoPlaying]);
 
-  
- 
 
-  
+
+
+
   return (
     <>
       <SEO
@@ -578,22 +578,23 @@ const SearchEngineOptimizationServices = () => {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
-                  to={buildUrl("/contacts-us")}
+                  to={buildUrl("/services/digital-marketing/seo/contact-us")}
                   className="bg-[#2d65bc] text-white font-bold py-3 sm:py-4 px-6 sm:px-8
                      rounded-xl hover:bg-[#1a4a8a] transition-all duration-300
                      hover:scale-105 hover:shadow-2xl"
                 >
-                  Get Free SEO Audit
+                  Start a Project
                 </Link>
 
                 <Link
-                  to={buildUrl("/request-a-quote")}
+                  to={buildUrl("/services/digital-marketing/seo/request-a-quote")}
                   className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold
                      py-3 sm:py-4 px-6 sm:px-8 rounded-xl
                      hover:bg-[#2d65bc] hover:text-white
                      transition-all duration-300 hover:scale-105"
                 >
-                  Request a Quote
+
+                  Talk to Specialist
                 </Link>
               </div>
 
@@ -621,7 +622,7 @@ const SearchEngineOptimizationServices = () => {
                   Stop losing customers to competitors. We use data-driven SEO strategies to boost your rankings, drive qualified traffic, and grow your business organically.
                 </p>
 
-                
+
               </div>
 
               {/* Right Column: 3D Interactive Dashboard */}
@@ -806,7 +807,7 @@ const SearchEngineOptimizationServices = () => {
 
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Link
-                      to="/contacts-us"
+                      to="/services/digital-marketing/seo/contact-us"
                       className="inline-flex items-center justify-center px-4 py-4 text-white font-bold rounded-xl transition-all duration-300 hover:scale-102 shadow-lg"
                       style={{ backgroundColor: '#2d65bc' }}
                     >
@@ -816,7 +817,7 @@ const SearchEngineOptimizationServices = () => {
                       </svg>
                     </Link>
                     <Link
-                      to="/request-a-quote"
+                      to="/services/digital-marketing/seo/request-a-quote"
                       className="inline-flex items-center justify-center px-4 py-4 font-bold rounded-xl transition-all duration-300 border-2 theme-text-primary theme-border-[#2d65bc]"
                     >
                       Request a Quote

@@ -523,7 +523,7 @@ const AppDevelopment = () => {
                     {/* === HERO SECTION START (Updated) === */}
                     <section
                         className="relative overflow-hidden  h-[600px] flex  items-center justify-center theme-bg-primary"
-                        
+
                     >
                         {/* Background */}
                         <HomeHeroBg theme={theme} />
@@ -535,11 +535,11 @@ const AppDevelopment = () => {
                                 <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 theme-text-primary leading-tight">
                                     We Build Powerful{" "}
                                     <span className="text-transparent bg-clip-text bg-[#2d65bc]">
-                                         Apps
+                                        Apps
                                     </span>
                                 </h1>
 
-                               
+
 
                                 <p className="text-lg sm:text-xl theme-text-secondary mb-8 max-w-3xl mx-auto leading-relaxed">
                                     Expert mobile app development using modern technologies. From native
@@ -549,22 +549,26 @@ const AppDevelopment = () => {
 
                                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                     <Link
-                                        to={buildUrl("/request-a-quote")}
+                                        to={buildUrl("/services/software-services/app-development/request-a-quote")}
                                         className="bg-[#2d65bc] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#1a4a8a] transition-all duration-300 hover:scale-105 hover:shadow-2xl"
                                     >
                                         Start a Project
                                     </Link>
 
+
+                                  <Link to="/services/software-services/app-development/contact-us">
                                     <button
                                         onClick={() =>
                                             document
-                                                .getElementById("case-studies")
-                                                ?.scrollIntoView({ behavior: "smooth" })
+                                            .getElementById("case-studies")
+                                            ?.scrollIntoView({ behavior: "smooth" })
                                         }
                                         className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white transition-all duration-300 hover:scale-105"
-                                    >
-                                        See Case Studies
+                                        >
+
+                                        Talk to Specialist
                                     </button>
+                                        </Link>
                                 </div>
                             </div>
                         </div>
@@ -576,7 +580,7 @@ const AppDevelopment = () => {
 
 
                     <section className="relative py-16 theme-bg-primary">
-                    <CircleSquareBgAnimation theme={theme} />    
+                        <CircleSquareBgAnimation theme={theme} />
 
                         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
@@ -638,8 +642,8 @@ const AppDevelopment = () => {
 
                     {/* Services Grid */}
                     <section className="py-10 sm:py-10 lg:py-16 theme-bg-primary relative overflow-hidden">
-                        <CircleSquareBgAnimation theme={theme} />    
-                                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                        <CircleSquareBgAnimation theme={theme} />
+                        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                             <div className="text-center mb-12 sm:mb-16">
                                 <h2 className="text-3xl md:text-4xl  font-bold theme-text-primary mb-4">
                                     Our Mobile App Services
@@ -854,105 +858,7 @@ const AppDevelopment = () => {
                         </div>
                     )}
 
-                    {/* Tech Stack Section */}
-                    {/* <section className="py-10 sm:py-10 lg:py-16 theme-bg-primary relative overflow-hidden">
-             <CircleSquareBgAnimation theme={theme} />            <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-              <div className="text-center  mx-auto mb-16">
-               
-                <h2 className="text-3xl md:text-4xl  font-bold theme-text-primary mb-4">
-                  Technology <span className="text-transparent bg-clip-text bg-[#2d65bc]">Arsenal</span>
-                </h2>
-                <p className="text-xl theme-text-secondary">
-                  Comprehensive tools and frameworks for every mobile development need
-                </p>
-              </div>
-
-             
-              <div className="relative group/slider" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
-
-             
-                <div className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30">
-                  <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    onClick={() => handleManualScroll('left')}
-                    className={`p-4 rounded-full backdrop-blur-lg shadow-xl transition-all duration-300 border ${theme === 'dark'
-                      ? 'bg-gray-800/90 border-gray-600 text-gray-200 hover:text-blue-400 hover:bg-gray-700/90'
-                      : 'bg-white/95 border-gray-300 text-gray-800 hover:text-blue-600 hover:bg-white shadow-lg'
-                      }`}
-                  >
-                    <ChevronLeft className="w-6 h-6" strokeWidth={2.5} />
-                  </motion.button>
-                </div>
-                <div className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30">
-                  <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    onClick={() => handleManualScroll('right')}
-                    className={`p-4 rounded-full backdrop-blur-lg shadow-xl transition-all duration-300 border ${theme === 'dark'
-                      ? 'bg-gray-800/90 border-gray-600 text-gray-200 hover:text-blue-400 hover:bg-gray-700/90'
-                      : 'bg-white/95 border-gray-300 text-gray-800 hover:text-blue-600 hover:bg-white shadow-lg'
-                      }`}
-                  >
-                    <ChevronRight className="w-6 h-6" strokeWidth={2.5} />
-                  </motion.button>
-                </div>
-
-               
-                <div
-                  ref={scrollRef}
-                  className="flex max-w-7xl mx-auto overflow-x-auto snap-x snap-mandatory scrollbar-hide py-8 px-4"
-                >
-                  {Object.entries(techStackData).map(([category, techs]) => {
-                    const categoryIcons = {
-                      'Native iOS': Apple,
-                      'Native Android': Smartphone,
-                      'Cross-Platform': Layers,
-                      'Backend & APIs': Cloud,
-                      'Database': Database,
-                      'Cloud & DevOps': Globe
-                    };
-                    const CategoryIcon = categoryIcons[category] || Package;
-
-                    return (
-                      <div key={category} className="mr-6">
-                        <div className="glass-tile rounded-2xl  p-3 lg:p-6 min-w-[300px] shrink-0 snap-center depth-3d float-slow-3d">
-                          <h3 className="text-xl font-bold theme-text-primary mb-4 flex items-center gap-2">
-                            <div className="w-8 h-8 rounded-lg bg-[#2d65bc] to-purple-500 flex items-center justify-center flex-shrink-0">
-                              <CategoryIcon className="w-5 h-5 text-white" />
-                            </div>
-                            {category}
-                          </h3>
-                          <div className="space-y-3">
-                            {techs.map((tech, idx) => (
-                              <div
-                                key={idx}
-                                className="glass-hero rounded-xl p-3 hover:scale-105 transition-transform cursor-pointer"
-                              >
-                                <div className="flex items-center gap-3">
-                                  <div className="w-10 h-10 rounded-lg bg-white p-1.5 flex items-center justify-center flex-shrink-0">
-                                    <img
-                                      src={getTechLogo(tech.name)}
-                                      alt={tech.name}
-                                      className="w-full h-full object-contain"
-                                    />
-                                  </div>
-                                  <div className="flex-1">
-                                    <h4 className="font-bold theme-text-primary text-sm">{tech.name}</h4>
-                                    <p className="theme-text-secondary text-xs">{tech.description}</p>
-                                  </div>
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          </section> */}
+                 
 
                     {/* Pricing/Engagement Models Section */}
                     <section className="py-10 sm:py-10 lg:py-16 theme-bg-primary relative overflow-hidden">
@@ -1000,100 +906,7 @@ const AppDevelopment = () => {
                     </section>
 
                     {/* Testimonials Section */}
-                    {/* <section className="py-10 sm:py-10 lg:py-16 theme-bg-primary relative overflow-hidden">
-             <CircleSquareBgAnimation theme={theme} />            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-12 sm:mb-16">
-                <h2 className="text-3xl md:text-4xl  font-bold theme-text-primary mb-4">
-                  Client Testimonials
-                </h2>
-                <p className="text-lg sm:text-xl theme-text-secondary max-w-2xl mx-auto">
-                  Trusted by businesses worldwide
-                </p>
-              </div>
-
-              Carousel Container
-              <div
-                className="relative max-w-6xl mx-auto"
-                onMouseEnter={() => setIsTestimonialAutoPlaying(false)}
-                onMouseLeave={() => setIsTestimonialAutoPlaying(true)}
-              >
-                Navigation Buttons
-                <button
-                  onClick={handleTestimonialPrev}
-                  className="absolute left-0 md:-left-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full theme-card theme-shadow-primary transition-all duration-300 hover:scale-110 hover:theme-shadow-secondary"
-                  aria-label="Previous testimonial"
-                >
-                  <ChevronLeft className="w-6 h-6 theme-text-primary" />
-                </button>
-
-                <button
-                  onClick={handleTestimonialNext}
-                  className="absolute right-0 md:-right-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full theme-card theme-shadow-primary transition-all duration-300 hover:scale-110 hover:theme-shadow-secondary"
-                  aria-label="Next testimonial"
-                >
-                  <ChevronRight className="w-6 h-6 theme-text-primary" />
-                </button>
-
-                Cards Container with Horizontal Scroll
-                <div
-                  ref={testimonialScrollRef}
-                  className="flex overflow-x-hidden gap-8 pb-4 scroll-smooth snap-x snap-mandatory"
-                  style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-                >
-                  {testimonials.map((testimonial, index) => (
-                    <div
-                      key={index}
-                      className="group flex-shrink-0 w-full md:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] snap-center theme-card rounded-2xl  p-3 lg:p-6 theme-shadow-primary hover:theme-shadow-secondary transition-all duration-500 hover:-translate-y-2 animate-fade-scale"
-                      style={{ animationDelay: `${index * 0.1}s` }}
-                    >
-                      Animated Top Border
-                      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 rounded-t-2xl group-hover:h-2 transition-all duration-300"></div>
-
-                      <div className="flex gap-1 mb-4 mt-2">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                        ))}
-                      </div>
-
-                      <p className="theme-text-primary mb-6 italic relative">
-                        <span className="text-4xl text-[#2d65bc] absolute -top-2 -left-2 opacity-50">"</span>
-                        <span className="relative z-10">{testimonial.content}</span>
-                        <span className="text-4xl text-[#2d65bc] absolute -bottom-6 -right-2 opacity-50">"</span>
-                      </p>
-
-                      <div className="flex items-center gap-3 pt-4 border-t theme-border-primary">
-                        <img
-                          src={testimonial.image}
-                          alt={testimonial.name}
-                          className="w-12 h-12 rounded-full object-cover ring-2 ring-[#2d65bc]/20"
-                          loading="lazy"
-                        />
-                        <div>
-                          <div className="font-semibold theme-text-primary">{testimonial.name}</div>
-                          <div className="text-sm theme-text-secondary">{testimonial.role}</div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                Pagination Dots
-                <div className="flex justify-center gap-2 mt-8">
-                  {testimonials.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => handleTestimonialDotClick(index)}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${currentTestimonialIndex === index
-                          ? 'bg-[#2d65bc] w-8'
-                          : 'bg-gray-400 hover:bg-gray-500'
-                        }`}
-                      aria-label={`Go to testimonial ${index + 1}`}
-                    />
-                  ))} 
-                </div>
-              </div>
-            </div>
-          </section> */}
+                    
 
                     {/* CTA Section */}
                     <section className="py-10 sm:py-10 lg:py-15 theme-bg-secondary relative overflow-hidden">
@@ -1113,7 +926,7 @@ const AppDevelopment = () => {
 
                                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                             <Link
-                                                to="/contacts-us"
+                                                to="/services/software-services/app-development/contact-us"
                                                 className="inline-flex items-center justify-center px-4 py-4 text-white font-bold rounded-xl transition-all duration-300 hover:scale-102 shadow-lg"
                                                 style={{ backgroundColor: '#2d65bc' }}
                                             >
@@ -1123,7 +936,7 @@ const AppDevelopment = () => {
                                                 </svg>
                                             </Link>
                                             <Link
-                                                to="/request-a-quote"
+                                                to="/services/software-services/app-development/request-a-quote"
                                                 className="inline-flex items-center justify-center px-4 py-4 font-bold rounded-xl transition-all duration-300 border-2 theme-text-primary theme-border-[#2d65bc]"
                                             >
                                                 Request a Quote

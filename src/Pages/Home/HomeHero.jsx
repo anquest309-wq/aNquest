@@ -43,7 +43,7 @@ const HomeHero = () => {
                 </a>
 
                 <Link
-                  to={buildUrl("/contacts-us")}
+                  to={buildUrl("/contact-us")}
                   className="border-2 border-[#2d65bc] py-4 px-8 rounded-lg text-[#2d65bc] hover:bg-[#2d65bc] hover:text-white"
                 >
                   Contact Us
