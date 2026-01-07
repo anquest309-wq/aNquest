@@ -130,57 +130,67 @@ const About = () => {
 
         {/* Stats Section */}
         <section
-          className="relative overflow-hidden flex items-center justify-center theme-bg-primary"
-          style={{ minHeight: "calc(100vh - 80px)", paddingTop: "80px" }}
+          className="relative overflow-hidden flex items-center justify-center theme-bg-primary  h-[550px]"
+          style={{  paddingTop: "80px" }}
         >
           {/* Background */}
-             <HomeHeroBg/>
+          <HomeHeroBg />
           {/* Content */}
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
 
+              {/* MAIN HEADING */}
               <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 theme-text-primary leading-tight">
-                We Build Powerful{" "}
+                We Are Building{" "}
                 <span className="text-transparent bg-clip-text bg-[#2d65bc]">
-                  Mobile Apps
+                  Digital Experiences
                 </span>
               </h1>
 
+              {/* SUB HEADING / HIGHLIGHT LINE */}
               <div className="flex items-center justify-center gap-2 text-xl sm:text-2xl lg:text-3xl font-semibold mb-4">
-                <span className="theme-text-secondary">For</span>
-                <span className="font-bold min-w-[200px] text-transparent bg-clip-text bg-[#2d65bc]">
-                  {/* {typingText} */}
-                  <span className="animate-blink">|</span>
+                <span className="theme-text-secondary">Driven by</span>
+                <span className="font-bold min-w-[220px] text-transparent bg-clip-text bg-[#2d65bc]">
+                  Innovation & Trust
                 </span>
               </div>
 
+              {/* DESCRIPTION */}
               <p className="text-lg sm:text-xl theme-text-secondary mb-8 max-w-3xl mx-auto leading-relaxed">
-                Expert mobile app development using modern technologies. From native
-                iOS & Android to cross-platform solutions, we deliver scalable,
-                high-performance mobile experiences.
+                At aNquest Media, we help businesses grow through thoughtfully crafted
+                digital solutions. From scalable web platforms to intelligent systems,
+                our focus is on performance, usability, and long-term impact.
               </p>
 
+              {/* CTA BUTTONS */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   to={buildUrl("/request-a-quote")}
-                  className="bg-[#2d65bc] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#1a4a8a] transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                  className="bg-[#2d65bc] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl 
+                   hover:bg-[#1a4a8a] transition-all duration-300 hover:scale-105 hover:shadow-2xl"
                 >
-                  Start a Project
+                  Work With Us
                 </Link>
-
+              <Link to="/about/blogs">
                 <button
                   onClick={() =>
                     document
-                      .getElementById("case-studies")
-                      ?.scrollIntoView({ behavior: "smooth" })
+                    .getElementById("about-mission")
+                    ?.scrollIntoView({ behavior: "smooth" })
                   }
-                  className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white transition-all duration-300 hover:scale-105"
-                >
-                  See Case Studies
+                  className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl 
+                  hover:bg-[#2d65bc] hover:text-white transition-all duration-300 hover:scale-105"
+                  >
+                  Our Story
                 </button>
+                  </Link>
               </div>
+
             </div>
           </div>
+          <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px]
+                  bg-[#2d65bc]/10 rounded-full blur-3xl pointer-events-none" />
+
         </section>
 
         {/* About Content Section */}
@@ -338,7 +348,7 @@ const About = () => {
                 Let's discuss how we can bring your vision to life with our innovative solutions.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="/contacts" className="bg-white text-gray-800 font-bold py-4 px-8 rounded-xl hover:bg-gray-100 transition-all duration-200 text-lg hover:scale-105">
+                <a href="/contact-us" className="bg-white text-gray-800 font-bold py-4 px-8 rounded-xl hover:bg-gray-100 transition-all duration-200 text-lg hover:scale-105">
                   Get In Touch
                 </a>
                 <a

@@ -446,7 +446,7 @@ const BlogDetails = () => {
                     All Articles
                   </Link>
                   <Link
-                    to={buildUrl('/contacts')}
+                    to={buildUrl('/contact-us')}
                     className="inline-flex items-center gap-2 px-6 py-3 bg-[#2d65bc] text-white font-bold rounded-xl hover:bg-blue-700 transition-all"
                   >
                     Get in Touch
@@ -500,7 +500,7 @@ const BlogDetails = () => {
                       Let's discuss your project and bring your ideas to life.
                     </p>
                     <Link
-                      to={buildUrl('/contacts')}
+                      to={buildUrl('/contact-us')}
                       className="inline-flex items-center gap-2 px-4 py-2 bg-[#2d65bc] text-white font-bold rounded-lg hover:bg-blue-700 transition-all text-sm w-full justify-center"
                     >
                       Contact Us
@@ -711,7 +711,7 @@ const BlogDetails = () => {
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link
-                    to="/contacts"
+                    to="/contact-us"
                     className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#2d65bc] text-white font-bold rounded-xl hover:bg-blue-700 transition-all shadow-lg"
                   >
                     Get Started

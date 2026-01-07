@@ -131,30 +131,60 @@ const Blogs = () => {
       />
       <div className="min-h-screen theme-bg-primary ">
         {/* Hero Section */}
-        <section className="relative overflow-hidden h-[550px] min-h-screen    sm:py-8 ">
+        <section className="relative overflow-hidden min-h-screen h-[550px] flex justify-center items-center ">
           <HomeHeroBg />
 
-          <div className="container mx-auto px-4 sm:px-6 pt-32 lg:px-8 relative z-10">
-            <div className="max-w-4xl mx-auto text-center">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-5xl mx-auto text-center">
 
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 theme-text-primary">
-                Our <span style={{ color: '#2d65bc' }}>Blog</span>
+              {/* MAIN HEADING */}
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 theme-text-primary leading-tight">
+                Insights, Ideas &{" "}
+                <span className="text-transparent bg-clip-text bg-[#2d65bc]">
+                  Industry Knowledge
+                </span>
               </h1>
-              <p className="text-md sm:text-lg theme-text-secondary mb-4 max-w-3xl mx-auto leading-relaxed">
-                Stay updated with the latest trends, insights, and expert tips in technology and digital solutions.
+
+              {/* SUB HEADING */}
+              <p className="text-lg sm:text-xl theme-text-secondary mb-8 max-w-3xl mx-auto leading-relaxed">
+                Explore expert-written articles on technology, digital growth,
+                automation, and real-world problem solving — curated by the
+                aNquest Media team.
               </p>
-            </div>
-            <div className="flex flex-wrap justify-center gap-4">
-              <a href="#stack" className="group text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center gap-2 hover:bg-[#1a4a8a]" style={{ backgroundColor: '#2d65bc' }}>
-                Explore Stack
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </a>
-              <a href="#benefits" className="text-[#2d65bc] bg-white px-8 py-4 rounded-full font-semibold hover:bg-[#2d65bc] hover:text-white transition-all duration-300 border-2 border-[#2d65bc]">
-                Learn More
-              </a>
+
+             
+
+              {/* CTA BUTTONS */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link to="/"
+                  className="group text-white px-8 py-4 rounded-full font-semibold 
+                     transition-all duration-300 shadow-xl hover:shadow-2xl 
+                     flex items-center gap-2 hover:scale-105"
+                  style={{ backgroundColor: '#2d65bc' }}
+                >
+                  Get Started
+
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+
+                {/* <a
+                  href="#categories"
+                  className="text-[#2d65bc] bg-white px-8 py-4 rounded-full 
+                     font-semibold border-2 border-[#2d65bc]
+                     hover:bg-[#2d65bc] hover:text-white 
+                     transition-all duration-300 hover:scale-105"
+                >
+                  Explore Categories
+                </a> */}
+              </div>
             </div>
           </div>
+
+          {/* SOFT GRADIENT GLOW */}
+          <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px] 
+                  bg-[#2d65bc]/10 rounded-full blur-3xl pointer-events-none" />
         </section>
+
 
         {/* Blog Posts Section */}
         <section className="py-6 md:py-10 lg:py-2 theme-bg-primary relative overflow-hidden py-20">
@@ -199,7 +229,7 @@ const Blogs = () => {
                         {post.excerpt}
                       </p>
                       <div className="flex items-center justify-between text-sm theme-text-secondary">
-                        <span>{post.author}</span>
+                        <span> aNquest Media Team</span>
                         <span>{post.date}</span>
                       </div>
                     </div>
@@ -216,8 +246,8 @@ const Blogs = () => {
                       onClick={() => handlePageChange(currentPage - 1)}
                       disabled={currentPage === 1}
                       className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${currentPage === 1
-                          ? 'opacity-50 cursor-not-allowed theme-text-secondary'
-                          : 'theme-card theme-shadow-primary hover:scale-105 theme-text-primary'
+                        ? 'opacity-50 cursor-not-allowed theme-text-secondary'
+                        : 'theme-card theme-shadow-primary hover:scale-105 theme-text-primary'
                         }`}
                       style={currentPage !== 1 ? { border: `1px solid ${getThemeColor()}30` } : {}}
                     >
@@ -243,8 +273,8 @@ const Blogs = () => {
                         key={pageNum}
                         onClick={() => handlePageChange(pageNum)}
                         className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${currentPage === pageNum
-                            ? 'text-white'
-                            : 'theme-card theme-shadow-primary hover:scale-105 theme-text-primary'
+                          ? 'text-white'
+                          : 'theme-card theme-shadow-primary hover:scale-105 theme-text-primary'
                           }`}
                         style={
                           currentPage === pageNum
@@ -274,8 +304,8 @@ const Blogs = () => {
                       onClick={() => handlePageChange(currentPage + 1)}
                       disabled={currentPage === totalPages}
                       className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${currentPage === totalPages
-                          ? 'opacity-50 cursor-not-allowed theme-text-secondary'
-                          : 'theme-card theme-shadow-primary hover:scale-105 theme-text-primary'
+                        ? 'opacity-50 cursor-not-allowed theme-text-secondary'
+                        : 'theme-card theme-shadow-primary hover:scale-105 theme-text-primary'
                         }`}
                       style={currentPage !== totalPages ? { border: `1px solid ${getThemeColor()}30` } : {}}
                     >

@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useTheme } from '../../Context/ThemeContext'
-import SectionsBgAnimation from '../../Components/Bg-animation-template/SectionsBgAnimation';
 import DenseBgAnimation from '../../Components/Bg-animation-template/DenseBgAnimation';
+import {Link} from 'react-router-dom'
+
 
 export default function About() {
   const { theme } = useTheme();
@@ -283,17 +284,21 @@ export default function About() {
                 Let's discuss how our innovative IT solutions can help your business achieve its goals and stay ahead of the competition.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-[#2d65bc] text-white font-bold py-4 px-8 rounded-xl
+                <Link to="/contact-us">
+                <button  className="bg-[#2d65bc] text-white font-bold py-4 px-8 rounded-xl
                  hover:bg-[#2d65bc]/90 hover:shadow-lg transition-all duration-300 text-sm sm:text-base transform hover:scale-105 active:scale-95">
                   Get Started Today
                 </button>
+                   </Link>
+                   <Link to="/about" >
                 <button 
                   className={`border-2 border-[#2d65bc] font-bold py-4 px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white hover:shadow-lg transition-all duration-300 text-sm sm:text-base transform hover:scale-105 active:scale-95 ${
                     theme === 'dark' ? 'bg-white/10 text-[#2d65bc]' : 'bg-white/80 text-gray-800'
                   }`}
-                >
+                  >
                   Learn More
                 </button>
+                  </Link>
               </div>
             </div>
           </div>

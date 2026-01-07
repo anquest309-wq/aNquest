@@ -218,7 +218,7 @@ const WebDevelopment = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md sm:max-w-none mx-auto">
               <a
-                href="/contacts"
+                href="/contacts-us"
                 className="bg-white theme-accent-primary font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-gray-50 transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
               >
                 Get Started Today

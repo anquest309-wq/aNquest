@@ -549,7 +549,7 @@ const CTASection = () => {
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 sm:px-0">
             <a
-              href="/contacts"
+              href="/contact-us"
               className="group text-black bg-white px-6 py-3 sm:px-8 sm:py-3 md:px-7 md:py-4 rounded-full font-bold hover:scale-105 transition-all duration-300 shadow-2xl flex items-center justify-center gap-2 text-sm sm:text-base md:text-lg w-full sm:w-auto hover:bg-[#f3f4f7]"
 
             >

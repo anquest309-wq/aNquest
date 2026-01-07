@@ -59,7 +59,7 @@ const ThankYou = () => {
             </div>
 
             <Link
-              to={buildUrl('/contacts')}
+              to={buildUrl('/contacts-us')}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white transition-all duration-200 hover:scale-105"
               style={{ backgroundColor: accent }}
             >

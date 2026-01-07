@@ -690,7 +690,7 @@ const RealEstateCRM = () => {
                                     </Link>
 
                                     <Link
-                                        to={buildUrl("/contacts")}
+                                        to={buildUrl("/contacts-us")}
                                         className="px-8 py-4 rounded-xl font-bold text-lg border-2 border-[#2d65bc] text-[#2d65bc] hover:bg-[#2d65bc] hover:text-white transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
                                     >
                                         Contact Us
@@ -700,6 +700,8 @@ const RealEstateCRM = () => {
 
                             </div>
                         </div>
+                        <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px]
+                  bg-[#2d65bc]/10 rounded-full blur-3xl pointer-events-none" />
                     </section>
 
 
@@ -752,7 +754,7 @@ const RealEstateCRM = () => {
                                         </Link>
 
                                         <Link
-                                            to={buildUrl("/contacts")}
+                                            to={buildUrl("/contacts-us")}
                                             className="px-6 py-4 rounded-xl font-bold border-2 border-[#2d65bc] text-[#2d65bc] hover:bg-[#2d65bc] hover:text-white transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
                                         >
                                             Talk to Expert
@@ -1092,7 +1094,7 @@ const RealEstateCRM = () => {
 
                                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                             <Link
-                                                to="/contacts"
+                                                to="/contacts-us"
                                                 className="inline-flex items-center justify-center px-4 py-4 text-white font-bold rounded-xl transition-all duration-300 hover:scale-102 shadow-lg"
                                                 style={{ backgroundColor: '#2d65bc' }}
                                             >

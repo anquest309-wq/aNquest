@@ -238,7 +238,7 @@ export default function Home() {
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Link
-                      to={buildUrl('/contacts')}
+                      to={buildUrl('/contact-us')}
                       className="bg-[#2d65bc] text-white font-bold py-4 px-8 rounded-xl
                      hover:bg-[#2d65bc]/90 hover:shadow-lg transition-all duration-300 text-sm sm:text-base transform hover:scale-105 active:scale-95"
                     >

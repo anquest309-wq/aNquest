@@ -743,7 +743,7 @@ const HospitalCRM = () => {
                                 </Link>
 
                                 <Link
-                                    to={buildUrl("/contacts")}
+                                    to={buildUrl("/contacts-us")}
                                     className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white transition-all duration-300 text-base sm:text-lg hover:scale-105"
                                 >
                                     Talk to Specialist
@@ -751,6 +751,9 @@ const HospitalCRM = () => {
                             </div>
 
                         </div>
+
+                        <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px]
+                  bg-[#2d65bc]/10 rounded-full blur-3xl pointer-events-none" />
                     </section>
 
 
@@ -1011,7 +1014,7 @@ const HospitalCRM = () => {
 
                                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                             <Link
-                                                to="/contacts"
+                                                to="/contacts-us"
                                                 className="inline-flex items-center justify-center px-4 py-4 text-white font-bold rounded-xl transition-all duration-300 hover:scale-102 shadow-lg"
                                                 style={{ backgroundColor: '#2d65bc' }}
                                             >

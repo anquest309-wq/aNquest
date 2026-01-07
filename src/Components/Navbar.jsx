@@ -320,7 +320,8 @@ export default function Navbar() {
                             className="flex items-center px-4 py-2 hover:bg-[#2d65bc]/10 transition-colors"
                           >
                             <FileSearch size={15} className="mr-2 text-[#2d65bc]" />
-                            SEO (Search Engine Opt)
+                            Search Engine Optimization
+
                           </Link>
 
                           <Link
@@ -344,7 +345,6 @@ export default function Navbar() {
 
 
 
-                    <div className="border-t border-gray-200 my-2"></div>
                   </div>
                 </div>
               )}
@@ -359,9 +359,8 @@ export default function Navbar() {
             <Link to={buildUrl('/blogs')} className="text-gray-800 font-semibold hover:text-[#2d65bc] transition-colors text-base px-3">
               Blogs
             </Link>
-            <Link to={buildUrl('/contacts')} className="text-gray-800 font-semibold hover:text-[#2d65bc] transition-colors text-base px-3">
-              Contacts
-            </Link>
+            <Link to={buildUrl('/contact-us')} className="text-gray-800 font-semibold hover:text-[#2d65bc] transition-colors text-base px-3">
+              Contact Us            </Link>
           </div>
 
           {/* ===== Right: Theme Switcher + CTA + Hamburger Menu ===== */}
@@ -570,7 +569,7 @@ export default function Navbar() {
                 </Link>
 
                 <Link
-                  to={buildUrl('/contacts')}
+                  to={buildUrl('/contact-us')}
                   onClick={toggleMenu}
                   className="block px-4 py-3 text-gray-800 font-semibold hover:bg-gray-50 hover:text-[#2d65bc] transition-colors border-b border-gray-200"
                 >

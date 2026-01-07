@@ -356,13 +356,13 @@ const UIUXDesign = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md sm:max-w-none mx-auto">
               <a
-                href="/contacts"
+                href="/contacts-us"
                 className="bg-white theme-accent-primary font-bold py-4 px-8 rounded-xl hover:bg-gray-50 transition-all duration-200 text-lg hover:scale-105"
               >
                 Start Your Project
               </a>
               <a
-                href="/contacts"
+                href="/contacts-us"
                 className="border-2 border-white text-white font-bold py-4 px-8 rounded-xl hover:bg-white hover:theme-accent-primary transition-all duration-200 text-lg hover:scale-105"
               >
                 View Our Portfolio

@@ -462,49 +462,10 @@ const SearchEngineOptimizationServices = () => {
     return () => clearInterval(interval);
   }, [currentTestimonialIndex, isTestimonialAutoPlaying]);
 
-  const handleTestimonialNext = () => {
-    if (testimonialScrollRef.current) {
-      const cardWidth = testimonialScrollRef.current.children[0]?.offsetWidth || 0;
-      const gap = 32;
-      const scrollAmount = cardWidth + gap;
-      if (currentTestimonialIndex < testimonials.length - 1) {
-        testimonialScrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        setCurrentTestimonialIndex(prev => prev + 1);
-      } else {
-        testimonialScrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-        setCurrentTestimonialIndex(0);
-      }
-    }
-  };
+  
+ 
 
-  const handleTestimonialPrev = () => {
-    if (testimonialScrollRef.current) {
-      const cardWidth = testimonialScrollRef.current.children[0]?.offsetWidth || 0;
-      const gap = 32;
-      const scrollAmount = cardWidth + gap;
-      if (currentTestimonialIndex > 0) {
-        testimonialScrollRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-        setCurrentTestimonialIndex(prev => prev - 1);
-      } else {
-        const maxScroll = testimonialScrollRef.current.scrollWidth - testimonialScrollRef.current.clientWidth;
-        testimonialScrollRef.current.scrollTo({ left: maxScroll, behavior: 'smooth' });
-        setCurrentTestimonialIndex(testimonials.length - 1);
-      }
-    }
-  };
-
-  const handleTestimonialDotClick = (index) => {
-    if (testimonialScrollRef.current) {
-      const cardWidth = testimonialScrollRef.current.children[0]?.offsetWidth || 0;
-      const gap = 32;
-      const scrollAmount = (cardWidth + gap) * index;
-      testimonialScrollRef.current.scrollTo({ left: scrollAmount, behavior: 'smooth' });
-      setCurrentTestimonialIndex(index);
-      setIsTestimonialAutoPlaying(false);
-      setTimeout(() => setIsTestimonialAutoPlaying(true), 10000);
-    }
-  };
-
+  
   return (
     <>
       <SEO
@@ -596,10 +557,10 @@ const SearchEngineOptimizationServices = () => {
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
       `}</style>
 
-      <div className="min-h-screen theme-bg-primary pt-20">
+      <div className="min-h-screen theme-bg-primary ">
 
         {/* SIMPLE CENTERED HERO (LIKE MOBILE APPS PAGE) */}
-        <section className="relative overflow-hidden h-[550px ] flex justify-center  py-14 sm:py-16 lg:py-20 theme-bg-primary">
+        <section className="relative overflow-hidden h-[600px] flex justify-center items-center  py-14 sm:py-16  theme-bg-primary">
           <HomeHeroBg theme={theme} />
 
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -617,7 +578,7 @@ const SearchEngineOptimizationServices = () => {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
-                  to={buildUrl("/contacts")}
+                  to={buildUrl("/contacts-us")}
                   className="bg-[#2d65bc] text-white font-bold py-3 sm:py-4 px-6 sm:px-8
                      rounded-xl hover:bg-[#1a4a8a] transition-all duration-300
                      hover:scale-105 hover:shadow-2xl"
@@ -638,6 +599,8 @@ const SearchEngineOptimizationServices = () => {
 
             </div>
           </div>
+          <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px]
+                  bg-[#2d65bc]/10 rounded-full blur-3xl pointer-events-none" />
         </section>
 
 
@@ -760,7 +723,7 @@ const SearchEngineOptimizationServices = () => {
                         </ul>
                       )}
                       <Link
-                        to="/contacts"
+                        to="/contacts-us"
                         className="inline-flex items-center gap-2 mt-1 px-4 py-2 rounded-lg text-white font-semibold text-sm transition-all duration-300 hover:scale-102"
                         style={{ backgroundColor: '#2d65bc' }}
                       >
@@ -843,7 +806,7 @@ const SearchEngineOptimizationServices = () => {
 
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Link
-                      to="/contacts"
+                      to="/contacts-us"
                       className="inline-flex items-center justify-center px-4 py-4 text-white font-bold rounded-xl transition-all duration-300 hover:scale-102 shadow-lg"
                       style={{ backgroundColor: '#2d65bc' }}
                     >

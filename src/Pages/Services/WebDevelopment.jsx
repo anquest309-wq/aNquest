@@ -710,7 +710,7 @@ const WebDevelopment = () => {
         <div className=" theme-bg-primary relative z-10  ">
 
           {/* === HERO SECTION START (Updated) === */}
-          <section className="relative overflow-hidden h-[550px] flex justify-center items-center  theme-bg-primary py-14 sm:py-16 lg:py-20">
+          <section className="relative overflow-hidden h-[600px] flex justify-center items-center  theme-bg-primary ">
             {/* Background Animation */}
             <HomeHeroBg theme={theme} />
 
@@ -759,6 +759,9 @@ const WebDevelopment = () => {
 
               </div>
             </div>
+
+            <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px]
+                  bg-[#2d65bc]/10 rounded-full blur-3xl pointer-events-none" />
           </section>
 
           {/* === HERO SECTION END === */}
@@ -881,7 +884,7 @@ const WebDevelopment = () => {
                         </ul>
 
                         <Link
-                          to={buildUrl('/contacts')}
+                          to={buildUrl('/contacts-us')}
                           className="inline-flex items-center gap-2 mt-6 text-sm font-semibold text-[#2d65bc] hover:text-[#1a4a8a] transition-colors group"
                         >
                           Learn more
@@ -1206,7 +1209,7 @@ const WebDevelopment = () => {
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                       <Link
-                        to="/contacts"
+                        to="/contacts-us"
                         className="inline-flex items-center justify-center px-4 py-4 text-white font-bold rounded-xl transition-all duration-300 hover:scale-102 shadow-lg"
                         style={{ backgroundColor: '#2d65bc' }}
                       >

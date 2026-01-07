@@ -172,7 +172,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to={buildUrl('/contacts')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
+                <Link to={buildUrl('/contact-us')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
                   Get in Touch
                 </Link>
               </li>
@@ -187,7 +187,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to={buildUrl('/contacts')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
+                <Link to={buildUrl('/contact-us')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
                   Contact
                 </Link>
               </li>

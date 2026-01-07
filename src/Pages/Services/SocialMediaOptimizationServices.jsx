@@ -304,7 +304,7 @@ const SocialMediaOptimizationServices = () => {
 
 
         <div className="min-h-screen theme-bg-primary relative z-10">
-          <section className="relative overflow-hidden h-[550px] flex justify-center items-center py-16 sm:py-18 lg:py-20 theme-bg-primary">
+          <section className="relative overflow-hidden h-[600px] flex justify-center items-center  theme-bg-primary">
 
             {/* Background animation */}
             <HomeHeroBg theme={theme} />
@@ -356,6 +356,8 @@ const SocialMediaOptimizationServices = () => {
 
               </div>
             </div>
+            <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px]
+                  bg-[#2d65bc]/10 rounded-full blur-3xl pointer-events-none" />
           </section>
 
           {/* Hero */}
@@ -384,7 +386,7 @@ const SocialMediaOptimizationServices = () => {
                       <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </Link>
                     <Link
-                      to={buildUrl('/contacts')}
+                      to={buildUrl('/contacts-us')}
                       className="inline-flex items-center justify-center gap-2 border-2 theme-border-accent theme-text-accent font-bold py-4 px-8 rounded-xl hover:scale-105 transition-all duration-300"
                     >
                       Contact Us
@@ -545,7 +547,7 @@ const SocialMediaOptimizationServices = () => {
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                       <Link
-                        to="/contacts"
+                        to="/contacts-us"
                         className="inline-flex items-center justify-center px-4 py-4 text-white font-bold rounded-xl transition-all duration-300 hover:scale-102 shadow-lg"
                         style={{ backgroundColor: '#2d65bc' }}
                       >

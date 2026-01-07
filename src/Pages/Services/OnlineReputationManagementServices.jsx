@@ -178,7 +178,7 @@ const OnlineReputationManagementServices = () => {
                 Get Started
               </Link>
               <Link
-                to={buildUrl('/online-reputation-management-services/contacts')}
+                to={buildUrl('/online-reputation-management-services/contacts-us')}
                 className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white transition-all duration-300 text-base sm:text-lg hover:scale-105"
               >
                 Contact Us
@@ -395,7 +395,7 @@ const OnlineReputationManagementServices = () => {
                 Get Your Free Reputation Audit
               </Link>
               <Link
-                to={buildUrl('/online-reputation-management-services/contacts')}
+                to={buildUrl('/online-reputation-management-services/contacts-us')}
                 className="border-2 border-white text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-white hover:text-gray-800 transition-all duration-300 text-base sm:text-lg hover:scale-105"
               >
                 Contact Our Team

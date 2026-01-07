@@ -522,7 +522,7 @@ const AppDevelopment = () => {
 
                     {/* === HERO SECTION START (Updated) === */}
                     <section
-                        className="relative overflow-hidden flex h-[550px]   items-center justify-center theme-bg-primary"
+                        className="relative overflow-hidden  h-[600px] flex  items-center justify-center theme-bg-primary"
                         
                     >
                         {/* Background */}
@@ -539,13 +539,7 @@ const AppDevelopment = () => {
                                     </span>
                                 </h1>
 
-                                <div className="flex items-center justify-center gap-2 text-xl sm:text-2xl lg:text-3xl font-semibold mb-4">
-                                    <span className="theme-text-secondary">For</span>
-                                    <span className="font-bold min-w-[200px] text-transparent bg-clip-text bg-[#2d65bc]">
-                                        {typingText}
-                                        <span className="animate-blink">|</span>
-                                    </span>
-                                </div>
+                               
 
                                 <p className="text-lg sm:text-xl theme-text-secondary mb-8 max-w-3xl mx-auto leading-relaxed">
                                     Expert mobile app development using modern technologies. From native
@@ -574,6 +568,8 @@ const AppDevelopment = () => {
                                 </div>
                             </div>
                         </div>
+                        <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px]
+                  bg-[#2d65bc]/10 rounded-full blur-3xl pointer-events-none" />
                     </section>
 
                     {/* === HERO SECTION END === */}
@@ -693,7 +689,7 @@ const AppDevelopment = () => {
                                                     </ul>
 
                                                     <Link
-                                                        to={buildUrl('/contacts')}
+                                                        to={buildUrl('/contacts-us')}
                                                         className="inline-flex items-center gap-2 mt-6 text-sm font-semibold text-[#2d65bc] hover:text-[#1a4a8a] transition-colors group"
                                                     >
                                                         Learn more
@@ -1117,7 +1113,7 @@ const AppDevelopment = () => {
 
                                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                             <Link
-                                                to="/contacts"
+                                                to="/contacts-us"
                                                 className="inline-flex items-center justify-center px-4 py-4 text-white font-bold rounded-xl transition-all duration-300 hover:scale-102 shadow-lg"
                                                 style={{ backgroundColor: '#2d65bc' }}
                                             >
