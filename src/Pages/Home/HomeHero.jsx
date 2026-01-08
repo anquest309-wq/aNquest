@@ -6,6 +6,8 @@ import HomeHeroBg from "../../Components/Bg-animation-template/HomeHeroBg";
 import TypingAnimation from "../../Components/TypingAnimation";
 import { buildUrl } from "../../utils/urlUtils";
 import GifCarousel from "../../Components/GifCarousel";
+import ServicesDashboard from "../about/ServicesDashboard"
+import Dashboard from "./Dashboard";
 
 const HomeHero = () => {
 
@@ -53,8 +55,9 @@ const HomeHero = () => {
           </div>
 
           {/* Right */}
-          <div className="w-full lg:w-1/2 flex justify-center">
-            <GifCarousel />
+          <div className="w-full pt-20 lg:w-1/2 flex justify-center">
+            {/* <ServicesDashboard/> */}
+            <Dashboard/>
           </div>
 
 

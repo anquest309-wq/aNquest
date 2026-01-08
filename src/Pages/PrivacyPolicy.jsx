@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  Shield,
-  Lock,
   FileText,
   Clock,
   Users,
   Globe,
   Mail,
-  Phone,
+  Lock,
   CheckCircle,
   ChevronDown,
   ChevronUp,
@@ -17,6 +15,8 @@ import {
 import { useTheme } from "../Context/ThemeContext";
 import SEO from "../Components/SEO";
 import { buildUrl } from "../utils/urlUtils";
+
+/* ---------------- DATA ---------------- */
 
 const sections = [
   {
@@ -27,13 +27,13 @@ const sections = [
       {
         title: "Collected Data",
         content: [
-          "Contact details such as name, email, phone number, and company information provided through forms or consultations.",
-          "Project requirements, preferences, and business objectives shared during discovery sessions.",
-          "Usage data collected through analytics tools to improve performance and user experience.",
-          "Technical data including IP address, browser type, device information, and location."
-        ]
-      }
-    ]
+          "Contact details such as name, email, phone number, and company information.",
+          "Project requirements and business objectives.",
+          "Usage analytics and performance data.",
+          "Technical data including IP, browser, and device info.",
+        ],
+      },
+    ],
   },
   {
     id: 2,
@@ -43,13 +43,13 @@ const sections = [
       {
         title: "Purpose of Use",
         content: [
-          "To deliver requested services, proposals, and onboarding materials.",
-          "To communicate updates, announcements, and customer support responses.",
-          "To improve services and develop relevant digital resources.",
-          "To comply with legal obligations and protect our infrastructure."
-        ]
-      }
-    ]
+          "Deliver services and proposals.",
+          "Customer support and communication.",
+          "Improve and optimize services.",
+          "Legal and infrastructure protection.",
+        ],
+      },
+    ],
   },
   {
     id: 3,
@@ -59,12 +59,12 @@ const sections = [
       {
         title: "Security Measures",
         content: [
-          "Industry-standard encryption, access controls, and routine audits.",
-          "Restricted access to project data for authorized team members only.",
-          "Trusted third-party providers complying with global security standards."
-        ]
-      }
-    ]
+          "Industry-standard encryption.",
+          "Restricted internal access.",
+          "Trusted compliant partners.",
+        ],
+      },
+    ],
   },
   {
     id: 4,
@@ -74,12 +74,12 @@ const sections = [
       {
         title: "Retention Policy",
         content: [
-          "Data is retained only as long as necessary for stated purposes.",
-          "Clients may request deletion or export via privacy@anquest.com.",
-          "Secure backups maintained for legal and disaster recovery needs."
-        ]
-      }
-    ]
+          "Data retained only when necessary.",
+          "Deletion on request.",
+          "Secure backups for compliance.",
+        ],
+      },
+    ],
   },
   {
     id: 5,
@@ -89,12 +89,12 @@ const sections = [
       {
         title: "Data Sharing",
         content: [
-          "We never sell or lease personal data.",
-          "Data may be shared with trusted partners under confidentiality agreements.",
-          "Cross-border transfers follow applicable legal safeguards."
-        ]
-      }
-    ]
+          "No selling of personal data.",
+          "Shared only with trusted partners.",
+          "Legal safeguards applied.",
+        ],
+      },
+    ],
   },
   {
     id: 6,
@@ -104,13 +104,13 @@ const sections = [
       {
         title: "Your Rights",
         content: [
-          "Request access to your personal information.",
-          "Update or correct personal data.",
-          "Request deletion or object to processing.",
-          "Manage communication preferences easily."
-        ]
-      }
-    ]
+          "Access your information.",
+          "Correct or update data.",
+          "Request deletion.",
+          "Manage preferences.",
+        ],
+      },
+    ],
   },
   {
     id: 7,
@@ -120,20 +120,21 @@ const sections = [
       {
         title: "Reach Our Privacy Team",
         content: [
-          "Email: privacy@anquest.com",
-          "US Office: +1 (234) 392-3647",
-          "India Office: +91 92661 40654",
-          "Response time: within 5 business days."
-        ]
-      }
-    ]
-  }
+          "privacy@anquest.com",
+          "+1 (234) 392-3647",
+          "+91 92661 40654",
+          "Response within 5 business days.",
+        ],
+      },
+    ],
+  },
 ];
+
+/* ---------------- COMPONENT ---------------- */
 
 export default function PrivacyPolicy() {
   const { theme } = useTheme();
   const [expandedSection, setExpandedSection] = useState(0);
-  const accent = "#2d65bc";
 
   const toggleSection = (index) => {
     setExpandedSection(expandedSection === index ? null : index);
@@ -142,50 +143,37 @@ export default function PrivacyPolicy() {
   return (
     <>
       <SEO
-        title="Privacy Policy - aNquest Digital & CRM Solutions"
-        description="Understand how aNquest collects, uses, and protects your personal data."
+        title="Privacy Policy - aNquest"
+        description="Understand how aNquest collects, uses, and protects your data."
         canonicalUrl="https://anquestmedia.com/privacy"
       />
 
-      <div className="min-h-screen theme-bg-primary ">
+      <div className="min-h-screen theme-bg-primary theme-text-primary">
 
-        {/* Hero */}
-        <section className="relative theme-bg-hero h-[550px] flex items-center justify-center text-white ">
+        {/* HERO */}
+        <section className="theme-bg-hero h-[550px] flex items-center justify-center text-white">
           <div className="max-w-5xl mx-auto text-center px-4">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold">
-              Privacy <span style={{ color: "#dbeafe" }}>Policy</span>
+            <h1 className="text-5xl font-bold">
+              Privacy <span className="theme-accent-primary">Policy</span>
             </h1>
             <p className="mt-4 text-lg max-w-3xl mx-auto">
-              Learn how aNquest collects, uses, and safeguards your personal information.
+              Learn how we protect and respect your data.
             </p>
-            <div className="mt-6 flex justify-center gap-4">
-              <a
-                href="#policy"
-                className="px-6 py-3 rounded-lg bg-white text-blue-700 font-semibold"
-              >
-                Read Policy
-              </a>
-              <Link
-                to={buildUrl("/contact-us")}
-                className="px-6 py-3 rounded-lg bg-black/20 border border-white text-white font-semibold"
-              >
-                Contact Us
-              </Link>
-            </div>
           </div>
         </section>
 
-        {/* Content */}
+        {/* CONTENT */}
         <section id="policy" className="py-16">
           <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-4 gap-8">
 
-            {/* Sidebar */}
-            <aside className="lg:col-span-1 sticky top-28 h-fit">
-              <div className="theme-card rounded-2xl p-5 shadow-lg">
+            {/* SIDEBAR */}
+            <aside className="lg:col-span-1 sticky top-28">
+              <div className="theme-card rounded-2xl p-5">
                 <h3 className="font-bold mb-4 flex items-center gap-2">
                   <FileText className="w-5 h-5" />
                   Quick Navigation
                 </h3>
+
                 <div className="space-y-2">
                   {sections.map((s, i) => (
                     <button
@@ -194,23 +182,28 @@ export default function PrivacyPolicy() {
                         setExpandedSection(i);
                         document
                           .getElementById(`section-${s.id}`)
-                          ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                          ?.scrollIntoView({ behavior: "smooth" });
                       }}
-                      className="text-left text-sm w-full px-3 py-2 rounded-lg hover:bg-blue-50"
+                      className="
+                        w-full text-left text-sm px-3 py-2 rounded-lg
+                        theme-text-secondary
+                        hover:theme-bg-tertiary
+                        transition
+                      "
                     >
                       {s.id}. {s.title}
                     </button>
                   ))}
                 </div>
 
-                <div className="mt-6 p-4 rounded-xl bg-blue-50">
+                <div className="mt-6 p-4 rounded-xl theme-bg-tertiary">
                   <div className="flex gap-3">
-                    <AlertCircle className="w-5 h-5 text-blue-600" />
+                    <AlertCircle className="w-5 h-5 theme-accent-primary" />
                     <div>
                       <p className="font-semibold text-sm">Need Help?</p>
                       <Link
                         to={buildUrl("/contact-us")}
-                        className="inline-block mt-2 text-xs px-3 py-1 bg-blue-600 text-white rounded-lg"
+                        className="inline-block mt-2 text-xs px-3 py-1 rounded-lg theme-button-primary"
                       >
                         Contact Us
                       </Link>
@@ -220,39 +213,39 @@ export default function PrivacyPolicy() {
               </div>
             </aside>
 
-            {/* Main */}
+            {/* MAIN CONTENT */}
             <div className="lg:col-span-3 space-y-6">
               {sections.map((section, index) => (
                 <div
                   key={section.id}
                   id={`section-${section.id}`}
-                  className="theme-card rounded-2xl shadow-lg overflow-hidden"
+                  className="theme-card rounded-2xl overflow-hidden"
                 >
                   <button
                     onClick={() => toggleSection(index)}
-                    className="w-full px-6 py-5 flex justify-between items-center hover:bg-gray-50"
+                    className="
+                      w-full px-6 py-5 flex justify-between items-center
+                      hover:theme-bg-tertiary
+                      transition
+                    "
                   >
                     <div className="flex items-center gap-4">
-                      <div className="p-3 rounded-lg bg-blue-100 text-blue-600">
+                      <div className="p-3 rounded-lg theme-bg-tertiary theme-accent-primary">
                         {section.icon}
                       </div>
                       <h3 className="text-lg font-bold">
                         {section.id}. {section.title}
                       </h3>
                     </div>
-                    {expandedSection === index ? (
-                      <ChevronUp />
-                    ) : (
-                      <ChevronDown />
-                    )}
+                    {expandedSection === index ? <ChevronUp /> : <ChevronDown />}
                   </button>
 
                   {expandedSection === index && (
-                    <div className="px-6 pb-6 border-t space-y-4">
+                    <div className="px-6 pb-6 border-t theme-border-primary space-y-4">
                       {section.subsections.map((sub, i) => (
-                        <div key={i} className="bg-gray-50 rounded-xl p-4">
+                        <div key={i} className="theme-bg-tertiary rounded-xl p-4">
                           <h4 className="font-semibold mb-2">{sub.title}</h4>
-                          <ul className="list-disc pl-5 text-sm space-y-1">
+                          <ul className="list-disc pl-5 text-sm space-y-1 theme-text-secondary">
                             {sub.content.map((line, idx) => (
                               <li key={idx}>{line}</li>
                             ))}
@@ -264,6 +257,7 @@ export default function PrivacyPolicy() {
                 </div>
               ))}
             </div>
+
           </div>
         </section>
       </div>

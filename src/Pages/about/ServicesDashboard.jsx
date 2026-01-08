@@ -1,12 +1,11 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import {
-  Bell, LayoutDashboard, Home, Heart, Zap, Calendar, MoreHorizontal,
+  LayoutDashboard, Home, Heart, Zap, Calendar, MoreHorizontal,
   Users, DollarSign, FileText, UserCheck, Shield, Mail, RefreshCcw,
   Target, TrendingUp, Trophy, Headset, Phone, Lock, UserCog, Database, Activity
 } from 'lucide-react';
 
-const TABS = ['overview', 'realestate', 'hospital', 'nurturing', 'reporting', 'tasks', 'security'];
-
+/* ---------------- TAB CONFIG ---------------- */
 
 const VISIBLE_TABS = [
   { key: 'overview', icon: LayoutDashboard, label: 'Overview' },
@@ -16,119 +15,85 @@ const VISIBLE_TABS = [
   { key: 'tasks', icon: Calendar, label: 'Tasks' },
 ];
 
-const PropertyCard = ({ icon: Icon, title, badge, badgeColor, progress, barColor }) => (
-  <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-5 border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
-    <div className="flex items-center gap-3 mb-4">
-      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300">
-        <Icon size={20} className="text-blue-600" />
-      </div>
-      <div className="flex-1">
-        <p className="text-sm font-bold text-gray-800">{title}</p>
-        <span className={`text-[10px] px-2.5 py-1 rounded-full font-medium ${badgeColor}`}>{badge}</span>
-      </div>
-    </div>
-    <div className="flex justify-between text-xs text-gray-600 mb-2">
-      <span className="font-medium">Progress</span>
-      <span className="font-bold text-gray-800">{progress}%</span>
-    </div>
-    <div className="w-full h-2.5 rounded-full bg-gray-200 overflow-hidden shadow-inner">
-      <div className={`h-full ${barColor} rounded-full transition-all duration-500`} style={{ width: `${progress}%` }} />
-    </div>
+/* ---------------- BASE THEME CARD ---------------- */
+
+const ThemeCard = ({ children, className = '' }) => (
+  <div className={`theme-card rounded-2xl p-5 theme-transition ${className}`}>
+    {children}
   </div>
 );
+
+/* ---------------- PROPERTY CARD ---------------- */
+
+const PropertyCard = ({ icon: Icon, title, badge, badgeColor, progress, barColor }) => (
+  <ThemeCard>
+    <div className="flex items-center gap-3 mb-4">
+      <div className="w-12 h-12 rounded-xl theme-bg-tertiary flex items-center justify-center">
+        <Icon size={20} className="theme-accent-primary" />
+      </div>
+
+      <div className="flex-1">
+        <p className="text-sm font-bold theme-text-primary">{title}</p>
+        <span className={`text-[10px] px-2 py-1 rounded-full ${badgeColor}`}>
+          {badge}
+        </span>
+      </div>
+    </div>
+
+    <div className="flex justify-between text-xs mb-2 theme-text-secondary">
+      <span>Progress</span>
+      <span className="font-bold">{progress}%</span>
+    </div>
+
+    <div className="w-full h-2 rounded-full theme-bg-tertiary overflow-hidden">
+      <div className={`${barColor} h-full rounded-full`} style={{ width: `${progress}%` }} />
+    </div>
+  </ThemeCard>
+);
+
+/* ---------------- SIMPLE GRID ---------------- */
 
 const SimpleGrid = ({ items }) => (
   <div className="grid grid-cols-2 gap-4">
     {items.map((item, i) => (
-      <div key={i} className="p-5 rounded-2xl bg-gradient-to-br from-white to-gray-50 border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group cursor-pointer">
-        <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.bgGradient} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300 shadow-sm`}>
+      <ThemeCard key={i} className="cursor-pointer hover:-translate-y-1">
+        <div className={`w-12 h-12 rounded-xl ${item.bgGradient} flex items-center justify-center mb-3`}>
           <item.icon size={20} className={item.iconColor} />
         </div>
-        <p className="text-sm font-bold text-gray-800">{item.label}</p>
-        <p className="text-xs text-gray-500 mt-1">View details →</p>
-      </div>
+        <p className="text-sm font-bold theme-text-primary">{item.label}</p>
+        <p className="text-xs theme-text-muted">Manage & Optimize →</p>
+      </ThemeCard>
     ))}
   </div>
 );
 
+/* ---------------- VIEWS ---------------- */
+
 const OverviewView = () => (
   <div className="space-y-5">
-    <div className="flex items-center justify-between mb-4">
-      <h2 className="text-lg font-bold text-gray-800">Specialized Features</h2>
-      <button className="text-xs text-blue-600 font-semibold hover:text-blue-700">View Details</button>
+    <div className="flex items-center justify-between">
+      <h2 className="text-lg font-bold theme-text-primary">Specialized Features</h2>
+      <button className="text-xs theme-accent-primary font-semibold">View Details</button>
     </div>
+
     <div className="grid grid-cols-3 gap-4">
-      <div className="bg-white rounded-xl p-4 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-200 text-center">
-        <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-          <Home size={20} className="text-blue-600" />
-        </div>
-        <p className="text-xs text-gray-600 mb-1">Real Estate CRM</p>
-        <p className="text-sm font-bold text-blue-600">Focus</p>
-      </div>
-      <div className="bg-white rounded-xl p-4 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-200 text-center">
-        <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
-          <Heart size={20} className="text-purple-600" />
-        </div>
-        <p className="text-xs text-gray-600 mb-1">Hospital CRM</p>
-        <p className="text-sm font-bold text-purple-600">Focus</p>
-      </div>
-      <div className="bg-white rounded-xl p-4 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-200 text-center">
-        <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-          <Target size={20} className="text-green-600" />
-        </div>
-        <p className="text-xs text-gray-600 mb-1">Lead Flow CRM</p>
-        <p className="text-sm font-bold text-green-600">Managed</p>
-      </div>
-    </div>
-    <div className="grid grid-cols-2 gap-4 mt-6">
-      <div className="bg-gradient-to-br from-blue-50 to-white rounded-xl p-4 border border-blue-100">
-        <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
-            <Shield size={18} className="text-white" />
-          </div>
-          <div>
-            <p className="text-xs text-blue-600 font-semibold">Secure</p>
-            <p className="text-sm font-bold text-gray-800">Built-in</p>
-          </div>
-        </div>
-        <p className="text-xs text-gray-500">Data Security</p>
-      </div>
-      <div className="bg-gradient-to-br from-cyan-50 to-white rounded-xl p-4 border border-cyan-100">
-        <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 bg-cyan-500 rounded-lg flex items-center justify-center">
-            <Zap size={18} className="text-white" />
-          </div>
-          <div>
-            <p className="text-xs text-cyan-600 font-semibold">Efficient</p>
-            <p className="text-sm font-bold text-gray-800">Included</p>
-          </div>
-        </div>
-        <p className="text-xs text-gray-500">Automation</p>
-      </div>
-      <div className="bg-gradient-to-br from-green-50 to-white rounded-xl p-4 border border-green-100">
-        <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center">
-            <Calendar size={18} className="text-white" />
-          </div>
-          <div>
-            <p className="text-xs text-green-600 font-semibold">Fast</p>
-            <p className="text-sm font-bold text-gray-800">Quick</p>
-          </div>
-        </div>
-        <p className="text-xs text-gray-500">Setup Time</p>
-      </div>
-      <div className="bg-gradient-to-br from-orange-50 to-white rounded-xl p-4 border border-orange-100">
-        <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center">
-            <TrendingUp size={18} className="text-white" />
-          </div>
-          <div>
-            <p className="text-xs text-orange-600 font-semibold">Insight</p>
-            <p className="text-sm font-bold text-gray-800">Custom</p>
-          </div>
-        </div>
-        <p className="text-xs text-gray-500">Reporting</p>
-      </div>
+      <ThemeCard className="text-center">
+        <Home size={20} className="mx-auto theme-accent-primary mb-2" />
+        <p className="text-xs theme-text-secondary">Real Estate CRM</p>
+        <p className="text-sm font-bold theme-accent-primary">Focus</p>
+      </ThemeCard>
+
+      <ThemeCard className="text-center">
+        <Heart size={20} className="mx-auto text-purple-500 mb-2" />
+        <p className="text-xs theme-text-secondary">Hospital CRM</p>
+        <p className="text-sm font-bold text-purple-500">Focus</p>
+      </ThemeCard>
+
+      <ThemeCard className="text-center">
+        <Target size={20} className="mx-auto text-green-500 mb-2" />
+        <p className="text-xs theme-text-secondary">Lead Flow CRM</p>
+        <p className="text-sm font-bold text-green-500">Managed</p>
+      </ThemeCard>
     </div>
   </div>
 );
@@ -160,15 +125,6 @@ const LeadNurturingView = () => (
   ]} />
 );
 
-const ReportingView = () => (
-  <SimpleGrid items={[
-    { icon: TrendingUp, label: 'Analytics', iconColor: 'text-green-600', bgGradient: 'from-green-50 to-green-100' },
-    { icon: Heart, label: 'Performance', iconColor: 'text-green-600', bgGradient: 'from-green-50 to-green-100' },
-    { icon: Trophy, label: 'Achievements', iconColor: 'text-green-600', bgGradient: 'from-green-50 to-green-100' },
-    { icon: Headset, label: 'Support Stats', iconColor: 'text-green-600', bgGradient: 'from-green-50 to-green-100' },
-  ]} />
-);
-
 const CalendarView = () => (
   <SimpleGrid items={[
     { icon: Home, label: 'Property Tours', iconColor: 'text-indigo-600', bgGradient: 'from-indigo-50 to-indigo-100' },
@@ -178,85 +134,79 @@ const CalendarView = () => (
   ]} />
 );
 
-const DataSecurityView = () => (
-  <SimpleGrid items={[
-    { icon: Lock, label: 'Encryption', iconColor: 'text-purple-600', bgGradient: 'from-purple-50 to-purple-100' },
-    { icon: UserCog, label: 'Access Control', iconColor: 'text-purple-600', bgGradient: 'from-purple-50 to-purple-100' },
-    { icon: Database, label: 'Data Backup', iconColor: 'text-purple-600', bgGradient: 'from-purple-50 to-purple-100' },
-    { icon: Activity, label: 'Monitoring', iconColor: 'text-purple-600', bgGradient: 'from-purple-50 to-purple-100' },
-  ]} />
-);
+/* ---------------- SIDEBAR BUTTON ---------------- */
 
-const Sidebar = ({ icon: Icon, active, onClick, tooltip }) => (
-  <button onClick={onClick} className={`relative p-3 rounded-2xl transition-all duration-300 group ${active ? 'bg-gradient-to-br from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-500/30 scale-110' : 'text-gray-400 hover:bg-gray-100 hover:text-gray-600 hover:scale-105'}`}>
+const SidebarBtn = ({ icon: Icon, active, onClick }) => (
+  <button
+    onClick={onClick}
+    className={`p-3 rounded-2xl transition-all
+      ${active
+        ? 'theme-gradient-accent text-white scale-110'
+        : 'theme-text-muted hover:theme-bg-tertiary'
+      }
+    `}
+  >
     <Icon size={20} />
-    {tooltip && <span className="absolute left-full ml-2 px-3 py-1.5 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none z-10">{tooltip}</span>}
   </button>
 );
 
+/* ---------------- MAIN DASHBOARD ---------------- */
+
 export default function ServicesDashboard() {
   const autoRotateRef = useRef(null);
-
   const [activeIndex, setActiveIndex] = useState(0);
+  const activeTab = VISIBLE_TABS[activeIndex].key;
 
-const activeTab = VISIBLE_TABS[activeIndex].key;
+  useEffect(() => {
+    autoRotateRef.current = setInterval(() => {
+      setActiveIndex(p => (p + 1) % VISIBLE_TABS.length);
+    }, 3500);
+    return () => clearInterval(autoRotateRef.current);
+  }, []);
 
-
-  
- useEffect(() => {
-  autoRotateRef.current = setInterval(() => {
-    setActiveIndex((prev) => (prev + 1) % VISIBLE_TABS.length);
-  }, 3500);
-
-  return () => clearInterval(autoRotateRef.current);
-}, []);
-
-
-
-const handleTabClick = (index) => {
-  // stop old auto rotation
-  if (autoRotateRef.current) clearInterval(autoRotateRef.current);
-
-  // change tab
-  setActiveIndex(index);
-
-  // restart auto rotation
-  autoRotateRef.current = setInterval(() => {
-    setActiveIndex((prev) => (prev + 1) % VISIBLE_TABS.length);
-  }, 3500);
-};
-
-
-
-  
   return (
-    <div className="w-full max-w-[700px] h-[500px] rounded-3xl bg-gradient-to-br from-gray-50 to-gray-100 shadow-2xl border border-gray-200 overflow-hidden">
-      <div className="h-16 px-6 flex items-center justify-between border-b border-gray-200 bg-white/80 backdrop-blur-sm">
-        <span className="font-bold text-xl bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">Anquest</span>
-        <button className="p-2 rounded-xl hover:bg-gray-100 transition-colors duration-200 relative">
-          <Bell size={18} className="text-gray-600" />
-          <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
-        </button>
-      </div>
-      <div className="flex h-full">
-        <div className="w-[80px] flex flex-col items-center gap-2 py-6 border-r border-gray-200 bg-white/50 backdrop-blur-sm">
-          <Sidebar icon={LayoutDashboard} active={activeTab === 'overview'} onClick={() => handleTabClick(0)} tooltip="Overview" />
-          <Sidebar icon={Home} active={activeTab === 'realestate'} onClick={() => handleTabClick(1)} tooltip="Real Estate" />
-          <Sidebar icon={Heart} active={activeTab === 'hospital'} onClick={() => handleTabClick(2)} tooltip="Hospital" />
-          <Sidebar icon={Zap} active={activeTab === 'nurturing'} onClick={() => handleTabClick(3)} tooltip="Lead Nurturing" />
-          <Sidebar icon={Calendar} active={activeTab === 'tasks'} onClick={() => handleTabClick(4)} tooltip="Tasks" />
-          <div className="mt-auto"><Sidebar icon={MoreHorizontal} tooltip="More" /></div>
+    <div className="w-full max-w-[700px] h-[500px] rounded-3xl overflow-hidden theme-bg-primary theme-border-primary border shadow-2xl">
+      
+      {/* HEADER */}
+      <div className="h-16 px-6 flex items-center border-b theme-bg-secondary theme-border-primary">
+        <div className="w-8 h-8 rounded-full overflow-hidden bg-white">
+          <img
+            src="https://ik.imagekit.io/y7b5pqyxj/anquest__2_-removebg-preview.png"
+            className="w-full h-full object-contain"
+          />
         </div>
-        <div className="flex-1 overflow-y-auto p-6">
+      </div>
+
+      {/* BODY */}
+      <div className="flex h-full">
+        
+        {/* SIDEBAR */}
+        <div className="w-[80px] flex flex-col items-center gap-2 py-6 border-r theme-bg-secondary theme-border-primary">
+          {VISIBLE_TABS.map((t, i) => (
+            <SidebarBtn
+              key={t.key}
+              icon={t.icon}
+              active={activeTab === t.key}
+              onClick={() => setActiveIndex(i)}
+            />
+          ))}
+          <div className="mt-auto theme-text-muted">
+            <MoreHorizontal />
+          </div>
+        </div>
+
+        {/* CONTENT */}
+        <div className="flex-1 p-6 overflow-y-auto theme-section">
+          <h2 className="text-lg font-bold mb-4 theme-text-primary">
+            {VISIBLE_TABS.find(t => t.key === activeTab)?.label}
+          </h2>
+
           {activeTab === 'overview' && <OverviewView />}
           {activeTab === 'realestate' && <PropertyView />}
           {activeTab === 'hospital' && <HospitalView />}
           {activeTab === 'nurturing' && <LeadNurturingView />}
-          {activeTab === 'reporting' && <ReportingView />}
           {activeTab === 'tasks' && <CalendarView />}
-          {activeTab === 'security' && <DataSecurityView />}
         </div>
-        
       </div>
     </div>
   );

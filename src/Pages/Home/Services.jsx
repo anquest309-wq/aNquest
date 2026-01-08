@@ -46,14 +46,9 @@ export default function Services() {
       title: "Mobile App Development",
       description: "Native and cross-platform mobile apps using React Native, Flutter, Swift, and Kotlin. iOS and Android apps that deliver exceptional user experiences."
     },
+    
     {
       id: 3,
-      number: "03",
-      title: "Full-Stack Development", 
-      description: "Complete end-to-end solutions with frontend, backend, database design, and API development using modern technologies and best practices."
-    },
-    {
-      id: 4,
       number: "04",
       title: "SEO & Digital Marketing",
       description: "Comprehensive SEO strategies, content marketing, and digital presence optimization to boost your online visibility and drive organic traffic."
@@ -132,14 +127,14 @@ export default function Services() {
           {/* Services Section */}
           <div className="mb-20">
             {/* Header */}
-            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-12">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:gap-2 lg:justify-between mb-12">
               <div className="mb-6 lg:mb-0">
-                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold theme-text-primary leading-tight">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary leading-tight">
                   Expert Development & 
                   <span style={{ color: '#2d65bc' }}> SEO Solutions</span>
                 </h2>
               </div>
-              <button className="theme-bg-primary theme-text-primary font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-[#2d65bc]/25 flex items-center gap-2 self-start lg:self-center" style={{ '--hover-color': '#2d65bc' }} onMouseEnter={(e) => e.currentTarget.style.color = '#2d65bc'} onMouseLeave={(e) => e.currentTarget.style.color = ''}>
+              <button className="  theme-bg-primary theme-text-primary font-bold py-4  rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-[#2d65bc]/25 flex items-center gap-2 self-start lg:self-center" style={{ '--hover-color': '#2d65bc' }} onMouseEnter={(e) => e.currentTarget.style.color = '#2d65bc'} onMouseLeave={(e) => e.currentTarget.style.color = ''}>
                 View All Services
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />

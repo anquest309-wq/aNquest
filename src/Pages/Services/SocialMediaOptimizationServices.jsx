@@ -379,21 +379,7 @@ const SocialMediaOptimizationServices = () => {
                   <p className="text-base sm:text-lg md:text-xl theme-text-secondary mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
                     Grow faster on social with a strategy that blends content, community, and analytics. We turn attention into action across every major platform.
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                    <Link
-                      to={buildUrl('/request-a-quote')}
-                      className="group inline-flex items-center justify-center gap-2 bg-[#2d65bc] text-white font-bold py-4 px-8 rounded-xl hover:opacity-90 transition-all duration-300 hover:scale-105 theme-shadow-card-hover"
-                    >
-                      Start Your SMO Plan
-                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                    <Link
-                      to={buildUrl('/contacts-us')}
-                      className="inline-flex items-center justify-center gap-2 border-2 theme-border-accent theme-text-accent font-bold py-4 px-8 rounded-xl hover:scale-105 transition-all duration-300"
-                    >
-                      Contact Us
-                    </Link>
-                  </div>
+                  
                 </div>
 
                 <SMOHeroDashboard />
