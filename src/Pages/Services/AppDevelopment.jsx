@@ -532,7 +532,7 @@ const AppDevelopment = () => {
                         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex h-[550px]   items-center justify-center  ">
                             <div className="max-w-4xl mx-auto text-center">
 
-                                <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 theme-text-primary leading-tight">
+                                <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl poiret-one-regular-bold mb-6 theme-text-primary leading-tight">
                                     We Build Powerful{" "}
                                     <span className="text-transparent bg-clip-text bg-[#2d65bc]">
                                         Apps
@@ -541,7 +541,7 @@ const AppDevelopment = () => {
 
 
 
-                                <p className="text-lg sm:text-xl theme-text-secondary mb-8 max-w-3xl mx-auto leading-relaxed">
+                                <p className="text-lg sm:text-xl poiret-one-regular theme-text-secondary mb-8 max-w-3xl mx-auto leading-relaxed">
                                     Expert mobile app development using modern technologies. From native
                                     iOS & Android to cross-platform solutions, we deliver scalable,
                                     high-performance mobile experiences.

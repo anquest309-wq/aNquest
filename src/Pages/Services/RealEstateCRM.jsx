@@ -665,13 +665,13 @@ const RealEstateCRM = () => {
                             <div className="max-w-4xl mx-auto text-center">
 
                                 {/* Heading */}
-                                <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 theme-text-primary leading-tight">
+                                <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl poiret-one-regular-bold mb-6 theme-text-primary leading-tight">
                                     Smart Real Estate CRM Solutions That{" "}
                                     <span style={{ color: "#2d65bc" }}>Close Deals Faster</span>
                                 </h1>
 
                                 {/* Subtitle */}
-                                <p className="text-md sm:text-md lg:text-lg theme-text-secondary mb-10 max-w-3xl mx-auto leading-relaxed">
+                                <p className="text-md sm:text-md lg:text-lg poiret-one-regular theme-text-secondary mb-10 max-w-3xl mx-auto leading-relaxed">
                                     We are a forward-thinking digital solutions company turning ideas
                                     into powerful, scalable digital products.
                                 </p>

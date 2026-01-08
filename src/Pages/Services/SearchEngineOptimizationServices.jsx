@@ -70,7 +70,7 @@ const SEOHeroDashboard = () => {
 
         {/* Sidebar - Icon Rail */}
         <div className={`w-16 flex flex-col items-center hidden sm:block py-6 gap-4 border-r border-gray-200/10 z-20 ${isLight ? 'bg-gray-50/50' : 'bg-slate-900/50'}`}>
-          <div className="w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center mb-2 font-bold text-xs">
+          <div className="w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center mb-2  text-xs">
             SEO
           </div>
           {tabs.map((tab, index) => (
@@ -84,7 +84,7 @@ const SEOHeroDashboard = () => {
             >
               <tab.icon size={18} />
               {/* Tooltip */}
-              <div className="absolute left-14 bg-slate-900 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-50 pointer-events-none translate-x-2 group-hover:translate-x-0">
+              <div className="absolute left-14 bg-slate-900 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-50 pointer-events-none translate-x-2 group-hover:translate-x-0 ">
                 {tab.label}
               </div>
             </button>
@@ -560,18 +560,18 @@ const SearchEngineOptimizationServices = () => {
       <div className="min-h-screen theme-bg-primary ">
 
         {/* SIMPLE CENTERED HERO (LIKE MOBILE APPS PAGE) */}
-        <section className="relative overflow-hidden h-[600px] flex justify-center items-center  py-14 sm:py-16  theme-bg-primary">
+        <section className="relative overflow-hidden h-[600px] flex justify-center items-center    theme-bg-primary">
           <HomeHeroBg theme={theme} />
 
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-5xl mx-auto text-center animate-fade-in">
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-6">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl poiret-one-regular-bold theme-text-primary mb-6">
                 We Build Powerful{" "}
                 <span className="text-[#2d65bc]">SEO Solutions</span>
               </h1>
 
-              <p className="text-lg sm:text-xl theme-text-secondary max-w-3xl mx-auto leading-relaxed mb-10">
+              <p className="text-lg sm:text-xl poiret-one-regular theme-text-secondary max-w-3xl mx-auto leading-relaxed mb-10">
                 Data-driven SEO strategies that improve rankings, increase organic traffic,
                 and turn search visibility into real business growth.
               </p>

@@ -313,16 +313,16 @@ const SocialMediaOptimizationServices = () => {
               <div className="max-w-5xl mx-auto text-center">
 
                 {/* Heading */}
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-6">
-                  We Build Powerful{" "}
-                  <span className="text-[#2d65bc]">Mobile Apps</span>
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl poiret-one-regular-bold theme-text-primary mb-6">
+                  Grow Your Brand Faster With{" "}
+                  <span className="text-[#2d65bc]">Social Media Optimization</span>
                 </h1>
 
                 {/* Description */}
-                <p className="text-lg sm:text-xl theme-text-secondary max-w-3xl mx-auto leading-relaxed mb-10">
-                  Expert mobile app development using modern technologies. From native iOS &
-                  Android to cross-platform solutions, we deliver scalable, high-performance
-                  mobile experiences.
+                <p className="text-lg sm:text-xl poiret-one-regular theme-text-secondary max-w-3xl mx-auto leading-relaxed mb-10">
+                  We help businesses grow faster through strategic social media optimization that strengthens
+                  brand presence, attracts the right audience, and converts engagement into measurable results.
+
                 </p>
 
                 {/* CTA Buttons */}
@@ -338,22 +338,22 @@ const SocialMediaOptimizationServices = () => {
                     Start a Project
                   </Link>
 
-                 <Link to={buildUrl('/services/digital-marketing/social-media-optimization/contact-us')}>
-                  <button
-                    onClick={() =>
-                      document
-                      .getElementById("case-studies")
-                      ?.scrollIntoView({ behavior: "smooth" })
-                    }
-                    className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold
+                  <Link to={buildUrl('/services/digital-marketing/social-media-optimization/contact-us')}>
+                    <button
+                      onClick={() =>
+                        document
+                          .getElementById("case-studies")
+                          ?.scrollIntoView({ behavior: "smooth" })
+                      }
+                      className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold
                     py-3 sm:py-4 px-6 sm:px-8
                     rounded-xl transition-all duration-300
                     hover:bg-[#2d65bc] hover:text-white
                     hover:scale-105"
                     >
-                     Talk to Specialist
-                  </button>
-                    </Link>
+                      Talk to Specialist
+                    </button>
+                  </Link>
                 </div>
 
               </div>
@@ -379,7 +379,7 @@ const SocialMediaOptimizationServices = () => {
                   <p className="text-base sm:text-lg md:text-xl theme-text-secondary mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
                     Grow faster on social with a strategy that blends content, community, and analytics. We turn attention into action across every major platform.
                   </p>
-                  
+
                 </div>
 
                 <SMOHeroDashboard />

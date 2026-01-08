@@ -127,7 +127,7 @@ const Testimonial = () => {
       </div>
       <div className="relative z-10">
       <div className="max-w-7xl mx-auto px-3 lg:px-6 text-center relative z-10">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold theme-text-primary mb-12">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl poiret-one-regular-bold theme-text-primary mb-12">
           Client <span style={{ color: '#2d65bc' }}>Testimonials</span>
         </h2>
 
@@ -195,7 +195,7 @@ const Testimonial = () => {
                     </svg>
                   </div>
                   <h3 
-                    className="text-lg font-semibold theme-text-primary transition-colors duration-300 testimonial-company"
+                    className="text-lg poiret-one-regular-bold theme-text-primary transition-colors duration-300 testimonial-company"
                   >
                     {item.company}
                   </h3>
@@ -208,17 +208,12 @@ const Testimonial = () => {
                 {/* User Info */}
                 <div className="flex items-center justify-between">
                   <div className="group-hover:translate-x-2 transition-transform duration-300">
-                    <h4 className="text-lg font-semibold theme-text-primary transition-colors duration-300 testimonial-name">
+                    <h4 className="text-lg poiret-one-regular-bold theme-text-primary transition-colors duration-300 testimonial-name">
                       {item.name}
                     </h4>
                     <p className="theme-text-secondary text-sm group-hover:theme-text-primary transition-colors duration-300">{item.position}</p>
                   </div>
-                  {/* <img
-                    src={item.img}
-                    alt={item.name}
-                    className="w-12 h-12 rounded-full object-cover border-2 group-hover:scale-[1.02] group-hover:rotate-6 transition-all duration-300"
-                    style={{ borderColor: '#2d65bc' }}
-                  /> */}
+                 
                 </div>
               </div>
               

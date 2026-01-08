@@ -229,24 +229,25 @@ export default function Home() {
                   <div className="absolute bottom-8 right-16 w-10 h-10 bg-white/10 rounded-full animate-float"></div>
                 </div>
                 <div className="relative z-10">
-                  <h3 className={`text-3xl sm:text-4xl font-bold mb-6 ${getCTATextColor()}`}>
+                  <h3 className={`text-3xl sm:text-4xl poiret-one-regular-bold mb-6 ${getCTATextColor()}`}>
                     Ready to Transform Your Business?
                   </h3>
-                  <p className={`text-lg mb-8 max-w-2xl mx-auto ${theme === 'dark' ? 'text-[black]' : 'text-gray-800'
+                  <p className={`text-lg mb-8 poiret-one-regular
+ max-w-2xl mx-auto ${theme === 'dark' ? 'text-[black]' : 'text-gray-800'
                     } opacity-90`}>
                     Let's discuss how our innovative IT solutions can help your business achieve its goals and stay ahead of the competition.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Link
                       to={buildUrl('/contact-us')}
-                      className="bg-[#2d65bc] text-white font-bold py-4 px-8 rounded-xl
+                      className="bg-[#2d65bc] text-white  poiret-one-regular py-4 px-8 rounded-xl
                      hover:bg-[#2d65bc]/90 hover:shadow-lg transition-all duration-300 text-sm sm:text-base transform hover:scale-105 active:scale-95"
                     >
                       Get Started Today
                     </Link>
                     <a
                       href="#services"
-                      className={`border-2 border-[#2d65bc] font-bold py-4 px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white hover:shadow-lg transition-all duration-300 text-sm sm:text-base transform hover:scale-105 active:scale-95 ${theme === 'dark' ? 'bg-white/10 text-[#2d65bc]' : 'bg-white/80 text-gray-800'
+                      className={`border-2 border-[#2d65bc] poiret-one-regular py-4 px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white hover:shadow-lg transition-all duration-300 text-sm sm:text-base transform hover:scale-105 active:scale-95 ${theme === 'dark' ? 'bg-white/10 text-[#2d65bc]' : 'bg-white/80 text-gray-800'
                         }`}
                     >
                       Learn More

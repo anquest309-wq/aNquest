@@ -28,10 +28,10 @@ const HomeHero = () => {
           {/* Left */}
           <div className="w-full lg:w-1/2  flex justify-center lg:justify-start">
 
-            <div className="max-w-2xl">
+            <div className="max-w-2xl poiret-one-regular-bold">
               <TypingAnimation/>
 
-              <p className="text-lg sm:text-xl theme-text-secondary mt-6 mb-8">
+              <p className="text-lg sm:text-xl poiret-one-regular theme-text-secondary mt-6 mb-8">
                 Modern web, mobile, and automation solutions built to scale.
               </p>
 

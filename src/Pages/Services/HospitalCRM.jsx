@@ -681,13 +681,13 @@ const HospitalCRM = () => {
                             <div className="max-w-4xl mx-auto text-center pt-6">
 
                                 {/* Heading */}
-                                <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 theme-text-primary leading-tight">
+                                <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl poiret-one-regular-bold mb-6 theme-text-primary leading-tight">
                                     Advanced Hospital CRM Solutions for{" "}
                                     <span className="text-[#2d65bc]">Patient-Centric Healthcare</span>
                                 </h1>
 
                                 {/* Subtitle */}
-                                <p className="text-xl sm:text-2xl theme-text-secondary mb-8 max-w-3xl mx-auto leading-relaxed">
+                                <p className="text-xl sm:text-2xl poiret-one-regular theme-text-secondary mb-8 max-w-3xl mx-auto leading-relaxed">
                                     Streamline patient management, automate appointments, optimize billing,
                                     and enhance communication with intelligent workflows and real-time analytics.
                                 </p>

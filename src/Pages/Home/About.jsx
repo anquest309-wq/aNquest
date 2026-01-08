@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useTheme } from '../../Context/ThemeContext'
 import DenseBgAnimation from '../../Components/Bg-animation-template/DenseBgAnimation';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 export default function About() {
@@ -115,13 +115,13 @@ export default function About() {
 
           {/* Section Header */}
           <div className="text-center mb-20">
-          <div className="inline-block text-center px-4 sm:px-6 lg:px-8">
-  <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-tight theme-text-primary mb-6">
-    Transforming businesses with{" "}
-    <span style={{ color: '#2d65bc' }}>innovative IT solutions</span>{" "}
-    and exceptional service.
-  </h2>
-</div>
+            <div className="inline-block text-center px-4 sm:px-6 lg:px-8">
+              <h2 className="text-3xl sm:text-5xl lg:text-6xl poiret-one-regular-bold leading-tight theme-text-primary mb-6">
+                Transforming businesses with{" "}
+                <span style={{ color: '#2d65bc' }}>innovative IT solutions</span>{" "}
+                and exceptional service.
+              </h2>
+            </div>
 
 
           </div>
@@ -131,14 +131,14 @@ export default function About() {
             <div className="animate-slide-in-left">
               <div className="space-y-6">
 
-                <h3 className="text-3xl sm:text-4xl font-bold theme-text-primary leading-tight">
+                <h3 className="text-3xl sm:text-4xl poiret-one-regular-bold theme-text-primary leading-tight">
                   Leading Digital Solutions
                   <span style={{ color: '#2d65bc' }}> Company</span>
                 </h3>
-                <p className="text-lg theme-text-secondary leading-relaxed">
+                <p className="text-lg theme-text-secondary poiret-one-regular leading-relaxed">
                   We specialize in delivering cutting-edge digital solutions that drive business growth and innovation. Our team of experts combines technical excellence with creative vision to transform your ideas into reality.
                 </p>
-                <div className="flex  flex-wrap gap-4">
+                <div className="flex  flex-wrap gap-4 poiret-one-regular">
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 rounded-full" style={{ backgroundColor: themeColor }}></div>
                     <span className="theme-text-secondary text-sm">Custom Development</span>
@@ -183,16 +183,18 @@ export default function About() {
             <div className="order-1 lg:order-2 animate-slide-in-right">
               <div className="space-y-8">
 
-                <h3 className="text-3xl sm:text-4xl font-bold theme-text-primary leading-tight">
+                <h3 className="text-3xl sm:text-4xl poiret-one-regular-bold theme-text-primary leading-tight">
                   Comprehensive IT
                   <span style={{ color: '#2d65bc' }}> Services</span>
                 </h3>
-                <p className="text-lg theme-text-secondary leading-relaxed">
+                <p className="text-lg theme-text-secondary poiret-one-regular
+ leading-relaxed">
                   From web development to mobile applications, we provide end-to-end IT solutions tailored to your business needs. Our expertise spans across multiple technologies and platforms.
                 </p>
 
                 {/* Statistics */}
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid grid-cols-2 gap-6 poiret-one-regular
+">
                   <div className="text-center">
                     <div className="text-3xl font-bold mb-2" style={{ color: '#2d65bc' }}>{counts.projects}+</div>
                     <div className="theme-text-secondary text-sm">Projects Completed</div>
@@ -219,11 +221,12 @@ export default function About() {
             <div className="animate-slide-in-left">
               <div className="space-y-8">
 
-                <h3 className="text-3xl sm:text-4xl font-bold theme-text-primary leading-tight">
+                <h3 className="text-3xl sm:text-4xl poiret-one-regular-bold theme-text-primary leading-tight">
                   Cutting-Edge Technology
                   <span style={{ color: '#2d65bc' }}> Solutions</span>
                 </h3>
-                <p className="text-lg theme-text-secondary leading-relaxed">
+                <p className="text-lg theme-text-secondary poiret-one-regular
+ leading-relaxed">
                   We leverage the latest technologies including AI, machine learning, and cloud computing to deliver innovative solutions that give your business a competitive edge.
                 </p>
 
@@ -231,22 +234,25 @@ export default function About() {
                   <div className="flex items-start space-x-3">
                     <span className="text-4xl mt-1" style={{ color: '#2d65bc' }}>•</span>
                     <div>
-                      <h4 className="theme-text-primary font-semibold">Advanced Analytics.</h4>
-                      <p className="theme-text-secondary text-sm">Data-driven insights for better decision making</p>
+                      <h4 className="theme-text-primary poiret-one-regular-bold">Advanced Analytics.</h4>
+                      <p className="theme-text-secondary text-sm poiret-one-regular
+">Data-driven insights for better decision making</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
                     <span className="text-4xl mt-1" style={{ color: '#2d65bc' }}>•</span>
                     <div>
-                      <h4 className="theme-text-primary font-semibold">Scalable Architecture.</h4>
-                      <p className="theme-text-secondary text-sm">Solutions that grow with your business</p>
+                      <h4 className="theme-text-primary poiret-one-regular-bold">Scalable Architecture.</h4>
+                      <p className="theme-text-secondary text-sm poiret-one-regular
+">Solutions that grow with your business</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
                     <span className="text-4xl mt-1" style={{ color: '#2d65bc' }}>•</span>
                     <div>
-                      <h4 className="theme-text-primary font-semibold">Security First.</h4>
-                      <p className="theme-text-secondary text-sm">Enterprise-grade security for all solutions</p>
+                      <h4 className="theme-text-primary poiret-one-regular-bold">Security First.</h4>
+                      <p className="theme-text-secondary text-sm  poiret-one-regular
+">Enterprise-grade security for all solutions</p>
                     </div>
                   </div>
                 </div>
@@ -275,30 +281,29 @@ export default function About() {
               <div className="absolute bottom-8 right-16 w-10 h-10 bg-white/10 rounded-full animate-float"></div>
             </div>
             <div className="relative z-10">
-              <h3 className={`text-3xl sm:text-4xl font-bold mb-6 ${getCTATextColor()}`}>
+              <h3 className={`text-3xl sm:text-4xl poiret-one-regular-bold mb-6 ${getCTATextColor()}`}>
                 Ready to Transform Your Business?
               </h3>
-              <p className={`text-lg mb-8 max-w-2xl mx-auto ${
-                    theme === 'dark' ? 'text-[black]' : 'text-gray-800'
-                  } opacity-90`}>
+              <p className={`text-lg mb-8 poiret-one-regular
+ max-w-2xl mx-auto ${theme === 'dark' ? 'text-[black]' : 'text-gray-800'
+                } opacity-90`}>
                 Let's discuss how our innovative IT solutions can help your business achieve its goals and stay ahead of the competition.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact-us">
-                <button  className="bg-[#2d65bc] text-white font-bold py-4 px-8 rounded-xl
+                  <button className="bg-[#2d65bc] text-white font-bold py-4 px-8 rounded-xl
                  hover:bg-[#2d65bc]/90 hover:shadow-lg transition-all duration-300 text-sm sm:text-base transform hover:scale-105 active:scale-95">
-                  Get Started Today
-                </button>
-                   </Link>
-                   <Link to="/about" >
-                <button 
-                  className={`border-2 border-[#2d65bc] font-bold py-4 px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white hover:shadow-lg transition-all duration-300 text-sm sm:text-base transform hover:scale-105 active:scale-95 ${
-                    theme === 'dark' ? 'bg-white/10 text-[#2d65bc]' : 'bg-white/80 text-gray-800'
-                  }`}
+                    Get Started Today
+                  </button>
+                </Link>
+                <Link to="/about" >
+                  <button
+                    className={`border-2 border-[#2d65bc] font-bold py-4 px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white hover:shadow-lg transition-all duration-300 text-sm sm:text-base transform hover:scale-105 active:scale-95 ${theme === 'dark' ? 'bg-white/10 text-[#2d65bc]' : 'bg-white/80 text-gray-800'
+                      }`}
                   >
-                  Learn More
-                </button>
-                  </Link>
+                    Learn More
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

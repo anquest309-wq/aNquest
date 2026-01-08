@@ -138,7 +138,7 @@ const Blogs = () => {
             <div className="max-w-5xl mx-auto text-center">
 
               {/* MAIN HEADING */}
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 theme-text-primary leading-tight">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl poiret-one-regular-bold mb-6 theme-text-primary leading-tight">
                 Insights, Ideas &{" "}
                 <span className="text-transparent bg-clip-text bg-[#2d65bc]">
                   Industry Knowledge
@@ -146,7 +146,7 @@ const Blogs = () => {
               </h1>
 
               {/* SUB HEADING */}
-              <p className="text-lg sm:text-xl theme-text-secondary mb-8 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-lg sm:text-xl poiret-one-regular theme-text-secondary mb-8 max-w-3xl mx-auto leading-relaxed">
                 Explore expert-written articles on technology, digital growth,
                 automation, and real-world problem solving — curated by the
                 aNquest Media team.

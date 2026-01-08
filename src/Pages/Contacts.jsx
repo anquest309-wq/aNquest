@@ -105,7 +105,7 @@ return (
           <div className="max-w-5xl mx-auto text-center">
 
             {/* MAIN HEADING */}
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 theme-text-primary leading-tight">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl poiret-one-regular-bold mb-6 theme-text-primary leading-tight">
               Let’s Build Something{" "}
               <span className="text-transparent bg-clip-text bg-[#2d65bc]">
                 Great Together
@@ -113,7 +113,7 @@ return (
             </h1>
 
             {/* SUBTEXT */}
-            <p className="text-lg sm:text-xl theme-text-secondary mb-8 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl poiret-one-regular theme-text-secondary mb-8 max-w-3xl mx-auto leading-relaxed">
               Whether you need a website, mobile app, automation system, or
               a complete digital solution — our team is ready to help you
               turn ideas into scalable products.
