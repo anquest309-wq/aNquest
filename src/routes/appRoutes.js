@@ -54,6 +54,11 @@ const routeGroups = [
       { path: '/web-development-services/request-a-quote', label: 'Web Development Services Quote', component: RequestAQuote },
       { path: '/web-development-services/contact-us', label: 'Web Development Services Contact', component: Contacts },
       { path: '/services/digital-marketing/seo', label: 'SEO Services', component: SearchEngineOptimizationServices },
+      { path: '/seo', label: 'SEO Services', component: SearchEngineOptimizationServices },
+
+
+
+
       { path: '/services/digital-marketing/social-media-optimization', label: 'SEO Services', component: SocialMediaOptimizationServices },
       { path: '/search-engine-optimization-services/request-a-quote', label: 'SEO Services Quote', component: RequestAQuote },
       { path: '/services/crm-services/hospital-crm/request-a-quote', label: 'hostpital to Request a Quote', component: RequestAQuote },
@@ -93,7 +98,9 @@ const routeGroups = [
       , { path: '/services/crm-services/real-state-crm', label: 'Real State CRM ', component: RealEstateCRM },
       { path: '/services/crm-services/hospital-crm', label: 'Hospital CRM ', component: HospitalCRM }
       , { path: '/services/software-services/app-development', label: 'App Development', component: AppDevelopment },
-      { path: '/services/software-services/web-development', label: 'Web Development', component: WebDevelopment}
+      { path: '/services/software-services/web-development', label: 'Web Development', component: WebDevelopment},
+            { path: '/web-development', label: 'Web Development', component: WebDevelopment}
+
 
 
     ]

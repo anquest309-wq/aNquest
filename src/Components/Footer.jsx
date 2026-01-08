@@ -129,35 +129,32 @@ const Footer = () => {
             <h3 className="text-base font-bold theme-footer-text-primary mb-4">Services</h3>
             <ul className="space-y-2">
               <li>
+                <Link to={buildUrl('/about')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
+                  About Us
+                </Link>
+              </li>
+              <li>
                 <Link to={buildUrl('/crm-services')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
                   CRM Services
                 </Link>
               </li>
+              
               <li>
-                <Link to={buildUrl('/web-design-services')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
-                  Web Design
-                </Link>
-              </li>
-              <li>
-                <Link to={buildUrl('/web-development-services')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
+                <Link to={buildUrl('/web-development')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
                   Web Development
                 </Link>
               </li>
               <li>
-                <Link to={buildUrl('/search-engine-optimization-services')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
+                <Link to={buildUrl('/seo')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
                   SEO Services
                 </Link>
               </li>
-              <li>
-                <Link to={buildUrl('/email-marketing-services')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
-                  Email Marketing
-                </Link>
-              </li>
-              <li>
+              
+              {/* <li>
                 <Link to={buildUrl('/support')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
                   Support
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
 
@@ -166,16 +163,8 @@ const Footer = () => {
           <div className="flex flex-col ">
             <h3 className="text-base font-bold theme-footer-text-primary mb-4">Company</h3>
             <ul className="space-y-2">
-              <li>
-                <Link to={buildUrl('/about')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to={buildUrl('/contact-us')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
-                  Get in Touch
-                </Link>
-              </li>
+              
+             
               <li>
                 <Link to={buildUrl('/help')} className="theme-footer-text-secondary hover:theme-footer-text-primary transition-colors duration-300 text-sm">
                   Help & Faqs

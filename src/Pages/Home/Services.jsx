@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useTheme } from '../../Context/ThemeContext'
+import { Link } from 'react-router-dom'
 import GeometricBgAnimation from '../../Components/Bg-animation-template/GeometricBgAnimation';
 
 export default function Services() {
@@ -134,12 +135,14 @@ export default function Services() {
                   <span style={{ color: '#2d65bc' }}> SEO Solutions</span>
                 </h2>
               </div>
+              <Link to="/blogs">
               <button className="  theme-bg-primary theme-text-primary font-bold py-4  rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-[#2d65bc]/25 flex items-center gap-2 self-start lg:self-center" style={{ '--hover-color': '#2d65bc' }} onMouseEnter={(e) => e.currentTarget.style.color = '#2d65bc'} onMouseLeave={(e) => e.currentTarget.style.color = ''}>
                 View All Services
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
               </button>
+              </Link>
             </div>
 
             {/* Services List */}

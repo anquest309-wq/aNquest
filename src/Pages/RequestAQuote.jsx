@@ -4,7 +4,6 @@ import emailjs from '@emailjs/browser';
 import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleSquareBgAnimation';
 import SectionsBgAnimation from '../Components/Bg-animation-template/SectionsBgAnimation';
 import GeometricBgAnimation from '../Components/Bg-animation-template/GeometricBgAnimation';
-import MinimalBigShapesAnimation from '../Components/Bg-animation-template/MinimalBigShapesAnimation';
 import SEO from '../Components/SEO';
 import HomeHeroBg from '../Components/Bg-animation-template/HomeHeroBg';
 import { ArrowRight } from 'react-feather';
@@ -54,36 +53,159 @@ const RequestAQuote = () => {
   const [status, setStatus] = useState({ type: null, message: '' });
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+  const { name, value } = e.target;
 
-    if (name === 'phone') {
-      const numericValue = value.replace(/\D/g, '').slice(0, 12);
-      setFormData(prev => ({
-        ...prev,
-        [name]: numericValue
-      }));
+  /* ---------- NAME VALIDATION ---------- */
+  if (name === 'name') {
+    const MAX_LENGTH = 100;
+    const isOverLimit = value.length > MAX_LENGTH;
+    const hasDigit = /\d/.test(value);
+    const hasSpecialChar = /[^a-zA-Z\s]/.test(value);
+    const textOnly = value.replace(/[^a-zA-Z\s]/g, '').slice(0, MAX_LENGTH);
 
-      setFormErrors(prev => ({
-        ...prev,
-        phone:
-          numericValue.length === 0
-            ? 'Phone number is required.'
-            : numericValue.length !== 12
-              ? 'Phone number must be exactly 12 digits.'
-              : ''
-      }));
-      return;
+    setFormData(prev => ({ ...prev, name: textOnly }));
+
+    let errorMessage = '';
+    if (textOnly.length === 0) {
+      errorMessage = 'Full name is required.';
+    } else if (isOverLimit) {
+      errorMessage = `Name cannot exceed ${MAX_LENGTH} characters.`;
+    } else if (hasDigit) {
+      errorMessage = 'Digits are not allowed in name.';
+    } else if (hasSpecialChar) {
+      errorMessage = 'Special characters are not allowed in name.';
+    } else if (textOnly.length < 2) {
+      errorMessage = 'Name must be at least 2 characters.';
     }
 
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormErrors(prev => ({ ...prev, name: errorMessage }));
+    return;
+  }
 
-    if (formErrors[name]) {
-      setFormErrors(prev => ({ ...prev, [name]: '' }));
+  /* ---------- COMPANY VALIDATION ---------- */
+  if (name === 'company') {
+    const MAX_LENGTH = 100;
+    const isOverLimit = value.length > MAX_LENGTH;
+    const cleanedValue = value.slice(0, MAX_LENGTH);
+
+    setFormData(prev => ({ ...prev, company: cleanedValue }));
+
+    let errorMessage = '';
+    if (isOverLimit) {
+      errorMessage = `Company name cannot exceed ${MAX_LENGTH} characters.`;
     }
-  };
+
+    setFormErrors(prev => ({ ...prev, company: errorMessage }));
+    return;
+  }
+
+  /* ---------- PHONE VALIDATION ---------- */
+  if (name === 'phone') {
+    const MAX_LENGTH = 10;
+    const isOverLimit = value.replace(/\D/g, '').length > MAX_LENGTH;
+    const numericValue = value.replace(/\D/g, '').slice(0, MAX_LENGTH);
+
+    setFormData(prev => ({ ...prev, phone: numericValue }));
+
+    let errorMessage = '';
+    if (numericValue.length === 0) {
+      errorMessage = 'Phone number is required.';
+    } else if (isOverLimit) {
+      errorMessage = `Phone number cannot exceed ${MAX_LENGTH} digits.`;
+    } else if (numericValue.length !== 10) {
+      errorMessage = 'Phone number must be exactly 10 digits.';
+    }
+
+    setFormErrors(prev => ({ ...prev, phone: errorMessage }));
+    return;
+  }
+
+  /* ---------- EMAIL VALIDATION ---------- */
+  if (name === 'email') {
+    const MAX_LENGTH = 254;
+    const isOverLimit = value.length > MAX_LENGTH;
+    const cleanedValue = value.slice(0, MAX_LENGTH);
+
+    setFormData(prev => ({ ...prev, email: cleanedValue }));
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let errorMessage = '';
+
+    if (cleanedValue.length === 0) {
+      errorMessage = 'Email is required.';
+    } else if (isOverLimit) {
+      errorMessage = `Email cannot exceed ${MAX_LENGTH} characters.`;
+    } else if (!emailRegex.test(cleanedValue)) {
+      errorMessage = 'Enter a valid email address.';
+    }
+
+    setFormErrors(prev => ({ ...prev, email: errorMessage }));
+    return;
+  }
+
+  /* ---------- MESSAGE VALIDATION ---------- */
+  if (name === 'message') {
+    const MAX_LENGTH = 1000;
+    const isOverLimit = value.length > MAX_LENGTH;
+    const cleanedValue = value.slice(0, MAX_LENGTH);
+
+    setFormData(prev => ({ ...prev, message: cleanedValue }));
+
+    let errorMessage = '';
+    if (cleanedValue.length === 0) {
+      errorMessage = 'Project description is required.';
+    } else if (isOverLimit) {
+      errorMessage = `Message cannot exceed ${MAX_LENGTH} characters.`;
+    } else if (cleanedValue.length < 20) {
+      errorMessage = 'Message must be at least 20 characters.';
+    }
+
+    setFormErrors(prev => ({ ...prev, message: errorMessage }));
+    return;
+  }
+
+  /* ---------- SERVICE SELECTION ---------- */
+  if (name === 'service') {
+    setFormData(prev => ({ ...prev, service: value }));
+    setFormErrors(prev => ({ ...prev, service: '' }));
+    return;
+  }
+
+
+  /* ---------- COMPANY VALIDATION ---------- */
+if (name === 'company') {
+  const MAX_LENGTH = 100;
+  const isOverLimit = value.length > MAX_LENGTH;
+  const cleanedValue = value.slice(0, MAX_LENGTH);
+
+  setFormData(prev => ({ ...prev, company: cleanedValue }));
+
+  let errorMessage = '';
+  if (isOverLimit) {
+    errorMessage = `Company name cannot exceed ${MAX_LENGTH} characters.`;
+  }
+
+  setFormErrors(prev => ({ ...prev, company: errorMessage }));
+  return;
+}
+
+  /* ---------- BUDGET SELECTION ---------- */
+  if (name === 'budget') {
+    setFormData(prev => ({ ...prev, budget: value }));
+    setFormErrors(prev => ({ ...prev, budget: '' }));
+    return;
+  }
+
+  /* ---------- TIMELINE SELECTION ---------- */
+  if (name === 'timeline') {
+    setFormData(prev => ({ ...prev, timeline: value }));
+    setFormErrors(prev => ({ ...prev, timeline: '' }));
+    return;
+  }
+
+  /* ---------- DEFAULT ---------- */
+  setFormData(prev => ({ ...prev, [name]: value }));
+};
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -104,11 +226,7 @@ const RequestAQuote = () => {
         : emailPattern.test(formData.email)
           ? ''
           : 'Enter a valid email address.',
-      phone: !formData.phone
-        ? 'Phone number is required.'
-        : formData.phone.length !== 12
-          ? 'Phone number must be exactly 12 digits.'
-          : '',
+     
       service: formData.service ? '' : 'Please select a service.',
       budget: formData.budget ? '' : 'Please select a budget range.',
       timeline: formData.timeline ? '' : 'Please select a project timeline.',
@@ -140,7 +258,7 @@ const RequestAQuote = () => {
       Name: ${formData.name}
       Email: ${formData.email}
       Phone: ${formData.phone}
-      Company: ${formData.company || 'Not provided'}
+      Company Name: ${formData.company || 'Not provided'}
       Service: ${formData.service}
       Budget: ${formData.budget}
       Timeline: ${formData.timeline}
@@ -176,15 +294,16 @@ const RequestAQuote = () => {
     }
   };
 
-  const services = [
-    "Web Development",
-    "App Development",
-    "SEO Services",
-    "Digital Marketing",
-    "UI/UX Design",
-    "E-Commerce Solutions",
-    "Full-Stack Development"
-  ];
+ const services = [
+  "CRM Solutions",
+  "Web Development",
+  "App Development",
+  "SEO Services",
+  "Digital Marketing",
+  "UI/UX Design",
+  "E-Commerce Solutions",
+  "Full-Stack Development"
+];
 
   const budgetRanges = [
     "$5,000 - $10,000",
@@ -319,6 +438,7 @@ const RequestAQuote = () => {
                       {formErrors.name && (
                         <p className="text-sm text-red-600">{formErrors.name}</p>
                       )}
+                      
                     </div>
                     <div className="space-y-2">
                       <label htmlFor="email" className="block text-sm font-semibold theme-text-primary">
@@ -379,6 +499,9 @@ const RequestAQuote = () => {
                         className="w-full px-4 py-3 theme-border-primary border-2 rounded-xl focus:ring-2 focus:ring-accent-primary focus:border-transparent transition-all theme-bg-primary theme-text-primary"
                         placeholder="Enter your company name"
                       />
+                    {formErrors.phone && (
+                      <p className="text-sm text-red-600">{formErrors.company}</p>
+                    )}
                     </div>
                   </div>
 

@@ -113,7 +113,7 @@ export default function Navbar() {
 
   const dropdownClass = (name) => {
     const isActive = activeDropdown === name;
-    return `absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-lg transform transition-all duration-300 z-50 ${isActive
+    return `absolute top-full left-0 mt-2 w-60 bg-white rounded-lg shadow-lg transform transition-all duration-300 z-50 ${isActive
       ? "opacity-100 scale-100 pointer-events-auto block"
       : "opacity-0 scale-95 pointer-events-none hidden"
       }`;
@@ -204,7 +204,7 @@ export default function Navbar() {
                       onMouseLeave={() => setIsCmsOpen(false)}
                     >
                       <button
-                        className={`w-full flex items-center justify-between px-4 py-2 ${dropdownText} ${dropdownHover}`}
+                        className={`w-full  flex items-center justify-between px-4 py-2 ${dropdownText} ${dropdownHover}`}
 
                         type="button"
                       >
