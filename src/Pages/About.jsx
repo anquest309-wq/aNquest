@@ -124,13 +124,13 @@ const About = () => {
         keywords="aNquest, about aNquest, digital creative agency, CRM Software Agency, web & mobile development, digital marketing services, business automation solutions"
         canonicalUrl="https://anquestmedia.com/about"
       />
-      <div className="min-h-screen theme-bg-primary    ">
+      <div className="min-h-screen theme-bg-primary  pt-20 md:pt-0  ">
         {/* Hero Section */}
 
 
         {/* Stats Section */}
         <section
-          className="relative overflow-hidden flex items-center justify-center theme-bg-primary  h-[550px]"
+          className="relative overflow-hidden  flex items-center justify-center theme-bg-primary  h-[550px]"
           style={{  paddingTop: "80px" }}
         >
           {/* Background */}

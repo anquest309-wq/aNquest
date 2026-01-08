@@ -10,7 +10,7 @@ import {
 import {
   FileSearch,
   Link2,
-  
+
 } from "lucide-react";
 
 
@@ -487,7 +487,7 @@ export default function Navbar() {
                         CMS Services
                         <span>{isMobileCmsOpen ? "−" : "+"}</span>
                       </button>
-                       {isMobileCmsOpen && (
+                      {isMobileCmsOpen && (
                         <div className="ml-6 bg-white rounded-md overflow-hidden">
                           <Link
                             to={buildUrl('/services/crm-services/real-state-crm')}
@@ -506,7 +506,7 @@ export default function Navbar() {
                         </div>
                       )}
 
-                    
+
 
                       {/* /* ===== DIGITAL MARKETING  */}
                       <button
@@ -538,7 +538,7 @@ export default function Navbar() {
 
 
 
-                     {/* /*= SOFTWARE SERVICES ===== */} 
+                      {/* /*= SOFTWARE SERVICES ===== */}
                       <button
                         onClick={() => setIsMobileSoftwareOpen(!isMobileSoftwareOpen)}
                         className="w-full flex justify-between items-center px-6 py-2 font-semibold text-[#2d65bc]"
@@ -568,7 +568,7 @@ export default function Navbar() {
 
 
 
-                     
+
 
                     </div>
                   )}
@@ -588,11 +588,17 @@ export default function Navbar() {
                 <Link
                   to={buildUrl('/contact-us')}
                   onClick={toggleMenu}
-                  className="block px-4 py-3 text-gray-800 font-semibold hover:bg-gray-50 hover:text-[#2d65bc] transition-colors border-b border-gray-200"
+                  className="block px-4 py-3 border-b text-gray-800 font-semibold hover:bg-gray-50 hover:text-[#2d65bc] transition-colors  border-gray-200"
                 >
                   Contacts
                 </Link>
-
+                <Link
+                  to={buildUrl('/request-a-quote')}
+                  onClick={toggleMenu}
+                  className="block px-4 py-3 text-gray-800 font-semibold hover:bg-gray-50 hover:text-[#2d65bc] transition-colors  border-gray-200"
+                >
+                  Request A Quote
+                </Link>
                 {/* Theme Switcher in Mobile */}
                 <div className="border-t border-gray-200 pt-3 mt-2">
                   <div className="px-4 py-2 font-semibold text-[#2d65bc]">Theme</div>

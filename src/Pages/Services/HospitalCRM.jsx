@@ -667,10 +667,10 @@ const HospitalCRM = () => {
 
             <div className="min-h-screen relative">
 
-                <div className="theme-bg-primary relative z-10">
+                <div className="theme-bg-primary relative z-10 pt-20">
 
                     {/*  Hero Section */}
-                    <section className="relative overflow-hidden h-[550px] flex items-center justify-center pt-20">
+                    <section className="relative overflow-hidden h-[550px] flex items-center justify-center  py-5">
                         {/* Background Animation */}
                         <HomeHeroBg theme={theme} />
 

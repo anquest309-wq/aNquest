@@ -19,7 +19,7 @@ const HomeHero = () => {
 
 
   return (
-    <section className="relative h-screen w-full flex overflow-hidden ">
+    <section className="relative h-screen w-full pt-20 md:pt-0 flex overflow-hidden ">
 
                 <HomeHeroBg />
       <div className="container mx-auto px-4 sm:px-6 lg:px-18 h-full relative z-10">
