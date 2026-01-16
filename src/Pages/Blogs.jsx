@@ -1,21 +1,40 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
+
 import { Link } from 'react-router-dom';
 import { useTheme } from '../Context/ThemeContext';
-import DenseBgAnimation from '../Components/Bg-animation-template/DenseBgAnimation';
-// import LargeShapesBgAnimation from '../Components/Bg-animation-template/LargeShapesBgAnimation';
-import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleSquareBgAnimation';
-import { MinimalBigShapesAnimation } from '../Components/Bg-animation-template';
-// import GridStructureBgAnimation from '../Components/Bg-animation-template/GridStructureBgAnimation';
 import CTABgAnimation from "../Components/Bg-animation-template/CTABgAnimation"
 import SEO from '../Components/SEO';
 import blogPostsData from '../data/blogPosts';
 import { buildUrl } from '../utils/urlUtils';
+import HomeHeroBg from '../Components/Bg-animation-template/HomeHeroBg';
+import { ArrowRight } from 'react-feather';
+
+
 
 const Blogs = () => {
   const { theme } = useTheme();
   const [currentPage, setCurrentPage] = useState(1);
   const blogsPerPage = 9; // Number of blogs per page
-  const blogPosts = useMemo(() => blogPostsData, []);
+
+  const [blogPosts, setBlogPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+
+
+  const formattedBlogs = useMemo(() => {
+    return blogPosts.map(post => ({
+      id: post.id,
+      title: post.title,
+      excerpt: post.excerpt || "",
+      category: post.category || "General",
+      image: post.image,
+      readTime: post.read_time || "",
+      author: post.users?.name || "Admin",
+      date: new Date(post.created_at).toLocaleDateString(),
+      slug: post.slug,
+    }));
+  }, [blogPosts]);
+
 
   // Get theme-based colors
   const getThemeColor = () => {
@@ -47,286 +66,13 @@ const Blogs = () => {
     return 'text-white';
   };
 
-  /* Legacy static blog data (kept for reference)
-  const blogPosts = [
-    {
-      id: 1,
-      title: "The Future of Web Development in 2024",
-      excerpt: "Explore the latest trends and technologies shaping the future of web development.",
-      author: "aNquest Team",
-      date: "March 15, 2024",
-      category: "Web Development",
-      readTime: "5 min read",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=600&fit=crop"
-    },
-    {
-      id: 2,
-      title: "SEO Best Practices for Modern Websites",
-      excerpt: "Learn effective SEO strategies to boost your website's visibility and ranking.",
-      author: "aNquest Team",
-      date: "March 12, 2024",
-      category: "SEO",
-      readTime: "7 min read",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&q=80"
-    },
-    {
-      id: 3,
-      title: "Mobile App Development Trends",
-      excerpt: "Discover the latest trends in mobile app development and user experience.",
-      author: "aNquest Team",
-      date: "March 10, 2024",
-      category: "Mobile Development",
-      readTime: "6 min read",
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop"
-    },
-    {
-      id: 4,
-      title: "React 19: What's New and Exciting",
-      excerpt: "Dive into the latest features and improvements in React 19 that every developer should know.",
-      author: "aNquest Team",
-      date: "March 8, 2024",
-      category: "Web Development",
-      readTime: "8 min read",
-      image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=600&fit=crop"
-    },
-    {
-      id: 5,
-      title: "Building Scalable Backend Systems",
-      excerpt: "Learn how to design and implement backend systems that can handle millions of requests.",
-      author: "aNquest Team",
-      date: "March 5, 2024",
-      category: "Backend Development",
-      readTime: "10 min read",
-      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop"
-    },
-    {
-      id: 6,
-      title: "UI/UX Design Principles for 2024",
-      excerpt: "Master the essential UI/UX design principles that create engaging and intuitive user experiences.",
-      author: "aNquest Team",
-      date: "March 3, 2024",
-      category: "Design",
-      readTime: "6 min read",
-      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop"
-    },
-    {
-      id: 7,
-      title: "Cloud Computing: A Complete Guide",
-      excerpt: "Everything you need to know about cloud computing, from basics to advanced strategies.",
-      author: "aNquest Team",
-      date: "February 28, 2024",
-      category: "Cloud Computing",
-      readTime: "12 min read",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop"
-    },
-    {
-      id: 8,
-      title: "API Security Best Practices",
-      excerpt: "Protect your APIs with these essential security practices and avoid common vulnerabilities.",
-      author: "aNquest Team",
-      date: "February 25, 2024",
-      category: "Security",
-      readTime: "9 min read",
-      image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop"
-    },
-    {
-      id: 9,
-      title: "The Rise of AI in Software Development",
-      excerpt: "How artificial intelligence is transforming the way we write, test, and deploy code.",
-      author: "aNquest Team",
-      date: "February 22, 2024",
-      category: "AI & Machine Learning",
-      readTime: "7 min read",
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop"
-    },
-    {
-      id: 10,
-      title: "Database Optimization Techniques",
-      excerpt: "Improve your application's performance with these proven database optimization strategies.",
-      author: "aNquest Team",
-      date: "February 20, 2024",
-      category: "Database",
-      readTime: "8 min read",
-      image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&h=600&fit=crop"
-    },
-    {
-      id: 11,
-      title: "Progressive Web Apps: The Future of Mobile",
-      excerpt: "Why PWAs are becoming the preferred choice for mobile applications and how to build them.",
-      author: "aNquest Team",
-      date: "February 18, 2024",
-      category: "Mobile Development",
-      readTime: "6 min read",
-      image: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=800&h=600&fit=crop"
-    },
-    {
-      id: 12,
-      title: "Docker and Containerization Explained",
-      excerpt: "Learn how Docker containers revolutionize application deployment and development workflows.",
-      author: "aNquest Team",
-      date: "February 15, 2024",
-      category: "DevOps",
-      readTime: "9 min read",
-      image: "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&h=600&fit=crop"
-    },
-    {
-      id: 13,
-      title: "GraphQL vs REST: Which Should You Choose?",
-      excerpt: "A comprehensive comparison of GraphQL and REST APIs to help you make the right choice.",
-      author: "aNquest Team",
-      date: "February 12, 2024",
-      category: "Web Development",
-      readTime: "7 min read",
-      image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop"
-    },
-    {
-      id: 14,
-      title: "Cybersecurity Fundamentals for Developers",
-      excerpt: "Essential cybersecurity practices every developer must know to build secure applications.",
-      author: "aNquest Team",
-      date: "February 10, 2024",
-      category: "Security",
-      readTime: "11 min read",
-      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop"
-    },
-    {
-      id: 15,
-      title: "Microservices Architecture Patterns",
-      excerpt: "Design scalable and maintainable systems using microservices architecture patterns.",
-      author: "aNquest Team",
-      date: "February 8, 2024",
-      category: "Backend Development",
-      readTime: "10 min read",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop"
-    },
-    {
-      id: 16,
-      title: "Modern CSS Techniques and Tricks",
-      excerpt: "Discover advanced CSS techniques that will take your styling skills to the next level.",
-      author: "aNquest Team",
-      date: "February 5, 2024",
-      category: "Web Development",
-      readTime: "6 min read",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop"
-    },
-    {
-      id: 17,
-      title: "Building Real-Time Applications with WebSockets",
-      excerpt: "Create responsive real-time applications using WebSocket technology for instant communication.",
-      author: "aNquest Team",
-      date: "February 3, 2024",
-      category: "Web Development",
-      readTime: "8 min read",
-      image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop"
-    },
-    {
-      id: 18,
-      title: "TypeScript: Advanced Type System Features",
-      excerpt: "Unlock the full potential of TypeScript's type system with these advanced features and patterns.",
-      author: "aNquest Team",
-      date: "February 1, 2024",
-      category: "Web Development",
-      readTime: "7 min read",
-      image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&h=600&fit=crop"
-    },
-    {
-      id: 19,
-      title: "Getting Started with Kubernetes",
-      excerpt: "A beginner's guide to Kubernetes and container orchestration for modern applications.",
-      author: "aNquest Team",
-      date: "January 29, 2024",
-      category: "DevOps",
-      readTime: "12 min read",
-      image: "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&h=600&fit=crop"
-    },
-    {
-      id: 20,
-      title: "JavaScript Performance Optimization",
-      excerpt: "Learn how to optimize JavaScript code for better performance and faster load times.",
-      author: "aNquest Team",
-      date: "January 27, 2024",
-      category: "Web Development",
-      readTime: "9 min read",
-      image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop"
-    },
-    {
-      id: 21,
-      title: "Serverless Architecture: Pros and Cons",
-      excerpt: "Evaluate whether serverless architecture is the right choice for your next project.",
-      author: "aNquest Team",
-      date: "January 25, 2024",
-      category: "Cloud Computing",
-      readTime: "8 min read",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop"
-    },
-    {
-      id: 22,
-      title: "Design Patterns Every Developer Should Know",
-      excerpt: "Master the most important design patterns to write cleaner and more maintainable code.",
-      author: "aNquest Team",
-      date: "January 23, 2024",
-      category: "Programming",
-      readTime: "11 min read",
-      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop"
-    },
-    {
-      id: 23,
-      title: "Testing Strategies for Modern Applications",
-      excerpt: "Comprehensive testing strategies including unit, integration, and end-to-end testing.",
-      author: "aNquest Team",
-      date: "January 21, 2024",
-      category: "Testing",
-      readTime: "7 min read",
-      image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&h=600&fit=crop"
-    },
-    {
-      id: 24,
-      title: "Version Control Best Practices with Git",
-      excerpt: "Essential Git workflows and best practices for effective version control in team environments.",
-      author: "aNquest Team",
-      date: "January 19, 2024",
-      category: "Development Tools",
-      readTime: "6 min read",
-      image: "https://images.unsplash.com/photo-1618401479427-c8ef9465fbe1?w=800&h=600&fit=crop"
-    },
-    {
-      id: 25,
-      title: "Building Accessible Web Applications",
-      excerpt: "Create inclusive web applications that are accessible to all users, following WCAG guidelines.",
-      author: "aNquest Team",
-      date: "January 17, 2024",
-      category: "Web Development",
-      readTime: "9 min read",
-      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop"
-    },
-    {
-      id: 26,
-      title: "CI/CD Pipeline: Setup and Best Practices",
-      excerpt: "Streamline your development workflow with continuous integration and deployment pipelines.",
-      author: "aNquest Team",
-      date: "January 15, 2024",
-      category: "DevOps",
-      readTime: "10 min read",
-      image: "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=800&h=600&fit=crop"
-    },
-    {
-      id: 27,
-      title: "Node.js Performance Optimization Tips",
-      excerpt: "Boost your Node.js application performance with these proven optimization techniques.",
-      author: "aNquest Team",
-      date: "January 13, 2024",
-      category: "Backend Development",
-      readTime: "8 min read",
-      image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop"
-    }
-  ];
-  */
+
 
   // Calculate pagination
-  const totalPages = Math.ceil(blogPosts.length / blogsPerPage);
+  const totalPages = Math.ceil(formattedBlogs.length / blogsPerPage);
   const indexOfLastBlog = currentPage * blogsPerPage;
   const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
-  const currentBlogs = blogPosts.slice(indexOfFirstBlog, indexOfLastBlog);
+  const currentBlogs = formattedBlogs.slice(indexOfFirstBlog, indexOfLastBlog);
 
   // Handle page change
   const handlePageChange = (pageNumber) => {
@@ -351,193 +97,259 @@ const Blogs = () => {
     return pageNumbers;
   };
 
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const res = await fetch(
+          `${import.meta.env.VITE_API_URL}/blogs/public/blogs`
+        );
+
+        if (!res.ok) throw new Error("API Error");
+
+        const data = await res.json();
+
+        setBlogPosts(Array.isArray(data) ? data : []);
+      } catch (err) {
+        console.error("Failed to fetch blogs", err);
+        setBlogPosts([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
+
+
   return (
     <>
-      <SEO 
+      <SEO
         title="aNquest Media - Official Blog - News, Insights, Updates and Tips"
         description="Stay updated with aNquest's official blog featuring the latest news, insights, updates, and expert tips on digital marketing, branding, and CRM technologies."
         keywords="aNquest blogs, digital marketing insights, technology trends, social media tips, SEO strategies, branding ideas, content marketing, digital platforms"
         canonicalUrl="https://anquestmedia.com/blogs"
       />
-      <div className="min-h-screen theme-bg-primary pt-20">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden     sm:py-8 ">
-        <CircleSquareBgAnimation/>
-       
-        
-        <div className="container mx-auto px-4 sm:px-6 pt-32 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
-              Our <span style={{ color: '#2d65bc' }}>Blog</span>
-            </h1>
-            <p className="text-xl sm:text-2xl theme-text-secondary mb-4 max-w-3xl mx-auto leading-relaxed">
-              Stay updated with the latest trends, insights, and expert tips in technology and digital solutions.
-            </p>
-          </div>
-        </div>
-      </section>
+      <div className="min-h-screen theme-bg-primary ">
+        {/* Hero Section */}
+        <section className="relative overflow-hidden min-h-screen h-[550px] flex justify-center items-center ">
+          <HomeHeroBg />
 
-      {/* Blog Posts Section */}
-      <section className="py-6 md:py-10 lg:py-2 theme-bg-primary relative overflow-hidden py-20"> 
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-48 h-48 rounded-full opacity-10 animate-float-slow" style={{ backgroundColor: getThemeColor() }}></div>
-          <div className="absolute top-40 right-20 w-40 h-40 rounded-full opacity-8 animate-float-medium" style={{ backgroundColor: getThemeColor() }}></div>
-          <div className="absolute bottom-40 left-20 w-52 h-52 rounded-full opacity-10 animate-float-fast" style={{ backgroundColor: getThemeColor() }}></div>
-        </div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-10 md:py-20">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {currentBlogs.map((post) => (
-                <Link
-                  key={post.id}
-                  to={buildUrl(`/blog/${post.slug}`)}
-                  className="theme-card rounded-3xl theme-shadow-primary overflow-hidden hover:scale-105 transition-all duration-300 cursor-pointer block"
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-5xl mx-auto text-center">
+
+              {/* MAIN HEADING */}
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl poiret-one-regular-bold mb-6 theme-text-primary leading-tight">
+                Insights, Ideas &{" "}
+                <span className="text-transparent bg-clip-text bg-[#2d65bc]">
+                  Industry Knowledge
+                </span>
+              </h1>
+
+              {/* SUB HEADING */}
+              <p className="text-lg sm:text-xl poiret-one-regular theme-text-secondary mb-8 max-w-3xl mx-auto leading-relaxed">
+                Explore expert-written articles on technology, digital growth,
+                automation, and real-world problem solving — curated by the
+                aNquest Media team.
+              </p>
+
+             
+
+              {/* CTA BUTTONS */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link to="/"
+                  className="group text-white px-8 py-4 rounded-full font-semibold 
+                     transition-all duration-300 shadow-xl hover:shadow-2xl 
+                     flex items-center gap-2 hover:scale-105"
+                  style={{ backgroundColor: '#2d65bc' }}
                 >
-                  <div className="h-48 w-full overflow-hidden bg-gradient-to-br from-slate-200 to-slate-300">
-                    <img 
-                      src={post.image} 
-                      alt={post.title}
-                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center gap-4 text-sm theme-text-secondary mb-3">
-                      <span style={{ color: '#2d65bc' }} className="font-medium">{post.category}</span>
-                      <span>•</span>
-                      <span>{post.readTime}</span>
-                    </div>
-                    <h3 className="text-xl font-bold theme-text-primary mb-3 line-clamp-2">
-                      {post.title}
-                    </h3>
-                    <p className="theme-text-secondary mb-4 line-clamp-3">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between text-sm theme-text-secondary">
-                      <span>{post.author}</span>
-                      <span>{post.date}</span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
+                  Get Started
 
-            {/* Pagination */}
-            {totalPages > 1 && (
-              <div className="mt-12 flex flex-col items-center gap-4">
-                <div className="flex items-center gap-2 flex-wrap justify-center">
-                  {/* Previous Button */}
-                  <button
-                    onClick={() => handlePageChange(currentPage - 1)}
-                    disabled={currentPage === 1}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                      currentPage === 1
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+
+                {/* <a
+                  href="#categories"
+                  className="text-[#2d65bc] bg-white px-8 py-4 rounded-full 
+                     font-semibold border-2 border-[#2d65bc]
+                     hover:bg-[#2d65bc] hover:text-white 
+                     transition-all duration-300 hover:scale-105"
+                >
+                  Explore Categories
+                </a> */}
+              </div>
+            </div>
+          </div>
+
+          {/* SOFT GRADIENT GLOW */}
+          <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px] 
+                  bg-[#2d65bc]/10 rounded-full blur-3xl pointer-events-none" />
+        </section>
+
+
+        {/* Blog Posts Section */}
+        <section className="py-6 md:py-10 lg:py-2 theme-bg-primary relative overflow-hidden py-20">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-20 left-10 w-48 h-48 rounded-full opacity-10 animate-float-slow" style={{ backgroundColor: getThemeColor() }}></div>
+            <div className="absolute top-40 right-20 w-40 h-40 rounded-full opacity-8 animate-float-medium" style={{ backgroundColor: getThemeColor() }}></div>
+            <div className="absolute bottom-40 left-20 w-52 h-52 rounded-full opacity-10 animate-float-fast" style={{ backgroundColor: getThemeColor() }}></div>
+          </div>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-10 md:py-20">
+            <div className="max-w-6xl mx-auto">
+
+              {loading && (
+                <p className="text-center theme-text-secondary">
+                  Loading blogs...
+                </p>
+              )}
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {currentBlogs.map((post) => (
+                  <Link
+                    key={post.id}
+                    to={buildUrl(`/blog/${post.slug}`)}
+                    className="theme-card rounded-3xl theme-shadow-primary overflow-hidden hover:scale-105 transition-all duration-300 cursor-pointer block"
+                  >
+                    <div className="h-48 w-full overflow-hidden bg-gradient-to-br from-slate-200 to-slate-300">
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <div className="flex items-center gap-4 text-sm theme-text-secondary mb-3">
+                        <span style={{ color: '#2d65bc' }} className="font-medium">{post.category}</span>
+                        <span>•</span>
+                        <span>{post.readTime}</span>
+                      </div>
+                      <h3 className="text-xl font-bold theme-text-primary mb-3 line-clamp-2">
+                        {post.title}
+                      </h3>
+                      <p className="theme-text-secondary mb-4 line-clamp-3">
+                        {post.excerpt}
+                      </p>
+                      <div className="flex items-center justify-between text-sm theme-text-secondary">
+                        <span> aNquest Media Team</span>
+                        <span>{post.date}</span>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+
+              {/* Pagination */}
+              {totalPages > 1 && (
+                <div className="mt-12 flex flex-col items-center gap-4">
+                  <div className="flex items-center gap-2 flex-wrap justify-center">
+                    {/* Previous Button */}
+                    <button
+                      onClick={() => handlePageChange(currentPage - 1)}
+                      disabled={currentPage === 1}
+                      className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${currentPage === 1
                         ? 'opacity-50 cursor-not-allowed theme-text-secondary'
                         : 'theme-card theme-shadow-primary hover:scale-105 theme-text-primary'
-                    }`}
-                    style={currentPage !== 1 ? { border: `1px solid ${getThemeColor()}30` } : {}}
-                  >
-                    Previous
-                  </button>
+                        }`}
+                      style={currentPage !== 1 ? { border: `1px solid ${getThemeColor()}30` } : {}}
+                    >
+                      Previous
+                    </button>
 
-                  {/* Page Numbers */}
-                  {currentPage > 3 && (
-                    <>
+                    {/* Page Numbers */}
+                    {currentPage > 3 && (
+                      <>
+                        <button
+                          onClick={() => handlePageChange(1)}
+                          className="px-4 py-2 rounded-lg font-medium theme-card theme-shadow-primary hover:scale-105 theme-text-primary transition-all duration-300"
+                          style={{ border: `1px solid ${getThemeColor()}30` }}
+                        >
+                          1
+                        </button>
+                        {currentPage > 4 && <span className="theme-text-secondary px-2">...</span>}
+                      </>
+                    )}
+
+                    {getPageNumbers().map((pageNum) => (
                       <button
-                        onClick={() => handlePageChange(1)}
-                        className="px-4 py-2 rounded-lg font-medium theme-card theme-shadow-primary hover:scale-105 theme-text-primary transition-all duration-300"
-                        style={{ border: `1px solid ${getThemeColor()}30` }}
-                      >
-                        1
-                      </button>
-                      {currentPage > 4 && <span className="theme-text-secondary px-2">...</span>}
-                    </>
-                  )}
-
-                  {getPageNumbers().map((pageNum) => (
-                    <button
-                      key={pageNum}
-                      onClick={() => handlePageChange(pageNum)}
-                      className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                        currentPage === pageNum
+                        key={pageNum}
+                        onClick={() => handlePageChange(pageNum)}
+                        className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${currentPage === pageNum
                           ? 'text-white'
                           : 'theme-card theme-shadow-primary hover:scale-105 theme-text-primary'
-                      }`}
-                      style={
-                        currentPage === pageNum
-                          ? { backgroundColor: getThemeColor() }
-                          : { border: `1px solid ${getThemeColor()}30` }
-                      }
-                    >
-                      {pageNum}
-                    </button>
-                  ))}
-
-                  {currentPage < totalPages - 2 && (
-                    <>
-                      {currentPage < totalPages - 3 && <span className="theme-text-secondary px-2">...</span>}
-                      <button
-                        onClick={() => handlePageChange(totalPages)}
-                        className="px-4 py-2 rounded-lg font-medium theme-card theme-shadow-primary hover:scale-105 theme-text-primary transition-all duration-300"
-                        style={{ border: `1px solid ${getThemeColor()}30` }}
+                          }`}
+                        style={
+                          currentPage === pageNum
+                            ? { backgroundColor: getThemeColor() }
+                            : { border: `1px solid ${getThemeColor()}30` }
+                        }
                       >
-                        {totalPages}
+                        {pageNum}
                       </button>
-                    </>
-                  )}
+                    ))}
 
-                  {/* Next Button */}
-                  <button
-                    onClick={() => handlePageChange(currentPage + 1)}
-                    disabled={currentPage === totalPages}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                      currentPage === totalPages
+                    {currentPage < totalPages - 2 && (
+                      <>
+                        {currentPage < totalPages - 3 && <span className="theme-text-secondary px-2">...</span>}
+                        <button
+                          onClick={() => handlePageChange(totalPages)}
+                          className="px-4 py-2 rounded-lg font-medium theme-card theme-shadow-primary hover:scale-105 theme-text-primary transition-all duration-300"
+                          style={{ border: `1px solid ${getThemeColor()}30` }}
+                        >
+                          {totalPages}
+                        </button>
+                      </>
+                    )}
+
+                    {/* Next Button */}
+                    <button
+                      onClick={() => handlePageChange(currentPage + 1)}
+                      disabled={currentPage === totalPages}
+                      className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${currentPage === totalPages
                         ? 'opacity-50 cursor-not-allowed theme-text-secondary'
                         : 'theme-card theme-shadow-primary hover:scale-105 theme-text-primary'
-                    }`}
-                    style={currentPage !== totalPages ? { border: `1px solid ${getThemeColor()}30` } : {}}
-                  >
-                    Next
-                  </button>
+                        }`}
+                      style={currentPage !== totalPages ? { border: `1px solid ${getThemeColor()}30` } : {}}
+                    >
+                      Next
+                    </button>
+                  </div>
+
+                  {/* Page Info */}
+                  <p className="text-sm theme-text-secondary">
+                    Page {currentPage} of {totalPages} ({blogPosts.length} articles)
+                  </p>
                 </div>
-
-                {/* Page Info */}
-                <p className="text-sm theme-text-secondary">
-                  Page {currentPage} of {totalPages} ({blogPosts.length} articles)
-                </p>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-24 relative overflow-hidden" style={{ background: getCTABackground() }}>
-      <CTABgAnimation/>
-       
-        
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold mb-6 ${getCTATextColor()}`}>
-              Want to Stay <span className="opacity-90">Updated?</span>
-            </h2>
-            <p className={`text-lg sm:text-xl mb-8 max-w-2xl mx-auto ${getCTATextColor()} opacity-90`}>
-              Subscribe to our newsletter for the latest insights and updates.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-6 py-3 rounded-full text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-white/50 transition-all"
-              />
-              <button className="text-white font-bold py-3 px-8 rounded-full transition-all duration-200 hover:scale-105 hover:bg-[#1a4a8a]" style={{ backgroundColor: '#2d65bc' }}>
-                Subscribe
-              </button>
+              )}
             </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-12 sm:py-16 md:py-20 lg:py-24 relative overflow-hidden" style={{ background: getCTABackground() }}>
+          <CTABgAnimation />
+
+
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div className="max-w-4xl mx-auto">
+              <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold mb-6 ${getCTATextColor()}`}>
+                Want to Stay <span className="opacity-90">Updated?</span>
+              </h2>
+              <p className={`text-lg sm:text-xl mb-8 max-w-2xl mx-auto ${getCTATextColor()} opacity-90`}>
+                Subscribe to our newsletter for the latest insights and updates.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="flex-1 px-6 py-3 rounded-full text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-white/50 transition-all"
+                />
+                <button className="text-white font-bold py-3 px-8 rounded-full transition-all duration-200 hover:scale-105 hover:bg-[#1a4a8a]" style={{ backgroundColor: '#2d65bc' }}>
+                  Subscribe
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </>
   );
 };

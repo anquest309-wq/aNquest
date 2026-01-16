@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useTheme } from '../../Context/ThemeContext'
+import { Link } from 'react-router-dom'
 import GeometricBgAnimation from '../../Components/Bg-animation-template/GeometricBgAnimation';
 
 export default function Services() {
@@ -46,14 +47,9 @@ export default function Services() {
       title: "Mobile App Development",
       description: "Native and cross-platform mobile apps using React Native, Flutter, Swift, and Kotlin. iOS and Android apps that deliver exceptional user experiences."
     },
+    
     {
       id: 3,
-      number: "03",
-      title: "Full-Stack Development", 
-      description: "Complete end-to-end solutions with frontend, backend, database design, and API development using modern technologies and best practices."
-    },
-    {
-      id: 4,
       number: "04",
       title: "SEO & Digital Marketing",
       description: "Comprehensive SEO strategies, content marketing, and digital presence optimization to boost your online visibility and drive organic traffic."
@@ -132,19 +128,21 @@ export default function Services() {
           {/* Services Section */}
           <div className="mb-20">
             {/* Header */}
-            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-12">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:gap-2 lg:justify-between mb-12">
               <div className="mb-6 lg:mb-0">
-                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold theme-text-primary leading-tight">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl poiret-one-regular-bold theme-text-primary leading-tight">
                   Expert Development & 
                   <span style={{ color: '#2d65bc' }}> SEO Solutions</span>
                 </h2>
               </div>
-              <button className="theme-bg-primary theme-text-primary font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-[#2d65bc]/25 flex items-center gap-2 self-start lg:self-center" style={{ '--hover-color': '#2d65bc' }} onMouseEnter={(e) => e.currentTarget.style.color = '#2d65bc'} onMouseLeave={(e) => e.currentTarget.style.color = ''}>
+              <Link to="/blogs">
+              <button className="  theme-bg-primary theme-text-primary poiret-one-regular-bold py-4  rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-[#2d65bc]/25 flex items-center gap-2 self-start lg:self-center" style={{ '--hover-color': '#2d65bc' }} onMouseEnter={(e) => e.currentTarget.style.color = '#2d65bc'} onMouseLeave={(e) => e.currentTarget.style.color = ''}>
                 View All Services
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
               </button>
+              </Link>
             </div>
 
             {/* Services List */}
@@ -164,11 +162,11 @@ export default function Services() {
                   <div className="flex flex-col lg:flex-row lg:items-center gap-6">
                     {/* Number and Title */}
                     <div className="flex items-center gap-4 lg:w-1/3">
-                      <div className="w-12 h-12 theme-text-primary rounded-full flex items-center justify-center font-bold text-lg" style={{ backgroundColor: '#2d65bc' }}>
+                      <div className="w-12 h-12 theme-text-primary rounded-full flex items-center justify-center  text-lg" style={{ backgroundColor: '#2d65bc' }}>
                         {service.number}
                       </div>
                       <h3 
-                        className="text-xl lg:text-2xl font-bold theme-text-primary transition-colors duration-300"
+                        className="text-xl lg:text-2xl poiret-one-regular-bold theme-text-primary transition-colors duration-300"
                         style={{ color: hoveredService === service.id ? '#2d65bc' : '' }}
                       >
                         {service.title}
@@ -177,7 +175,8 @@ export default function Services() {
 
                     {/* Description */}
                     <div className="lg:w-1/2">
-                      <p className="theme-text-secondary leading-relaxed group-hover:theme-text-primary transition-colors duration-300">
+                      <p className="theme-text-secondary leading-relaxed group-hover:theme-text-primary transition-colors poiret-one-regular
+ duration-300">
                         {service.description}
                       </p>
                     </div>
@@ -230,7 +229,8 @@ export default function Services() {
                 {stats.map((stat, index) => (
                   <div key={index} className="text-center group">
                     <div 
-                      className="text-4xl lg:text-5xl font-bold text-gray-800 mb-2 animate-count-up transition-colors duration-300"
+                      className="text-4xl lg:text-5xl poiret-one-regular
+ text-gray-800 mb-2 animate-count-up transition-colors duration-300"
                     >
                       {index === 0 && counts.clients}
                       {index === 1 && counts.satisfaction}
@@ -238,7 +238,8 @@ export default function Services() {
                       {index === 3 && counts.awards}
                       {stat.suffix}
                     </div>
-                    <div className="text-gray-700 text-sm lg:text-base font-medium group-hover:text-gray-800 transition-colors duration-300">
+                    <div className="text-gray-700 text-sm lg:text-base poiret-one-regular
+  group-hover:text-gray-800 transition-colors duration-300">
                       {stat.label}
                     </div>
                   </div>

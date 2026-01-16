@@ -192,7 +192,7 @@ const Support = () => {
                     ))}
                   </ul>
                   <Link
-                    to={buildUrl('/contacts')}
+                    to={buildUrl('/contact-us')}
                     className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-semibold theme-text-primary theme-bg-secondary transition-all duration-200 hover:scale-105"
                     style={{ border: `1px solid ${accent}` }}
                   >
@@ -261,7 +261,7 @@ const Support = () => {
                     Book Strategy Call
                   </Link>
                   <Link
-                    to={buildUrl('/contacts')}
+                    to={buildUrl('/contact-us')}
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold theme-text-primary theme-bg-secondary transition-all duration-200 hover:scale-105"
                     style={{ border: `1px solid ${accent}` }}
                   >

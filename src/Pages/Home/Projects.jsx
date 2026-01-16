@@ -40,17 +40,18 @@ const Projects = () => {
     <div className="py-20 theme-bg-primary relative overflow-hidden">
       {/* Background Animations */}
       <SectionsBgAnimation />
-      {/* <DenseBgAnimation /> */}
       {/* ==== Header ==== */}
       <div className="text-center mb-8 md:mb-12 px-4 relative z-10">
-        <button className="theme-text-primary px-4 md:px-6 py-2 rounded-md font-semibold text-sm md:text-base" style={{ backgroundColor: '#2d65bc' }}>
+        <button className="theme-text px-4  text-3xl md:px-6 py-2 rounded-md  md:text-4xl poiret-one-regular-bold" >
           Recent Projects
         </button>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-4 md:mt-6 theme-text-primary px-2">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl poiret-one-regular
+ mt-4 md:mt-6 theme-text-primary px-2">
           We've Completed <span style={{ color: '#2d65bc' }}>150+</span> Development Projects
         </h2>
-        <p className="text-lg sm:text-xl md:text-2xl font-semibold mt-2 theme-text-secondary px-2">
-          Explore Our Development Portfolio
+        <p className="text-lg sm:text-xl md:text-2xl poiret-one-regular
+ mt-2 theme-text-secondary px-2">
+          Explore Our Development Portfolio    
         </p>
       </div>
 

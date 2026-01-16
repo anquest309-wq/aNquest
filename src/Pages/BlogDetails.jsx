@@ -1,535 +1,735 @@
-import React, { useMemo } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import React, { useMemo, useEffect, useState } from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useTheme } from '../Context/ThemeContext';
-import { ArrowLeft, Calendar, Clock, User, Share2, BookOpen } from 'lucide-react';
-import blogPosts, { findBlogBySlug } from '../data/blogPosts';
+import {
+  ArrowLeft, Calendar, Clock, User, Share2, BookOpen,
+  Tag, Facebook, Twitter, Linkedin, Link2, CheckCircle,
+  TrendingUp, ChevronRight, Mail, ArrowRight, Star, List
+} from 'lucide-react';
 import { buildUrl } from '../utils/urlUtils';
-import MinimalBigShapesAnimation from '../Components/Bg-animation-template/MinimalBigShapesAnimation';
+import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleSquareBgAnimation';
 import SEO from '../Components/SEO';
+import '../styles/blog-content.css';
 
 const BlogDetails = () => {
   const { slug } = useParams();
   const { theme } = useTheme();
+  const navigate = useNavigate();
+  const [copied, setCopied] = useState(false);
 
-  // Get theme-based colors
-  const getThemeColor = () => {
-    if (theme === 'light') {
-      return '#2d65bc';
-    } else if (theme === 'dark') {
-      return '#1a1a1a';
-    } else if (theme === 'green') {
-      return '#064e3b';
-    }
-    return '#2d65bc';
-  };
-  // Blog posts data (in a real app, this would come from an API or database)
-  /* Legacy inline blog data retained for reference
-    1: {
-      id: 1,
-      title: "The Future of Web Development in 2024",
-      content: `
-        <p>The landscape of web development is constantly evolving, and 2024 promises to bring exciting new trends and technologies that will shape how we build and interact with websites.</p>
-        
-        <h2>Key Trends Shaping Web Development</h2>
-        
-        <h3>1. AI-Powered Development Tools</h3>
-        <p>Artificial Intelligence is revolutionizing how developers write code. AI-powered tools like GitHub Copilot and ChatGPT are becoming integral parts of the development workflow, helping developers write more efficient code faster than ever before.</p>
-        
-        <h3>2. Server-Side Rendering (SSR) and Static Site Generation (SSG)</h3>
-        <p>With frameworks like Next.js, Nuxt.js, and SvelteKit leading the charge, server-side rendering and static site generation are becoming the standard for modern web applications. These approaches offer better SEO, faster initial page loads, and improved user experience.</p>
-        
-        <h3>3. Progressive Web Apps (PWAs)</h3>
-        <p>PWAs continue to bridge the gap between web and mobile applications. With enhanced offline capabilities, push notifications, and app-like experiences, PWAs are becoming a cost-effective alternative to native mobile apps.</p>
-        
-        <h3>4. WebAssembly (WASM)</h3>
-        <p>WebAssembly is enabling high-performance applications in the browser by allowing developers to run code written in languages like C++, Rust, and Go at near-native speeds.</p>
-        
-        <h2>Emerging Technologies</h2>
-        
-        <h3>Edge Computing</h3>
-        <p>Edge computing is bringing computation closer to users, reducing latency and improving performance. Services like Cloudflare Workers and Vercel Edge Functions are making it easier for developers to deploy code at the edge.</p>
-        
-        <h3>Micro-Frontends</h3>
-        <p>As applications grow in complexity, micro-frontend architecture is gaining popularity. This approach allows teams to develop, deploy, and maintain different parts of a web application independently.</p>
-        
-        <h2>Best Practices for 2024</h2>
-        
-        <ul>
-          <li><strong>Performance First:</strong> Core Web Vitals and performance optimization should be prioritized from the start</li>
-          <li><strong>Accessibility:</strong> Building inclusive web experiences is not optional</li>
-          <li><strong>Security:</strong> Implementing robust security measures from day one</li>
-          <li><strong>Sustainability:</strong> Writing efficient code that reduces energy consumption</li>
-        </ul>
-        
-        <h2>Conclusion</h2>
-        <p>The future of web development is bright, with new technologies and methodologies making it easier to build fast, secure, and user-friendly applications. Staying updated with these trends and continuously learning new skills will be key to success in this ever-evolving field.</p>
-      `,
-      author: "aNquest Team",
-      date: "March 15, 2024",
-      category: "Web Development",
-      readTime: "5 min read",
-      tags: ["Web Development", "React", "Next.js", "AI", "PWA"]
-    },
-    2: {
-      id: 2,
-      title: "SEO Best Practices for Modern Websites",
-      content: `
-        <p>Search Engine Optimization (SEO) remains crucial for online success. With search algorithms constantly evolving, it's important to stay updated with the latest best practices to ensure your website ranks well and attracts organic traffic.</p>
-        
-        <h2>Technical SEO Fundamentals</h2>
-        
-        <h3>1. Core Web Vitals</h3>
-        <p>Google's Core Web Vitals are now a ranking factor. Focus on:</p>
-        <ul>
-          <li><strong>Largest Contentful Paint (LCP):</strong> Should occur within 2.5 seconds</li>
-          <li><strong>First Input Delay (FID):</strong> Should be less than 100 milliseconds</li>
-          <li><strong>Cumulative Layout Shift (CLS):</strong> Should be less than 0.1</li>
-        </ul>
-        
-        <h3>2. Mobile-First Indexing</h3>
-        <p>Google predominantly uses the mobile version of content for indexing and ranking. Ensure your website is mobile-responsive and provides an excellent mobile experience.</p>
-        
-        <h3>3. Page Speed Optimization</h3>
-        <p>Fast-loading pages improve user experience and rankings. Key strategies include:</p>
-        <ul>
-          <li>Image optimization and modern formats (WebP, AVIF)</li>
-          <li>Code splitting and lazy loading</li>
-          <li>Content Delivery Network (CDN) implementation</li>
-          <li>Minimizing HTTP requests</li>
-        </ul>
-        
-        <h2>Content Optimization</h2>
-        
-        <h3>Keyword Strategy</h3>
-        <p>Modern SEO focuses on user intent rather than exact keyword matching. Create content that answers user questions and provides genuine value.</p>
-        
-        <h3>E-A-T (Expertise, Authoritativeness, Trustworthiness)</h3>
-        <p>Google values content that demonstrates expertise and authority. Build trust through:</p>
-        <ul>
-          <li>Author bios and credentials</li>
-          <li>High-quality, well-researched content</li>
-          <li>External citations and references</li>
-          <li>Regular content updates</li>
-        </ul>
-        
-        <h2>Structured Data</h2>
-        <p>Implement schema markup to help search engines understand your content better. This can lead to rich snippets and improved click-through rates.</p>
-        
-        <h2>Local SEO</h2>
-        <p>For businesses with physical locations, local SEO is crucial:</p>
-        <ul>
-          <li>Google My Business optimization</li>
-          <li>Local citations and NAP consistency</li>
-          <li>Customer reviews management</li>
-          <li>Location-specific content</li>
-        </ul>
-        
-        <h2>Conclusion</h2>
-        <p>SEO success requires a holistic approach combining technical optimization, quality content, and user experience. Stay focused on providing value to your users, and the rankings will follow.</p>
-      `,
-      author: "aNquest Team",
-      date: "March 12, 2024",
-      category: "SEO",
-      readTime: "7 min read",
-      tags: ["SEO", "Digital Marketing", "Web Performance", "Google", "Content Strategy"]
-    },
-    3: {
-      id: 3,
-      title: "Mobile App Development Trends",
-      content: `
-        <p>The mobile app development landscape continues to evolve rapidly, driven by new technologies, changing user expectations, and emerging business needs. Let's explore the key trends shaping mobile development in 2024.</p>
-        
-        <h2>Cross-Platform Development</h2>
-        
-        <h3>React Native and Flutter</h3>
-        <p>Cross-platform frameworks continue to dominate the mobile development space. React Native and Flutter allow developers to write code once and deploy to both iOS and Android platforms, significantly reducing development time and costs.</p>
-        
-        <h3>Benefits of Cross-Platform Development:</h3>
-        <ul>
-          <li>Faster time to market</li>
-          <li>Cost-effective development</li>
-          <li>Consistent user experience across platforms</li>
-          <li>Easier maintenance and updates</li>
-        </ul>
-        
-        <h2>AI and Machine Learning Integration</h2>
-        
-        <p>Mobile apps are increasingly incorporating AI and ML capabilities to provide personalized experiences:</p>
-        
-        <h3>Popular AI Features:</h3>
-        <ul>
-          <li><strong>Chatbots and Virtual Assistants:</strong> Providing 24/7 customer support</li>
-          <li><strong>Recommendation Systems:</strong> Personalizing content and product suggestions</li>
-          <li><strong>Image Recognition:</strong> Enabling visual search and AR features</li>
-          <li><strong>Predictive Analytics:</strong> Anticipating user behavior and needs</li>
-        </ul>
-        
-        <h2>5G Technology Impact</h2>
-        
-        <p>The widespread adoption of 5G networks is enabling new possibilities for mobile apps:</p>
-        <ul>
-          <li>Ultra-fast download and upload speeds</li>
-          <li>Lower latency for real-time applications</li>
-          <li>Enhanced AR/VR experiences</li>
-          <li>IoT integration capabilities</li>
-        </ul>
-        
-        <h2>App Security Trends</h2>
-        
-        <h3>Zero Trust Security Model</h3>
-        <p>Mobile apps are adopting zero trust principles, assuming no user or device is trustworthy by default.</p>
-        
-        <h3>Biometric Authentication</h3>
-        <p>Advanced biometric features like face recognition, fingerprint scanning, and voice recognition are becoming standard.</p>
-        
-        <h2>User Experience Innovation</h2>
-        
-        <h3>Dark Mode and Theme Customization</h3>
-        <p>Users expect apps to support dark mode and customizable themes for better accessibility and user preference accommodation.</p>
-        
-        <h3>Gesture-Based Navigation</h3>
-        <p>Intuitive gesture controls are replacing traditional button-based navigation for more fluid user experiences.</p>
-        
-        <h2>Development Best Practices</h2>
-        
-        <ul>
-          <li><strong>Performance Optimization:</strong> Focus on app speed and responsiveness</li>
-          <li><strong>Offline Functionality:</strong> Ensure apps work without internet connectivity</li>
-          <li><strong>Regular Updates:</strong> Maintain apps with security patches and new features</li>
-          <li><strong>User Feedback Integration:</strong> Continuously improve based on user input</li>
-        </ul>
-        
-        <h2>Conclusion</h2>
-        <p>Mobile app development continues to evolve with new technologies and user expectations. Success in mobile development requires staying current with trends while focusing on delivering exceptional user experiences that solve real problems.</p>
-      `,
-      author: "aNquest Team",
-      date: "March 10, 2024",
-      category: "Mobile Development",
-      readTime: "6 min read",
-    tags: ["Mobile Development", "React Native", "Flutter", "AI", "5G", "UX"]
-    }
-  };
-  */
 
-  const blog = useMemo(() => findBlogBySlug(slug), [slug]);
-  const relatedPosts = useMemo(
-    () => blogPosts.filter((post) => post.slug !== slug).slice(0, 3),
-    [slug]
-  );
 
-  const renderSection = (section, index) => {
-    const key = `${section.type}-${index}`;
+  const relatedPosts = [];
+  const latestPosts = [];
+  const popularPosts = [];
 
-    switch (section.type) {
-      case 'heading': {
-        if (section.level === 2) {
-          return (
-            <h2
-              key={key}
-              className="text-3xl sm:text-4xl font-bold theme-text-primary mt-12 mb-6 leading-tight"
-            >
-              {section.content}
-            </h2>
-          );
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [slug]);
+
+  // Find current blog post
+  const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchBlog = async () => {
+      try {
+        const res = await fetch(
+          `${import.meta.env.VITE_API_URL}/blogs/public/${slug}`
+        );
+
+        if (!res.ok) {
+          setPost(null);
+          return;
         }
 
-        return (
-          <h3
-            key={key}
-            className="text-2xl font-semibold theme-text-primary mt-10 mb-4 leading-tight"
-          >
-            {section.content}
-          </h3>
-        );
+        const data = await res.json();
+
+        setPost({
+          id: data.id,
+          title: data.title,
+          slug: data.slug,
+          excerpt: data.excerpt,
+          content: data.content,
+          category: data.category,
+          image: data.image,
+          readTime: data.read_time,
+          tags: data.tags || [],
+          author: data.users?.name || "Admin",
+          date: new Date(data.created_at).toLocaleDateString(),
+          featured: false,
+        });
+      } catch (err) {
+        console.error("Failed to load blog", err);
+        setPost(null);
+      } finally {
+        setLoading(false);
       }
-      case 'list': {
-        const ListComponent = section.ordered ? 'ol' : 'ul';
-        return (
-          <ListComponent
-            key={key}
-            className={`pl-6 mb-6 space-y-2 ${
-              section.ordered ? 'list-decimal' : 'list-disc'
-            } theme-text-secondary`}
-          >
-            {section.items?.map((item, itemIndex) => (
-              <li key={`${key}-item-${itemIndex}`} className="leading-relaxed">
-                {item}
-              </li>
-            ))}
-          </ListComponent>
-        );
+    };
+
+    fetchBlog();
+  }, [slug]);
+
+ 
+  // Extract headings from HTML content for TOC
+  const tableOfContents = useMemo(() => {
+    if (!post || !post.content) return [];
+    try {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(post.content, 'text/html');
+      const headings = doc.querySelectorAll('h2, h3, h4');
+      const toc = [];
+
+      headings.forEach((heading, index) => {
+        const text = heading.textContent.trim();
+        if (text) {
+          const id = `heading-${index}-${text.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`;
+          toc.push({
+            id,
+            text,
+            level: parseInt(heading.tagName.charAt(1))
+          });
+        }
+      });
+
+      return toc;
+    } catch (error) {
+      console.error('Error parsing TOC:', error);
+      return [];
+    }
+  }, [post]);
+
+  // Update content with IDs for headings after render
+  useEffect(() => {
+    if (post && post.content && tableOfContents.length > 0) {
+      const contentDiv = document.querySelector('.blog-html-content');
+      if (contentDiv) {
+        const headings = contentDiv.querySelectorAll('h2, h3, h4');
+        headings.forEach((heading, index) => {
+          const tocItem = tableOfContents[index];
+          if (tocItem && !heading.id) {
+            heading.id = tocItem.id;
+          }
+        });
       }
-      case 'quote':
-        return (
-          <blockquote
-            key={key}
-            className="border-l-4 pl-6 italic text-lg theme-text-secondary my-6"
-            style={{ borderColor: getThemeColor() }}
-          >
-            {section.content}
-          </blockquote>
-        );
+    }
+  }, [post, tableOfContents]);
+
+  // Handle share functionality
+  const handleShare = async (platform) => {
+    const url = window.location.href;
+    const title = post?.title || 'Check out this article';
+
+    const shareUrls = {
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+      twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,
+      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
+    };
+
+    if (platform === 'copy') {
+      try {
+        await navigator.clipboard.writeText(url);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } catch (err) {
+        console.error('Failed to copy:', err);
+      }
+    } else {
+      window.open(shareUrls[platform], '_blank', 'width=600,height=400');
+    }
+  };
+
+  // Render content sections
+  const renderSection = (section, index) => {
+    switch (section.type) {
       case 'paragraph':
-      default:
         return (
-          <p key={key} className="text-lg leading-relaxed theme-text-secondary mb-6">
+          <p key={index} className="text-lg theme-text-secondary leading-relaxed mb-6">
             {section.content}
           </p>
         );
+      case 'heading':
+        const HeadingTag = `h${section.level}`;
+        const headingClasses = {
+          2: 'text-3xl font-bold theme-text-primary mt-12 mb-6',
+          3: 'text-2xl font-bold theme-text-primary mt-8 mb-4',
+          4: 'text-xl font-bold theme-text-primary mt-6 mb-3'
+        };
+        return (
+          <HeadingTag key={index} className={headingClasses[section.level] || headingClasses[3]}>
+            {section.content}
+          </HeadingTag>
+        );
+      case 'list':
+        const ListTag = section.ordered ? 'ol' : 'ul';
+        return (
+          <ListTag key={index} className={`${section.ordered ? 'list-decimal' : 'list-disc'} list-inside space-y-3 mb-6 theme-text-secondary text-lg`}>
+            {section.items.map((item, i) => (
+              <li key={i} className="ml-4">{item}</li>
+            ))}
+          </ListTag>
+        );
+      case 'quote':
+        return (
+          <blockquote key={index} className="border-l-4 border-[#2d65bc] pl-6 py-4 my-8 italic theme-text-secondary bg-[#2d65bc]/5 rounded-r-lg">
+            <p className="text-xl">{section.content}</p>
+            {section.author && <cite className="block mt-2 text-sm font-semibold theme-text-primary">— {section.author}</cite>}
+          </blockquote>
+        );
+      case 'code':
+        return (
+          <pre key={index} className="bg-gray-900 text-gray-100 p-6 rounded-xl overflow-x-auto mb-6">
+            <code>{section.content}</code>
+          </pre>
+        );
+      case 'image':
+        return (
+          <figure key={index} className="my-8">
+            <img
+              src={section.src}
+              alt={section.alt || ''}
+              className="w-full rounded-2xl shadow-2xl"
+            />
+            {section.caption && (
+              <figcaption className="text-center text-sm theme-text-secondary mt-3">
+                {section.caption}
+              </figcaption>
+            )}
+          </figure>
+        );
+      default:
+        return null;
     }
   };
-
-  const canonicalUrl = useMemo(() => `https://anquestmedia.com/blog/${slug}`, [slug]);
-  const pageTitle = blog ? `${blog.title} | aNquest Media` : 'Blog Not Found | aNquest Media';
-  const pageDescription = blog?.excerpt || 'Read the latest insights and updates from aNquest Media on digital strategy, technology, and marketing.';
-
-  if (!blog) {
+  if (loading) {
     return (
-      <div className="min-h-screen theme-bg-primary flex items-center justify-center">
-        <SEO
-          title={pageTitle}
-          description={pageDescription}
-          canonicalUrl={canonicalUrl}
-        />
-        <div className="text-center">
-          <h1 className="text-4xl font-bold theme-text-primary mb-4">Blog Not Found</h1>
-          <p className="theme-text-secondary mb-8">The blog post you're looking for doesn't exist.</p>
-      <Link 
-        to={buildUrl('/blogs')} 
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white transition-all duration-200 hover:scale-105"
-            style={{ backgroundColor: getThemeColor() }}
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Blogs
-          </Link>
-        </div>
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-lg font-semibold">Loading article...</p>
       </div>
     );
   }
 
-  return (
-    <div className="min-h-screen theme-bg-primary">
-      <SEO
-        title={pageTitle}
-        description={pageDescription}
-        canonicalUrl={canonicalUrl}
-      />
-      {/* Floating Back Button */}
-      <button
-        type="button"
-        onClick={() => window.history.length > 1 ? window.history.back() : window.location.assign(buildUrl('/blogs'))}
-        className="fixed top-26 left-4 z-40 flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-white shadow-lg transition-transform duration-200 hover:scale-105"
-        style={{ backgroundColor: getThemeColor() }}
-        aria-label="Go back to the previous page"
-      >
-        <ArrowLeft className="w-4 h-4" />
-        Back
-      </button>
 
-      {/* Navigation */}
-      <div className="theme-bg-primary py-4">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
-          <Link 
-            to={buildUrl('/blogs')} 
-            className="inline-flex items-center gap-2 theme-text-secondary hover:theme-text-primary transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Blogs
-          </Link>
-          <button
-            onClick={() => window.history.length > 1 ? window.history.back() : null}
-            className="inline-flex items-center gap-2 text-sm sm:text-base px-4 py-2 rounded-full font-medium transition-all duration-200 hover:scale-105 theme-text-secondary hover:theme-text-primary"
-            style={{ backgroundColor: `${getThemeColor()}12` }}
-            aria-label="Go back to the previous page"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Go Back
-          </button>
-        </div>
-      </div>
-
-      {/* Hero Section */}
-      <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            {/* Category Badge */}
-            <div className="inline-block px-4 py-2 rounded-full text-sm font-semibold mb-6" style={{ backgroundColor: `${getThemeColor()}20`, color: getThemeColor() }}>
-              {blog.category}
+  // If post not found, show error state
+  if (!post) {
+    return (
+      <>
+        <SEO
+          title="Article Not Found | aNquest Media"
+          description="The article you're looking for doesn't exist."
+          canonicalUrl={`https://anquestmedia.com/blog/${slug}`}
+        />
+        <div className="min-h-screen theme-bg-primary flex items-center justify-center">
+          <div className="text-center px-4">
+            <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <BookOpen className="w-10 h-10 text-red-500" />
             </div>
-            
-            {/* Title */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold theme-text-primary mb-6 leading-tight">
-              {blog.title}
-            </h1>
-            
-            {/* Meta Information */}
-            <div className="flex flex-wrap items-center gap-6 theme-text-secondary mb-8">
-              <div className="flex items-center gap-2">
-                <User className="w-4 h-4" />
-                <span>{blog.author}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4" />
-                <span>{blog.date}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4" />
-                <span>{blog.readTime}</span>
-              </div>
-            </div>
-            
-            {/* Share Button */}
-            <div className="flex items-center gap-4">
-              <button 
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-all duration-200 hover:scale-105"
-                style={{ backgroundColor: `${getThemeColor()}20`, color: getThemeColor() }}
-              >
-                <Share2 className="w-4 h-4" />
-                Share Article
-              </button>
-            </div>
+            <h1 className="text-4xl font-bold theme-text-primary mb-4">Article Not Found</h1>
+            <p className="theme-text-secondary mb-8 text-lg">The article you're looking for doesn't exist or has been moved.</p>
+            <Link
+              to="/blog"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#2d65bc] text-white font-bold rounded-xl hover:bg-blue-700 transition-all"
+            >
+              <ArrowLeft className="w-5 h-5" />
+              Back to Blogs
+            </Link>
           </div>
         </div>
-      </section>
+      </>
+    );
+  }
 
-      {/* Content Section */}
-      <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            {/* Featured Media */}
-            <div className="w-full h-64 sm:h-80 lg:h-96 rounded-3xl overflow-hidden mb-12">
-              {blog.image ? (
-                <img
-                  src={blog.image}
-                  alt={blog.title}
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <div className="w-full h-full bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center">
-                  <BookOpen className="w-16 h-16 text-slate-400" />
+  return (
+    <>
+      <SEO
+        title={`${post.title} | aNquest Media Blog`}
+        description={post.excerpt}
+        keywords={post.tags.join(', ')}
+        canonicalUrl={`https://anquestmedia.com/blog/${post.slug}`}
+        ogType="article"
+        ogImage={post.image}
+      />
+
+      <div className="min-h-screen theme-bg-primary relative">
+        {/* <CircleSquareBgAnimation theme={theme} /> */}
+
+
+        {/* Hero Section */}
+        <section className="relative py-10 sm:py-12 lg:py-16 theme-bg-secondary">
+          <CircleSquareBgAnimation theme={theme} />
+
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-5xl mx-auto">
+              {/* Breadcrumb */}
+              <nav className="flex items-center gap-2 text-sm theme-text-secondary mb-8 flex-wrap">
+                <Link to="/" className="hover:text-[#2d65bc] transition-colors">Home</Link>
+                <ChevronRight className="w-4 h-4" />
+                <Link to="/blog" className="hover:text-[#2d65bc] transition-colors">Blog</Link>
+                <ChevronRight className="w-4 h-4" />
+                <span className="theme-text-primary font-medium">{post.category}</span>
+              </nav>
+
+              {/* Category Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#2d65bc]/10 border border-[#2d65bc]/30 mb-6">
+                <Tag className="w-4 h-4 text-[#2d65bc]" />
+                <span className="text-sm font-bold text-[#2d65bc]">{post.category}</span>
+              </div>
+
+              {/* Title */}
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-6 leading-tight">
+                {post.title}
+              </h1>
+
+              {/* Meta Info */}
+              <div className="flex flex-wrap items-center gap-6 theme-text-secondary text-sm mb-8">
+                <div className="flex items-center gap-2">
+                  <User className="w-4 h-4" />
+                  <span className="font-medium">aNquest media Team</span>
                 </div>
-              )}
-            </div>
-            
-            {/* Article Content */}
-            <article className="max-w-none">
-              {blog.sections?.map((section, index) => renderSection(section, index))}
-            </article>
-            
-            {/* Tags */}
-            <div className="mt-12 pt-8 border-t border-gray-200">
-              <h3 className="text-lg font-semibold theme-text-primary mb-4">Tags:</h3>
-              <div className="flex flex-wrap gap-3">
-                {blog.tags?.map((tag, index) => (
-                  <span 
-                    key={index}
-                    className="px-3 py-1 rounded-full text-sm font-medium transition-all duration-200 hover:scale-105 cursor-pointer"
-                    style={{ backgroundColor: `${getThemeColor()}15`, color: getThemeColor() }}
-                  >
-                    #{tag}
-                  </span>
-                ))}
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-4 h-4" />
+                  <span>{post.date}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Clock className="w-4 h-4" />
+                  <span>{post.readTime}</span>
+                </div>
+              </div>
+
+              {/* Share Buttons */}
+              <div className="flex items-center gap-3 pb-8 border-b theme-border-primary">
+                <span className="text-sm font-bold theme-text-primary">Share:</span>
+                <button
+                  onClick={() => handleShare('facebook')}
+                  className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition-all hover:scale-110"
+                  aria-label="Share on Facebook"
+                >
+                  <Facebook className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => handleShare('twitter')}
+                  className="w-10 h-10 rounded-full bg-sky-500 text-white flex items-center justify-center hover:bg-sky-600 transition-all hover:scale-110"
+                  aria-label="Share on Twitter"
+                >
+                  <Twitter className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => handleShare('linkedin')}
+                  className="w-10 h-10 rounded-full bg-blue-700 text-white flex items-center justify-center hover:bg-blue-800 transition-all hover:scale-110"
+                  aria-label="Share on LinkedIn"
+                >
+                  <Linkedin className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => handleShare('copy')}
+                  className={`w-10 h-10 rounded-full theme-card theme-text-primary flex items-center justify-center hover:bg-[#2d65bc] hover:text-white transition-all hover:scale-110 ${copied ? 'bg-green-500 text-white' : ''}`}
+                  aria-label="Copy link"
+                >
+                  {copied ? <CheckCircle className="w-4 h-4" /> : <Link2 className="w-4 h-4" />}
+                </button>
               </div>
             </div>
+          </div>
+        </section>
 
-            {relatedPosts.length > 0 && (
-              <div className="mt-16 pt-12 border-t border-gray-200">
-                <h3 className="text-2xl font-bold theme-text-primary mb-8">
-                  More from aNquest
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {relatedPosts.map((post) => (
+
+
+        {/* Article Content with Sidebars */}
+        <article className="relative py-12 sm:py-16 lg:py-20">
+          <div className="mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 max-w-8xl mx-auto">
+
+              {/* Left Sidebar - Table of Contents */}
+              <aside className="lg:col-span-3 order-2 lg:order-1">
+                {tableOfContents.length > 0 && (
+                  <div className="sticky top-24 theme-card rounded-2xl p-6 mb-8 lg:mb-0 self-start">
+                    <div className="flex items-center gap-2 mb-4">
+                      <List className="w-5 h-5 text-[#2d65bc]" />
+                      <h3 className="text-lg font-bold theme-text-primary">Table of Contents</h3>
+                    </div>
+                    <nav className="space-y-2 max-h-[calc(100vh-200px)] overflow-y-auto">
+                      {tableOfContents.map((item, index) => (
+                        <a
+                          key={index}
+                          href={`#${item.id}`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            const element = document.getElementById(item.id);
+                            if (element) {
+                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }
+                          }}
+                          className={`block py-2 px-3 rounded-lg text-sm transition-all hover:bg-[#2d65bc]/10 hover:text-[#2d65bc] ${item.level === 2
+                            ? 'font-semibold theme-text-primary'
+                            : item.level === 3
+                              ? 'font-medium theme-text-secondary ml-4'
+                              : 'font-normal theme-text-secondary ml-8 text-xs'
+                            }`}
+                        >
+                          {item.text}
+                        </a>
+                      ))}
+                    </nav>
+                  </div>
+                )}
+              </aside>
+
+              {/* Main Content */}
+
+              <div className="lg:col-span-6 order-1 lg:order-2 ">
+
+                <div className="rounded-3xl overflow-hidden shadow-2xl mb-6">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-auto object-fit"
+                  />
+                </div>
+                <div className="prose prose-lg max-w-none theme-text-secondary blog-content">
+                  {post.content && (
+                    <div
+                      className="blog-html-content leading-relaxed"
+                      style={{
+                        fontSize: '1.125rem',
+                        lineHeight: '1.75rem',
+                        color: theme === 'light' ? '#4b5563' : '#d1d5db'
+                      }}
+                      dangerouslySetInnerHTML={{ __html: post.content }}
+                    />
+                  )}
+                  {post.sections && post.sections.map((section, index) => renderSection(section, index))}
+                </div>
+
+                {/* Tags */}
+                {post.tags && post.tags.length > 0 && (
+                  <div className="mt-12 pt-8 border-t theme-border-primary">
+                    <h3 className="text-lg font-bold theme-text-primary mb-4 flex items-center gap-2">
+                      <Tag className="w-5 h-5" />
+                      Tags
+                    </h3>
+                    <div className="flex flex-wrap gap-3">
+                      {post.tags.map((tag, index) => (
+                        <span
+                          key={index}
+                          className="px-4 py-2 rounded-full theme-card theme-text-primary text-sm font-medium hover:bg-[#2d65bc] hover:text-white transition-all cursor-pointer"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Author Bio */}
+                <div className="mt-12 p-6 sm:p-8 rounded-2xl theme-card border-2 border-[#2d65bc]/20">
+                  <div className="flex items-start gap-4">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#2d65bc] to-blue-600 flex items-center justify-center text-white text-2xl font-bold flex-shrink-0">
+                      {post.author.charAt(0)}
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold theme-text-primary mb-2">Written by {post.author}</h3>
+                      <p className="theme-text-secondary text-sm leading-relaxed">
+                        The aNquest Media team consists of experienced developers, designers, and digital strategists passionate about sharing knowledge and helping businesses succeed online.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Navigation */}
+                <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-between">
+                  <Link
+                    to={buildUrl('/blog')}
+                    className="inline-flex items-center gap-2 px-6 py-3 theme-card theme-text-primary font-bold rounded-xl hover:bg-[#2d65bc] hover:text-white transition-all"
+                  >
+                    <ArrowLeft className="w-5 h-5" />
+                    All Articles
+                  </Link>
+                  <Link
+                    to={buildUrl('/contact-us')}
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#2d65bc] text-white font-bold rounded-xl hover:bg-blue-700 transition-all"
+                  >
+                    Get in Touch
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* Right Sidebar - Popular Blogs */}
+              <aside className="lg:col-span-3 order-3">
+                <div className="sticky top-24 space-y-6 self-start">
+                  <div className="theme-card rounded-2xl p-6">
+                    <div className="flex items-center gap-2 mb-4">
+                      <Star className="w-5 h-5 text-[#2d65bc]" />
+                      <h3 className="text-lg font-bold theme-text-primary">Popular Articles</h3>
+                    </div>
+                    <div className="space-y-4">
+                      {popularPosts.map((popularPost) => (
+                        <Link
+                          key={popularPost.id}
+                          to={buildUrl(`/blog/${popularPost.slug}`)}
+                          className="group block"
+                        >
+                          <div className="flex gap-3">
+                            <div className="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden">
+                              <img
+                                src={popularPost.image}
+                                alt={popularPost.title}
+                                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
+                              />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h4 className="text-sm font-bold theme-text-primary line-clamp-2 group-hover:text-[#2d65bc] transition-colors mb-1">
+                                {popularPost.title}
+                              </h4>
+                              <div className="flex items-center gap-2 text-xs theme-text-secondary">
+                                <Calendar className="w-3 h-3" />
+                                <span>{popularPost.date}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* CTA Card */}
+                  <div className="theme-card rounded-2xl p-6 bg-gradient-to-br from-[#2d65bc]/10 to-blue-600/10 border-2 border-[#2d65bc]/20">
+                    <h3 className="text-lg font-bold theme-text-primary mb-2">Need Help?</h3>
+                    <p className="text-sm theme-text-secondary mb-4">
+                      Let's discuss your project and bring your ideas to life.
+                    </p>
                     <Link
-                      key={post.id}
-                to={buildUrl(`/blog/${post.slug}`)}
-                      className="group theme-card rounded-2xl overflow-hidden transition-all duration-300 hover:theme-shadow-secondary hover:-translate-y-1"
+                      to={buildUrl('/contact-us')}
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-[#2d65bc] text-white font-bold rounded-lg hover:bg-blue-700 transition-all text-sm w-full justify-center"
                     >
-                      <div className="h-48 w-full overflow-hidden bg-gradient-to-br from-slate-200 to-slate-300">
+                      Contact Us
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </article>
+
+        {/* Latest Blogs Section */}
+        {latestPosts.length > 0 && (
+          <section className="relative py-12 sm:py-16 lg:py-20 theme-bg-secondary">
+            <CircleSquareBgAnimation theme={theme} />
+
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+              <div className="max-w-7xl mx-auto">
+                <div className="flex items-center justify-between mb-8">
+                  <div className="flex items-center gap-3">
+                    <TrendingUp className="w-6 h-6 text-[#2d65bc]" />
+                    <h2 className="text-3xl font-bold theme-text-primary">Latest Articles</h2>
+                  </div>
+                  <Link
+                    to={buildUrl('/blog')}
+                    className="hidden sm:flex items-center gap-2 text-[#2d65bc] font-semibold hover:gap-3 transition-all"
+                  >
+                    View All
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {latestPosts.map((latestPost) => (
+                    <Link
+                      key={latestPost.id}
+                      to={buildUrl(`/blog/${latestPost.slug}`)}
+                      className="group theme-card rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+                    >
+                      <div className="h-48 overflow-hidden relative">
                         <img
-                          src={post.image}
-                          alt={post.title}
-                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                          src={latestPost.image}
+                          alt={latestPost.title}
+                          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                         />
-                      </div>
-                      <div className="p-6 flex flex-col gap-3">
-                        <div className="flex items-center gap-3 text-sm theme-text-secondary">
-                          <span style={{ color: getThemeColor() }} className="font-medium">
-                            {post.category}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div className="absolute top-4 left-4 z-10">
+                          <span className="px-3 py-1 bg-white/90 backdrop-blur-md text-[#2d65bc] text-xs font-bold rounded-full shadow-lg">
+                            {latestPost.category}
                           </span>
-                          <span>•</span>
-                          <span>{post.readTime}</span>
                         </div>
-                        <h4 className="text-xl font-semibold theme-text-primary leading-snug line-clamp-2">
-                          {post.title}
-                        </h4>
-                        <p className="theme-text-secondary text-sm line-clamp-3">
-                          {post.excerpt}
+                        {latestPost.featured && (
+                          <div className="absolute top-4 right-4 z-10">
+                            <span className="px-3 py-1 bg-[#2d65bc] text-white text-xs font-bold rounded-full shadow-lg flex items-center gap-1">
+                              <Star className="w-3 h-3 fill-white" />
+                              Featured
+                            </span>
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="p-6">
+                        <div className="flex items-center gap-3 text-xs theme-text-secondary mb-3">
+                          <span className="flex items-center gap-1">
+                            <Calendar className="w-3 h-3" />
+                            {latestPost.date}
+                          </span>
+                          <span className="w-1 h-1 rounded-full bg-gray-400"></span>
+                          <span className="flex items-center gap-1">
+                            <Clock className="w-3 h-3" />
+                            {latestPost.readTime}
+                          </span>
+                        </div>
+
+                        <h3 className="text-lg font-bold theme-text-primary mb-2 line-clamp-2 group-hover:text-[#2d65bc] transition-colors leading-tight">
+                          {latestPost.title}
+                        </h3>
+
+                        <p className="theme-text-secondary text-sm line-clamp-3 mb-4 leading-relaxed">
+                          {latestPost.excerpt}
                         </p>
+
+                        <div className="flex items-center justify-between pt-4 border-t theme-border-primary/30">
+                          <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#2d65bc] to-blue-600 flex items-center justify-center text-white text-xs font-bold">
+                              {latestPost.author.charAt(0)}
+                            </div>
+                            <span className="text-xs font-medium theme-text-primary">{latestPost.author}</span>
+                          </div>
+                          <span className="text-[#2d65bc] font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+                            Read <ArrowRight className="w-4 h-4" />
+                          </span>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+
+                {/* View All Button for Mobile */}
+                <div className="mt-8 text-center sm:hidden">
+                  <Link
+                    to={buildUrl('/blog')}
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#2d65bc] text-white font-bold rounded-xl hover:bg-blue-700 transition-all"
+                  >
+                    View All Articles
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Related Posts */}
+        {relatedPosts.length > 0 && (
+          <section className="relative py-12 sm:py-16 theme-bg-primary">
+            <CircleSquareBgAnimation theme={theme} containerType="absolute" />
+
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+              <div className="max-w-7xl mx-auto">
+                <div className="flex items-center gap-3 mb-8">
+                  <Tag className="w-6 h-6 text-[#2d65bc]" />
+                  <h2 className="text-3xl font-bold theme-text-primary">Related Articles</h2>
+                  <span className="text-sm theme-text-secondary">({post.category})</span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {relatedPosts.map((relatedPost) => (
+                    <Link
+                      key={relatedPost.id}
+                      to={buildUrl(`/blog/${relatedPost.slug}`)}
+                      className="group theme-card rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+                    >
+                      <div className="h-48 overflow-hidden relative">
+                        <img
+                          src={relatedPost.image}
+                          alt={relatedPost.title}
+                          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div className="absolute top-4 left-4 z-10">
+                          <span className="px-3 py-1 bg-white/90 backdrop-blur-md text-[#2d65bc] text-xs font-bold rounded-full shadow-lg">
+                            {relatedPost.category}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="p-6">
+                        <div className="flex items-center gap-3 text-xs theme-text-secondary mb-3">
+                          <span className="flex items-center gap-1">
+                            <Calendar className="w-3 h-3" />
+                            {relatedPost.date}
+                          </span>
+                          <span className="w-1 h-1 rounded-full bg-gray-400"></span>
+                          <span className="flex items-center gap-1">
+                            <Clock className="w-3 h-3" />
+                            {relatedPost.readTime}
+                          </span>
+                        </div>
+
+                        <h3 className="text-lg font-bold theme-text-primary mb-2 line-clamp-2 group-hover:text-[#2d65bc] transition-colors leading-tight">
+                          {relatedPost.title}
+                        </h3>
+
+                        <p className="theme-text-secondary text-sm line-clamp-3 mb-4 leading-relaxed">
+                          {relatedPost.excerpt}
+                        </p>
+
+                        <div className="flex items-center justify-between pt-4 border-t theme-border-primary/30">
+                          <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#2d65bc] to-blue-600 flex items-center justify-center text-white text-xs font-bold">
+                              {relatedPost.author.charAt(0)}
+                            </div>
+                            <span className="text-xs font-medium theme-text-primary">{relatedPost.author}</span>
+                          </div>
+                          <span className="text-[#2d65bc] font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+                            Read <ArrowRight className="w-4 h-4" />
+                          </span>
+                        </div>
                       </div>
                     </Link>
                   ))}
                 </div>
               </div>
-            )}
-
-            {/* Back Buttons */}
-            <div className="mt-16 flex flex-col sm:flex-row gap-4">
-              <Link
-                to={buildUrl('/blogs')}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white transition-all duration-200 hover:scale-105"
-                style={{ backgroundColor: getThemeColor() }}
-              >
-                <ArrowLeft className="w-4 h-4" />
-                Back to Blogs
-              </Link>
-              <button
-                type="button"
-                onClick={() => window.history.length > 1 ? window.history.back() : null}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-200 theme-text-primary theme-bg-secondary hover:theme-bg-primary hover:text-white"
-                style={{ border: `1px solid ${getThemeColor()}` }}
-                aria-label="Go back to the previous page"
-              >
-                <ArrowLeft className="w-4 h-4" />
-                Go Back
-              </button>
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
+        )}
 
-      {/* CTA Section */}
-      <section className="relative overflow-hidden">
-        <MinimalBigShapesAnimation />
-        <div className="absolute inset-0 theme-gradient-primary opacity-50"></div>
-        <div className="relative z-10 py-16 sm:py-20 lg:py-24">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mb-6">
-                Ready to Bring Your Story to <span style={{ color: '#2d65bc' }}>Life?</span>
-              </h2>
-              <p className="text-lg sm:text-xl theme-text-secondary mb-8 max-w-2xl mx-auto leading-relaxed">
-                Talk to our team about turning your content vision into a compelling digital experience.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  to={buildUrl('/request-a-quote')}
-                  className="text-white font-bold py-4 px-8 rounded-xl transition-all duration-200 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
-                  style={{ backgroundColor: '#2d65bc' }}
-                >
-                  Request a Quote
-                </Link>
-                <Link 
-                  to={buildUrl('/contacts')}
-                  className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold py-4 px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white transition-all duration-200 text-base sm:text-lg hover:scale-105"
-                >
-                  Contact Us
-                </Link>
+        {/* CTA Section */}
+        <section className="relative py-12 sm:py-16 lg:py-20">
+          <CircleSquareBgAnimation theme={theme} />
+
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-5xl mx-auto text-center">
+              <div className="rounded-3xl p-3 sm:p-4 py-4 sm:py-8 lg:py-12 lg:p-4 theme-shadow-primary relative overflow-hidden">
+                <div className="w-16 h-16 bg-[#2d65bc]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Mail className="w-8 h-8 text-[#2d65bc]" />
+                </div>
+
+                <h2 className="text-3xl font-bold theme-text-primary mb-4">
+                  Ready to Start Your Project?
+                </h2>
+
+                <p className="text-lg theme-text-secondary mb-8 max-w-2xl mx-auto">
+                  Let's discuss how we can bring your vision to life with innovative solutions and expert guidance.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link
+                    to="/contact-us"
+                    className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#2d65bc] text-white font-bold rounded-xl hover:bg-blue-700 transition-all shadow-lg"
+                  >
+                    Get Started
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                  <Link
+                    to="/request-a-quote"
+                    className="inline-flex items-center justify-center gap-2 px-8 py-4 theme-card theme-text-primary font-bold rounded-xl hover:bg-[#2d65bc] hover:text-white transition-all border-2 border-[#2d65bc]/30"
+                  >
+                    Request a Quote
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </>
   );
 };
 

@@ -2,7 +2,6 @@ import React from 'react';
 import { Code, Server, Layers, ShoppingCart, FileText, Smartphone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../Context/ThemeContext';
-import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleSquareBgAnimation';
 import { buildUrl } from '../utils/urlUtils';
 import SEO from '../Components/SEO';
 
@@ -107,39 +106,7 @@ const WebDevelopment = () => {
       />
     <div className="min-h-screen theme-bg-primary pt-20">
       {/* Hero Section */}
-      <section className="relative overflow-hidden sm:py-8">
-        <CircleSquareBgAnimation/>
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-48 h-48 rounded-full opacity-10 animate-float-slow" style={{ backgroundColor: getThemeColor() }}></div>
-          <div className="absolute bottom-40 left-20 w-52 h-52 rounded-full opacity-8 animate-float-fast" style={{ backgroundColor: getThemeColor() }}></div>
-        </div>
-        
-        <div className="container mx-auto px-4 sm:px-6 pt-22 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
-              Web <span style={{ color: '#2d65bc' }}>Development</span> Services
-            </h1>
-            <p className="text-xl sm:text-2xl theme-text-secondary mb-4 max-w-3xl mx-auto leading-relaxed">
-              We create stunning, responsive websites and web applications using modern technologies. 
-              From simple landing pages to complex web platforms, we deliver exceptional digital experiences.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-              <Link 
-                to={buildUrl('/request-a-quote')}
-                className="bg-[#2d65bc] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#1a4a8a] transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
-              >
-                Get Started
-              </Link>
-              <Link 
-                to={buildUrl('/contacts')}
-                className="border-2 border-[#2d65bc] text-[#2d65bc] font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-[#2d65bc] hover:text-white transition-all duration-300 text-base sm:text-lg hover:scale-105"
-              >
-                Contact Us
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+   
 
       {/* Services Grid */}
       <section className="py-16 sm:py-20 lg:py-24 theme-bg-primary">
@@ -251,7 +218,7 @@ const WebDevelopment = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md sm:max-w-none mx-auto">
               <a
-                href="/contacts"
+                href="/contacts-us"
                 className="bg-white theme-accent-primary font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl hover:bg-gray-50 transition-all duration-300 text-base sm:text-lg hover:scale-105 hover:shadow-2xl"
               >
                 Get Started Today

@@ -1,111 +1,176 @@
-/* Global Theme Styles */
+/* Global Theme Styles - Modern Clean Design */
 :root {
-  /* Default theme variables (dark theme) */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #2d2d2d;
-  --bg-tertiary: #3a3a3a;
-  --text-primary: #ffffff;
-  --text-secondary: #e5e5e5;
-  --text-muted: #a0a0a0;
-  --accent-primary: #2d65bc;
-  --accent-secondary: #2d65bc;
-  --border-primary: #404040;
-  --border-secondary: #525252;
-  --shadow-primary: rgba(0, 0, 0, 0.3);
-  --shadow-secondary: rgba(0, 0, 0, 0.5);
-  --gradient-primary: linear-gradient(135deg, #1a1a1a, #2d2d2d);
-  --gradient-secondary: linear-gradient(135deg, #2d2d2d, #3a3a3a);
-  --gradient-accent: linear-gradient(135deg, #2d65bc, #2d65bc);
-  --bg-hero:#2d65bc;
-}
-
-/* Theme-specific styles */
-.theme-dark {
-  --bg-hero:#2d2d2d;
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #2d2d2d;
-  --bg-tertiary: #3a3a3a;
-  --text-primary: #ffffff;
-  --text-secondary: #e5e5e5;
-  --text-muted: #a0a0a0;
-  --accent-primary: #2d65bc;
-  --accent-secondary: #2d65bc;
-  --border-primary: #404040;
-  --border-secondary: #525252;
-  --shadow-primary: rgba(0, 0, 0, 0.3);
-  --shadow-secondary: rgba(0, 0, 0, 0.5);
-  --gradient-primary: linear-gradient(135deg, #1a1a1a, #2d2d2d);
-  --gradient-secondary: linear-gradient(135deg, #2d2d2d, #3a3a3a);
-  --gradient-accent: linear-gradient(135deg, #1a1a1a, #000000);
-  /* Home Section Button Variables */
-  --theme-button-bg: transparent;
-  --theme-button-text: #2d65bc;
-  --theme-button-border: #2d65bc;
-  --theme-button-hover: rgba(45, 101, 188, 0.1);
-  --theme-button-secondary-bg: #2d65bc;
-  --theme-button-secondary-text: #1a1a1a;
-  --theme-button-secondary-border: #2d65bc;
-  /* Background Animation Variables */
-  --animation-color-primary: rgba(45, 101, 188, 0.15);
-  --animation-color-secondary: rgba(45, 101, 188, 0.12);
-  --animation-color-tertiary: rgba(45, 101, 188, 0.10);
-  --animation-border-color: rgba(45, 101, 188, 0.20);
-  --animation-line-color: rgba(45, 101, 188, 0.15);
-  /* Service Hover Border Variables */
-  --service-hover-border: #2d65bc;
-  /* Footer Variables */
-  --footer-text-primary: #2d65bc;
-  --footer-text-secondary: #a0a0a0;
-  --footer-icon-color: #2d65bc;
-  --footer-icon-bg: #2d65bc;
-  --footer-icon-bg-hover: #1a4a8a;
-  --footer-bg: #1a1a1a;
-}
-
-.theme-light {
+  /* Modern Dark, Light & Blue Color System */
+  /* Dark Shades */
+  --color-dark-900: #0a0a0a;
+  --color-dark-800: #1a1a1a;
+  --color-dark-700: #2a2a2a;
+  --color-dark-600: #3a3a3a;
+  --color-dark-500: #4a4a4a;
+  
+  /* Light Shades */
+  --color-light-50: #ffffff;
+  --color-light-100: #f8f9fa;
+  --color-light-200: #f1f3f5;
+  --color-light-300: #e9ecef;
+  --color-light-400: #dee2e6;
+  
+  /* Blue Shades */
+  --color-blue-600: #2d65bc;
+  --color-blue-500: #3b7dd6;
+  --color-blue-400: #5a9aeb;
+  --color-blue-300: #7db3f5;
+  --color-blue-200: #a5c9fa;
+  --color-blue-100: #d4e7ff;
+  
+  /* Default theme variables (Light theme default) */
   --bg-primary: #ffffff;
-  --bg-secondary: #f0fdfa;
-  --bg-tertiary: #e6fffa;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #f1f3f5;
   --text-primary: #1a1a1a;
-  --text-secondary: #374151;
+  --text-secondary: #3a3a3a;
   --text-muted: #6b7280;
   --accent-primary: #2d65bc;
-  --accent-secondary: #2d65bc;
-  --border-primary: #e5e7eb;
-  --border-secondary: #d1d5db;
-  --shadow-primary: rgba(0, 0, 0, 0.1);
-  --shadow-secondary: rgba(0, 0, 0, 0.2);
-  --gradient-primary: linear-gradient(135deg, #ffffff, #f0fdfa);
-  --gradient-secondary: linear-gradient(135deg, #f0fdfa, #e6fffa);
-  --gradient-accent: linear-gradient(135deg, #2d65bc, #2d65bc);
-  /* Home Section Button Variables */
+  --accent-secondary: #3b7dd6;
+  --accent-hover: #1e4a8a;
+  --border-primary: #e9ecef;
+  --border-secondary: #dee2e6;
+  --shadow-primary: rgba(45, 101, 188, 0.08);
+  --shadow-secondary: rgba(45, 101, 188, 0.12);
+  --shadow-hover: rgba(45, 101, 188, 0.15);
+  --gradient-primary: linear-gradient(135deg, #ffffff, #f8f9fa);
+  --gradient-secondary: linear-gradient(135deg, #f8f9fa, #f1f3f5);
+  --gradient-accent: linear-gradient(135deg, #2d65bc, #3b7dd6);
+  --gradient-blue: linear-gradient(135deg, #5a9aeb, #2d65bc);
+}
+
+/* Dark Theme */
+.theme-dark {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #1a1a1a;
+  --bg-tertiary: #2a2a2a;
+  --text-primary: #ffffff;
+  --text-secondary: #e9ecef;
+  --text-muted: #a0a0a0;
+  --accent-primary: #5a9aeb;
+  --accent-secondary: #3b7dd6;
+  --accent-hover: #7db3f5;
+  --border-primary: #2a2a2a;
+  --border-secondary: #3a3a3a;
+  --shadow-primary: rgba(0, 0, 0, 0.2);
+  --shadow-secondary: rgba(0, 0, 0, 0.3);
+  --shadow-hover: rgba(90, 154, 235, 0.15);
+  --gradient-primary: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+  --gradient-secondary: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+  --gradient-accent: linear-gradient(135deg, #2d65bc, #5a9aeb);
+  --gradient-blue: linear-gradient(135deg, #5a9aeb, #2d65bc);
+  
+  /* Button Variables */
+  --theme-button-bg: transparent;
+  --theme-button-text: #5a9aeb;
+  --theme-button-border: #5a9aeb;
+  --theme-button-hover: rgba(90, 154, 235, 0.15);
+  --theme-button-secondary-bg: #5a9aeb;
+  --theme-button-secondary-text: #0a0a0a;
+  --theme-button-secondary-border: #5a9aeb;
+  --theme-button-secondary-hover: #7db3f5;
+  
+  /* Background Animation Variables */
+  --animation-color-primary: rgba(90, 154, 235, 0.12);
+  --animation-color-secondary: rgba(90, 154, 235, 0.10);
+  --animation-color-tertiary: rgba(90, 154, 235, 0.08);
+  --animation-border-color: rgba(90, 154, 235, 0.15);
+  --animation-line-color: rgba(90, 154, 235, 0.12);
+  
+  /* Service Hover Border */
+  --service-hover-border: #5a9aeb;
+  
+  /* Footer Variables */
+  --footer-text-primary: #5a9aeb;
+  --footer-text-secondary: #a0a0a0;
+  --footer-icon-color: #5a9aeb;
+  --footer-icon-bg: #1a1a1a;
+  --footer-icon-bg-hover: #5a9aeb;
+  --footer-bg: #0a0a0a;
+  
+  /* Card Variables */
+  --card-bg: rgba(26, 26, 26, 0.6);
+  --card-border: rgba(90, 154, 235, 0.15);
+  --card-hover-shadow: rgba(90, 154, 235, 0.2);
+  
+  /* Icon Variables */
+  --icon-bg: rgba(90, 154, 235, 0.15);
+  --icon-color: #5a9aeb;
+  --icon-hover-bg: rgba(90, 154, 235, 0.25);
+}
+
+/* Light Theme */
+.theme-light {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #f1f3f5;
+  --text-primary: #0a0a0a;
+  --text-secondary: #3a3a3a;
+  --text-muted: #6b7280;
+  --accent-primary: #2d65bc;
+  --accent-secondary: #3b7dd6;
+  --accent-hover: #1e4a8a;
+  --border-primary: #e9ecef;
+  --border-secondary: #dee2e6;
+  --shadow-primary: rgba(45, 101, 188, 0.06);
+  --shadow-secondary: rgba(45, 101, 188, 0.10);
+  --shadow-hover: rgba(45, 101, 188, 0.15);
+  --gradient-primary: linear-gradient(135deg, #ffffff, #f8f9fa);
+  --gradient-secondary: linear-gradient(135deg, #f8f9fa, #f1f3f5);
+  --gradient-accent: linear-gradient(135deg, #2d65bc, #3b7dd6);
+  --gradient-blue: linear-gradient(135deg, #2d65bc, #5a9aeb);
+  
+  /* Button Variables */
   --theme-button-bg: transparent;
   --theme-button-text: #2d65bc;
   --theme-button-border: #2d65bc;
-  --theme-button-hover: rgba(45, 101, 188, 0.1);
+  --theme-button-hover: rgba(45, 101, 188, 0.08);
   --theme-button-secondary-bg: #2d65bc;
   --theme-button-secondary-text: #ffffff;
   --theme-button-secondary-border: #2d65bc;
+  --theme-button-secondary-hover: #1e4a8a;
+  
   /* Background Animation Variables */
-  --animation-color-primary: rgba(45, 101, 188, 0.18);
-  --animation-color-secondary: rgba(45, 101, 188, 0.15);
-  --animation-color-tertiary: rgba(45, 101, 188, 0.12);
-  --animation-border-color: rgba(45, 101, 188, 0.25);
-  --animation-line-color: rgba(45, 101, 188, 0.18);
-  /* Service Hover Border Variables */
+  --animation-color-primary: rgba(45, 101, 188, 0.10);
+  --animation-color-secondary: rgba(45, 101, 188, 0.08);
+  --animation-color-tertiary: rgba(45, 101, 188, 0.06);
+  --animation-border-color: rgba(45, 101, 188, 0.12);
+  --animation-line-color: rgba(45, 101, 188, 0.10);
+  
+  /* Service Hover Border */
   --service-hover-border: #2d65bc;
+  
   /* Footer Variables */
   --footer-text-primary: #2d65bc;
   --footer-text-secondary: #6b7280;
-  --footer-icon-color: #2d65bc;
+  --footer-icon-color: #ffffff;
   --footer-icon-bg: #2d65bc;
-  --footer-icon-bg-hover: #1a4a8a;
-  --footer-bg: #1a1a1a;
+  --footer-icon-bg-hover: #1e4a8a;
+  --footer-bg: #f8f9fa;
+  
+  /* Card Variables */
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-border: rgba(45, 101, 188, 0.12);
+  --card-hover-shadow: rgba(45, 101, 188, 0.18);
+  
+  /* Icon Variables */
+  --icon-bg: rgba(45, 101, 188, 0.10);
+  --icon-color: #2d65bc;
+  --icon-hover-bg: rgba(45, 101, 188, 0.18);
 }
 
-/* Global theme-aware styles */
+
+/* Global theme-aware styles with smooth transitions */
 * {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -147,12 +212,25 @@ body {
   border-color: var(--border-secondary);
 }
 
+/* Minimal Shadow System */
 .theme-shadow-primary {
-  box-shadow: 0 4px 6px -1px var(--shadow-primary), 0 2px 4px -1px var(--shadow-primary);
+  box-shadow: 0 1px 3px 0 var(--shadow-primary), 0 1px 2px -1px var(--shadow-primary);
 }
 
 .theme-shadow-secondary {
-  box-shadow: 0 10px 15px -3px var(--shadow-secondary), 0 4px 6px -2px var(--shadow-secondary);
+  box-shadow: 0 2px 6px -1px var(--shadow-secondary), 0 2px 4px -2px var(--shadow-secondary);
+}
+
+.theme-shadow-hover {
+  box-shadow: 0 4px 8px -2px var(--shadow-hover), 0 3px 6px -3px var(--shadow-hover);
+}
+
+.theme-shadow-card {
+  box-shadow: 0 1px 3px rgba(45, 101, 188, 0.08);
+}
+
+.theme-shadow-card-hover {
+  box-shadow: 0 4px 12px rgba(45, 101, 188, 0.12);
 }
 
 .theme-gradient-primary {
@@ -167,13 +245,31 @@ body {
   background: var(--gradient-accent);
 }
 
+.theme-gradient-blue {
+  background: var(--gradient-blue);
+}
+
+/* Modern Card Styles */
+.theme-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-card:hover {
+  box-shadow: var(--card-hover-shadow);
+  transform: translateY(-2px);
+  border-color: var(--accent-primary);
+}
+
 /* Contact Page CTA Specific Colors */
 .theme-light .theme-gradient-accent {
-  background: linear-gradient(135deg, #2d65bc, #2d65bc) !important;
+  background: linear-gradient(135deg, #2d65bc, #3b7dd6) !important;
 }
 
 .theme-dark .theme-gradient-accent {
-  background: linear-gradient(135deg, #1a1a1a, #000000) !important;
+  background: linear-gradient(135deg, #1a1a1a, #0a0a0a) !important;
 }
 
 .theme-accent-primary {
@@ -182,6 +278,27 @@ body {
 
 .theme-accent-secondary {
   color: var(--accent-secondary);
+}
+
+/* Additional theme utility classes */
+.theme-text-accent {
+  color: var(--accent-primary);
+}
+
+.theme-text-accent-hover:hover {
+  color: var(--accent-primary);
+}
+
+.theme-bg-accent {
+  background-color: var(--accent-primary);
+}
+
+.theme-border-accent {
+  border-color: var(--accent-primary);
+}
+
+.theme-bg-gradient-light {
+  background: linear-gradient(to right, var(--bg-primary), var(--accent-primary));
 }
 
 /* Ensure aNquest text shows theme accent color */
@@ -745,4 +862,18 @@ h2 span.theme-accent-primary {
   .animate-blob-medium {
     animation-duration: 8s;
   }
+}
+
+/* Typing Animation Cursor Blink */
+@keyframes blink {
+  0%, 50% { 
+    opacity: 1; 
+  }
+  51%, 100% { 
+    opacity: 0; 
+  }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
 }

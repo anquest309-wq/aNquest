@@ -139,7 +139,7 @@ const NotFound = () => {
                 <span className="theme-text-primary font-semibold">Technologies</span>
               </Link>
               <Link
-                to={buildUrl('/contacts')}
+                to={buildUrl('/contact-us')}
                 className="theme-bg-tertiary hover:theme-bg-secondary rounded-lg p-4 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
               >
                 <span className="theme-text-primary font-semibold">Contact Us</span>

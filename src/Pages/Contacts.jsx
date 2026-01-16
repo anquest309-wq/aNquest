@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useTheme } from '../Context/ThemeContext';
-import CircleSquareBgAnimation from '../Components/Bg-animation-template/CircleSquareBgAnimation';
-import MinimalBigShapesAnimation from '../Components/Bg-animation-template/MinimalBigShapesAnimation';
-import SEO from '../Components/SEO';
 import emailjs from '@emailjs/browser';
+import HomeHeroBg from '../Components/Bg-animation-template/HomeHeroBg';
+import { ArrowRight } from 'react-feather';
+import SEO from '../Components/SEO';
+import MinimalBigShapesAnimation from '../Components/Bg-animation-template/MinimaLBigShapesAnimation';
+import ContactForm from '../Components/Contactform';
+
+
 
 const resolveEnv = (key) => {
   if (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env[key] !== undefined) {
@@ -22,21 +26,18 @@ const DEFAULT_EMAILJS_PUBLIC_KEY = 'c6yjlhrYVqaAq5W0w';
 
 const EMAILJS_SERVICE_ID =
   resolveEnv('VITE_EMAILJS_SERVICE_ID') ||
-  resolveEnv('REACT_APP_EMAILJS_SERVICE_ID') ||
   DEFAULT_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_ID =
   resolveEnv('VITE_EMAILJS_TEMPLATE_ID') ||
-  resolveEnv('REACT_APP_EMAILJS_TEMPLATE_ID') ||
   DEFAULT_EMAILJS_TEMPLATE_ID;
 const EMAILJS_PUBLIC_KEY =
   resolveEnv('VITE_EMAILJS_PUBLIC_KEY') ||
-  resolveEnv('REACT_APP_EMAILJS_PUBLIC_KEY') ||
   DEFAULT_EMAILJS_PUBLIC_KEY;
 
 const Contacts = () => {
   const { theme } = useTheme();
   const navigate = useNavigate();
-  
+
   // Get animation color based on theme (white for dark, theme color for light)
   const getAnimationColor = () => {
     if (theme === 'dark') {
@@ -72,181 +73,80 @@ const Contacts = () => {
     window.location.href = url;
   };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
 
-    if (name === 'phone') {
-      const numericValue = value.replace(/\D/g, '').slice(0, 12);
-      setFormData(prev => ({
-        ...prev,
-        [name]: numericValue
-      }));
 
-      setFormErrors(prev => ({
-        ...prev,
-        phone:
-          numericValue.length === 0
-            ? 'Phone number is required.'
-            : numericValue.length < 10
-              ? 'Phone number must be at least 10 digits.'
-              : ''
-      }));
-      return;
-    }
 
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
 
-    if (formErrors[name]) {
-      setFormErrors(prev => ({ ...prev, [name]: '' }));
-    }
-  };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
-      setStatus({
-        type: 'error',
-        message:
-          'Our contact form is currently unavailable. Please email us directly at info@anquest.com.'
-      });
-      return;
-    }
 
-    if (formData.phone && (formData.phone.length < 10 || formData.phone.length > 12)) {
-      setFormErrors(prev => ({
-        ...prev,
-        phone: 'Phone number must be between 10 and 12 digits.'
-      }));
-      setStatus({
-        type: 'error',
-        message: 'Please fix the errors in the form before submitting.'
-      });
-      return;
-    }
+const services = [
+  "Web Development",
+  "App Development",
+  "SEO Services",
+  "Digital Marketing",
+  "UI/UX Design",
+  "E-Commerce Solutions"
+];
 
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const errors = {
-      name: formData.name.trim() ? '' : 'Full name is required.',
-      email: !formData.email.trim()
-        ? 'Email address is required.'
-        : emailPattern.test(formData.email)
-          ? ''
-          : 'Enter a valid email address.',
-      phone: !formData.phone
-        ? 'Phone number is required.'
-        : formData.phone.length < 10
-          ? 'Phone number must be at least 10 digits.'
-          : formData.phone.length > 12
-            ? 'Phone number must be no more than 12 digits.'
-          : '',
-      message: formData.message.trim()
-        ? ''
-        : 'Please describe your project so we can help effectively.'
-    };
-
-    const hasErrors = Object.values(errors).some(Boolean);
-
-    if (hasErrors) {
-      setFormErrors(errors);
-      setStatus({
-        type: 'error',
-        message: 'Please fix the errors in the form before submitting.'
-      });
-      return;
-    }
-
-    setFormErrors({});
-
-    setIsSubmitting(true);
-    setStatus({ type: null, message: '' });
-
-    const formattedMessage = [
-      `Site: aNquest Media`,
-      `Name: ${formData.name}`,
-      `Email: ${formData.email}`,
-      formData.phone ? `Phone: ${formData.phone}` : null,
-      formData.service ? `Service: ${formData.service}` : 'Service: Not specified',
-      '',
-      formData.message
-    ]
-      .filter(Boolean)
-      .join('\n');
-
-    const templateParams = {
-      web_name: "aNquest Media",
-      message:`
-      Name: ${formData.name}
-      Email: ${formData.email} 
-      Phone: ${formData.phone} 
-      Service: ${formData.service}
-      Message: ${formData.message}
-      `,
-    };
-
-    try {
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY);
-      setStatus({
-        type: 'success',
-        message: 'Thank you for your message! Our team will reach out within one business day.'
-      });
-      setFormErrors({});
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        service: '',
-        message: ''
-      });
-      navigate('/thank-you');
-    } catch (error) {
-      console.error('EmailJS form submission failed:', error);
-      setStatus({
-        type: 'error',
-        message:
-          'Something went wrong while sending your message. Please try again or email us at info@anquest.com.'
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const services = [
-    "Web Development",
-    "App Development", 
-    "SEO Services",
-    "Digital Marketing",
-    "UI/UX Design",
-    "E-Commerce Solutions"
-  ];
-
-  return (
-    <>
-      <SEO 
-        title="Contact Us - aNquest | Get in Touch for IT & CRM Solutions"
-        description="Get in touch with aNquest for expert IT and CRM solutions. Our team is ready to assist you with digital strategy, branding, and technology-driven business growth."
-        keywords="aNquest contact, IT solutions queries, CRM development India, custom software partner, cloud & AI services, digital transformation enquiry"
-        canonicalUrl="https://anquestmedia.com/contacts"
-      />
-      <div className="min-h-screen theme-bg-primary pt-20">
+return (
+  <>
+    <SEO
+      title="Contact Us - aNquest | Get in Touch for IT & CRM Solutions"
+      description="Get in touch with aNquest for expert IT and CRM solutions. Our team is ready to assist you with digital strategy, branding, and technology-driven business growth."
+      keywords="aNquest contact, IT solutions queries, CRM development India, custom software partner, cloud & AI services, digital transformation enquiry"
+      canonicalUrl="https://anquestmedia.com/contact-us"
+    />
+    <div className=" theme-bg-primary   ">
       {/* Hero Section */}
-      <section className="relative overflow-hidden sm:py-8 ">
-        <CircleSquareBgAnimation/>
-        
-        
-        <div className="container mx-auto px-4 sm:px-6 pt-32 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 theme-text-primary">
-              Get in <span style={{ color: '#2d65bc' }}>Touch</span>
+      <section className="relative overflow-hidden min-h-screen h-[550px] flex justify-center items-center ">
+        <HomeHeroBg />
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-5xl mx-auto text-center">
+
+            {/* MAIN HEADING */}
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl poiret-one-regular-bold mb-6 theme-text-primary leading-tight">
+              Let’s Build Something{" "}
+              <span className="text-transparent bg-clip-text bg-[#2d65bc]">
+                Great Together
+              </span>
             </h1>
-            <p className="text-xl sm:text-2xl theme-text-secondary mb-4 max-w-3xl mx-auto leading-relaxed">
-              Have a project in mind? Let's discuss how we can bring your vision to life.
+
+            {/* SUBTEXT */}
+            <p className="text-lg sm:text-xl poiret-one-regular theme-text-secondary mb-8 max-w-3xl mx-auto leading-relaxed">
+              Whether you need a website, mobile app, automation system, or
+              a complete digital solution — our team is ready to help you
+              turn ideas into scalable products.
             </p>
+
+
+
+            {/* CTA BUTTONS */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="#contact-form"
+                className="group text-white px-8 py-4 rounded-full font-semibold
+                     transition-all duration-300 shadow-xl hover:shadow-2xl
+                     flex items-center gap-2 hover:scale-105"
+                style={{ backgroundColor: '#2d65bc' }}
+              >
+                Start a Conversation
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </a>
+
+
+            </div>
+
+
           </div>
         </div>
+
+        {/* SOFT GLOW */}
+        <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px]
+                  bg-[#2d65bc]/10 rounded-full blur-3xl pointer-events-none" />
       </section>
+
+
 
       {/* Contact Section */}
       <section id="contact-form" className="py-6  sm:py-5 lg:py-5 theme-bg-primary relative overflow-hidden">
@@ -257,42 +157,42 @@ const Contacts = () => {
           <div className="absolute top-40 right-20 w-36 h-36 rounded-full opacity-15 animate-float-medium" style={{ backgroundColor: getAnimationColor() }}></div>
           <div className="absolute bottom-40 left-20 w-48 h-48 rounded-full opacity-18 animate-float-fast" style={{ backgroundColor: getAnimationColor() }}></div>
           <div className="absolute bottom-20 right-10 w-32 h-32 rounded-full opacity-22 animate-float-slow" style={{ backgroundColor: getAnimationColor() }}></div>
-          
+
           {/* Floating Squares */}
           <div className="absolute top-60 left-1/4 w-20 h-20 opacity-20 animate-rotate-slow" style={{ backgroundColor: getAnimationColor(), transform: 'rotate(45deg)' }}></div>
           <div className="absolute top-80 right-1/3 w-18 h-18 opacity-16 animate-rotate-medium" style={{ backgroundColor: getAnimationColor(), transform: 'rotate(45deg)' }}></div>
           <div className="absolute bottom-60 left-1/3 w-24 h-24 opacity-18 animate-rotate-fast" style={{ backgroundColor: getAnimationColor(), transform: 'rotate(45deg)' }}></div>
-          
+
           {/* Floating Triangles */}
-          <div className="absolute top-32 right-1/4 w-0 h-0 opacity-20 animate-bounce-slow" style={{ 
+          <div className="absolute top-32 right-1/4 w-0 h-0 opacity-20 animate-bounce-slow" style={{
             borderLeft: '35px solid transparent',
             borderRight: '35px solid transparent',
             borderBottom: `60px solid ${getAnimationColor()}`
           }}></div>
-          <div className="absolute bottom-32 left-1/4 w-0 h-0 opacity-18 animate-bounce-medium" style={{ 
+          <div className="absolute bottom-32 left-1/4 w-0 h-0 opacity-18 animate-bounce-medium" style={{
             borderLeft: '28px solid transparent',
             borderRight: '28px solid transparent',
             borderBottom: `48px solid ${getAnimationColor()}`
           }}></div>
-          
+
           {/* Organic Blob Shapes */}
-          <div className="absolute top-1/4 left-1/2 w-56 h-56 opacity-12 animate-blob-slow" style={{ 
+          <div className="absolute top-1/4 left-1/2 w-56 h-56 opacity-12 animate-blob-slow" style={{
             background: `linear-gradient(135deg, ${getAnimationColor()}, ${getAnimationColor()})`,
             borderRadius: '60% 40% 70% 30% / 40% 60% 30% 70%'
           }}></div>
-          <div className="absolute bottom-1/4 right-1/2 w-64 h-64 opacity-15 animate-blob-medium" style={{ 
+          <div className="absolute bottom-1/4 right-1/2 w-64 h-64 opacity-15 animate-blob-medium" style={{
             background: `linear-gradient(135deg, ${getAnimationColor()}, ${getAnimationColor()})`,
             borderRadius: '30% 70% 50% 50% / 60% 40% 60% 40%'
           }}></div>
-          
+
           {/* Gradient Orbs */}
-          <div className="absolute top-1/2 left-1/4 w-48 h-48 rounded-full opacity-16 animate-pulse-slow" style={{ 
+          <div className="absolute top-1/2 left-1/4 w-48 h-48 rounded-full opacity-16 animate-pulse-slow" style={{
             background: `radial-gradient(circle, ${getAnimationColor()}, transparent)`
           }}></div>
-          <div className="absolute bottom-1/3 right-1/4 w-56 h-56 rounded-full opacity-15 animate-pulse-medium" style={{ 
+          <div className="absolute bottom-1/3 right-1/4 w-56 h-56 rounded-full opacity-15 animate-pulse-medium" style={{
             background: `radial-gradient(circle, ${getAnimationColor()}, transparent)`
           }}></div>
-          
+
           {/* Grid Pattern */}
           <div className="absolute inset-0 opacity-3">
             <div className="absolute top-0 left-0 w-full h-full" style={{
@@ -314,8 +214,8 @@ const Contacts = () => {
 
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
-            
-            {/* Contact Form */}
+
+              {/* Contact Form */}
               <div className="lg:col-span-2">
                 <div className="theme-card rounded-3xl theme-shadow-primary p-6 sm:p-8 lg:p-10">
                   <div className="mb-8">
@@ -324,172 +224,16 @@ const Contacts = () => {
                   </div>
                   {status.message && (
                     <div
-                      className={`mb-6 rounded-2xl px-4 py-3 text-sm font-semibold ${
-                        status.type === 'success'
-                          ? 'bg-green-100 text-green-700'
-                          : 'bg-red-100 text-red-700'
-                      }`}
+                      className={`mb-6 rounded-2xl px-4 py-3 text-sm font-semibold ${status.type === 'success'
+                        ? 'bg-green-100 text-green-700'
+                        : 'bg-red-100 text-red-700'
+                        }`}
                     >
                       {status.message}
                     </div>
                   )}
-              <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-semibold theme-text-primary peer-focus:text-[#2d65bc] transition-colors"
-                >
-              Full Name *
-            </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              className={`peer w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all theme-bg-primary theme-text-primary ${
-                formErrors.name
-                  ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
-                  : 'theme-border-primary focus:ring-[#2d65bc] focus:border-[#2d65bc]'
-              }`}
-              aria-invalid={formErrors.name ? 'true' : 'false'}
-              placeholder="Enter your full name"
-            />
-            {formErrors.name && (
-              <p className="text-sm text-red-600">{formErrors.name}</p>
-            )}
-                  </div>
-                      <div className="space-y-2">
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-semibold theme-text-primary peer-focus:text-[#2d65bc] transition-colors"
-                >
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              className={`peer w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all theme-bg-primary theme-text-primary ${
-                formErrors.email
-                  ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
-                  : 'theme-border-primary focus:ring-[#2d65bc] focus:border-[#2d65bc]'
-              }`}
-              aria-invalid={formErrors.email ? 'true' : 'false'}
-              placeholder="Enter your email address"
-            />
-            {formErrors.email && (
-              <p className="text-sm text-red-600">{formErrors.email}</p>
-            )}
-                  </div>
+                 <ContactForm/>
                 </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                <label
-                  htmlFor="phone"
-                  className="block text-sm font-semibold theme-text-primary peer-focus:text-[#2d65bc] transition-colors"
-                >
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      inputMode="numeric"
-                      minLength={10}
-                      maxLength={12}
-                      pattern="[0-9]{10,12}"
-                  className={`peer w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all theme-bg-primary theme-text-primary ${
-                    formErrors.phone
-                      ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
-                      : 'theme-border-primary focus:ring-[#2d65bc] focus:border-[#2d65bc]'
-                  }`}
-                      placeholder="Enter your phone number"
-                  aria-invalid={formErrors.phone ? 'true' : 'false'}
-                    />
-                    {formErrors.phone && (
-                      <p className="text-sm text-red-600">{formErrors.phone}</p>
-                    )}
-                  </div>
-                      <div className="space-y-2">
-                <label
-                  htmlFor="service"
-                  className="block text-sm font-semibold theme-text-primary peer-focus:text-[#2d65bc] transition-colors"
-                >
-                          Service Type
-                    </label>
-                    <select
-                      id="service"
-                      name="service"
-                      value={formData.service}
-                      onChange={handleInputChange}
-                  className="peer w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all theme-bg-primary theme-text-primary theme-border-primary focus:ring-[#2d65bc] focus:border-[#2d65bc]"
-                    >
-                          <option value="">Choose a service</option>
-                      {services.map((service, index) => (
-                        <option key={index} value={service}>{service}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                    <div className="space-y-2">
-            <label
-              htmlFor="message"
-              className="block text-sm font-semibold theme-text-primary peer-focus:text-[#2d65bc] transition-colors"
-            >
-                        Project Description *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                  rows={6}
-                  className={`peer w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all theme-bg-primary theme-text-primary resize-none ${
-                    formErrors.message
-                      ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
-                      : 'theme-border-primary focus:ring-[#2d65bc] focus:border-[#2d65bc]'
-                  }`}
-                  aria-invalid={formErrors.message ? 'true' : 'false'}
-                        placeholder="Describe your project goals, timeline, budget, and any specific requirements..."
-                  />
-            {formErrors.message && (
-              <p className="text-sm text-red-600">{formErrors.message}</p>
-            )}
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                      className="w-full text-white font-bold py-4 px-8 rounded-xl transition-all duration-200 flex items-center justify-center text-lg hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#1a4a8a]"
-                      style={{ backgroundColor: '#2d65bc' }}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Sending Message...
-                    </>
-                  ) : (
-                        <>
-                          <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                          </svg>
-                          Send Message
-                        </>
-                  )}
-                </button>
-              </form>
-            </div>
               </div>
 
               {/* Contact Information Sidebar */}
@@ -516,7 +260,7 @@ const Contacts = () => {
                         <p className="text-sm theme-text-secondary">+1(234) 392-3647</p>
                       </div>
                     </Link>
-                    
+
                     <Link
                       to="#"
                       onClick={(e) => {
@@ -535,7 +279,7 @@ const Contacts = () => {
                         <p className="text-sm theme-text-secondary">+91 92661 40654</p>
                       </div>
                     </Link>
-                    
+
                     <Link
                       to="#"
                       onClick={(e) => {
@@ -552,9 +296,9 @@ const Contacts = () => {
                       <div>
                         <p className="font-semibold theme-text-primary">Email Us</p>
                         <p className="text-sm theme-text-secondary">info@anquest.com</p>
-                    </div>
+                      </div>
                     </Link>
-                    
+
                     <a href="https://maps.google.com" className="flex items-center gap-3 p-3 theme-bg-tertiary rounded-xl hover:theme-bg-secondary transition-colors">
                       <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#2d65bc' }}>
                         <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -565,12 +309,12 @@ const Contacts = () => {
                       <div>
                         <p className="font-semibold theme-text-primary">Visit Us</p>
                         <p className="text-sm theme-text-secondary">618 spink st #2 Wooster Ohio 44691</p>
-                    </div>
+                      </div>
                     </a>
                   </div>
-              </div>
+                </div>
 
-              {/* Business Hours */}
+                {/* Business Hours */}
                 <div className="theme-card rounded-2xl theme-shadow-primary p-6">
                   <h3 className="text-xl font-bold theme-text-primary mb-4">Business Hours</h3>
                   <div className="space-y-3">
@@ -585,7 +329,7 @@ const Contacts = () => {
                     <div className="flex justify-between items-center py-2">
                       <span className="theme-text-secondary">Sunday</span>
                       <span className="font-semibold theme-text-primary">Closed</span>
-                  </div>
+                    </div>
                   </div>
                   <div className="mt-4 p-3 theme-bg-tertiary rounded-xl">
                     <p className="text-sm theme-text-primary font-medium">
@@ -594,7 +338,7 @@ const Contacts = () => {
                   </div>
                 </div>
 
-               
+
               </div>
             </div>
           </div>
@@ -610,42 +354,42 @@ const Contacts = () => {
           <div className="absolute top-40 right-20 w-38 h-38 rounded-full opacity-14 animate-float-medium" style={{ backgroundColor: getAnimationColor() }}></div>
           <div className="absolute bottom-40 left-20 w-52 h-52 rounded-full opacity-16 animate-float-fast" style={{ backgroundColor: getAnimationColor() }}></div>
           <div className="absolute bottom-20 right-10 w-36 h-36 rounded-full opacity-20 animate-float-slow" style={{ backgroundColor: getAnimationColor() }}></div>
-          
+
           {/* Floating Squares */}
           <div className="absolute top-60 left-1/4 w-22 h-22 opacity-18 animate-rotate-slow" style={{ backgroundColor: getAnimationColor(), transform: 'rotate(45deg)' }}></div>
           <div className="absolute top-80 right-1/3 w-20 h-20 opacity-14 animate-rotate-medium" style={{ backgroundColor: getAnimationColor(), transform: 'rotate(45deg)' }}></div>
           <div className="absolute bottom-60 left-1/3 w-28 h-28 opacity-16 animate-rotate-fast" style={{ backgroundColor: getAnimationColor(), transform: 'rotate(45deg)' }}></div>
-          
+
           {/* Floating Triangles */}
-          <div className="absolute top-32 right-1/4 w-0 h-0 opacity-18 animate-bounce-slow" style={{ 
+          <div className="absolute top-32 right-1/4 w-0 h-0 opacity-18 animate-bounce-slow" style={{
             borderLeft: '38px solid transparent',
             borderRight: '38px solid transparent',
             borderBottom: `66px solid ${getAnimationColor()}`
           }}></div>
-          <div className="absolute bottom-32 left-1/4 w-0 h-0 opacity-16 animate-bounce-medium" style={{ 
+          <div className="absolute bottom-32 left-1/4 w-0 h-0 opacity-16 animate-bounce-medium" style={{
             borderLeft: '32px solid transparent',
             borderRight: '32px solid transparent',
             borderBottom: `55px solid ${getAnimationColor()}`
           }}></div>
-          
+
           {/* Organic Blob Shapes */}
-          <div className="absolute top-1/4 left-1/2 w-60 h-60 opacity-10 animate-blob-slow" style={{ 
+          <div className="absolute top-1/4 left-1/2 w-60 h-60 opacity-10 animate-blob-slow" style={{
             background: `linear-gradient(135deg, ${getAnimationColor()}, ${getAnimationColor()})`,
             borderRadius: '60% 40% 70% 30% / 40% 60% 30% 70%'
           }}></div>
-          <div className="absolute bottom-1/4 right-1/2 w-68 h-68 opacity-13 animate-blob-medium" style={{ 
+          <div className="absolute bottom-1/4 right-1/2 w-68 h-68 opacity-13 animate-blob-medium" style={{
             background: `linear-gradient(135deg, ${getAnimationColor()}, ${getAnimationColor()})`,
             borderRadius: '30% 70% 50% 50% / 60% 40% 60% 40%'
           }}></div>
-          
+
           {/* Gradient Orbs */}
-          <div className="absolute top-1/2 left-1/4 w-52 h-52 rounded-full opacity-14 animate-pulse-slow" style={{ 
+          <div className="absolute top-1/2 left-1/4 w-52 h-52 rounded-full opacity-14 animate-pulse-slow" style={{
             background: `radial-gradient(circle, ${getAnimationColor()}, transparent)`
           }}></div>
-          <div className="absolute bottom-1/3 right-1/4 w-60 h-60 rounded-full opacity-13 animate-pulse-medium" style={{ 
+          <div className="absolute bottom-1/3 right-1/4 w-60 h-60 rounded-full opacity-13 animate-pulse-medium" style={{
             background: `radial-gradient(circle, ${getAnimationColor()}, transparent)`
           }}></div>
-          
+
           {/* Grid Pattern */}
           <div className="absolute inset-0 opacity-2">
             <div className="absolute top-0 left-0 w-full h-full" style={{
@@ -667,15 +411,15 @@ const Contacts = () => {
           <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
             <div className="group theme-card rounded-3xl theme-shadow-primary p-8 sm:p-10 hover:scale-105 transition-all duration-300 hover:shadow-2xl relative overflow-hidden border-2 border-transparent hover:border-[#2d65bc]/20">
               {/* Gradient Background on Hover */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-3xl" style={{ 
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-3xl" style={{
                 background: `linear-gradient(135deg, ${getThemeColor()}, ${getThemeColor()}80)`
               }}></div>
-              
+
               {/* Decorative Circle */}
               <div className="absolute top-4 right-4 w-24 h-24 rounded-full opacity-5 group-hover:opacity-15 transition-opacity duration-300" style={{ backgroundColor: getThemeColor() }}></div>
-              
+
               <div className="relative z-10">
-                <div className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-xl" style={{ 
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-xl" style={{
                   background: `linear-gradient(135deg, #2d65bc, #1e4a8e)`,
                   boxShadow: '0 10px 30px rgba(45, 101, 188, 0.4)'
                 }}>
@@ -696,15 +440,15 @@ const Contacts = () => {
 
             <div className="group theme-card rounded-3xl theme-shadow-primary p-8 sm:p-10 hover:scale-105 transition-all duration-300 hover:shadow-2xl relative overflow-hidden border-2 border-transparent hover:border-[#2d65bc]/20">
               {/* Gradient Background on Hover */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-3xl" style={{ 
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-3xl" style={{
                 background: `linear-gradient(135deg, ${getThemeColor()}, ${getThemeColor()}80)`
               }}></div>
-              
+
               {/* Decorative Circle */}
               <div className="absolute top-4 right-4 w-24 h-24 rounded-full opacity-5 group-hover:opacity-15 transition-opacity duration-300" style={{ backgroundColor: getThemeColor() }}></div>
-              
+
               <div className="relative z-10">
-                <div className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-xl" style={{ 
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-xl" style={{
                   background: `linear-gradient(135deg, #2d65bc, #1e4a8e)`,
                   boxShadow: '0 10px 30px rgba(45, 101, 188, 0.4)'
                 }}>
@@ -725,15 +469,15 @@ const Contacts = () => {
 
             <div className="group theme-card rounded-3xl theme-shadow-primary p-8 sm:p-10 hover:scale-105 transition-all duration-300 hover:shadow-2xl relative overflow-hidden border-2 border-transparent hover:border-[#2d65bc]/20">
               {/* Gradient Background on Hover */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-3xl" style={{ 
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-3xl" style={{
                 background: `linear-gradient(135deg, ${getThemeColor()}, ${getThemeColor()}80)`
               }}></div>
-              
+
               {/* Decorative Circle */}
               <div className="absolute top-4 right-4 w-24 h-24 rounded-full opacity-5 group-hover:opacity-15 transition-opacity duration-300" style={{ backgroundColor: getThemeColor() }}></div>
-              
+
               <div className="relative z-10">
-                <div className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-xl" style={{ 
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-xl" style={{
                   background: `linear-gradient(135deg, #2d65bc, #1e4a8e)`,
                   boxShadow: '0 10px 30px rgba(45, 101, 188, 0.4)'
                 }}>
@@ -754,15 +498,15 @@ const Contacts = () => {
 
             <div className="group theme-card rounded-3xl theme-shadow-primary p-8 sm:p-10 hover:scale-105 transition-all duration-300 hover:shadow-2xl relative overflow-hidden border-2 border-transparent hover:border-[#2d65bc]/20">
               {/* Gradient Background on Hover */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-3xl" style={{ 
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-3xl" style={{
                 background: `linear-gradient(135deg, ${getThemeColor()}, ${getThemeColor()}80)`
               }}></div>
-              
+
               {/* Decorative Circle */}
               <div className="absolute top-4 right-4 w-24 h-24 rounded-full opacity-5 group-hover:opacity-15 transition-opacity duration-300" style={{ backgroundColor: getThemeColor() }}></div>
-              
+
               <div className="relative z-10">
-                <div className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-xl" style={{ 
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-xl" style={{
                   background: `linear-gradient(135deg, #2d65bc, #1e4a8e)`,
                   boxShadow: '0 10px 30px rgba(45, 101, 188, 0.4)'
                 }}>
@@ -787,16 +531,16 @@ const Contacts = () => {
       {/* CTA Section */}
       <section className="relative overflow-hidden">
         {/* Background Animation Elements */}
-        <MinimalBigShapesAnimation/>
-        
+        <MinimalBigShapesAnimation />
+
         <div className="absolute inset-0 theme-gradient-primary opacity-50"></div>
         <div className="relative z-10 py-6 sm:py-6 lg:pt-12">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto text-center">
-             
+
               <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-6 theme-text-primary">
                 Ready to <span style={{ color: '#2d65bc' }}>Transform</span> Your Ideas?
-          </h2>
+              </h2>
               <p className="text-xl sm:text-2xl theme-text-secondary mb-8 max-w-3xl mx-auto leading-relaxed">
                 We're here to turn your vision into reality. Get in touch and let's create something amazing together.
               </p>
@@ -843,9 +587,9 @@ const Contacts = () => {
           </div>
         </div>
       </section>
-      </div>
-    </>
-  );
-};
+    </div>
+  </>
+);
+}
 
 export default Contacts;

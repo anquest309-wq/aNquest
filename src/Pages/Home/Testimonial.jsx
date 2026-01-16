@@ -1,63 +1,190 @@
-import React from "react";
-import SectionsBgAnimation from "../../Components/Bg-animation-template/SectionsBgAnimation";
+import React, { useState, useEffect, useRef } from "react";
+import CircleSquareBgAnimation from "../../Components/Bg-animation-template/CircleSquareBgAnimation";
+import { useTheme } from "../../Context/ThemeContext";
+
 
 const testimonials = [
   {
-    company: "E-Commerce Solutions Inc",
+    company: "Real Estate CRM",
     feedback:
-      "aNquest delivered an exceptional e-commerce platform with modern web technologies. The development team was professional, responsive, and delivered ahead of schedule. Our online sales increased by 300%!",
-    name: "Sarah Johnson",
-    position: "CEO - E-Commerce Solutions",
-    img: "https://randomuser.me/api/portraits/women/45.jpg",
+      "aNquest's CRM reorganized our entire sales pipeline. The automated lead assignment and mobile access allow our agents to close deals while on the go. It is the backbone of our agency now.",
+    name: "Rohit Verma",
+    position: "Noida",
+    img: "/blankclientprofile.webp",
   },
   {
-    company: "FinTech Innovations",
+    company: "Hospital CRM",
     feedback:
-      "The mobile banking app developed by aNquest exceeded our expectations. Their expertise in mobile development and backend integration was outstanding. Highly recommended for fintech projects!",
-    name: "Michael Chen",
-    position: "CTO - FinTech Innovations",
-    img: "https://randomuser.me/api/portraits/men/65.jpg",
+      "aNquest delivered a Hospital Management System that is not only secure but incredibly easy for our doctors to use. Patient record retrieval time has dropped by 50%.",
+    name: "Dr. Anjali Mehta",
+    position: "Visakhapatnam",
+    img: "/blankclientprofile.webp",
   },
   {
-    company: "StartupHub Technologies",
+    company: "Web Development",
     feedback:
-      "From web development to SEO optimization, aNquest provided comprehensive digital solutions. Our website now ranks #1 on Google and our user engagement has tripled. Amazing work!",
-    name: "Emily Rodriguez",
-    position: "Founder - StartupHub",
-    img: "https://randomuser.me/api/portraits/women/44.jpg",
+      "We hired aNquest for Web Development, and the results were stellar. They built a blazing fast site that integrates seamlessly with our backend tools. Our online conversions doubled within a month.",
+    name: "Reeva Rathod",
+    position: "Mumbai",
+    img: "/blankclientprofile.webp",
+  },
+  {
+    company: "Corporate Consultants",
+    feedback:
+      "The workflow automation in their CRM is a game-changer. We automated our invoicing and follow-up emails, saving our admin team. Highly recommended for service businesses.",
+    name: "Mithesh Gera",
+    position: "Delhi",
+    img: "/blankclientprofile.webp",
+  },
+  {
+    company: "Logistics Firm",
+    feedback:
+      "A rare combination of powerful CRM logic and beautiful Web Design. They built us a custom dashboard that tracks our fleet in real-time and looks professional. The support team is also very responsive.",
+    name: "Arjun Patel",
+    position: "Chandigarh",
+    img: "/blankclientprofile.webp",
   },
 ];
 
+
 const Testimonial = () => {
-  return (
-    <section className="py-20  theme-bg-primary relative overflow-hidden" style={{ '--accent-blue': '#2d65bc' }}>
-      {/* Background Animations */}
-      <SectionsBgAnimation />
+  const { theme } = useTheme();
+  const isDarkMode = theme === 'dark';
+  const scrollRef = useRef(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  // Auto-scroll functionality
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+
+    const interval = setInterval(() => {
+      handleNext();
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [currentIndex, isAutoPlaying]);
+
+  const handleNext = () => {
+    if (scrollRef.current) {
+      const cardWidth = scrollRef.current.children[0]?.offsetWidth || 0;
+      const gap = 40; // gap-10 = 40px
+      const scrollAmount = cardWidth + gap;
       
-      <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
-        <h2 className="text-5xl font-extrabold theme-text-primary mb-12">
+      if (currentIndex < testimonials.length - 1) {
+        scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        setCurrentIndex(prev => prev + 1);
+      } else {
+        // Loop back to start
+        scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+        setCurrentIndex(0);
+      }
+    }
+  };
+
+  const handlePrev = () => {
+    if (scrollRef.current) {
+      const cardWidth = scrollRef.current.children[0]?.offsetWidth || 0;
+      const gap = 40;
+      const scrollAmount = cardWidth + gap;
+      
+      if (currentIndex > 0) {
+        scrollRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        setCurrentIndex(prev => prev - 1);
+      } else {
+        // Loop to end
+        const maxScroll = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
+        scrollRef.current.scrollTo({ left: maxScroll, behavior: 'smooth' });
+        setCurrentIndex(testimonials.length - 1);
+      }
+    }
+  };
+
+  const handleDotClick = (index) => {
+    if (scrollRef.current) {
+      const cardWidth = scrollRef.current.children[0]?.offsetWidth || 0;
+      const gap = 40;
+      const scrollAmount = (cardWidth + gap) * index;
+      
+      scrollRef.current.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+      setCurrentIndex(index);
+      setIsAutoPlaying(false);
+      
+      // Resume auto-play after 10 seconds
+      setTimeout(() => setIsAutoPlaying(true), 10000);
+    }
+  };
+
+  return (
+    <section 
+      className="py-10 md:py-10 lg:py-15 xl:py-16 min-h-[500px] md:min-h-[600px] lg:min-h-[600px] theme-bg-primary relative flex flex-col justify-center" 
+      style={{ '--accent-blue': '#2d65bc' }}
+      onMouseEnter={() => setIsAutoPlaying(false)}
+      onMouseLeave={() => setIsAutoPlaying(true)}
+    >
+      <div className="absolute inset-0 z-0">
+        <CircleSquareBgAnimation theme={theme} containerType="absolute" />
+      </div>
+      <div className="relative z-10">
+      <div className="max-w-7xl mx-auto px-3 lg:px-6 text-center relative z-10">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl poiret-one-regular-bold theme-text-primary mb-12">
           Client <span style={{ color: '#2d65bc' }}>Testimonials</span>
         </h2>
 
-        {/* ===== Cards Container ===== */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        {/* ===== Carousel Container ===== */}
+        <div className="relative">
+          {/* Navigation Buttons */}
+          <button
+            onClick={handlePrev}
+            className={`absolute left-0 md:-left-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-[1.02] ${
+              isDarkMode 
+                ? 'bg-gray-800 hover:bg-gray-700 text-white' 
+                : 'bg-white hover:bg-gray-100 text-gray-800'
+            }`}
+            aria-label="Previous testimonial"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          <button
+            onClick={handleNext}
+            className={`absolute right-0 md:-right-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-[1.02] ${
+              isDarkMode 
+                ? 'bg-gray-800 hover:bg-gray-700 text-white' 
+                : 'bg-white hover:bg-gray-100 text-gray-800'
+            }`}
+            aria-label="Next testimonial"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          {/* Cards Container with Horizontal Scroll */}
+          <div 
+            ref={scrollRef}
+            className="flex overflow-x-hidden gap-10 pb-4 scroll-smooth snap-x snap-mandatory"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
           {testimonials.map((item, index) => (
             <div
               key={index}
-              className="group relative theme-bg-primary rounded-3xl shadow-md hover:shadow-xl transition-all duration-500 text-left overflow-hidden transform hover:scale-105 hover:-translate-y-2"
+              className="group relative theme-bg-primary rounded-3xl shadow-md transition-all duration-500 text-left overflow-hidden transform hover:scale-[1.01] hover:-translate-y-2 flex-shrink-0 w-full sm:w-[calc(50%-20px)] lg:w-[calc(33.333%-27px)] snap-center"
               style={{animationDelay: `${index * 200}ms`}}
             >
               {/* Animated Top Border */}
               <div className="absolute top-0 left-0 w-full h-2 theme-gradient-accent rounded-t-3xl group-hover:h-3 transition-all duration-300"></div>
               
               {/* Floating Background Elements */}
-              <div className="absolute top-4 right-4 w-16 h-16 rounded-full blur-xl opacity-0 group-hover:opacity-100 group-hover:scale-150 transition-all duration-700" style={{ backgroundColor: '#ffffff' }}></div>
-              <div className="absolute bottom-4 left-4 w-12 h-12 rounded-full blur-xl opacity-0 group-hover:opacity-100 group-hover:scale-150 transition-all duration-700" style={{ backgroundColor: '#ffffff' }}></div>
+              <div className="absolute top-4 right-4 w-16 h-16 rounded-full blur-xl opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700" style={{ backgroundColor: '#ffffff' }}></div>
+              <div className="absolute bottom-4 left-4 w-12 h-12 rounded-full blur-xl opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700" style={{ backgroundColor: '#ffffff' }}></div>
 
               {/* Card Content */}
-              <div className="p-8 mt-4 relative z-10">
+              <div className="p-3 lg:p-8 mt-4 relative z-10">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="theme-gradient-accent p-2 rounded-lg group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                  <div className="theme-gradient-accent p-2 rounded-lg group-hover:scale-[1.02] group-hover:rotate-12 transition-all duration-300">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="w-6 h-6 text-white"
@@ -68,7 +195,7 @@ const Testimonial = () => {
                     </svg>
                   </div>
                   <h3 
-                    className="text-lg font-semibold theme-text-primary transition-colors duration-300 testimonial-company"
+                    className="text-lg poiret-one-regular-bold theme-text-primary transition-colors duration-300 testimonial-company"
                   >
                     {item.company}
                   </h3>
@@ -81,17 +208,12 @@ const Testimonial = () => {
                 {/* User Info */}
                 <div className="flex items-center justify-between">
                   <div className="group-hover:translate-x-2 transition-transform duration-300">
-                    <h4 className="text-lg font-semibold theme-text-primary transition-colors duration-300 testimonial-name">
+                    <h4 className="text-lg poiret-one-regular-bold theme-text-primary transition-colors duration-300 testimonial-name">
                       {item.name}
                     </h4>
                     <p className="theme-text-secondary text-sm group-hover:theme-text-primary transition-colors duration-300">{item.position}</p>
                   </div>
-                  <img
-                    src={item.img}
-                    alt={item.name}
-                    className="w-12 h-12 rounded-full object-cover border-2 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
-                    style={{ borderColor: '#2d65bc' }}
-                  />
+                 
                 </div>
               </div>
               
@@ -105,9 +227,29 @@ const Testimonial = () => {
               </div>
             </div>
           ))}
+          </div>
+
+          {/* Dots Navigation */}
+          <div className="flex justify-center gap-2 mt-8">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => handleDotClick(index)}
+                className={`transition-all duration-300 rounded-full ${
+                  currentIndex === index
+                    ? 'w-8 h-3'
+                    : 'w-3 h-3 hover:scale-110'
+                }`}
+                style={{
+                  backgroundColor: currentIndex === index ? '#2d65bc' : isDarkMode ? '#4b5563' : '#d1d5db'
+                }}
+                aria-label={`Go to testimonial ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
-      
+      </div>
       {/* CSS Animations */}
       <style>{`
         .testimonial-company {

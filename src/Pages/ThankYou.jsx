@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { CheckCircle2, Home, Phone, MessageCircle } from 'lucide-react';
 import { useTheme } from '../Context/ThemeContext';
 import SEO from '../Components/SEO';
-import MinimalBigShapesAnimation from '../Components/Bg-animation-template/MinimalBigShapesAnimation';
 import { buildUrl } from '../utils/urlUtils';
+import MinimalBigShapesAnimation from '../Components/Bg-animation-template/MinimaLBigShapesAnimation';
 
 const ThankYou = () => {
   const { theme } = useTheme();
@@ -59,7 +59,7 @@ const ThankYou = () => {
             </div>
 
             <Link
-              to={buildUrl('/contacts')}
+              to={buildUrl('/contact-us')}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white transition-all duration-200 hover:scale-105"
               style={{ backgroundColor: accent }}
             >
